@@ -1,6 +1,6 @@
 {
   "name": "massa-ui-kit-react",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Massa Ui KIT React + TypeScript + TailwindCSS + Storybook",
   "license": "MIT",
   "author": "Massa",
@@ -11,6 +11,10 @@
   "main": "",
   "type": "module",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/massalabs/Ui-Kit.git"
+  },
   "scripts": {
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\" \"npm run storybook\"",
     "client:dev": "vite",
