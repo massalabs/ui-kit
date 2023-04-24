@@ -1,3 +1,1 @@
-import { PrimaryButton } from "./components/PrimaryButton/PrimaryButton";
-
-export const primaryButton = PrimaryButton;
+export * from "./components/PrimaryButton/PrimaryButton";
