@@ -1,4 +1,4 @@
-import Body, { BodyProps } from "./Body";
+import { Body, BodyProps } from "./Body";
 
 export default {
   component: Body,

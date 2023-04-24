@@ -1,4 +1,4 @@
-import MenuActive from "./MenuActive";
+import { MenuActive } from "./MenuActive";
 import IcoAmountDark from "../assets/ico-amount-dark.svg";
 
 interface AmountProps {
@@ -6,7 +6,7 @@ interface AmountProps {
   fractionDigits?: number;
 }
 
-export default function Amount(props: AmountProps) {
+export function Amount(props: AmountProps) {
   const formattedAmount = props.amount.toFixed(props.fractionDigits || 2);
 
   return (
