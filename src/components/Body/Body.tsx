@@ -6,7 +6,7 @@ export interface BodyProps {
 
 // TODO: Poppins font family
 
-export default function Body(props: BodyProps) {
+export function Body(props: BodyProps) {
   return (
     <p className="text-base font-medium text-black leading-6 tracking-massa">
       {props.children}

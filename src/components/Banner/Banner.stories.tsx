@@ -1,4 +1,4 @@
-import Banner, { BannerProps } from "./Banner";
+import { Banner, BannerProps } from "./Banner";
 
 export default {
   component: Banner,
