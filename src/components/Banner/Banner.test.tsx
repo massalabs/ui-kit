@@ -1,6 +1,10 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import renderer from "react-test-renderer";
 import { cleanup, render } from "@testing-library/react";
-import Banner from "./Banner";
+import { Banner } from "./Banner";
 
 afterEach(cleanup);
 
