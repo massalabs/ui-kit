@@ -1,7 +1,7 @@
 import { Body } from "../../Body/Body";
 
-interface PrimaryButtonProps {
-  onCLick: () => any;
+export interface PrimaryButtonProps {
+  onCLick: () => void;
   text: string;
   leftIconPath?: string;
   rightIconPath?: string;
@@ -9,7 +9,11 @@ interface PrimaryButtonProps {
 
 export function PrimaryButton(props: PrimaryButtonProps) {
   return (
-    <button className="w-164 h-48 rounded-lg" onClick={props.onCLick}>
+    <button
+      type="button"
+      className="w-164 h-48 rounded-lg bg-indigo-950 hover:bg-indigo-900"
+      onClick={props.onCLick}
+    >
       {props.leftIconPath && <img src={props.leftIconPath} alt={props.text} />}
       <Body>{props.text}</Body>
       {props.rightIconPath && (

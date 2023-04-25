@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@massalabs', 'plugin:storybook/recommended'],
+  extends: ["@massalabs", "plugin:storybook/recommended"],
 };

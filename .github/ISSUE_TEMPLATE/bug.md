@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: Create a bug report to report a bug and help us to improve massa-as-sdk
-title: ''
-labels: 'issue:bug'
-assignees: ''
+title: ""
+labels: "issue:bug"
+assignees: ""
 ---
 
 **Describe the bug**
