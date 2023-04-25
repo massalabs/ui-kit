@@ -1,8 +1,8 @@
 ---
 name: Task
 about: Create a new task for the Innovation team to work on
-title: ''
-assignees: ''
+title: ""
+assignees: ""
 ---
 
 **Context**
