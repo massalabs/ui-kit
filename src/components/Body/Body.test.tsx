@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import { cleanup } from "@testing-library/react";
-import Body from "./Body";
+import { Body } from "./Body";
 
 afterEach(cleanup);
 
