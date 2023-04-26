@@ -35,3 +35,13 @@ import { Amount } from "@massalabs/react-ui-kit";
 ## Contribute
 
 You can add global CSS in `src/index.css`.
+
+### How to clean code
+
+- use tailwind alias to avoid long `className` string
+- create react function component: `export function PrimaryButton(props: PrimaryButtonProps) {}`
+  - or `export const PrimaryButton = (props: PrimaryButtonProps) => {}`
+- create one folder per component with
+  - component
+  - unit tests
+  - storybook stories
