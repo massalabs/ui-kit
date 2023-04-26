@@ -7,10 +7,13 @@ export default {
 };
 
 const Template: StoryFn<PrimaryButtonProps> = (args) => (
-  <PrimaryButton {...args} />
+  <PrimaryButton {...args}>Click me</PrimaryButton>
 );
 
 export const DefaultPrimaryButton = Template.bind({});
-DefaultPrimaryButton.args = {
-  text: "Click Me!",
-};
+
+const TemplateHover: StoryFn<PrimaryButtonProps> = (args) => (
+  <PrimaryButton {...args}>My test</PrimaryButton>
+);
+
+export const HoverPrimaryButton = TemplateHover.bind({});

@@ -2,14 +2,10 @@
 
 exports[`Primary button should render a button 1`] = `
 <button
-  className="w-164 h-48 rounded-lg bg-indigo-950 hover:bg-indigo-900"
+  className="w-64 h-48 rounded-lg bg-indigo-950 hover:bg-indigo-900"
   onClick={[MockFunction]}
   type="button"
 >
-  <p
-    className="text-base font-medium text-black leading-6 tracking-massa"
-  >
-    button text
-  </p>
+  button text
 </button>
 `;
