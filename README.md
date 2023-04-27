@@ -45,3 +45,16 @@ You can add global CSS in `src/index.css`.
   - component
   - unit tests
   - storybook stories
+
+### Theme
+
+To apply a theme, use the class `theme-light` or `theme-dark`. All nested elements will apply the theme.
+
+See <https://github.com/L-Blondy/tw-colors#nested-themes> for details.
+
+Massa's design system color palette in implemented in `presets/massa-station-preset.js` thanks to `tw-colors` plugin.
+
+You can now use our custom colors thanks to `className`:
+
+- `<p className="bg-primary"></p>`
+- `<p className="text-neutral"></p>`

@@ -15,3 +15,9 @@ const preview: Preview = {
 };
 
 export default preview;
+
+// Adds theme-dark class so that themes work.
+// Default theme is dark.
+document.body.onload = function () {
+  document.body.classList.add("theme-dark");
+};
