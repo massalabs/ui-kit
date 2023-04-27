@@ -7,6 +7,7 @@ export interface PrimaryButtonProps extends ComponentPropsWithoutRef<"button"> {
 export function PrimaryButton(props: PrimaryButtonProps) {
   return (
     <button
+      data-testid="primary-button"
       type="button"
       className="w-64 h-48 rounded-lg text-neutral bg-primary hover:bg-tertiary"
       {...props}

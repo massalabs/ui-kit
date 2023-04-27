@@ -1,18 +1,52 @@
-import renderer from "react-test-renderer";
-import { cleanup } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { PrimaryButton } from "./";
 
-afterEach(cleanup);
+describe("Components | Buttons | PrimaryButton", () => {
+  test("it should render", () => {
+    render(<PrimaryButton>something</PrimaryButton>);
 
-describe("Primary button", () => {
-  it("should render a button", () => {
-    const text = `button text`;
-    const onclick = jest.fn();
-    const button = <PrimaryButton onClick={onclick}>{text}</PrimaryButton>;
+    let button = screen.getByTestId("primary-button");
 
-    // snapshot test
-    const componentSnapchat = renderer.create(button);
-    const tree = componentSnapchat.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(button).toBeTruthy();
+    expect(button.textContent).toBe("something");
+  });
+
+  test("it should render nested element", () => {
+    const SomethingComponent = () => {
+      return <p data-testid="nested">something in nested</p>;
+    };
+    render(
+      <PrimaryButton>
+        <SomethingComponent />
+      </PrimaryButton>
+    );
+
+    let button = screen.getByTestId("primary-button");
+    let nested = screen.getByTestId("nested");
+
+    expect(button).toBeTruthy();
+    expect(button.textContent).toBe("something in nested");
+
+    expect(nested).toBeTruthy();
+    expect(nested.textContent).toBe("something in nested");
+  });
+
+  test("it should have primary class", () => {
+    render(<PrimaryButton>something</PrimaryButton>);
+
+    let button = screen.getByTestId("primary-button");
+
+    expect(button).toHaveClass("bg-primary");
+  });
+
+  test("it should fire onClick event", () => {
+    const somethingClicked = jest.fn();
+
+    render(<PrimaryButton onClick={somethingClicked} />);
+
+    let button = screen.getByTestId("primary-button");
+
+    fireEvent.click(button);
+    expect(somethingClicked).toHaveBeenCalled();
   });
 });
