@@ -3,3 +3,12 @@
 @tailwind utilities;
 
 /* global css */
+
+@font-face {
+  font-family: "Urbane";
+  src: url("./assets/fonts/Urbane/Urbane-Regular.ttf");
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins/Poppins-Regular.ttf");
+}

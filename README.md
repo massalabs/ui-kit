@@ -58,3 +58,11 @@ You can now use our custom colors thanks to `className`:
 
 - `<p className="bg-primary"></p>`
 - `<p className="text-neutral"></p>`
+
+### Typography
+
+All typographies are defined in the tailwind preset.
+
+To use them, simple add the name of the typography in the `className` prefixed by `mas-`:
+
+`<h1 className="mas-banner">My title</h1>`

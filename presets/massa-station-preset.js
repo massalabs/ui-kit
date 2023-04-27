@@ -13,6 +13,8 @@ const colorBasicBlue = "#1A202E";
 const colorLightBlue = "#2E374C";
 
 /** @type {import('tailwindcss').Config} */
+import plugin from "tailwindcss/plugin";
+
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
@@ -24,6 +26,10 @@ module.exports = {
     },
     letterSpacing: {
       massa: "-0.01em",
+    },
+    fontFamily: {
+      Urbane: ["Urbane", "sans-serif"],
+      Poppins: ["Poppins", "sans-serif"],
     },
   },
   plugins: [
@@ -46,6 +52,80 @@ module.exports = {
         info: colorDarkGrey,
         success: colorBrand,
       },
+    }),
+    plugin(function ({ addComponents, theme }) {
+      addComponents({
+        ".mas-banner": {
+          fontSize: "36px",
+          fontWeight: "600",
+          fontFamily: theme("fontFamily.Urbane"),
+          lineHeight: "43px",
+          fontStyle: "normal",
+        },
+        ".mas-title": {
+          fontSize: "34px",
+          fontWeight: "600",
+          fontFamily: theme("fontFamily.Urbane"),
+          lineHeight: "41px",
+        },
+        ".mas-subtitle": {
+          fontSize: "20px",
+          fontWeight: "500",
+          fontFamily: theme("fontFamily.Urbane"),
+          lineHeight: "24px",
+        },
+        ".mas-h3": {
+          fontSize: "14px",
+          fontWeight: "500",
+          fontFamily: theme("fontFamily.Urbane"),
+          lineHeight: "17px",
+        },
+        ".mas-buttons": {
+          fontSize: "16px",
+          fontWeight: "600",
+          fontFamily: theme("fontFamily.Urbane"),
+          lineHeight: "19px",
+        },
+        ".mas-menu-active": {
+          fontSize: "16px",
+          fontWeight: "600",
+          fontFamily: theme("fontFamily.Urbane"),
+          lineHeight: "19px",
+        },
+        ".mas-menu-default": {
+          fontSize: "16px",
+          fontWeight: "500",
+          fontFamily: theme("fontFamily.Urbane"),
+          lineHeight: "19px",
+        },
+        ".mas-menu-underline": {
+          fontSize: "16px",
+          fontWeight: "500",
+          fontFamily: theme("fontFamily.Urbane"),
+          lineHeight: "19px",
+          textDecoration: "underline",
+          fontStyle: "normal",
+        },
+        ".mas-body": {
+          fontSize: "16px",
+          fontWeight: "500",
+          fontFamily: theme("fontFamily.Poppins"),
+          lineHeight: "24px",
+          fontStyle: "normal",
+        },
+        ".mas-body2": {
+          fontSize: "14px",
+          fontWeight: "400",
+          fontFamily: theme("fontFamily.Poppins"),
+          lineHeight: "21px",
+        },
+        ".mas-caption": {
+          fontSize: "12px",
+          fontWeight: "400",
+          fontFamily: theme("fontFamily.Poppins"),
+          lineHeight: "18px",
+        },
+      });
     }),
   ],
 };
