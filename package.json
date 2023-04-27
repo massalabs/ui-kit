@@ -6,6 +6,9 @@
     "src",
     "presets"
   ],
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "main": "src/index.ts",
   "scripts": {
     "dev": "vite",
@@ -41,6 +44,8 @@
     "@storybook/react": "^7.0.6",
     "@storybook/react-vite": "^7.0.6",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@testing-library/dom": "^9.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.1",
     "@types/react": "^18.0.28",
