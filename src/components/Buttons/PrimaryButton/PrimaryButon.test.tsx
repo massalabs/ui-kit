@@ -8,7 +8,7 @@ describe("Primary button", () => {
   it("should render a button", () => {
     const text = `button text`;
     const onclick = jest.fn();
-    const button = <PrimaryButton onCLick={onclick}>{text}</PrimaryButton>;
+    const button = <PrimaryButton onClick={onclick}>{text}</PrimaryButton>;
 
     // snapshot test
     const componentSnapchat = renderer.create(button);

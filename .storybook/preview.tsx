@@ -1,6 +1,8 @@
+import React from "react";
 import "../src/index.css";
 
 import type { Preview } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 
 const preview: Preview = {
   parameters: {
@@ -12,12 +14,13 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    (Story: StoryFn) => (
+      <div className="theme-dark">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default preview;
-
-// Adds theme-dark class so that themes work.
-// Default theme is dark.
-document.body.onload = function () {
-  document.body.classList.add("theme-dark");
-};

@@ -1,5 +1,5 @@
 import { StoryFn } from "@storybook/react";
-import { PrimaryButton, PrimaryButtonProps } from "./";
+import { PrimaryButton, PrimaryButtonProps } from ".";
 
 export default {
   component: PrimaryButton,
@@ -11,6 +11,11 @@ const Template: StoryFn<PrimaryButtonProps> = (args) => (
 );
 
 export const DefaultPrimaryButton = Template.bind({});
+DefaultPrimaryButton.args = {
+  onClick: () => {
+    console.log("clicked");
+  },
+};
 
 const TemplateHover: StoryFn<PrimaryButtonProps> = (args) => (
   <>
