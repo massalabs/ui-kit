@@ -34,7 +34,7 @@ import { Amount } from "@massalabs/react-ui-kit";
 
 ## Contribute
 
-You can add global CSS in `src/index.css`.
+You can add global CSS in `src/global.css`.
 
 ### How to clean code
 
