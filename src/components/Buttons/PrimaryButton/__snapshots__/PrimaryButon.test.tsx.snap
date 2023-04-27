@@ -7,14 +7,5 @@ exports[`Primary button should render a button 1`] = `
   type="button"
 >
   button text
-  <div
-    className="theme-light"
-  >
-    <p
-      className="text-info"
-    >
-      information text
-    </p>
-  </div>
 </button>
 `;
