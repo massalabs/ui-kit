@@ -26,6 +26,12 @@ export default {
 };
 ```
 
+- import the global css in you main tsx file (`main.tsx` or `App.tsx`):
+
+```ts
+import "@massalabs/react-ui-kit/src/global.css";
+```
+
 - use the components:
 
 ```ts

@@ -10,6 +10,7 @@
     "testEnvironment": "jsdom"
   },
   "main": "src/index.ts",
+  "style": "src/global.css",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
