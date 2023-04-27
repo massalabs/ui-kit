@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import { PrimaryButton } from "./";
 
 describe("Components | Buttons | PrimaryButton", () => {
@@ -31,13 +32,13 @@ describe("Components | Buttons | PrimaryButton", () => {
     expect(nested.textContent).toBe("something in nested");
   });
 
-  // test("it should have primary class", () => {
-  //   render(<PrimaryButton>something</PrimaryButton>);
+  test("it should have primary class", () => {
+    render(<PrimaryButton>something</PrimaryButton>);
 
-  //   let button = screen.getByTestId("primary-button");
+    let button = screen.getByTestId("primary-button");
 
-  //   expect(button).toHaveClass("bg-primary");
-  // });
+    expect(button).toHaveClass("bg-primary");
+  });
 
   test("it should fire onClick event", () => {
     const somethingClicked = jest.fn();
