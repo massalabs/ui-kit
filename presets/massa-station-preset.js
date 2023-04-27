@@ -55,50 +55,50 @@ module.exports = {
     }),
     plugin(function ({ addComponents, theme }) {
       addComponents({
-        ".Banner": {
+        ".mas-banner": {
           fontSize: "36px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
           lineHeight: "43px",
           fontStyle: "normal",
         },
-        ".Title": {
+        ".mas-title": {
           fontSize: "34px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
           lineHeight: "41px",
         },
-        ".Subtitle": {
+        ".mas-subtitle": {
           fontSize: "20px",
           fontWeight: "500",
           fontFamily: theme("fontFamily.Urbane"),
           lineHeight: "24px",
         },
-        ".H3": {
+        ".mas-h3": {
           fontSize: "14px",
           fontWeight: "500",
           fontFamily: theme("fontFamily.Urbane"),
           lineHeight: "17px",
         },
-        ".Buttons": {
+        ".mas-buttons": {
           fontSize: "16px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
           lineHeight: "19px",
         },
-        ".MenuActive": {
+        ".mas-menu-active": {
           fontSize: "16px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
           lineHeight: "19px",
         },
-        ".MenuDefault": {
+        ".mas-menu-default": {
           fontSize: "16px",
           fontWeight: "500",
           fontFamily: theme("fontFamily.Urbane"),
           lineHeight: "19px",
         },
-        ".MenuUnderline": {
+        ".mas-menu-underline": {
           fontSize: "16px",
           fontWeight: "500",
           fontFamily: theme("fontFamily.Urbane"),
@@ -106,20 +106,20 @@ module.exports = {
           textDecoration: "underline",
           fontStyle: "normal",
         },
-        ".Body": {
+        ".mas-body": {
           fontSize: "16px",
           fontWeight: "500",
           fontFamily: theme("fontFamily.Poppins"),
           lineHeight: "24px",
           fontStyle: "normal",
         },
-        ".Body2": {
+        ".mas-body2": {
           fontSize: "14px",
           fontWeight: "400",
           fontFamily: theme("fontFamily.Poppins"),
           lineHeight: "21px",
         },
-        ".Caption": {
+        ".mas-caption": {
           fontSize: "12px",
           fontWeight: "400",
           fontFamily: theme("fontFamily.Poppins"),
