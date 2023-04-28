@@ -24,9 +24,6 @@ module.exports = {
         "landing-page": "url('./src/assets/bg-image-landing-page.svg')",
       },
     },
-    letterSpacing: {
-      massa: "-0.01em",
-    },
     fontFamily: {
       Urbane: ["Urbane", "sans-serif"],
       Poppins: ["Poppins", "sans-serif"],
