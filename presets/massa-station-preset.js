@@ -39,6 +39,10 @@ module.exports = {
         neutral: colorDarkBlue,
         info: colorLightBlue,
         success: colorBrand,
+        default: colorDarkBlue,
+        hover: colorBasicBlue,
+        pressed: colorLightBlue,
+        disabled_primary: colorDarkGrey,
       },
       dark: {
         primary: colorDarkBlue,
@@ -48,6 +52,10 @@ module.exports = {
         neutral: colorWhite,
         info: colorDarkGrey,
         success: colorBrand,
+        default: colorWhite,
+        hover: colorLightGrey,
+        pressed: colorDarkGrey,
+        disabled_primary: colorDarkGrey,
       },
     }),
     plugin(function ({ addComponents, theme }) {
@@ -81,7 +89,7 @@ module.exports = {
           fontSize: "16px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
-          lineHeight: "19px",
+          // lineHeight: "19px",
         },
         ".mas-menu-active": {
           fontSize: "16px",
