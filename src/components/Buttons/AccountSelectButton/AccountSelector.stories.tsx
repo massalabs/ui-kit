@@ -1,8 +1,8 @@
 import { FiUser } from "react-icons/fi";
 import { MassaToken } from "../../../assets/svg-components/MassaToken";
-import { AccountSelector } from "./AccountSelector";
+import { AccountSelectorButton } from "./AccountSelectorButton";
 
-export default { title: "buttons", component: AccountSelector };
+export default { title: "buttons", component: AccountSelectorButton };
 
 const theme = "theme-light";
 
@@ -16,7 +16,7 @@ const args = {
 export const _AccountSelector = {
   render: () => (
     <div className={theme}>
-      <AccountSelector {...args} />
+      <AccountSelectorButton {...args} />
     </div>
   ),
 };
