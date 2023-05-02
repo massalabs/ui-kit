@@ -10,9 +10,9 @@
     "testEnvironment": "jsdom"
   },
   "main": "src/index.ts",
+  "style": "src/global.css",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
@@ -26,10 +26,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "husky": "^8.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "tw-colors": "^1.2.5"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.21.4",
@@ -67,12 +67,10 @@
     "lint-staged": "^13.2.1",
     "postcss": "^8.4.23",
     "postcss-loader": "^7.2.4",
-    "prettier": "2.8.7",
     "prop-types": "^15.8.1",
     "react-test-renderer": "^18.2.0",
     "storybook": "^7.0.6",
     "tailwindcss": "^3.3.1",
-    "tw-colors": "^1.2.5",
     "typescript": "^5.0.2",
     "vite": "^4.3.0"
   }

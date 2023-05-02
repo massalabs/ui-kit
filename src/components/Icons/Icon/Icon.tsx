@@ -5,7 +5,7 @@ import { ReactElement } from "react";
 export interface IconProps extends ComponentPropsWithoutRef<"div"> {
   src: ReactElement;
   color: string;
-  className: string;
+  className?: string;
   size: string;
 }
 

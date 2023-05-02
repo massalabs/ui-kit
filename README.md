@@ -26,6 +26,12 @@ export default {
 };
 ```
 
+- import the global css in you main tsx file (`main.tsx` or `App.tsx`):
+
+```ts
+import "@massalabs/react-ui-kit/src/global.css";
+```
+
 - use the components:
 
 ```ts
@@ -34,7 +40,7 @@ import { Amount } from "@massalabs/react-ui-kit";
 
 ## Contribute
 
-You can add global CSS in `src/index.css`.
+You can add global CSS in `src/global.css`.
 
 ### How to clean code
 
@@ -66,3 +72,9 @@ All typographies are defined in the tailwind preset.
 To use them, simple add the name of the typography in the `className` prefixed by `mas-`:
 
 `<h1 className="mas-banner">My title</h1>`
+
+
+### Icons 
+
+Icons are imported via the react-icons library 
+See <https://react-icons.github.io/react-icons/> for details & <https://github.com/react-icons/react-iconshttps://github.com/react-icons/react-icons> for specific use cases
