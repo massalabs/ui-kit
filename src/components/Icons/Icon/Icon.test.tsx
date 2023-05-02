@@ -6,8 +6,7 @@ describe("Icon", () => {
   it("should render the correct icon", () => {
     const { getByTestId } = render(
       <div>
-        {" "}
-        <FiSun data-testid="fi-sun" />{" "}
+        <FiSun data-testid="fi-sun" />
       </div>
     );
     const iconElement = getByTestId("fi-sun");
@@ -19,8 +18,7 @@ describe("Icon", () => {
 
     const { getByTestId } = render(
       <div>
-        {" "}
-        <FiSun onClick={onClickMock} data-testid="fi-sun" />{" "}
+        <FiSun onClick={onClickMock} data-testid="fi-sun" />
       </div>
     );
     const iconElement = getByTestId("fi-sun");

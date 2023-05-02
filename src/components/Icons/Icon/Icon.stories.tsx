@@ -5,11 +5,11 @@ import { FiSun } from "react-icons/fi";
 export default { title: "Icons", component: FiSun };
 
 // to render the icon
-// set icon color using className and then normal tailwind presents
+// set icon color, size... etc using className and then normal tailwind presents
 export const _Icons = {
   render: () => (
     <div data-testid="fi-sun">
-      <FiSun onClick={() => console.log("click")} className="text-brand" />
+      <FiSun className="text-brand" />
     </div>
   ),
 };
