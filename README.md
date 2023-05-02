@@ -45,8 +45,8 @@ You can add global CSS in `src/global.css`.
 ### How to clean code
 
 - use tailwind alias to avoid long `className` string
-- create react function component: `export function PrimaryButton(props: PrimaryButtonProps) {}`
-  - or `export const PrimaryButton = (props: PrimaryButtonProps) => {}`
+- create react function component: `export function Button(props: ButtonProps) {}`
+  - or `export const Button = (props: ButtonProps) => {}`
 - create one folder per component with
   - component
   - unit tests

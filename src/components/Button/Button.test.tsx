@@ -1,10 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { PrimaryButton } from "./";
+import { Button } from "./Button";
 
-describe("Components | Buttons | PrimaryButton", () => {
+describe("Components | Button", () => {
   test("it should render", () => {
-    render(<PrimaryButton>something</PrimaryButton>);
+    render(<Button>something</Button>);
 
     let button = screen.getByTestId("primary-button");
 
@@ -17,9 +17,9 @@ describe("Components | Buttons | PrimaryButton", () => {
       return <p data-testid="nested">something in nested</p>;
     };
     render(
-      <PrimaryButton>
+      <Button>
         <SomethingComponent />
-      </PrimaryButton>
+      </Button>
     );
 
     let button = screen.getByTestId("primary-button");
@@ -33,7 +33,7 @@ describe("Components | Buttons | PrimaryButton", () => {
   });
 
   test("it should have primary class", () => {
-    render(<PrimaryButton>something</PrimaryButton>);
+    render(<Button>something</Button>);
 
     let button = screen.getByTestId("primary-button");
 
@@ -43,7 +43,7 @@ describe("Components | Buttons | PrimaryButton", () => {
   test("it should fire onClick event", () => {
     const somethingClicked = jest.fn();
 
-    render(<PrimaryButton onClick={somethingClicked} />);
+    render(<Button onClick={somethingClicked} />);
 
     let button = screen.getByTestId("primary-button");
 
