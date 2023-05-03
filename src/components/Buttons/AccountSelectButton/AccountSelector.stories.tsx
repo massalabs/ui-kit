@@ -14,7 +14,7 @@ const args = {
   profileimage: <FiUser className="text-neutral h-6 w-6" />,
   accountname: "account #",
   // theme for token to be passed as props to the svg component
-  // You have to pass theme in order to set corrent masstoken bg
+  // You have to pass theme in order to set correct massatoken bg
   massatoken: <MassaToken theme={theme} />,
   accountbalance: "0,000.00",
 };
