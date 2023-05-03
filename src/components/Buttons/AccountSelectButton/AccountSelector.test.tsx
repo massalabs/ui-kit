@@ -6,11 +6,10 @@ import { FiUser } from "react-icons/fi";
 
 describe("Components | Buttons | Account Selector", () => {
   test("it should render", () => {
-    const theme = "theme-light";
     const args = {
       profileimage: <FiUser className="text-neutral" />,
       accountname: "account #",
-      massatoken: <MassaToken theme={theme} />,
+      massatoken: <MassaToken />,
       accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton {...args} />);
@@ -22,11 +21,10 @@ describe("Components | Buttons | Account Selector", () => {
 
   test("it fire the onClick fn", () => {
     const onClickMock = jest.fn();
-    const theme = "theme-light";
     const args = {
       profileimage: <FiUser className="text-neutral" />,
       accountname: "account #",
-      massatoken: <MassaToken theme={theme} />,
+      massatoken: <MassaToken />,
       accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton onClick={onClickMock} {...args} />);
