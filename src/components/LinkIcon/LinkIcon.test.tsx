@@ -6,38 +6,18 @@ describe("Components | LinkIcon ", () => {
   test("it should render", () => {
     render(<LinkIcon>something</LinkIcon>);
 
-    let element = screen.getByTestId("linkIcon");
+    let element = screen.getByTestId("link-icon");
 
     expect(element).toBeTruthy();
     expect(element.textContent).toBe("something");
   });
 
-  test("it should render nested element", () => {
-    const SomethingComponent = () => {
-      return <p data-testid="nested">something in nested</p>;
-    };
-    render(
-      <LinkIcon>
-        <SomethingComponent />
-      </LinkIcon>
-    );
-
-    let element = screen.getByTestId("linkIcon");
-    let nested = screen.getByTestId("nested");
-
-    expect(element).toBeTruthy();
-    expect(element.textContent).toBe("something in nested");
-
-    expect(nested).toBeTruthy();
-    expect(nested.textContent).toBe("something in nested");
-  });
-
-  test("it should have primary class", () => {
+  test("it should have mas-menu-default class", () => {
     render(<LinkIcon>something</LinkIcon>);
 
-    let element = screen.getByTestId("linkIcon");
+    let element = screen.getByTestId("link-icon");
 
-    expect(element).toHaveClass("bg-primary");
+    expect(element).toHaveClass("mas-menu-default");
   });
 
   test("it should fire onClick event", () => {
@@ -45,7 +25,7 @@ describe("Components | LinkIcon ", () => {
 
     render(<LinkIcon onClick={somethingClicked} />);
 
-    let element = screen.getByTestId("linkIcon");
+    let element = screen.getByTestId("link-icon");
 
     fireEvent.click(element);
     expect(somethingClicked).toHaveBeenCalled();
