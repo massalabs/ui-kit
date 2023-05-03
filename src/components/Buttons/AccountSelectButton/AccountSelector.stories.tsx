@@ -7,9 +7,14 @@ export default {
   title: "Components/Account Selector",
   component: AccountSelectorButton,
 };
+export default {
+  title: "Components/Account Selector",
+  component: AccountSelectorButton,
+};
 
-const theme = "theme-light";
+const theme = "theme-dark";
 
+// args passsed trough the account selector button
 // args passsed trough the account selector button
 const args = {
   profileimage: <FiUser className="text-neutral h-6 w-6" />,
@@ -22,6 +27,9 @@ const args = {
 
 export const _AccountSelector = {
   render: () => (
+    // this div below is used to simulate the theme
+    <div className={theme + " bg-primary w-full h-fit  p-6 flex flex-col"}>
+      <p className="text-neutral"> {theme} </p>
     // this div below is used to simulate the theme
     <div className={theme + " bg-primary w-full h-fit  p-6 flex flex-col"}>
       <p className="text-neutral"> {theme} </p>
