@@ -72,3 +72,8 @@ All typographies are defined in the tailwind preset.
 To use them, simple add the name of the typography in the `className` prefixed by `mas-`:
 
 `<h1 className="mas-banner">My title</h1>`
+
+### Icons
+
+Icons are imported via the react-icons library
+See <https://react-icons.github.io/react-icons/> for details & <https://github.com/react-icons/react-iconshttps://github.com/react-icons/react-icons> for specific use cases
