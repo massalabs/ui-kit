@@ -3,26 +3,14 @@ import { BiHomeAlt } from "react-icons/bi";
 
 export default { title: "buttons", component: LinkIcon };
 
-const args = {
-  onClick: () => {
-    console.log("clicked");
-  },
-};
-
 export const _LinkIcon = {
-  render: () => <LinkIcon {...args}>My test</LinkIcon>,
+  render: () => <LinkIcon>My test</LinkIcon>,
 };
 export const _LinkIconWithIcon = {
-  render: () => (
-    <LinkIcon {...args} icon={BiHomeAlt}>
-      My test
-    </LinkIcon>
-  ),
+  render: () => <LinkIcon icon={<BiHomeAlt />}>My test</LinkIcon>,
 };
-export const _LinkIconWithIconTertiaryColor = {
+export const _LinkIconWithIconBrandColor = {
   render: () => (
-    <LinkIcon {...args} icon={BiHomeAlt} color="tertiary">
-      My test
-    </LinkIcon>
+    <LinkIcon icon={<BiHomeAlt className="text-brand" />}>My test</LinkIcon>
   ),
 };
