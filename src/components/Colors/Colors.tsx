@@ -31,22 +31,24 @@ export function Colors() {
   ];
 
   return (
-    <div className="flex gap-3 text-center ">
+    <div className="flex gap-3 text-center w-112 bg-[#E2E2E2] mt-6 justify-center h-700">
       <div>
-        {dark.map((item) => (
-          <p className="w-[156px] mb-2 h-[40px]">{item.theme}</p>
+        {dark.map((item, index) => (
+          <p key={`dark-${index}`} className="w-[156px] mb-2 h-[40px]">
+            {item.theme}
+          </p>
         ))}
       </div>
       <div className="dark">
-        {dark.map((item) => (
-          <Color color={item.color} />
+        {dark.map((item, index) => (
+          <Color key={`dark-${index}`} color={item.color} />
         ))}
         Dark theme
       </div>
 
       <div className="light">
-        {light.map((item) => (
-          <Color color={item.color} />
+        {light.map((item, index) => (
+          <Color key={`light-${index}`} color={item.color} />
         ))}
         White theme
       </div>
