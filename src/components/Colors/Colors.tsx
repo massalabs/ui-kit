@@ -8,6 +8,7 @@ export function Colors() {
   const colorBasicBlue = "bg-[#1A202E]";
   const colorLightBlue = "bg-[#2E374C]";
   const colorWarning = "bg-[#FFA41D]";
+  const colorError = "bg-[#FF4F4F]";
   const light = [
     { color: colorWhite, theme: "primary" },
     { color: colorLightGrey, theme: "secondary" },
@@ -17,6 +18,7 @@ export function Colors() {
     { color: colorLightBlue, theme: "info" },
     { color: colorBrand, theme: "success" },
     { color: colorWarning, theme: "warning" },
+    { color: colorError, theme: "error" },
   ];
 
   const dark = [
@@ -28,6 +30,7 @@ export function Colors() {
     { color: colorDarkGrey, theme: "info" },
     { color: colorBrand, theme: "success" },
     { color: colorWarning, theme: "warning" },
+    { color: colorError, theme: "error" },
   ];
 
   return (
