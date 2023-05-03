@@ -1,22 +1,39 @@
-import { render, screen } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { AccountSelectorButton } from "./AccountSelectorButton";
 import { MassaToken } from "../../../assets/svg-components/MassaToken";
 import { FiUser } from "react-icons/fi";
 
-describe("Components | Buttons | PrimaryButton", () => {
+describe("Components | Buttons | Account Selector", () => {
   test("it should render", () => {
     const theme = "theme-light";
     const args = {
-      profileImage: <FiUser className="text-neutral" />,
-      accountName: "account #",
-      massaToken: <MassaToken theme={theme} />,
-      accountBalance: "0,000.00",
+      profileimage: <FiUser className="text-neutral" />,
+      accountname: "account #",
+      massatoken: <MassaToken theme={theme} />,
+      accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton {...args} />);
 
-    let button = screen.getByTestId("account-selector-button");
+    let accountSelector = screen.getByTestId("account-selector-button");
 
-    expect(button).toBeTruthy();
+    expect(accountSelector).toBeTruthy();
+  });
+
+  test("it fire the onClick fn", () => {
+    const onClickMock = jest.fn();
+    const theme = "theme-light";
+    const args = {
+      profileimage: <FiUser className="text-neutral" />,
+      accountname: "account #",
+      massatoken: <MassaToken theme={theme} />,
+      accountbalance: "0,000.00",
+    };
+    render(<AccountSelectorButton onClick={onClickMock} {...args} />);
+
+    let accountSelector = screen.getByTestId("account-selector-button");
+    fireEvent.click(accountSelector);
+    expect(onClickMock).toHaveBeenCalled();
+    expect(accountSelector).toBeTruthy();
   });
 });

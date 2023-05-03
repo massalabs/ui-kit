@@ -34,6 +34,7 @@ module.exports = {
       light: {
         primary: colorWhite,
         secondary: colorLightGrey,
+        secondaryAlt: colorBasicBlue,
         tertiary: colorDarkGrey,
         brand: colorBrand,
         neutral: colorDarkBlue,
@@ -43,6 +44,7 @@ module.exports = {
       dark: {
         primary: colorDarkBlue,
         secondary: colorBasicBlue,
+        secondaryAlt: colorLightGrey,
         tertiary: colorLightBlue,
         brand: colorBrand,
         neutral: colorWhite,
@@ -87,7 +89,7 @@ module.exports = {
           fontSize: "16px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
-          lineHeight: "19px",
+          // lineHeight: "19px",
         },
         ".mas-menu-default": {
           fontSize: "16px",
