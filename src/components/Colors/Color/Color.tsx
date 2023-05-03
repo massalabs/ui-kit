@@ -7,7 +7,7 @@ export interface ColorRectangleProps extends ComponentPropsWithoutRef<"div"> {
 export function Color(props: ColorRectangleProps) {
   return (
     <div className="flex ">
-      <div className={`w-[156px] mb-2 h-[40px] ${props.color}`}></div>
+      <div className={`w-40  h-10 mb-2 ${props.color}`}></div>
     </div>
   );
 }

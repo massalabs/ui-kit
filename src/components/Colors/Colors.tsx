@@ -34,7 +34,7 @@ export function Colors() {
   ];
 
   return (
-    <div className="flex gap-3 text-center w-112 bg-[#E2E2E2] mt-6 justify-center h-700">
+    <div className="flex gap-3">
       <div>
         {dark.map((item, index) => (
           <p key={`dark-${index}`} className="w-[156px] mb-2 h-[40px]">
