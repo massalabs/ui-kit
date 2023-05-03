@@ -11,13 +11,13 @@ const args = {
 };
 
 export const _PrimaryDefault = {
-  render: () => <Button {...args}>Button 1</Button>,
+  render: () => <Button {...args}>Primary</Button>,
 };
 
 export const _PrimaryDisabled = {
   render: () => (
     <Button {...args} disabled>
-      Button 1
+      Primary
     </Button>
   ),
 };

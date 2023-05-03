@@ -37,7 +37,7 @@ describe("Components | Button", () => {
 
     let button = screen.getByTestId("primary-button");
 
-    expect(button).toHaveClass("bg-default_primary");
+    expect(button).toHaveClass("bg-neutral");
   });
 
   test("it should fire onClick event", () => {
