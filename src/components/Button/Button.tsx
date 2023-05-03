@@ -4,22 +4,38 @@ export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   children?: React.ReactNode;
   preIcon?: JSX.Element;
   posIcon?: JSX.Element;
+  variant: string;
 }
 
 export function Button(props: ButtonProps) {
-  const hoverClass = "hover:bg-tertiaryAlt";
-  const activeClass = "active:bg-secondaryAlt";
-  const disabledClass =
-    "disabled:bg-infoAlt disabled:cursor-not-allowed disabled:text-white";
   const paddingClass = "px-4 py-3";
   const sizeClass = "w-full h-12";
+  const hoverClass =
+    props.variant === "primary"
+      ? "hover:bg-tertiaryAlt"
+      : "hover:bg-neutral/[.15]";
+  const activeClass =
+    props.variant === "primary"
+      ? "active:bg-secondaryAlt"
+      : "active:bg-neutral/30";
+  const disabledClass =
+    props.variant === "primary"
+      ? "disabled:bg-infoAlt disabled:cursor-not-allowed disabled:text-white"
+      : "disabled:bg-infoAltBis disabled:cursor-not-allowed disabled:text-infoAlt disabled:border-infoAlt";
+  const textClass =
+    props.variant === "primary" ? "text-primary" : "text-primaryAlt";
+  const backgroundClass =
+    props.variant === "primary" ? "bg-neutral" : "border border-primaryAlt";
 
   return (
     <button
-      data-testid="primary-button"
+      data-testid={`${props.variant}-button`}
       type="button"
-      className={`rounded-lg text-primary bg-neutral
-        ${sizeClass} ${paddingClass}
+      className={`rounded-lg
+        ${sizeClass}
+        ${paddingClass}
+        ${backgroundClass}
+        ${textClass}
         ${hoverClass}
         ${activeClass}
         ${disabledClass}`}

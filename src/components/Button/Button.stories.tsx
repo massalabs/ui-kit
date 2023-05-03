@@ -8,6 +8,7 @@ const primaryArgs = {
   },
   preIcon: <FiArrowUpRight />,
   posIcon: <FiArrowUpRight />,
+  variant: "primary",
 };
 
 export const _PrimaryDefault = {
@@ -18,6 +19,27 @@ export const _PrimaryDisabled = {
   render: () => (
     <Button {...primaryArgs} disabled>
       Primary
+    </Button>
+  ),
+};
+
+const secondaryArgs = {
+  onClick: () => {
+    console.log("clicked");
+  },
+  preIcon: <FiArrowUpRight />,
+  posIcon: <FiArrowUpRight />,
+  variant: "secondary",
+};
+
+export const _SecondaryDefault = {
+  render: () => <Button {...secondaryArgs}>Secondary</Button>,
+};
+
+export const _SecondaryDisabled = {
+  render: () => (
+    <Button {...secondaryArgs} disabled>
+      Secondary
     </Button>
   ),
 };
