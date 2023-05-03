@@ -7,17 +7,25 @@ export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 }
 
 export function Button(props: ButtonProps) {
+  const hoverClass = "hover:bg-tertiaryAlt";
+  const activeClass = "active:bg-secondaryAlt";
+  const disabledClass =
+    "disabled:bg-[#DADADA] disabled:cursor-not-allowed disabled:text-white";
+  const paddingClass = "px-4 py-3";
+  const sizeClass = "w-full h-[48px]";
+
   return (
     <button
       data-testid="primary-button"
       type="button"
-      className={
-        "px-4 py-3 rounded-lg text-primary bg-default_primary hover:bg-hover_primary " +
-        "active:bg-pressed_primary disabled:bg-disabled_primary disabled:cursor-not-allowed disabled:text-neutral"
-      }
+      className={`rounded-lg text-primary bg-neutral
+        ${sizeClass} ${paddingClass}
+        ${hoverClass}
+        ${activeClass}
+        ${disabledClass}`}
       {...props}
     >
-      <div className="flex mas-buttons gap-[8px]">
+      <div className="w-fit m-auto flex gap-[8px] mas-buttons">
         <div className="m-auto">{props.iconStart && props.iconStart}</div>
         {props.children}
         <div className="m-auto">{props.iconEnd && props.iconEnd}</div>
