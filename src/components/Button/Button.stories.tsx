@@ -1,14 +1,13 @@
 import { Button } from "./Button";
-import Ico from "../../assets/ico-amount-light.svg";
-
+import { FiArrowUpRight } from "react-icons/fi";
 export default { title: "Components/Button", component: Button };
 
 const args = {
   onClick: () => {
     console.log("clicked");
   },
-  iconStart: Ico,
-  iconEnd: Ico,
+  iconStart: <FiArrowUpRight />,
+  iconEnd: <FiArrowUpRight />,
 };
 
 export const _PrimaryDefault = {

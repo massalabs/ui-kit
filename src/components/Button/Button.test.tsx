@@ -32,12 +32,12 @@ describe("Components | Button", () => {
     expect(nested.textContent).toBe("something in nested");
   });
 
-  test("it should have default class", () => {
+  test("it should have default primary class", () => {
     render(<Button>something</Button>);
 
     let button = screen.getByTestId("primary-button");
 
-    expect(button).toHaveClass("bg-default");
+    expect(button).toHaveClass("bg-default_primary");
   });
 
   test("it should fire onClick event", () => {
