@@ -15,7 +15,6 @@ export function LinkIcon(props: LinkIconProps) {
 
   function onClickHandler(): void {
     setIsActive(true);
-    props.onClick;
   }
 
   return (
