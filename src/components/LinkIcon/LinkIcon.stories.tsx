@@ -1,5 +1,5 @@
 import { LinkIcon } from "./LinkIcon";
-import icoAmountLight from "../../assets/ico-amount-light.svg";
+import { BiHomeAlt } from "react-icons/bi";
 
 export default { title: "buttons", component: LinkIcon };
 
@@ -14,7 +14,14 @@ export const _LinkIcon = {
 };
 export const _LinkIconWithIcon = {
   render: () => (
-    <LinkIcon {...args} icon={icoAmountLight}>
+    <LinkIcon {...args} icon={BiHomeAlt}>
+      My test
+    </LinkIcon>
+  ),
+};
+export const _LinkIconWithIconTertiaryColor = {
+  render: () => (
+    <LinkIcon {...args} icon={BiHomeAlt} color="tertiary">
       My test
     </LinkIcon>
   ),
