@@ -1,8 +1,8 @@
-export interface MAssaTokenProps {
+export interface MassaTokenProps {
   theme?: string;
 }
 
-export function MassaToken(props: MAssaTokenProps) {
+export function MassaToken(props: MassaTokenProps) {
   return (
     <svg
       width="24"
