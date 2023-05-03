@@ -2,17 +2,17 @@ import React, { ComponentPropsWithoutRef } from "react";
 
 export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   children?: React.ReactNode;
-  iconStart?: JSX.Element;
-  iconEnd?: JSX.Element;
+  preIcon?: JSX.Element;
+  posIcon?: JSX.Element;
 }
 
 export function Button(props: ButtonProps) {
   const hoverClass = "hover:bg-tertiaryAlt";
   const activeClass = "active:bg-secondaryAlt";
   const disabledClass =
-    "disabled:bg-[#DADADA] disabled:cursor-not-allowed disabled:text-white";
+    "disabled:bg-infoAlt disabled:cursor-not-allowed disabled:text-white";
   const paddingClass = "px-4 py-3";
-  const sizeClass = "w-full h-[48px]";
+  const sizeClass = "w-full h-12";
 
   return (
     <button
@@ -26,9 +26,9 @@ export function Button(props: ButtonProps) {
       {...props}
     >
       <div className="w-fit m-auto flex gap-[8px] mas-buttons">
-        <div className="m-auto">{props.iconStart && props.iconStart}</div>
+        <div className="m-auto">{props.preIcon && props.preIcon}</div>
         {props.children}
-        <div className="m-auto">{props.iconEnd && props.iconEnd}</div>
+        <div className="m-auto">{props.posIcon && props.posIcon}</div>
       </div>
     </button>
   );

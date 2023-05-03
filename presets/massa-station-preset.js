@@ -33,6 +33,7 @@ module.exports = {
     createThemes({
       light: {
         primary: colorWhite,
+        primaryAlt: colorDarkBlue,
         secondary: colorLightGrey,
         secondaryAlt: colorBasicBlue,
         tertiary: colorDarkGrey,
@@ -40,10 +41,13 @@ module.exports = {
         brand: colorBrand,
         neutral: colorDarkBlue,
         info: colorLightBlue,
+        infoAlt: colorDarkGrey,
+        infoAltBis: colorLightGrey,
         success: colorBrand,
       },
       dark: {
         primary: colorDarkBlue,
+        primaryAlt: colorWhite,
         secondary: colorBasicBlue,
         secondaryAlt: colorLightGrey,
         tertiary: colorLightBlue,
@@ -51,6 +55,8 @@ module.exports = {
         brand: colorBrand,
         neutral: colorWhite,
         info: colorDarkGrey,
+        infoAlt: colorDarkGrey,
+        infoAltBis: colorLightGrey,
         success: colorBrand,
       },
     }),
@@ -85,7 +91,6 @@ module.exports = {
           fontSize: "16px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
-          // lineHeight: "19px",
         },
         ".mas-menu-active": {
           fontSize: "16px",
