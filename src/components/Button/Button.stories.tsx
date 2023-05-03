@@ -2,21 +2,21 @@ import { Button } from "./Button";
 import { FiArrowUpRight } from "react-icons/fi";
 export default { title: "Components/Button", component: Button };
 
-const args = {
+const primaryArgs = {
   onClick: () => {
     console.log("clicked");
   },
-  iconStart: <FiArrowUpRight />,
-  iconEnd: <FiArrowUpRight />,
+  preIcon: <FiArrowUpRight />,
+  posIcon: <FiArrowUpRight />,
 };
 
 export const _PrimaryDefault = {
-  render: () => <Button {...args}>Primary</Button>,
+  render: () => <Button {...primaryArgs}>Primary</Button>,
 };
 
 export const _PrimaryDisabled = {
   render: () => (
-    <Button {...args} disabled>
+    <Button {...primaryArgs} disabled>
       Primary
     </Button>
   ),

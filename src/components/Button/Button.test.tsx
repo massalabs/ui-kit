@@ -13,12 +13,12 @@ describe("Components | Button", () => {
   });
 
   test("it should render nested element", () => {
-    const SomethingComponent = () => {
+    const SomeComponent = () => {
       return <p data-testid="nested">something in nested</p>;
     };
     render(
       <Button>
-        <SomethingComponent />
+        <SomeComponent />
       </Button>
     );
 

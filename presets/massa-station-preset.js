@@ -30,6 +30,7 @@ module.exports = {
     createThemes({
       light: {
         primary: colorWhite,
+        primaryAlt: colorDarkBlue,
         secondary: colorLightGrey,
         secondaryAlt: colorBasicBlue,
         tertiary: colorDarkGrey,
@@ -60,6 +61,7 @@ module.exports = {
       },
       dark: {
         primary: colorDarkBlue,
+        primaryAlt: colorWhite,
         secondary: colorBasicBlue,
         secondaryAlt: colorLightGrey,
         tertiary: colorLightBlue,
@@ -120,7 +122,6 @@ module.exports = {
           fontSize: "16px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
-          // lineHeight: "19px",
         },
         ".mas-menu-active": {
           fontSize: "16px",
