@@ -1,8 +1,4 @@
-export interface MassaTokenProps {
-  theme?: string;
-}
-
-export function MassaToken(props: MassaTokenProps) {
+export function MassaToken() {
   return (
     <svg
       width="24"
@@ -11,12 +7,6 @@ export function MassaToken(props: MassaTokenProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="12"
-        fill={props.theme === "theme-light" ? "#FFFFFF" : "#151A26"}
-      />
       <path
         d="M13.8586 12.4839C14.0203 12.5813 14.2081 12.6373 14.4084 
         12.6373C15.0153 12.6373 15.5071 12.1265 15.5071 11.4963C15.5071 

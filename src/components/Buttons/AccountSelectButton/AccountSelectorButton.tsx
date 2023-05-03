@@ -46,7 +46,7 @@ export function AccountSelectorButton(props: AccountSelectorProps) {
 
       <div className={`${genericFlex}`}>
         <div
-          className={`mr-2 
+          className={`mr-2 bg-primary h-6 w-6 rounded-full
                           ${tokenDimensionClass}`}
         >
           {props.massatoken}
