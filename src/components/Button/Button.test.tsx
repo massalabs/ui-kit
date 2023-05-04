@@ -3,10 +3,19 @@ import "@testing-library/jest-dom";
 import { Button } from "./Button";
 
 describe("Components | Button", () => {
-  test("it should render", () => {
-    render(<Button>something</Button>);
+  test("it should render primary button", () => {
+    render(<Button variant="primary">something</Button>);
 
     let button = screen.getByTestId("primary-button");
+
+    expect(button).toBeTruthy();
+    expect(button.textContent).toBe("something");
+  });
+
+  test("it should render secondary button", () => {
+    render(<Button variant="secondary">something</Button>);
+
+    let button = screen.getByTestId("secondary-button");
 
     expect(button).toBeTruthy();
     expect(button.textContent).toBe("something");
@@ -17,7 +26,7 @@ describe("Components | Button", () => {
       return <p data-testid="nested">something in nested</p>;
     };
     render(
-      <Button>
+      <Button variant="primary">
         <SomeComponent />
       </Button>
     );
@@ -33,7 +42,7 @@ describe("Components | Button", () => {
   });
 
   test("it should have default primary class", () => {
-    render(<Button>something</Button>);
+    render(<Button variant="primary">something</Button>);
 
     let button = screen.getByTestId("primary-button");
 
@@ -43,7 +52,7 @@ describe("Components | Button", () => {
   test("it should fire onClick event", () => {
     const somethingClicked = jest.fn();
 
-    render(<Button onClick={somethingClicked} />);
+    render(<Button onClick={somethingClicked} variant="primary" />);
 
     let button = screen.getByTestId("primary-button");
 
