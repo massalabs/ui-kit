@@ -4,13 +4,15 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { createThemes } = require("tw-colors");
 
-const colorBrand = "#1AE19D";
+const colorGreen = "#1AE19D";
 const colorWhite = "#FFFFFF";
 const colorDarkGrey = "#DADADA";
 const colorLightGrey = "#F1F1F1";
 const colorDarkBlue = "#151A26";
 const colorBasicBlue = "#1A202E";
 const colorLightBlue = "#2E374C";
+const colorError = "#FF4F4F";
+const colorWarning = "#FFA41D";
 
 /** @type {import('tailwindcss').Config} */
 import plugin from "tailwindcss/plugin";
@@ -19,11 +21,6 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
-    extend: {
-      backgroundImage: {
-        "landing-page": "url('./src/assets/bg-image-landing-page.svg')",
-      },
-    },
     fontFamily: {
       Urbane: ["Urbane", "sans-serif"],
       Poppins: ["Poppins", "sans-serif"],
@@ -36,20 +33,58 @@ module.exports = {
         secondary: colorLightGrey,
         cHover: colorBasicBlue,
         tertiary: colorDarkGrey,
-        brand: colorBrand,
+        brand: colorGreen,
         neutral: colorDarkBlue,
         info: colorLightBlue,
-        success: colorBrand,
+        // states:
+        "s-success": colorGreen,
+        "s-error": colorError,
+        "-warning": colorWarning,
+        "s-info": colorDarkGrey,
+        // components:
+        "c-default": colorDarkBlue,
+        "c-hover": colorBasicBlue,
+        "c-pressed": colorLightBlue,
+        "c-disabled-1": colorDarkGrey,
+        "c-disabled-2": colorLightGrey,
+        // icons:
+        "i-primary": colorDarkBlue,
+        "i-secondary": colorWhite,
+        "i-tertiary": colorGreen,
+        // fonts:
+        "f-primary": colorDarkBlue,
+        "f-secondary": colorWhite,
+        "f-tertiary": colorGreen,
+        "f-disabled": colorDarkGrey,
       },
       dark: {
         primary: colorDarkBlue,
         secondary: colorBasicBlue,
         cHover: colorLightGrey,
         tertiary: colorLightBlue,
-        brand: colorBrand,
+        brand: colorGreen,
         neutral: colorWhite,
         info: colorDarkGrey,
-        success: colorBrand,
+        // states:
+        "s-success": colorGreen,
+        "s-error": colorError,
+        "-warning": colorWarning,
+        "s-info": colorDarkGrey,
+        // components:
+        "c-default": colorWhite,
+        "c-hover": colorLightGrey,
+        "c-pressed": colorDarkGrey,
+        "c-disabled-1": colorDarkGrey,
+        "c-disabled-2": colorLightGrey,
+        // icons:
+        "i-primary": colorWhite,
+        "i-secondary": colorDarkBlue,
+        "i-tertiary": colorGreen,
+        // fonts:
+        "f-primary": colorWhite,
+        "f-secondary": colorDarkBlue,
+        "f-tertiary": colorGreen,
+        "f-disabled": colorDarkGrey,
       },
     }),
     plugin(function ({ addComponents, theme }) {
