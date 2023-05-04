@@ -15,7 +15,7 @@ describe("Components | Icons | SvgIcon", () => {
     expect(icon).toBeTruthy();
   });
 
-  test("it fire the onClick fn", () => {
+  test("it should trigger onClick event", () => {
     const onClickMock = jest.fn();
     const args = {
       svg: <MassaLogo />,

@@ -1,8 +1,8 @@
-export function MassaToken() {
+export function MassaToken({ ...props }) {
   return (
     <svg
-      width="24"
-      height="24"
+      width={props.size}
+      height={props.size}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@ export function MassaToken() {
         13.7756H10.5839L10.5915 13.7617L10.2928 13.2241L9.914 
         12.5425H11.2691L11.2707 12.5397L11.2724 12.5425H12.6292L12.25 
         13.2232H12.2502Z"
-        fill="#1AE19D"
+        fill={"#1AE19D"}
       />
       <path
         d="M13.7516 6.0129L8.75537 6L11.2498 10.3553L13.7516 6.0129Z"

@@ -6,6 +6,7 @@ export default { title: "Icons/Svg", component: SvgIcon };
 
 const args = {
   svg: <MassaToken />,
+  bg: "bg-primary",
 };
 
 export const _MassaToken = {
@@ -13,7 +14,8 @@ export const _MassaToken = {
 };
 
 const props = {
-  svg: <MassaLogo />,
+  svg: <MassaLogo size={"100px"} />,
+  bg: "",
 };
 export const _MassaLogo = {
   render: () => <SvgIcon {...props} />,
