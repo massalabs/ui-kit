@@ -9,7 +9,7 @@ describe("Components | Buttons | Account Selector", () => {
     const args = {
       profileimage: <FiUser className="text-neutral" />,
       accountname: "account #",
-      massatoken: <MassaToken />,
+      svg: <MassaToken />,
       accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton {...args} />);
@@ -24,7 +24,7 @@ describe("Components | Buttons | Account Selector", () => {
     const args = {
       profileimage: <FiUser className="text-neutral" />,
       accountname: "account #",
-      massatoken: <MassaToken />,
+      svg: <MassaToken />,
       accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton onClick={onClickMock} {...args} />);

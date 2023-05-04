@@ -1,5 +1,6 @@
 import { FiUser } from "react-icons/fi";
-import { MassaToken } from "../../../assets/svg-components/MassaToken";
+import { FiClock } from "react-icons/fi";
+// import { MassaToken } from "../../../assets/svg-components/MassaToken";
 import { AccountSelectorButton } from "./AccountSelectorButton";
 
 export default {
@@ -13,9 +14,8 @@ const theme = "theme-dark";
 const args = {
   profileimage: <FiUser className="text-neutral h-6 w-6" />,
   accountname: "account #",
-  // theme for token has to be passed as props to the svg component which is located
-  // You have to pass theme in order to set corrent masstoken bg
-  massatoken: <MassaToken />,
+  // The FiClock is used to simulate the svg component which will be implemented in the future
+  svg: <FiClock className="text-neutral h-4 w-4" />,
   accountbalance: "0,000.00",
 };
 

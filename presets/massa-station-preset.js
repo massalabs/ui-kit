@@ -83,19 +83,19 @@ module.exports = {
           fontSize: "16px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
-          lineHeight: "19px",
+          lineHeight: "20px",
         },
         ".mas-menu-active": {
           fontSize: "16px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
-          // lineHeight: "19px",
+          lineHeight: "20px",
         },
         ".mas-menu-default": {
           fontSize: "16px",
           fontWeight: "500",
           fontFamily: theme("fontFamily.Urbane"),
-          lineHeight: "19px",
+          lineHeight: "20px",
         },
         ".mas-menu-underline": {
           fontSize: "16px",

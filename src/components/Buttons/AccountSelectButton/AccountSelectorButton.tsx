@@ -4,7 +4,7 @@ export interface AccountSelectorProps extends ComponentPropsWithoutRef<"div"> {
   theme?: string;
   profileimage: React.ReactNode;
   accountname: string;
-  massatoken: React.ReactNode;
+  svg: React.ReactNode;
   accountbalance: string;
   children?: React.ReactNode;
 }
@@ -18,8 +18,6 @@ export function AccountSelectorButton(props: AccountSelectorProps) {
 
   // Generic classes
   const genericFlex = "flex justify-center items-center";
-
-  // correct text displacement due to line height
 
   const tokenDimensionClass = `h-6 w-6`;
 
@@ -44,14 +42,15 @@ export function AccountSelectorButton(props: AccountSelectorProps) {
         <div>{props.accountname}</div>
       </div>
 
+      {/* This will be a component later, for now it is placeholder code*/}
       <div className={`${genericFlex}`}>
         <div
           className={`mr-2 bg-primary h-6 w-6 rounded-full
-                          ${tokenDimensionClass}`}
+                          ${tokenDimensionClass}
+                          ${genericFlex}`}
         >
-          {props.massatoken}
+          {props.svg}
         </div>
-        {/* top used to counter act the line-height 19 defined in the font presets */}
         <div>{props.accountbalance}</div>
       </div>
     </div>
