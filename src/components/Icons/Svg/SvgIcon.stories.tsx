@@ -1,22 +1,12 @@
-import { SvgIcon } from "./SvgIcon";
 import { MassaToken } from "../../../assets/svg-components/MassaToken";
 import { MassaLogo } from "../../../assets/svg-components/MassaLogo";
 
-export default { title: "Icons/Svg", component: SvgIcon };
-
-const args = {
-  svg: <MassaToken />,
-  bg: "bg-primary",
-};
+export default { title: "Icons/Svg", component: MassaLogo };
 
 export const _MassaToken = {
-  render: () => <SvgIcon {...args} />,
+  render: () => <MassaToken size={40} />,
 };
 
-const props = {
-  svg: <MassaLogo size={"100px"} />,
-  bg: "",
-};
 export const _MassaLogo = {
-  render: () => <SvgIcon {...props} />,
+  render: () => <MassaLogo size={100} />,
 };

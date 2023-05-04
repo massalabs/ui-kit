@@ -1,14 +1,13 @@
 import "@testing-library/jest-dom";
 import { render, fireEvent, screen } from "@testing-library/react";
-import { SvgIcon } from "./SvgIcon";
 import { MassaLogo } from "../../../assets/svg-components/MassaLogo";
 
 describe("Components | Icons | SvgIcon", () => {
   it("renders with the correct background color", () => {
     const args = {
-      svg: <MassaLogo />,
+      size: 40,
     };
-    render(<SvgIcon {...args} />);
+    render(<MassaLogo {...args} />);
 
     let icon = screen.getByTestId("svg-icon-component");
 
@@ -18,11 +17,11 @@ describe("Components | Icons | SvgIcon", () => {
   test("it should trigger onClick event", () => {
     const onClickMock = jest.fn();
     const args = {
-      svg: <MassaLogo />,
+      size: 40,
       onClick: onClickMock(),
     };
 
-    render(<SvgIcon {...args} />);
+    render(<MassaLogo {...args} />);
 
     let icon = screen.getByTestId("svg-icon-component");
     fireEvent.click(icon);
