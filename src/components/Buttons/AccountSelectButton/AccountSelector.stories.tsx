@@ -12,7 +12,7 @@ export default {
   component: AccountSelectorButton,
 };
 
-const theme = "theme-dark";
+const theme = "theme-light";
 
 // args passsed trough the account selector button
 // args passsed trough the account selector button
