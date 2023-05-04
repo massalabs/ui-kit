@@ -14,7 +14,7 @@ export function AccountSelectorButton(props: AccountSelectorProps) {
   const accountSelectorClass = "flex flex-row items-center justify-between";
 
   const hoverClass = `hover:bg-info`;
-  const activeClass = `active:bg-secondaryAlt`;
+  const activeClass = `active:bg-cHover`;
 
   // Generic classes
   const genericFlex = "flex justify-center items-center";
