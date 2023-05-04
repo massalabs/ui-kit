@@ -29,7 +29,7 @@ export default { title: "buttons", component: AccountSelector };
 =======
 >>>>>>> 457945b (Refactored AccSelectBtn + test suits)
 
-const theme = "theme-dark";
+const theme = "theme-light";
 
 // args passsed trough the account selector button
 const args = {

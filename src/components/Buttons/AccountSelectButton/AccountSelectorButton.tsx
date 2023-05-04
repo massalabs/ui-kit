@@ -19,10 +19,14 @@ export function AccountSelectorButton(props: AccountSelectorProps) {
 
   const hoverClass = `hover:bg-info`;
 <<<<<<< HEAD
+<<<<<<< HEAD
   const activeClass = `active:bg-c-hover`;
 =======
   const activeClass = `active:bg-secondaryAlt`;
 >>>>>>> 457945b (Refactored AccSelectBtn + test suits)
+=======
+  const activeClass = `active:bg-cHover`;
+>>>>>>> d8fed9b (changed color naming)
 
   // Generic classes
   const genericFlex = "flex justify-center items-center";
