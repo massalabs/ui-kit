@@ -60,7 +60,7 @@ module.exports = {
       dark: {
         primary: colorDarkBlue,
         secondary: colorBasicBlue,
-        secondaryAlt: colorLightGrey,
+        cHover: colorLightGrey,
         tertiary: colorLightBlue,
         brand: colorGreen,
         neutral: colorWhite,
