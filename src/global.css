@@ -1,5 +1,8 @@
-@tailwind base;
-@tailwind components;
+@layer tailwind-base, mas-custom-styles;
+@layer tailwind-base {
+  @tailwind base;
+}
+
 @tailwind utilities;
 
 /* global css */
@@ -11,4 +14,18 @@
 @font-face {
   font-family: "Poppins";
   src: url("./assets/fonts/Poppins/Poppins-Regular.ttf");
+}
+
+@layer mas-custom-styles {
+  .default-input {
+    @apply border-secondary border border-solid outline-0
+          hover:border-tertiary focus:border-brand focus:text-neutral 
+          bg-secondary 
+          placeholder-tertiary text-tertiary 
+          rounded-lg h-12 pl-3 pr-10;
+  }
+
+  .default-input:not([value=""]) {
+    @apply border-brand text-neutral;
+  }
 }

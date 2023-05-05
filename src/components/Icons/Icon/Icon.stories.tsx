@@ -9,7 +9,7 @@ export default { title: "Icons", component: FiSun };
 export const _Icons = {
   render: () => (
     <div data-testid="fi-sun">
-      <FiSun className="text-brand" />
+      <FiSun className="text-i-tertiary" />
     </div>
   ),
 };
