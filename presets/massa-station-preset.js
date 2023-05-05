@@ -122,6 +122,7 @@ module.exports = {
           fontSize: "16px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
+          // lineHeight: "19px",
         },
         ".mas-menu-active": {
           fontSize: "16px",
