@@ -54,7 +54,8 @@ module.exports = {
         "f-primary": colorDarkBlue,
         "f-secondary": colorWhite,
         "f-tertiary": colorGreen,
-        "f-disabled": colorDarkGrey,
+        "f-disabled-1": colorDarkGrey,
+        "f-disabled-2": colorWhite,
       },
       dark: {
         primary: colorDarkBlue,
@@ -82,7 +83,8 @@ module.exports = {
         "f-primary": colorWhite,
         "f-secondary": colorDarkBlue,
         "f-tertiary": colorGreen,
-        "f-disabled": colorDarkGrey,
+        "f-disabled-1": colorDarkGrey,
+        "f-disabled-2": colorWhite,
       },
     }),
     plugin(function ({ addComponents, theme }) {
