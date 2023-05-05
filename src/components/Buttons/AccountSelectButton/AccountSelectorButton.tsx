@@ -20,6 +20,7 @@ export function AccountSelectorButton(props: AccountSelectorProps) {
   const hoverClass = `hover:bg-info`;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const activeClass = `active:bg-c-hover`;
 =======
   const activeClass = `active:bg-secondaryAlt`;
@@ -27,6 +28,9 @@ export function AccountSelectorButton(props: AccountSelectorProps) {
 =======
   const activeClass = `active:bg-cHover`;
 >>>>>>> d8fed9b (changed color naming)
+=======
+  const activeClass = `active:bg-c-pressed`;
+>>>>>>> d005003 (add svg massa token)
 
   // Generic classes
   const genericFlex = "flex justify-center items-center";
@@ -39,8 +43,6 @@ export function AccountSelectorButton(props: AccountSelectorProps) {
   const tokenDimensionClass = `h-6 w-6`;
 
   return (
-    // Take more time to think about correct code structure
-    // Check grid
     <div
       className={` bg-neutral text-primary h-[56px] w-full p-3 rounded-lg mas-menu-active cursor-pointer 
                       ${accountSelectorClass} 

@@ -9,11 +9,13 @@ describe("Components | Buttons | Account Selector", () => {
     const args = {
       profileimage: <FiUser className="text-neutral" />,
       accountname: "account #",
-<<<<<<< HEAD
       svg: <FiAlertTriangle />,
+<<<<<<< HEAD
 =======
       massatoken: <MassaToken theme={theme} />,
 >>>>>>> 457945b (Refactored AccSelectBtn + test suits)
+=======
+>>>>>>> d005003 (add svg massa token)
       accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton {...args} />);
@@ -25,11 +27,11 @@ describe("Components | Buttons | Account Selector", () => {
 
   test("it fire the onClick fn", () => {
     const onClickMock = jest.fn();
-<<<<<<< HEAD
     const args = {
       profileimage: <FiUser className="text-neutral" />,
       accountname: "account #",
       svg: <FiAlertTriangle />,
+<<<<<<< HEAD
 =======
     const theme = "theme-light";
     const args = {
@@ -37,6 +39,8 @@ describe("Components | Buttons | Account Selector", () => {
       accountname: "account #",
       massatoken: <MassaToken theme={theme} />,
 >>>>>>> 457945b (Refactored AccSelectBtn + test suits)
+=======
+>>>>>>> d005003 (add svg massa token)
       accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton onClick={onClickMock} {...args} />);
