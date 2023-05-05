@@ -15,9 +15,9 @@ export function Theme(props: ColorRectangleProps) {
       <Color color="bg-brand" />
       <Color color="bg-neutral" />
       <Color color="bg-info" />
-      <Color color="bg-success" />
-      <Color color="bg-warning" />
-      <Color color="bg-error" />
+      <Color color="bg-s-success" />
+      <Color color="bg-s-warning" />
+      <Color color="bg-s-error" />
     </div>
   );
 }
