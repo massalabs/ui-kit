@@ -8,7 +8,7 @@ export default {
   component: AccountSelectorButton,
 };
 
-const theme = "theme-dark";
+const theme = "theme-light";
 
 // args passsed trough the account selector button
 const args = {
@@ -16,7 +16,7 @@ const args = {
   accountname: "account #",
   // theme for token to be passed as props to the svg component which is located
   // You have to pass theme in order to set corrent masstoken bg
-  svg: <FiClock />,
+  svg: <FiClock className="text-neutral" />,
   accountbalance: "0,000.00",
 };
 
