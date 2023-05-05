@@ -12,7 +12,7 @@ const colorDarkBlue = "#151A26";
 const colorBasicBlue = "#1A202E";
 const colorLightBlue = "#2E374C";
 const colorWarning = "#FFA41D";
-const colorError = "#FF1D1D";
+const colorError = "#FF4F4F";
 
 /** @type {import('tailwindcss').Config} */
 import plugin from "tailwindcss/plugin";
