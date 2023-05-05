@@ -28,4 +28,8 @@
   .default-input:not([value=""]) {
     @apply border-brand text-neutral;
   }
+
+  .default-button {
+    @apply rounded-lg mas-buttons h-12 border border-c-default;
+  }
 }
