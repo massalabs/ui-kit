@@ -1,7 +1,7 @@
-import React, { useState, ComponentPropsWithoutRef } from "react";
+import { useState, ComponentPropsWithoutRef } from "react";
 import { FiEyeOff, FiEye } from "react-icons/fi";
 
-export interface PasswordProps extends ComponentPropsWithoutRef<"button"> {
+export interface PasswordProps extends ComponentPropsWithoutRef<"input"> {
   placeholder?: string;
 }
 
@@ -31,11 +31,6 @@ export function Password(props: PasswordProps) {
   const [{ type, icon }, setType] = useState(close);
   const [password, setPassword] = useState("");
 
-  const hoverClass = `hover:border hover:border-solid hover:border-tertiary`;
-  const focusClass = `focus:border focus:border-solid focus:border-brand focus:text-neutral`;
-  const placeHolderClass =
-    password.length > 0 ? `text-neutral` : `text-tertiary`;
-
   function handleOnChange(e) {
     setPassword(e.target.value);
   }
@@ -50,11 +45,7 @@ export function Password(props: PasswordProps) {
         <div className="inline h-12">
           <input
             data-testid="password-input"
-            className={`w-full bg-secondary placeholder-tertiary outline-0
-                      ${placeHolderClass}
-                      ${hoverClass}
-                      ${focusClass}
-                      rounded-[8px] h-12 pl-3 pr-10`}
+            className={`w-full default-input`}
             type={type}
             value={password}
             onChange={handleOnChange}
