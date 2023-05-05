@@ -42,8 +42,8 @@ module.exports = {
         "s-info": colorDarkGrey,
         // components:
         "c-default": colorDarkBlue,
-        "c-hover": colorBasicBlue,
-        "c-pressed": colorLightBlue,
+        "c-hover": colorLightBlue,
+        "c-pressed": colorBasicBlue,
         "c-disabled-1": colorDarkGrey,
         "c-disabled-2": colorLightGrey,
         // icons:
@@ -71,8 +71,8 @@ module.exports = {
         "s-info": colorDarkGrey,
         // components:
         "c-default": colorWhite,
-        "c-hover": colorLightGrey,
-        "c-pressed": colorDarkGrey,
+        "c-hover": colorDarkGrey,
+        "c-pressed": colorLightGrey,
         "c-disabled-1": colorDarkGrey,
         "c-disabled-2": colorLightGrey,
         // icons:
