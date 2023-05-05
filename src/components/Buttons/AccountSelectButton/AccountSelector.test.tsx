@@ -10,12 +10,6 @@ describe("Components | Buttons | Account Selector", () => {
       profileimage: <FiUser className="text-neutral" />,
       accountname: "account #",
       svg: <FiAlertTriangle />,
-<<<<<<< HEAD
-=======
-      massatoken: <MassaToken theme={theme} />,
->>>>>>> 457945b (Refactored AccSelectBtn + test suits)
-=======
->>>>>>> d005003 (add svg massa token)
       accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton {...args} />);
@@ -31,16 +25,6 @@ describe("Components | Buttons | Account Selector", () => {
       profileimage: <FiUser className="text-neutral" />,
       accountname: "account #",
       svg: <FiAlertTriangle />,
-<<<<<<< HEAD
-=======
-    const theme = "theme-light";
-    const args = {
-      profileimage: <FiUser className="text-neutral" />,
-      accountname: "account #",
-      massatoken: <MassaToken theme={theme} />,
->>>>>>> 457945b (Refactored AccSelectBtn + test suits)
-=======
->>>>>>> d005003 (add svg massa token)
       accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton onClick={onClickMock} {...args} />);

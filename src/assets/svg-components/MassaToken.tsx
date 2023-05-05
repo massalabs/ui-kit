@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-export function MassaToken() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M13.8586 12.4839C14.0203 12.5813 14.2081 12.6373 14.4084 
-=======
 export function MassaToken({ ...props }) {
   return (
     <div className={`bg-primary w-fit rounded-full`} data-testid="svg-icon">
@@ -22,7 +9,6 @@ export function MassaToken({ ...props }) {
       >
         <path
           d="M13.8586 12.4839C14.0203 12.5813 14.2081 12.6373 14.4084 
->>>>>>> 5f257fb (Added SvgIcon component (#41))
         12.6373C15.0153 12.6373 15.5071 12.1265 15.5071 11.4963C15.5071 
         10.8661 15.0153 10.3553 14.4084 10.3553C13.8015 10.3553 13.3254 
         10.8504 13.3105 11.467H11.8704L11.2705 10.3884L10.6711 11.467H9.19659C9.18152 
@@ -35,19 +21,6 @@ export function MassaToken({ ...props }) {
         13.7756H10.5839L10.5915 13.7617L10.2928 13.2241L9.914 
         12.5425H11.2691L11.2707 12.5397L11.2724 12.5425H12.6292L12.25 
         13.2232H12.2502Z"
-<<<<<<< HEAD
-        fill="#1AE19D"
-      />
-      <path
-        d="M13.7516 6.0129L8.75537 6L11.2498 10.3553L13.7516 6.0129Z"
-        fill="#1AE19D"
-      />
-      <path
-        d="M13.7517 14.806L16.1787 19.1613L18.6129 14.8189L13.7517 14.806Z"
-        fill="#1AE19D"
-      />
-    </svg>
-=======
           fill="#1AE19D"
         />
         <path
@@ -60,6 +33,5 @@ export function MassaToken({ ...props }) {
         />
       </svg>
     </div>
->>>>>>> 5f257fb (Added SvgIcon component (#41))
   );
 }
