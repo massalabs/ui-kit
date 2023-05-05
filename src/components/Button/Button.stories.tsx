@@ -10,14 +10,14 @@ const primaryArgs = {
   posIcon: <FiArrowUpRight />,
 };
 
-export const _PrimaryDefault = {
-  render: () => <Button {...primaryArgs}>Primary</Button>,
-};
-
-export const _PrimaryDisabled = {
+export const _Primary = {
   render: () => (
-    <Button {...primaryArgs} disabled>
-      Primary
-    </Button>
+    <>
+      <Button {...primaryArgs}>Primary</Button>
+
+      <Button style={{ marginTop: 50 }} {...primaryArgs} disabled>
+        Primary disabled
+      </Button>
+    </>
   ),
 };
