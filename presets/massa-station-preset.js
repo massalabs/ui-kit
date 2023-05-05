@@ -60,7 +60,6 @@ module.exports = {
       dark: {
         primary: colorDarkBlue,
         secondary: colorBasicBlue,
-        cHover: colorLightGrey,
         tertiary: colorLightBlue,
         brand: colorGreen,
         neutral: colorWhite,
@@ -124,7 +123,7 @@ module.exports = {
           fontSize: "16px",
           fontWeight: "600",
           fontFamily: theme("fontFamily.Urbane"),
-          lineHeight: "19px",
+          // lineHeight: "19px",
         },
         ".mas-menu-default": {
           fontSize: "16px",

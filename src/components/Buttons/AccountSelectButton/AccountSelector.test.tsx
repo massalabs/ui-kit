@@ -1,15 +1,15 @@
 import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { AccountSelectorButton } from "./AccountSelectorButton";
-import { MassaToken } from "../../../assets/svg-components/MassaToken";
-import { FiUser } from "react-icons/fi";
+// import { MassaToken } from "../../../assets/svg-components/MassaToken";
+import { FiUser, FiAlertTriangle } from "react-icons/fi";
 
 describe("Components | Buttons | Account Selector", () => {
   test("it should render", () => {
     const args = {
       profileimage: <FiUser className="text-neutral" />,
       accountname: "account #",
-      svg: <MassaToken />,
+      svg: <FiAlertTriangle />,
       accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton {...args} />);
@@ -24,7 +24,7 @@ describe("Components | Buttons | Account Selector", () => {
     const args = {
       profileimage: <FiUser className="text-neutral" />,
       accountname: "account #",
-      svg: <MassaToken />,
+      svg: <FiAlertTriangle />,
       accountbalance: "0,000.00",
     };
     render(<AccountSelectorButton onClick={onClickMock} {...args} />);

@@ -8,14 +8,15 @@ export default {
   component: AccountSelectorButton,
 };
 
-const theme = "theme-light";
+const theme = "theme-dark";
 
 // args passsed trough the account selector button
 const args = {
   profileimage: <FiUser className="text-neutral h-6 w-6" />,
   accountname: "account #",
-  // The FiClock is used to simulate the svg component which will be implemented in the future
-  svg: <FiClock className="text-neutral h-4 w-4" />,
+  // theme for token to be passed as props to the svg component which is located
+  // You have to pass theme in order to set corrent masstoken bg
+  svg: <FiClock />,
   accountbalance: "0,000.00",
 };
 
