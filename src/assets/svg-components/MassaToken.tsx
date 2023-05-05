@@ -1,9 +1,6 @@
 export function MassaToken({ ...props }) {
   return (
-    <div
-      className={`bg-primary w-fit rounded-full`}
-      data-testid="svg-icon-component"
-    >
+    <div className={`bg-primary w-fit rounded-full`} data-testid="svg-icon">
       <svg
         width={props.size}
         height={props.size}

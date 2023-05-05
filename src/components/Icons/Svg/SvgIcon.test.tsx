@@ -4,12 +4,9 @@ import { MassaLogo } from "../../../assets/svg-components/MassaLogo";
 
 describe("Components | Icons | SvgIcon", () => {
   it("renders with the correct background color", () => {
-    const args = {
-      size: 40,
-    };
-    render(<MassaLogo {...args} />);
+    render(<MassaLogo size={40} />);
 
-    let icon = screen.getByTestId("svg-icon-component");
+    let icon = screen.getByTestId("svg-icon");
 
     expect(icon).toBeTruthy();
   });
@@ -23,7 +20,7 @@ describe("Components | Icons | SvgIcon", () => {
 
     render(<MassaLogo {...args} />);
 
-    let icon = screen.getByTestId("svg-icon-component");
+    let icon = screen.getByTestId("svg-icon");
     fireEvent.click(icon);
     expect(onClickMock).toHaveBeenCalled();
   });

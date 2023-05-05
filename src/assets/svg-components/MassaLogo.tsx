@@ -1,10 +1,6 @@
 export function MassaLogo({ ...props }) {
-  console.log(props.size);
   return (
-    <div
-      className={`bg-primary w-fit rounded-full`}
-      data-testid="svg-icon-component"
-    >
+    <div className={`bg-primary w-fit rounded-full`} data-testid="svg-icon">
       <svg
         width={props.size}
         height={props.size}
@@ -13,8 +9,6 @@ export function MassaLogo({ ...props }) {
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          // width="100%"
-          // height="100%"
           d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 
         0 12C0 18.6274 5.37258 24 12 24Z"
           fill="#FF0000"
