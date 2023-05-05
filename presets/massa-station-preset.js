@@ -38,7 +38,7 @@ module.exports = {
         // states:
         "s-success": colorGreen,
         "s-error": colorError,
-        "-warning": colorWarning,
+        "s-warning": colorWarning,
         "s-info": colorDarkGrey,
         // components:
         "c-default": colorDarkBlue,
@@ -66,7 +66,7 @@ module.exports = {
         // states:
         "s-success": colorGreen,
         "s-error": colorError,
-        "-warning": colorWarning,
+        "s-warning": colorWarning,
         "s-info": colorDarkGrey,
         // components:
         "c-default": colorWhite,
