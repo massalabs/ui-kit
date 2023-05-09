@@ -20,9 +20,11 @@ export function Theme(props: ColorRectangleProps) {
     </div>
   );
 }
+
 function Color(props: { color: string }) {
   return <div id={props.color} className={`w-40 h-10 mb-2 ${props.color}`} />;
 }
+
 export function Alias() {
   return (
     <div className="mb-2">
