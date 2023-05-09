@@ -5,7 +5,6 @@ export interface ColorRectangleProps extends ComponentPropsWithoutRef<"div"> {
 }
 
 export function Theme(props: ColorRectangleProps) {
-  // console.log(document.querySelector(props.color)?.classList);
   return (
     <div className={`mb-2 ${props.theme}`}>
       <p className="w-40 h-10 text-center">{props.theme}</p>
