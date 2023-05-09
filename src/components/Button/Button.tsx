@@ -1,4 +1,5 @@
 import { ReactNode, ComponentPropsWithoutRef } from "react";
+import { IconContext } from "react-icons";
 
 export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   children?: ReactNode;
@@ -29,10 +30,18 @@ export function Button(props: ButtonProps) {
       `}
       {...rest}
     >
-      <div className="w-fit m-auto flex gap-2">
-        <div className="m-auto">{preIcon}</div>
+      <div className="w-fit m-auto flex gap-2 leading-normal">
+        <div className="m-auto">
+          <IconContext.Provider value={{ className: "w-6 h-6" }}>
+            {preIcon}
+          </IconContext.Provider>
+        </div>
         {children}
-        <div className="m-auto">{posIcon}</div>
+        <div className="m-auto">
+          <IconContext.Provider value={{ className: "w-6 h-6" }}>
+            {posIcon}
+          </IconContext.Provider>
+        </div>
       </div>
     </button>
   );
