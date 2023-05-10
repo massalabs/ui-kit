@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
-import { AccountSelectorButton } from "./AccountSelectorButton";
+import { AccountSelectorButton } from "./AccountSelector";
 import { FiUser, FiAlertTriangle } from "react-icons/fi";
 
 describe("Components | Buttons | Account Selector", () => {
