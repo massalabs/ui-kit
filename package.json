@@ -12,8 +12,7 @@
   "main": "src/index.ts",
   "style": "src/global.css",
   "scripts": {
-    "dev": "vite",
-    "preview": "vite preview",
+    "build": "tsc",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "lint": "eslint .",
