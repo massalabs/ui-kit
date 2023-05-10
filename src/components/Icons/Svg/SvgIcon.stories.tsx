@@ -1,5 +1,5 @@
-import { MassaToken } from "../../../assets/svg-components/MassaToken";
-import { MassaLogo } from "../../../assets/svg-components/MassaLogo";
+import { MassaToken } from "./SvgComponent/MassaToken";
+import { MassaLogo } from "./SvgComponent/MassaLogo";
 
 export default { title: "Icons/Svg", component: MassaLogo };
 

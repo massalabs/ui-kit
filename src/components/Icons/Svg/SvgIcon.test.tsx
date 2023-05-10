@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, fireEvent, screen } from "@testing-library/react";
-import { MassaLogo } from "../../../assets/svg-components/MassaLogo";
+import { MassaLogo } from "./SvgComponent/MassaLogo";
 
 describe("Components | Icons | SvgIcon", () => {
   it("renders with the correct background color", () => {
