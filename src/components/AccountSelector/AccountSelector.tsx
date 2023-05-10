@@ -8,7 +8,7 @@ export interface AccountSelectorProps extends ComponentPropsWithoutRef<"div"> {
   children?: ReactNode;
 }
 
-export function AccountSelectorButton(props: AccountSelectorProps) {
+export function AccountSelector(props: AccountSelectorProps) {
   let { avatar, accountName, icon, amount, children, ...rest } = props;
 
   const accountSelectorClass = "flex flex-row items-center justify-between";
