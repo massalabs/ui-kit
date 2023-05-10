@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from "react";
 
 export interface ColorRectangleProps extends ComponentPropsWithoutRef<"div"> {
   theme: string;

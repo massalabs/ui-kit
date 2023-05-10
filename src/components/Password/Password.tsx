@@ -1,4 +1,4 @@
-import { useState, ComponentPropsWithoutRef } from "react";
+import { useState, ComponentPropsWithoutRef, ChangeEvent } from "react";
 import { FiEyeOff, FiEye } from "react-icons/fi";
 
 export interface PasswordProps extends ComponentPropsWithoutRef<"input"> {
@@ -31,7 +31,7 @@ export function Password(props: PasswordProps) {
   const [{ type, icon }, setType] = useState(close);
   const [password, setPassword] = useState("");
 
-  function handleOnChange(e) {
+  function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
     setPassword(e.target.value);
   }
 

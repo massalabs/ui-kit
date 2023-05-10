@@ -1,4 +1,4 @@
-import { useState, ComponentPropsWithoutRef } from "react";
+import { useState, ComponentPropsWithoutRef, ChangeEvent } from "react";
 
 export interface InputProps extends ComponentPropsWithoutRef<"input"> {
   placeholder?: string | undefined;
@@ -14,7 +14,7 @@ export function Input(props: InputProps) {
   const warningClass = warning ? "border-s-warning" : "";
   const messageClass = errorClass || warningClass;
 
-  function handleOnChange(e) {
+  function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
     setField(e.target.value);
   }
 
