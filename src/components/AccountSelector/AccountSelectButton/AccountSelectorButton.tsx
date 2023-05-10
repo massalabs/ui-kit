@@ -1,11 +1,11 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ReactNode, ComponentPropsWithoutRef } from "react";
 
 export interface AccountSelectorProps extends ComponentPropsWithoutRef<"div"> {
-  avatar: React.ReactNode;
+  avatar: ReactNode;
   accountName: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   amount: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function AccountSelectorButton(props: AccountSelectorProps) {
@@ -24,13 +24,12 @@ export function AccountSelectorButton(props: AccountSelectorProps) {
                       ${accountSelectorClass} 
                       ${hoverClass} 
                       ${activeClass}`}
-      {...props}
+      {...rest}
       data-testid="account-selector-button"
     >
       <div className={`${containerFlexClass}`}>
         <div
-          className={`bg-primary h-8 w-8 rounded-full mr-2
-                           ${containerFlexClass}`}
+          className={`bg-primary h-8 w-8 rounded-full mr-2 ${containerFlexClass}`}
         >
           {avatar}
         </div>
