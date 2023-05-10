@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
-import { AccountSelectorButton } from "./AccountSelector";
+import { AccountSelector } from "./AccountSelector";
 import { FiUser, FiAlertTriangle } from "react-icons/fi";
 
 describe("Components | Buttons | Account Selector", () => {
@@ -10,7 +10,7 @@ describe("Components | Buttons | Account Selector", () => {
       icon: <FiAlertTriangle />,
       amount: "0,000.00",
     };
-    render(<AccountSelectorButton {...args} />);
+    render(<AccountSelector {...args} />);
 
     let accountSelector = screen.getByTestId("account-selector-button");
 
@@ -25,7 +25,7 @@ describe("Components | Buttons | Account Selector", () => {
       icon: <FiAlertTriangle />,
       amount: "0,000.00",
     };
-    render(<AccountSelectorButton onClick={onClickMock} {...args} />);
+    render(<AccountSelector onClick={onClickMock} {...args} />);
 
     let accountSelector = screen.getByTestId("account-selector-button");
 
