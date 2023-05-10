@@ -9,7 +9,7 @@ export interface AccountSelectorProps extends ComponentPropsWithoutRef<"div"> {
 }
 
 export function AccountSelectorButton(props: AccountSelectorProps) {
-  let { avatar, accountName, icon, amount, children, ...rest } = props;
+  let { avatar, accountName, icon, amount } = props;
 
   const accountSelectorClass = "flex flex-row items-center justify-between";
 
