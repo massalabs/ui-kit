@@ -9,34 +9,34 @@ import {
   MouseEvent,
 } from "react";
 
-export interface MenuLinkProps extends ComponentPropsWithoutRef<"div"> {
-  children?: ReactNode;
+export interface MenuLinkProps extends ComponentPropsWithoutRef<"button"> {
+  children?: React.ReactNode;
   icon?: JSX.Element;
   color?: string;
+  onClick?: () => void; // Add onClick prop of type function that doesn't return anything
 }
 
 export function MenuLink(props: MenuLinkProps) {
-  const { onClick } = props;
   const [isActive, setIsActive] = useState(false);
-  const divStyle = `flex mas-menu-default cursor-pointer rounded-lg p-3 
-  items-center text-neutral hover:bg-tertiary `;
-  const divActiveStyle = isActive
-    ? " bg-primary text-neutral"
-    : " bg-neutral text-primary";
+  let divStyle = `flex mas-menu-default cursor-pointer rounded-lg p-3 
+  items-center text-neutral hover:bg-tertiary`;
 
-  function onClickHandler(
-    e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-  ): void {
-    setIsActive(!isActive);
-    onClick?.(e);
+  let divActiveStyle = isActive ? "bg-primary" : "bg-brand";
+
+  function onClickHandler(): void {
+    setIsActive(true);
+    if (props.onClick) {
+      // Call the onClick prop function if it exists
+      props.onClick();
+    }
   }
 
   return (
     <div
-      data-testid="menu-link"
+      data-testid="link-icon"
       className={`${divStyle}
-                  ${divActiveStyle}`}
-      onClick={(e) => onClickHandler(e)}
+                  ${divActiveStyle}}`}
+      onClick={onClickHandler}
     >
       {props.icon}
       <p className="ml-1">{props.children}</p>

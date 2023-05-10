@@ -1,7 +1,7 @@
 import { MenuLink } from "./MenuLink";
 import { BiHomeAlt } from "react-icons/bi";
 
-export default { title: "Components/MenuLink", component: MenuLink };
+export default { title: "buttons", component: MenuLink };
 
 export const _MenuLink = {
   render: () => <MenuLink>My test</MenuLink>,
