@@ -1,5 +1,5 @@
 import { ReactNode, ComponentPropsWithoutRef } from "react";
-import { IconContext } from "react-icons";
+import { IconContext } from "react-icons/lib";
 
 export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   children?: ReactNode;
