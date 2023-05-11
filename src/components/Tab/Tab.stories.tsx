@@ -1,14 +1,19 @@
 import { Tab } from "./Tab";
 
 export default {
-  title: "Components/Tab",
+  title: "Components / Tab",
   component: Tab,
 };
 
 const args = {
-  text: "Send",
+  leftTabText: "Send",
+  rightTabText: "Receive",
 };
 
-export const _AccountSelector = {
-  render: () => <Tab {...args} />,
+export const _Tabs = {
+  render: () => (
+    <div className="w-full flex flew-row">
+      <Tab {...args}> </Tab>
+    </div>
+  ),
 };
