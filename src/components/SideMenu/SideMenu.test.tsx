@@ -1,14 +1,13 @@
-import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SideMenu } from "./SideMenu";
 
 describe("Components | Fields | Password", () => {
-  // test("it should render", () => {
-  //   render(<SideMenu />);
-  //   let input = screen.getByTestId("password-input");
-  //   expect(input).toBeTruthy();
-  // });
+  test("it should render", () => {
+    render(<SideMenu />);
+    let input = screen.getByTestId("side-menu");
+    expect(input).toBeTruthy();
+  });
   // test("it should set a new placeholder content", () => {
   //   render(<SideMenu placeholder={"something"} />);
   //   let input = screen.getByPlaceholderText("something");
