@@ -30,7 +30,7 @@ export function Button(props: ButtonProps) {
       `}
       {...rest}
     >
-      <div className="w-fit m-auto flex gap-2 leading-normal">
+      <div className="w-fit m-auto flex gap-2">
         <div className="m-auto">
           <IconContext.Provider value={{ className: "w-6 h-6" }}>
             {preIcon}
