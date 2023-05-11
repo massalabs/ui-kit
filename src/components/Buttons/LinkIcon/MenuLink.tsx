@@ -14,6 +14,7 @@ export interface MenuLinkProps extends ComponentPropsWithoutRef<"button"> {
   icon?: JSX.Element;
   color?: string;
   onClick?: () => void; // Add onClick prop of type function that doesn't return anything
+  iconOnly?: boolean;
 }
 
 export function MenuLink(props: MenuLinkProps) {
@@ -39,7 +40,7 @@ export function MenuLink(props: MenuLinkProps) {
       onClick={onClickHandler}
     >
       {props.icon}
-      <p className="ml-1">{props.children}</p>
+      {!props.iconOnly && <p className="ml-2">{props.children}</p> }
     </div>
   );
 }
