@@ -40,7 +40,7 @@ export function MenuLink(props: MenuLinkProps) {
       onClick={onClickHandler}
     >
       {props.icon}
-      {!props.iconOnly && <p className="ml-2">{props.children}</p> }
+      {!props.iconOnly && <p className="ml-2">{props.children}</p>}
     </div>
   );
 }
