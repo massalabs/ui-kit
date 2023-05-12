@@ -16,9 +16,19 @@ const preview: Preview = {
   },
   decorators: [
     (Story: StoryFn) => (
-      <div className="theme-dark">
-        <Story />
-      </div>
+      <>
+        <div className="theme-dark">
+          <Story />
+        </div>
+
+        <br />
+        <hr />
+        <br />
+
+        <div className="theme-ligth">
+          <Story />
+        </div>
+      </>
     ),
   ],
 };
