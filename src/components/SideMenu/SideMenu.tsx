@@ -17,9 +17,9 @@ export function SideMenu(props: SideMenuProps) {
     return (
       list &&
       list.map((link) => (
-        <ul>
+        <li className="list-none">
           <div className="inline -ml-9">{link}</div>
-        </ul>
+        </li>
       ))
     );
   }
@@ -52,7 +52,11 @@ export function SideMenu(props: SideMenuProps) {
 
   return (
     <div
-      className={`${isHovered ? "w-56" : "w-20"} p-4 bg-secondary h-screen`}
+      className={`${
+        isHovered
+          ? "transition-all ease-linear duration-300 w-56"
+          : "transition-all ease-linear duration-300 w-20"
+      } p-4 bg-secondary h-screen`}
       ref={hoverRef}
       data-testid="side-menu"
     >
@@ -67,7 +71,7 @@ export function SideMenu(props: SideMenuProps) {
             </div>
           )}
         </div>
-        <li>{maplistLinksTop()}</li>
+        <div>{maplistLinksTop()}</div>
         <div>{maplistLinksBottom()}</div>
       </div>
     </div>
