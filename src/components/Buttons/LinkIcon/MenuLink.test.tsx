@@ -18,6 +18,7 @@ describe("Components | MenuLink ", () => {
     render(<MenuLink onClick={somethingClicked}>something</MenuLink>);
     
     let element = screen.getByTestId("link-icon");
+
     fireEvent.click(element);
     expect(somethingClicked).toBeCalled;
   });
