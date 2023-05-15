@@ -29,7 +29,7 @@ export function MenuLink(props: MenuLinkProps) {
 
   return (
     <div
-      data-testid="link-icon"
+      data-testid="menu-link"
       className={`${divStyle}
                   ${divActiveStyle}`}
       onClick={(e) => onClickHandler(e)}
