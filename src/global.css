@@ -32,4 +32,20 @@
   .default-button {
     @apply rounded-lg mas-buttons h-12 border border-c-default;
   }
+
+  .default-tab {
+    @apply mas-menu-default antialiased flex flex-row justify-center items-center w-full border-b h-14 text-info;
+  }
+
+  .default-tab-hover {
+    @apply hover:cursor-pointer hover:text-c-hover hover:border-b-2 hover:transition-all duration-0 ease-in-out;
+  }
+
+  .default-tab-active {
+    @apply mas-menu-active antialiased hover:border-brand border-brand border-b-2;
+  }
+
+  .default-tab-pressed {
+    @apply active:border-brand active:text-neutral active:mas-menu-default;
+  }
 }
