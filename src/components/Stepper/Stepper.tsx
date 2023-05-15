@@ -43,7 +43,7 @@ function StepPast() {
 export function Stepper(props: StepperProps) {
   const { step, steps } = props;
 
-  const edgeClass = "after:w-full after:border-b after:inline-block";
+  const edgeClass = " w-full after:w-full after:border-b after:inline-block";
   const edgePastClass = edgeClass + " after:border-c-default";
   const edgeNextClass = edgeClass + " after:border-s-success";
 
@@ -62,14 +62,14 @@ export function Stepper(props: StepperProps) {
         } else if (idx < step) {
           currentStep = <StepPast />;
           textClass = "text-f-tertiary";
-          flowClass = isLastStep ? "" : edgeNextClass;
+          flowClass = isLastStep ? "w-fit" : edgeNextClass;
         }
 
         return (
           <li
             data-testid={`stepper-item-${idx}`}
             key={idx}
-            className={`flex w-full items-center ${stepClass} ${flowClass}`}
+            className={`flex items-center ${stepClass} ${flowClass}`}
           >
             {currentStep}
             <div
