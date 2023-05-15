@@ -2,8 +2,8 @@ export function MassaToken({ ...props }) {
   return (
     <div className={`bg-primary w-fit rounded-full`} data-testid="svg-icon">
       <svg
-        width={props.size}
-        height={props.size}
+        width={props.size ?? 24}
+        height={props.size ?? 24}
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >
