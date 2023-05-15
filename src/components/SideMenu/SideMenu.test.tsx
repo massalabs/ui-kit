@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SideMenu } from "./SideMenu";
 
-describe("Components | Fields | Password", () => {
+describe("Components | SideMenu", () => {
   test("it should render", () => {
     render(<SideMenu />);
     let input = screen.getByTestId("side-menu");
