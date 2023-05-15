@@ -1,6 +1,5 @@
 import { FiUser } from "react-icons/fi";
-// import { MassaToken } from "../Icons/SVG/Massa/MassaToken";
-import { MassaToken } from "../Icons/Svg/SvgComponent/MassaToken";
+import { MassaToken } from "../Icons/Svg/Massa/MassaToken";
 import { AccountSelector } from "./AccountSelector";
 
 export default {
