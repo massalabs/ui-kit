@@ -12,7 +12,7 @@ describe("Components | MenuLink ", () => {
     expect(element.textContent).toBe("something");
   });
 
-  test("it should have a click link action", () => {
+  test("it should fires an onClic action", () => {
     const somethingClicked = jest.fn();
 
     render(<MenuLink onClick={somethingClicked}>something</MenuLink>);
