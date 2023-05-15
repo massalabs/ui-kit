@@ -25,7 +25,7 @@ const preview: Preview = {
         <hr />
         <br />
 
-        <div className="theme-ligth">
+        <div className="theme-light">
           <Story />
         </div>
       </>
