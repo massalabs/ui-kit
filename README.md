@@ -76,4 +76,4 @@ To use them, simple add the name of the typography in the `className` prefixed b
 ### Icons
 
 Icons are imported via the react-icons library
-See <https://react-icons.github.io/react-icons/> for details & <https://github.com/react-icons/react-iconshttps://github.com/react-icons/react-icons> for specific use cases
+See <https://react-icons.github.io/react-icons/> for details & <https://github.com/react-icons/react-icons> for specific use cases
