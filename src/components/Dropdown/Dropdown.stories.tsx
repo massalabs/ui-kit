@@ -1,5 +1,7 @@
 import { Dropdown } from "./Dropdown";
+// import { MassaToken } from "../Icons/SVG/Massa/MassaToken";
 import { MassaToken } from "../Icons/Svg/SvgComponent/MassaToken";
+// import { MassaLogo } from "../Icons/Svg/Massa/MassaLogo";
 import { MassaLogo } from "../Icons/Svg/SvgComponent/MassaLogo";
 import FranceFlag from "./../../assets/flags/france.svg";
 import UnitedStatesFlag from "../../assets/flags/unitedStates.svg";
