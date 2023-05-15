@@ -14,7 +14,9 @@ describe("Components | MenuLink ", () => {
 
   test("it should have a click link action", () => {
     const somethingClicked = jest.fn();
-    render(<MenuLink onClick={somethingClicked}>something</MenuLink>); // Pass onClick prop
+
+    render(<MenuLink onClick={somethingClicked}>something</MenuLink>);
+    
     let element = screen.getByTestId("link-icon");
     fireEvent.click(element);
     expect(somethingClicked).toBeCalled;
