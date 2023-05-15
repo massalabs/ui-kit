@@ -12,8 +12,8 @@ export interface MenuLinkProps extends ComponentPropsWithoutRef<"div"> {
 }
 
 export function MenuLink(props: MenuLinkProps) {
-  const [isActive, setIsActive] = useState(false);
   const { onClick } = props;
+  const [isActive, setIsActive] = useState(false);
   const divStyle = `flex mas-menu-default cursor-pointer rounded-lg p-3 
   items-center text-neutral hover:bg-tertiary `;
   const divActiveStyle = isActive
