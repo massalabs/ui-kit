@@ -52,7 +52,7 @@ export function SideMenu(props: SideMenuProps) {
 
   return (
     <div
-      className={`${isHovered ? "w-56" : "w-20"} p-4 bg-secondary`}
+      className={`${isHovered ? "w-56" : "w-20"} p-4 bg-secondary h-screen`}
       ref={hoverRef}
       data-testid="side-menu"
     >
