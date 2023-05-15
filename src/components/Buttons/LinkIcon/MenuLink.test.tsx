@@ -6,7 +6,7 @@ describe("Components | MenuLink ", () => {
   test("it should render", () => {
     render(<MenuLink>something</MenuLink>);
 
-    let element = screen.getByTestId("link-icon");
+    let element = screen.getByTestId("menu-link");
 
     expect(element).toBeInTheDocument();
     expect(element.textContent).toBe("something");
@@ -16,7 +16,7 @@ describe("Components | MenuLink ", () => {
     const somethingClicked = jest.fn();
 
     render(<MenuLink onClick={somethingClicked}>something</MenuLink>);
-    
+
     let element = screen.getByTestId("menu-link");
 
     fireEvent.click(element);
