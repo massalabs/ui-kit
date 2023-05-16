@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { SideMenu } from "./SideMenu";
 import { MenuLink } from "../Buttons/MenuLink";
 import { CrossTriangle } from "../Icons/Svg/Massa";

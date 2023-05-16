@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, cloneElement, MouseEvent } from "react";
+import { ComponentPropsWithoutRef, cloneElement } from "react";
 import { CrossTriangle } from "../Icons/Svg/Massa/CrossTriangle";
 import { useHover } from "../../hooks/useHover";
 
