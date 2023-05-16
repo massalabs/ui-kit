@@ -104,7 +104,7 @@ export const _Dropdown = {
             },
             {
               icon: (
-                <div className="w-7">
+                <div className="w-4">
                   <BrazilFlag />
                 </div>
               ),
@@ -112,7 +112,7 @@ export const _Dropdown = {
             },
             {
               icon: (
-                <div className="w-7">
+                <div className="w-4">
                   <ItalyFlag />
                 </div>
               ),
