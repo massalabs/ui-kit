@@ -1,3 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React from "react";
+
 import { useState, ComponentPropsWithoutRef } from "react";
 import { FiEyeOff, FiEye } from "react-icons/fi";
 
