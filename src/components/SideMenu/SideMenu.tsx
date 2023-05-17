@@ -10,15 +10,14 @@ export interface SideMenuProps extends ComponentPropsWithoutRef<"button"> {
 
 export function SideMenu(props: SideMenuProps) {
   const [hoverRef, isHovered] = useHover<HTMLDivElement>();
-  // store key of selected menu link
-  let menuLinkSelectedKey = "0";
+
   // generic function to map list of links
   function mapListReturnLinks(list: JSX.Element[] | undefined) {
     return (
       list &&
       list.map((link) => (
         <li className="list-none">
-          <div className="inline -ml-9">{link}</div>
+          <div className="inline mx-auto">{link}</div>
         </li>
       ))
     );
@@ -42,18 +41,8 @@ export function SideMenu(props: SideMenuProps) {
       let updatedMenuLinkIcons =
         props.listLinksBottom &&
         props.listLinksBottom.map((menuLink) => {
-          // test if menu link is active, if so disable others
-          if (menuLinkSelectedKey === menuLink.key) {
-            return cloneElement(menuLink, {
-              iconOnly: true,
-              isActive: true,
-              passId: handleOnClickMenuLink,
-            });
-          }
           return cloneElement(menuLink, {
             iconOnly: true,
-            isActive: false,
-            passId: handleOnClickMenuLink,
           });
         });
       return mapListReturnLinks(updatedMenuLinkIcons);
@@ -62,34 +51,35 @@ export function SideMenu(props: SideMenuProps) {
     }
   }
 
-  function handleOnClickMenuLink(key: string) {
-    console.log("handleOnClickMenuLinks");
-    menuLinkSelectedKey = key;
-  }
-
   return (
     <div
       className={`${
         isHovered
           ? "transition-all ease-linear duration-300 w-56"
           : "transition-all ease-linear duration-300 w-20"
-      } p-4 bg-primary h-screen`}
+      } p-4 bg-primary h-screen flex flex-col justify-between`}
       ref={hoverRef}
       data-testid="side-menu"
     >
-      <div className="flex-col items">
-        <div className="flex items-center cursor-pointer">
+      <div className="flex-col">
+        <div className="flex items-center cursor-pointer ml-1">
           <div>
             <CrossTriangle size={40} />
           </div>
           {isHovered && (
-            <div className="transition text-f-primary mas-menu-active text-center ml-3 ">
+            <div className="transition text-f-primary mas-menu-active text-center ml-5 ">
               {props.title}
             </div>
           )}
         </div>
-        <div>{maplistLinksTop()}</div>
-        <div>{maplistLinksBottom()}</div>
+        <div className="items-end mx-auto mt-10 flex-col">
+          <div>{maplistLinksTop()}</div>
+        </div>
+      </div>
+      <div className="items-end mx-auto mt-10 flex-col w-full">
+        {/* Divider */}
+        <div className="w-full h-[2px] bg-slate-600 rounded-3xl"></div>
+        <div className="mt-3">{maplistLinksBottom()}</div>
       </div>
     </div>
   );
