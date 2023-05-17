@@ -5,8 +5,7 @@ import svgr from "vite-plugin-svgr";
 // https://vitejs.dev/config/
 export default defineConfig({
   esbuild: {
-    jsxInject: (str: string) =>
-      !str.includes(`import React`) ? `import React from 'react'` : "",
+    jsxInject: `import React from 'react'`,
   },
   plugins: [
     react(),
