@@ -7,3 +7,4 @@ export * from "./Buttons/LinkIcon";
 export * from "./PopupModal";
 export * from "./Stepper";
 export * from "./Dropdown";
+export * from "./Icons";
