@@ -1,9 +1,10 @@
-import React, {
+import {
   ReactNode,
   ComponentPropsWithoutRef,
   useState,
   useEffect,
   cloneElement,
+  isValidElement,
   Children,
 } from "react";
 import { FiX } from "react-icons/fi";
@@ -110,7 +111,7 @@ export function PopupModal(props: IPopupModalProps) {
   }
 
   var appendedChildren = Children.map(children, (child) => {
-    return cloneElement(React.isValidElement(child) ? child : <></>, {
+    return cloneElement(isValidElement(child) ? child : <></>, {
       _onClose: handleClose,
     });
   });
