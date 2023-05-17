@@ -1,3 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React from "react";
+
 import { ReactNode, ComponentPropsWithoutRef } from "react";
 import { IconContext } from "react-icons/lib";
 

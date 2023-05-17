@@ -1,3 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React from "react";
+
 import { ComponentPropsWithoutRef, useState, MouseEvent } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
