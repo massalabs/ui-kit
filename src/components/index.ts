@@ -1,7 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import React from "react";
-
 export * from "./AccountSelector";
 export * from "./Tabs";
 export * from "./Input";
