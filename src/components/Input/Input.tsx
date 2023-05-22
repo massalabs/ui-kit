@@ -5,7 +5,6 @@ import React from "react";
 import { ComponentPropsWithoutRef } from "react";
 
 export interface InputProps extends ComponentPropsWithoutRef<"input"> {
-  placeholder?: string | undefined;
   error?: string | undefined;
   warning?: string | undefined;
 }
