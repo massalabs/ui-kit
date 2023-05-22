@@ -11,8 +11,8 @@ export interface MenuLinkProps extends ComponentPropsWithoutRef<"div"> {
   color?: string;
   iconOnly?: boolean;
   isActive?: boolean;
+  sendId?: (id: string) => void;
   key?: string;
-  passId?: (id: string) => void;
 }
 
 export function MenuLink(props: MenuLinkProps) {
@@ -29,7 +29,7 @@ export function MenuLink(props: MenuLinkProps) {
   ): void {
     setIsActive(!isActive);
     onClick?.(e);
-    props.passId?.(props.key || "");
+    props.sendId?.(props.key || "undefinedKey");
   }
 
   return (
