@@ -4,15 +4,20 @@ import React from "react";
 
 import { useState, ComponentPropsWithoutRef } from "react";
 import { FiEyeOff, FiEye } from "react-icons/fi";
+import { InputMessage } from "../index";
 
 export interface PasswordProps extends ComponentPropsWithoutRef<"input"> {
-  placeholder?: string;
+  error?: string | undefined;
+  warning?: string | undefined;
 }
 
 export function Password(props: PasswordProps) {
-  const { placeholder, ...rest } = props;
+  const { error, warning, ...rest } = props;
 
-  let iconClass = `w-5 h-5 inline-block align-text-bottom text-neutral`;
+  const errorClass = error ? "border-s-error" : "";
+  const warningClass = warning ? "border-s-warning" : "";
+  const messageClass = errorClass || warningClass;
+  const iconClass = `w-5 h-5 inline-block align-text-bottom text-neutral`;
 
   let open = {
     type: "text",
@@ -44,9 +49,8 @@ export function Password(props: PasswordProps) {
         <div className="inline h-12">
           <input
             data-testid="password-input"
-            className={`w-full default-input`}
+            className={`w-full default-input mb-1 ${messageClass}`}
             type={type}
-            placeholder={placeholder}
             {...rest}
           />
         </div>
@@ -59,6 +63,7 @@ export function Password(props: PasswordProps) {
             {icon}
           </button>
         </div>
+        <InputMessage error={error} warning={warning} />
       </div>
     </div>
   );

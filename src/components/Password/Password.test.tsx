@@ -19,6 +19,28 @@ describe("Components | Fields | Password", () => {
     expect(input).toBeTruthy();
   });
 
+  test("it should show an error message", () => {
+    render(<Password error={"euh"} />);
+
+    let message = screen.getByTestId("input-field-message");
+    let input = screen.getByTestId("password-input");
+
+    expect(message).toBeInTheDocument();
+    expect(message.getAttribute("class")).toContain("text-s-error");
+    expect(input.getAttribute("class")).toContain("border-s-error");
+  });
+
+  test("it should show an warning message", () => {
+    render(<Password warning={"warn"} />);
+
+    let message = screen.getByTestId("input-field-message");
+    let input = screen.getByTestId("password-input");
+
+    expect(message).toBeInTheDocument();
+    expect(message.getAttribute("class")).toContain("text-s-warning");
+    expect(input.getAttribute("class")).toContain("border-s-warning");
+  });
+
   test("it should show/hide the input content when switching between eye mode", () => {
     render(<Password placeholder={"something"} />);
 
