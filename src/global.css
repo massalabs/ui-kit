@@ -25,7 +25,8 @@
           rounded-lg h-12 pl-3 pr-10;
   }
 
-  .default-input:not([value=""]) {
+  .default-input:not([value=""]),
+  .default-input:not(:placeholder-shown) {
     @apply border-brand text-neutral;
   }
 
