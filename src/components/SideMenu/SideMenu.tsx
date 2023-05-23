@@ -1,6 +1,5 @@
 import { ComponentPropsWithoutRef, cloneElement, useState } from "react";
 import { CrossTriangle } from "../Icons/Svg/Massa/CrossTriangle";
-import { useHover } from "../../hooks/useHover";
 
 export interface SideMenuProps extends ComponentPropsWithoutRef<"button"> {
   listLinksTop?: JSX.Element[];
@@ -9,15 +8,10 @@ export interface SideMenuProps extends ComponentPropsWithoutRef<"button"> {
 }
 
 export function SideMenu(props: SideMenuProps) {
-  const [hoverRef, isHovered] = useHover<HTMLDivElement>();
+  // const [hoverRef, isHovered] = useHover<HTMLDivElement>();
+  const [hover, setHover] = useState(false);
   const [IdSelected, setIdSelected] = useState("UnSelected");
 
-  function isOneSelected() {
-    if (IdSelected !== "UnSelected") {
-      return true;
-    }
-    return false;
-  }
   // generic function to map list of links
   function mapListReturnLinks(list: JSX.Element[] | undefined) {
     return (
@@ -31,14 +25,13 @@ export function SideMenu(props: SideMenuProps) {
   }
 
   function maplistLinks(list: JSX.Element[] | undefined) {
-    if (!isHovered || isOneSelected()) {
+    if (hover) {
       let updatedMenuLinkIcons =
         list &&
         list.map((menuLink) => {
+          menuLink.props.id === IdSelected;
           return cloneElement(menuLink, {
             iconOnly: true,
-            // onClick: () => handleOneIsSelected(e),
-            sendId: (id: string) => handleOneIsSelected(id),
           });
         });
       return mapListReturnLinks(updatedMenuLinkIcons);
@@ -47,30 +40,25 @@ export function SideMenu(props: SideMenuProps) {
     }
   }
 
-  function handleOneIsSelected(id: string) {
-    if (id !== IdSelected) {
-      setIdSelected(id);
-    } else {
-      setIdSelected("UnSelected");
-    }
+  function onHover() {
+    setHover(!hover);
   }
 
   return (
     <div
       className={`${
-        isHovered || isOneSelected()
-          ? "transition-all ease-linear duration-300 w-56"
-          : "transition-all ease-linear duration-300 w-20"
-      } p-4 bg-primary h-screen flex flex-col justify-between`}
-      ref={hoverRef}
+        hover ? "w-56" : "w-20"
+      } transition-all ease-linear duration-300 p-4 bg-primary h-screen flex flex-col justify-between`}
       data-testid="side-menu"
+      onMouseOut={onHover}
+      onMouseOver={onHover}
     >
       <div className="flex-col">
         <div className="flex items-center cursor-pointer ml-1">
           <div>
             <CrossTriangle size={40} />
           </div>
-          {(isHovered || isOneSelected()) && (
+          {hover ?? (
             <div className="transition text-f-primary mas-menu-active text-center ml-5 ">
               {props.title}
             </div>
@@ -87,4 +75,8 @@ export function SideMenu(props: SideMenuProps) {
       </div>
     </div>
   );
+}
+export function handleActive(e: any) {
+  // contain the id of the selected element
+  console.log(e.currentTarget.dataset.value);
 }

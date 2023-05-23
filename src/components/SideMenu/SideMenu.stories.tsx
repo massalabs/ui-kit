@@ -1,4 +1,4 @@
-import { SideMenu } from "./SideMenu";
+import { SideMenu, handleActive } from "./SideMenu";
 import { MenuLink } from "../Buttons/MenuLink";
 import { CrossTriangle } from "../Icons/Svg/Massa/CrossTriangle";
 export default { title: "Components/SideMenu", component: SideMenu };
@@ -10,7 +10,13 @@ const menuLinkIcons = [
   <MenuLink icon={<CrossTriangle size={30} />} color={"#1AE19D"} key={"2"}>
     <p>Transactions</p>
   </MenuLink>,
-  <MenuLink icon={<CrossTriangle size={30} />} color={"#1AE19D"} key={"3"}>
+  <MenuLink
+    icon={<CrossTriangle size={30} />}
+    color={"#1AE19D"}
+    key={"3"}
+    id={"3"}
+    onClick={handleActive}
+  >
     <p>Send/Receive</p>
   </MenuLink>,
   <MenuLink

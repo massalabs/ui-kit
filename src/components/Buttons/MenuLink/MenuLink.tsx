@@ -12,7 +12,7 @@ export interface MenuLinkProps extends ComponentPropsWithoutRef<"div"> {
   iconOnly?: boolean;
   isActive?: boolean;
   sendId?: (id: string) => void;
-  key?: string;
+  id?: string;
 }
 
 export function MenuLink(props: MenuLinkProps) {
@@ -29,12 +29,14 @@ export function MenuLink(props: MenuLinkProps) {
   ): void {
     setIsActive(!isActive);
     onClick?.(e);
-    props.sendId?.(props.key || "undefinedKey");
+    // console.log(props.id);
+    // props.sendId?.(props.key || "UnSelected");
   }
 
   return (
     <div
       data-testid="menu-link"
+      data-value={props.id}
       className={`${divStyle}
                   ${divActiveStyle}`}
       onClick={(e) => onClickHandler(e)}
