@@ -8,9 +8,7 @@ export interface SideMenuProps extends ComponentPropsWithoutRef<"button"> {
 }
 
 export function SideMenu(props: SideMenuProps) {
-  // const [hoverRef, isHovered] = useHover<HTMLDivElement>();
   const [hover, setHover] = useState(false);
-  const [IdSelected, setIdSelected] = useState("UnSelected");
 
   // generic function to map list of links
   function mapListReturnLinks(list: JSX.Element[] | undefined) {
@@ -29,7 +27,6 @@ export function SideMenu(props: SideMenuProps) {
       let updatedMenuLinkIcons =
         list &&
         list.map((menuLink) => {
-          menuLink.props.id === IdSelected;
           return cloneElement(menuLink, {
             iconOnly: true,
           });
