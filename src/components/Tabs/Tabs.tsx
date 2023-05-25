@@ -25,10 +25,9 @@ export function Tabs({ ...props }) {
       <div className="w-full flex flex-row mb-2">
         {tabsConfig.map((tab: TabConfig, index: number) => (
           <div
-            className={`default-tab 
-              default-tab-hover 
-              default-tab-pressed 
-              ${index === selectedIndex ? "default-tab-active" : ""}`}
+            className={`default-tab default-tab-hover ${
+              index === selectedIndex ? "default-tab-active" : ""
+            }`}
             key={`tab-${index}`}
             onClick={() => handleClick(index)}
           >
