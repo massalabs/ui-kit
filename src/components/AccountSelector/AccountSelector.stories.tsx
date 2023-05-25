@@ -8,9 +8,9 @@ export default {
 };
 
 const args = {
-  avatar: <FiUser className="text-neutral h-6 w-6" />,
+  avatar: <FiUser className="text-primary h-6 w-6" />,
   accountName: "account #",
-  icon: <MassaToken size={24} />,
+  icon: <MassaToken size={24} className="bg-neutral rounded-full" />,
   amount: "0,000.00",
 };
 
