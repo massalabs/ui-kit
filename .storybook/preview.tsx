@@ -18,6 +18,7 @@ const preview: Preview = {
     (Story: StoryFn) => (
       <>
         <div className="theme-dark">
+          <h3>Theme Dark</h3>
           <Story />
         </div>
 
@@ -26,6 +27,7 @@ const preview: Preview = {
         <br />
 
         <div className="theme-light">
+          <h3>Theme Light</h3>
           <Story />
         </div>
       </>

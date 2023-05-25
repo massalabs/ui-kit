@@ -15,15 +15,15 @@ export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 export function Button(props: ButtonProps) {
   const { children, preIcon, posIcon, variant, ...rest } = props;
 
-  const primaryClass = `bg-primary text-f-primary
-                        hover:bg-tertiary 
-                        active:bg-secondary 
-                        disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`;
+  const primaryClass = `bg-c-default text-primary
+                        hover:bg-c-hover
+                        active:bg-c-pressed 
+                        disabled:text-f-disabled-2 disabled:bg-c-disabled-1 disabled:border-c-disabled-1`;
 
-  const secondaryClass = `bg-c-default text-primary border border-primary
-                          hover:bg-c-hover/[.15] 
-                          active:bg-c-pressed/[.3] 
-                          disabled:text-f-disabled-2 disabled:bg-c-disabled-1 disabled:border-c-disabled-1`;
+  const secondaryClass = `text-f-primary
+                          hover:bg-neutral/[.15]
+                          active:bg-neutral/[.3]                                                  
+                          disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`;
 
   const buttonClass = variant ? secondaryClass : primaryClass;
 
