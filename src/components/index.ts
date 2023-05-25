@@ -6,3 +6,4 @@ export * from "./Button";
 export * from "./PopupModal";
 export * from "./Stepper";
 export * from "./Dropdown";
+export * from "./SideMenu";
