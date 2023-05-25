@@ -28,7 +28,7 @@
   }
 
   .default-button {
-    @apply rounded-lg mas-buttons h-12;
+    @apply rounded-lg mas-buttons h-12 border border-c-default;
   }
 
   .default-tab {
