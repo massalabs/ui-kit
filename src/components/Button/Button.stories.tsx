@@ -30,14 +30,14 @@ export const _Secondary = {
   render: () => (
     <>
       <Button variant="secondary" {...args}>
-        Seconday
+        Secondary
       </Button>
 
       <br />
       <br />
 
       <Button variant="secondary" {...args} disabled>
-        Seconday disabled
+        Secondary disabled
       </Button>
     </>
   ),
