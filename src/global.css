@@ -39,14 +39,10 @@
   }
 
   .default-tab-hover {
-    @apply hover:cursor-pointer hover:text-c-hover hover:border-b-2 hover:transition-all duration-0 ease-in-out;
+    @apply hover:cursor-pointer hover:text-c-hover hover:border-b-2;
   }
 
   .default-tab-active {
     @apply mas-menu-active antialiased hover:border-brand border-brand border-b-2;
-  }
-
-  .default-tab-pressed {
-    @apply active:border-brand active:text-neutral active:mas-menu-default;
   }
 }
