@@ -37,7 +37,7 @@ describe("Components | Button", () => {
 
     let button = screen.getByTestId("button");
 
-    expect(button).toHaveClass("text-primary");
+    expect(button).toHaveClass("text-f-primary");
   });
 
   test("it should fire onClick event", () => {

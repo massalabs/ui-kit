@@ -15,26 +15,26 @@ export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 export function Button(props: ButtonProps) {
   const { children, preIcon, posIcon, variant, ...rest } = props;
 
-  const variantClass = variant
-    ? "text-f-primary " +
-      "hover:bg-neutral/[.15] " +
-      "active:bg-neutral/[.3] " +
-      "disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1"
-    : "bg-c-default text-primary " +
-      "hover:bg-c-hover " +
-      "active:bg-c-pressed " +
-      "disabled:text-f-disabled-2 disabled:bg-c-disabled-1 disabled:border-c-disabled-1";
+  const primaryClass = `bg-primary text-f-primary
+                        hover:bg-tertiary 
+                        active:bg-secondary 
+                        disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`;
+
+  const secondaryClass = `bg-c-default text-primary border border-primary
+                          hover:bg-c-hover/[.15] 
+                          active:bg-c-pressed/[.3] 
+                          disabled:text-f-disabled-2 disabled:bg-c-disabled-1 disabled:border-c-disabled-1`;
+
+  const buttonClass = variant ? secondaryClass : primaryClass;
 
   return (
     <button
       data-testid="button"
       type="button"
-      className={`default-button w-full px-4 py-3
-        ${variantClass}
-      `}
+      className={`default-button w-full px-4 py-3 ${buttonClass}`}
       {...rest}
     >
-      <div className="w-fit m-auto flex gap-2">
+      <div className="w-fit m-auto flex gap-2 items-center">
         <div className="m-auto">
           <IconContext.Provider value={{ className: "w-6 h-6" }}>
             {preIcon}
