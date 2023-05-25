@@ -1,8 +1,5 @@
-@layer tailwind-base, mas-custom-styles;
-@layer tailwind-base {
-  @tailwind base;
-}
-
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
 /* global css */
@@ -16,12 +13,12 @@
   src: url("./assets/fonts/Poppins/Poppins-Regular.ttf");
 }
 
-@layer mas-custom-styles {
+@layer components {
   .default-input {
     @apply border-secondary border border-solid outline-0
-          hover:border-tertiary focus:border-brand focus:text-neutral 
-          bg-secondary 
-          placeholder-tertiary text-tertiary 
+          hover:border-tertiary focus:border-brand focus:text-neutral
+          bg-secondary
+          placeholder-tertiary text-tertiary
           rounded-lg h-12 pl-3 pr-10;
   }
 
