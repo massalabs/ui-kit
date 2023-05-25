@@ -18,7 +18,9 @@ export const _Dropdown = {
         <Dropdown
           options={[
             {
-              icon: <MassaToken size={32} />,
+              icon: (
+                <MassaToken size={32} className="bg-c-default rounded-full" />
+              ),
               item: "account 1 name",
               onClick: () => console.log("option 1"),
             },
@@ -129,7 +131,9 @@ export const _Dropdown = {
           size={"xs"}
           options={[
             {
-              icon: <MassaToken size={16} />,
+              icon: (
+                <MassaToken size={16} className="bg-c-default rounded-full" />
+              ),
               item: "MAS",
               onClick: () => console.log("option 1"),
             },
