@@ -1,9 +1,21 @@
-export function MassaLogo({ ...props }) {
+import { ComponentPropsWithoutRef } from "react";
+
+interface SVGProps extends ComponentPropsWithoutRef<"div"> {
+  size?: number;
+}
+
+export function MassaLogo(props: SVGProps) {
+  let { size, ...rest } = props;
+
   return (
-    <div className={`bg-primary w-fit rounded-full`} data-testid="svg-icon">
+    <div
+      className={`bg-primary w-fit rounded-full`}
+      data-testid="svg-icon"
+      {...rest}
+    >
       <svg
-        width={props?.size ?? 32}
-        height={props?.size ?? 32}
+        width={size ?? 32}
+        height={size ?? 32}
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
