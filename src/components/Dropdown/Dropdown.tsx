@@ -76,7 +76,7 @@ export function Dropdown(props: IDropdownProps) {
         className={`flex default-button border-secondary justify-between 
                     ${customButtonClass}
                     items-center text-f-primary bg-secondary
-                    hover:bg-neutral/[.15] hover:border-secondary/[.15] active:bg-neutral/[.3] 
+                    hover:bg-tertiary hover:border-tertiary  
                     disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`}
       >
         <div className={customIconClass}>{selected.icon}</div>
