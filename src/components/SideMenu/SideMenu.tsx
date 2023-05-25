@@ -80,7 +80,7 @@ function ShortMenu(props: ISideMenuProps) {
   const { logo } = conf;
 
   return (
-    <div className="flex flex-col items-center w-16 h-full overflow-hidden bg-primary">
+    <div className="flex flex-col items-center w-16 h-full overflow-hidden bg-secondary">
       <div className="flex items-center justify-center mt-3">{logo}</div>
       <div className="flex flex-col items-center mt-3">
         {items
@@ -105,7 +105,7 @@ function LongMenu(props: ISideMenuProps) {
   const { logo, title } = conf;
 
   return (
-    <div className="flex flex-col items-center w-60 h-full overflow-hidden bg-primary">
+    <div className="flex flex-col items-center w-60 h-full overflow-hidden bg-secondary">
       <div className="flex w-full items-center px-4 mt-3">
         {logo}
         <span className="w-full -ml-2 text-center text-f-primary mas-menu-active">
