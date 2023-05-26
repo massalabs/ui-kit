@@ -7,3 +7,4 @@ export * from "./PopupModal";
 export * from "./Stepper";
 export * from "./Dropdown";
 export * from "./SideMenu";
+export * from "./Icons";
