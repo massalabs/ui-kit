@@ -24,7 +24,7 @@
 
   .default-input:not([value=""]),
   .default-input:not(:placeholder-shown) {
-    @apply border-brand text-neutral;
+    @apply text-neutral;
   }
 
   .default-button {
