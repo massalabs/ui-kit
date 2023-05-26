@@ -10,3 +10,4 @@ export * from './SideMenu';
 export * from './Icons';
 export * from './Toggle';
 export * from './Balance';
+export * from './ThemeMode';
