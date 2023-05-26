@@ -8,3 +8,4 @@ export * from './Stepper';
 export * from './Dropdown';
 export * from './SideMenu';
 export * from './Icons';
+export * from './Toggle';
