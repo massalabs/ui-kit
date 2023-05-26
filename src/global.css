@@ -9,12 +9,12 @@
 /* global css */
 
 @font-face {
-  font-family: "Urbane";
-  src: url("./assets/fonts/Urbane/Urbane-Medium.ttf");
+  font-family: 'Urbane';
+  src: url('./assets/fonts/Urbane/Urbane-Medium.ttf');
 }
 @font-face {
-  font-family: "Poppins";
-  src: url("./assets/fonts/Poppins/Poppins-Regular.ttf");
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins/Poppins-Regular.ttf');
 }
 
 @layer mas-custom-styles {
@@ -30,7 +30,7 @@
   /* We rely on placeholder to change the border */
   /* once uncontrolled components not necessary have value property */
   .default-input:not(:placeholder-shown),
-  .default-input:not([value=""]) {
+  .default-input:not([value='']) {
     @apply border-brand text-neutral;
   }
 

@@ -1,11 +1,11 @@
-import { DragDrop } from "./DragDrop";
+import { DragDrop } from './DragDrop';
 
-export default { title: "Components/DragDrop", component: DragDrop };
+export default { title: 'Components/DragDrop', component: DragDrop };
 
 export const _DragDrop = {
   render: () => (
     <>
-      <DragDrop placeholder="something to inform" allowed={["jpeg", "png"]} />
+      <DragDrop placeholder="something to inform" allowed={['jpeg', 'png']} />
     </>
   ),
 };

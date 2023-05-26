@@ -1,8 +1,8 @@
-import { MassaToken } from "./Massa/MassaToken";
-import { MassaLogo } from "./Massa/MassaLogo";
-import { MassaWallet } from "./Massa/MassaWallet";
+import { MassaToken } from './Massa/MassaToken';
+import { MassaLogo } from './Massa/MassaLogo';
+import { MassaWallet } from './Massa/MassaWallet';
 
-export default { title: "Icons/Massa" };
+export default { title: 'Icons/Massa' };
 
 export const _MassaToken = {
   render: () => <MassaToken size={40} />,

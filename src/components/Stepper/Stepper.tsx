@@ -1,17 +1,17 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from "react";
+import React from 'react';
 
-import { ComponentPropsWithoutRef } from "react";
-import { FiCircle } from "react-icons/fi";
+import { ComponentPropsWithoutRef } from 'react';
+import { FiCircle } from 'react-icons/fi';
 
-export interface StepperProps extends ComponentPropsWithoutRef<"ol"> {
+export interface StepperProps extends ComponentPropsWithoutRef<'ol'> {
   steps: string[];
   step: number;
 }
 
 let baseStepClass =
-  "flex items-center justify-center w-4 h-4 rounded-full shrink-0";
+  'flex items-center justify-center w-4 h-4 rounded-full shrink-0';
 
 function StepIn() {
   return (
@@ -47,17 +47,17 @@ function StepPast() {
 export function Stepper(props: StepperProps) {
   const { step, steps } = props;
 
-  const edgeClass = " w-full after:w-full after:border-b after:inline-block";
-  const edgePastClass = edgeClass + " after:border-c-default";
-  const edgeNextClass = edgeClass + " after:border-s-success";
+  const edgeClass = ' w-full after:w-full after:border-b after:inline-block';
+  const edgePastClass = edgeClass + ' after:border-c-default';
+  const edgeNextClass = edgeClass + ' after:border-s-success';
 
   return (
     <ol className="flex items-center w-full" data-testid="stepper">
       {steps.map((s, idx) => {
         let isLastStep = idx === steps.length - 1;
-        let stepClass = isLastStep ? "" : edgeClass;
-        let flowClass = isLastStep ? "" : edgePastClass;
-        let textClass = "text-f-primary";
+        let stepClass = isLastStep ? '' : edgeClass;
+        let flowClass = isLastStep ? '' : edgePastClass;
+        let textClass = 'text-f-primary';
 
         let currentStep = <StepNext />;
 
@@ -65,8 +65,8 @@ export function Stepper(props: StepperProps) {
           currentStep = <StepIn />;
         } else if (idx < step) {
           currentStep = <StepPast />;
-          textClass = "text-f-tertiary";
-          flowClass = isLastStep ? "w-fit" : edgeNextClass;
+          textClass = 'text-f-tertiary';
+          flowClass = isLastStep ? 'w-fit' : edgeNextClass;
         }
 
         return (

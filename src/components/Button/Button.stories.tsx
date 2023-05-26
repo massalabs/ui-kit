@@ -1,11 +1,11 @@
-import { Button } from "./Button";
-import { FiArrowUpRight } from "react-icons/fi";
+import { Button } from './Button';
+import { FiArrowUpRight } from 'react-icons/fi';
 
-export default { title: "Components/Button", component: Button };
+export default { title: 'Components/Button', component: Button };
 
 const args = {
   onClick: () => {
-    console.log("clicked");
+    console.log('clicked');
   },
   preIcon: <FiArrowUpRight />,
   posIcon: <FiArrowUpRight />,

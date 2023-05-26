@@ -3,16 +3,16 @@ import {
   PopupModalContent,
   PopupModalHeader,
   PopupModalFooter,
-} from "./PopupModal";
+} from './PopupModal';
 
-export default { title: "Components/PopupModal" };
+export default { title: 'Components/PopupModal' };
 
 const args = {
   onOpen: () => {
-    console.log("event on open");
+    console.log('event on open');
   },
   onClose: () => {
-    console.log("event on close");
+    console.log('event on close');
   },
 };
 

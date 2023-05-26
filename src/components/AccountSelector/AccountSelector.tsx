@@ -1,10 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from "react";
+import React from 'react';
 
-import { ReactNode, ComponentPropsWithoutRef } from "react";
+import { ReactNode, ComponentPropsWithoutRef } from 'react';
 
-export interface AccountSelectorProps extends ComponentPropsWithoutRef<"div"> {
+export interface AccountSelectorProps extends ComponentPropsWithoutRef<'div'> {
   avatar: JSX.Element;
   accountName: string;
   icon: JSX.Element;
@@ -15,7 +15,7 @@ export interface AccountSelectorProps extends ComponentPropsWithoutRef<"div"> {
 export function AccountSelector(props: AccountSelectorProps) {
   let { avatar, accountName, icon, amount, children, ...rest } = props;
 
-  const containerFlexClass = "flex justify-center items-center";
+  const containerFlexClass = 'flex justify-center items-center';
 
   return (
     <div

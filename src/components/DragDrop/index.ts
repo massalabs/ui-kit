@@ -1,1 +1,1 @@
-export * from "./DragDrop";
+export * from './DragDrop';

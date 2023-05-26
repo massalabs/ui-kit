@@ -1,18 +1,18 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { Tabs } from "./Tabs";
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Tabs } from './Tabs';
 
-describe("Components | Tabs", () => {
-  test("it should render", () => {
+describe('Components | Tabs', () => {
+  test('it should render', () => {
     const tabsConfig = [
       {
-        label: "Tab1",
-        content: "Content Panel 1",
-        icon: "😍",
+        label: 'Tab1',
+        content: 'Content Panel 1',
+        icon: '😍',
       },
       {
-        label: "Tab2",
-        content: "Content Panel 2",
-        icon: "🤓",
+        label: 'Tab2',
+        content: 'Content Panel 2',
+        icon: '🤓',
       },
     ];
 
@@ -21,23 +21,23 @@ describe("Components | Tabs", () => {
     };
     render(<Tabs {...args} />);
 
-    let accountSelector = screen.getByTestId("tabs-selector");
+    let accountSelector = screen.getByTestId('tabs-selector');
 
     expect(accountSelector).toBeTruthy();
   });
 
-  test("it fire the onClick fn", () => {
+  test('it fire the onClick fn', () => {
     const onClickMock = jest.fn();
     const tabsConfig = [
       {
-        label: "Tab1",
-        content: "Content Panel 1",
-        icon: "😍",
+        label: 'Tab1',
+        content: 'Content Panel 1',
+        icon: '😍',
       },
       {
-        label: "Tab2",
-        content: "Content Panel 2",
-        icon: "🤓",
+        label: 'Tab2',
+        content: 'Content Panel 2',
+        icon: '🤓',
       },
     ];
 
@@ -46,7 +46,7 @@ describe("Components | Tabs", () => {
     };
     render(<Tabs onClick={onClickMock} {...args} />);
 
-    let tabSelector = screen.getByTestId("tabs-selector");
+    let tabSelector = screen.getByTestId('tabs-selector');
 
     fireEvent.click(tabSelector);
     expect(onClickMock).toHaveBeenCalled();

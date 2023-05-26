@@ -1,12 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from "react";
+import React from 'react';
 
-import { useState, ComponentPropsWithoutRef } from "react";
-import { FiEyeOff, FiEye } from "react-icons/fi";
-import { InputMessage } from "../index";
+import { useState, ComponentPropsWithoutRef } from 'react';
+import { FiEyeOff, FiEye } from 'react-icons/fi';
+import { InputMessage } from '../index';
 
-export interface PasswordProps extends ComponentPropsWithoutRef<"input"> {
+export interface PasswordProps extends ComponentPropsWithoutRef<'input'> {
   error?: string | undefined;
   warning?: string | undefined;
 }
@@ -14,13 +14,13 @@ export interface PasswordProps extends ComponentPropsWithoutRef<"input"> {
 export function Password(props: PasswordProps) {
   const { error, warning, ...rest } = props;
 
-  const errorClass = error ? "border-s-error" : "";
-  const warningClass = warning ? "border-s-warning" : "";
+  const errorClass = error ? 'border-s-error' : '';
+  const warningClass = warning ? 'border-s-warning' : '';
   const messageClass = errorClass || warningClass;
   const iconClass = `w-5 h-5 inline-block align-text-bottom text-neutral`;
 
   let open = {
-    type: "text",
+    type: 'text',
     icon: (
       <div data-testid="icon-open">
         <FiEyeOff className={iconClass} />
@@ -29,7 +29,7 @@ export function Password(props: PasswordProps) {
   };
 
   let close = {
-    type: "password",
+    type: 'password',
     icon: (
       <div data-testid="icon-close">
         <FiEye className={iconClass} />
@@ -40,7 +40,7 @@ export function Password(props: PasswordProps) {
   const [{ type, icon }, setType] = useState(close);
 
   function toggleIcon() {
-    return type === "password" ? setType(open) : setType(close);
+    return type === 'password' ? setType(open) : setType(close);
   }
 
   return (
