@@ -69,7 +69,7 @@ export function LongItem(props: ILongItemProps) {
         onClick={onClickItem}
       >
         {clonedIcon}
-        <span className="ml-2 mas-menu-active">{label}</span>
+        <span className="ml-2 mas-menu-default">{label}</span>
       </div>
     </>
   );
