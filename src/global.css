@@ -1,5 +1,9 @@
-@tailwind base;
-@tailwind components;
+@layer tailwind-base, mas-custom-styles;
+@layer tailwind-base {
+  @tailwind base;
+  @tailwind components;
+}
+
 @tailwind utilities;
 
 /* global css */
@@ -13,18 +17,21 @@
   src: url("./assets/fonts/Poppins/Poppins-Regular.ttf");
 }
 
-@layer components {
+@layer mas-custom-styles {
   .default-input {
     @apply border-secondary border border-solid outline-0
-          hover:border-tertiary focus:border-brand focus:text-neutral
+          hover:border-tertiary
+          focus:border-brand focus:text-neutral
           bg-secondary
           placeholder-tertiary text-tertiary
           rounded-lg h-12 pl-3 pr-10;
   }
 
-  .default-input:not([value=""]),
-  .default-input:not(:placeholder-shown) {
-    @apply text-neutral;
+  /* We rely on placeholder to change the border */
+  /* once uncontrolled components not necessary have value property */
+  .default-input:not(:placeholder-shown),
+  .default-input:not([value=""]) {
+    @apply border-brand text-neutral;
   }
 
   .default-button {
