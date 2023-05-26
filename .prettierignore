@@ -1,2 +1,12 @@
 node_modules
 storybook-static
+*.md
+.DS_Store
+dist
+public
+*.local
+.eslintcache
+*.md
+*.mdx
+package-lock.json
+*.yml

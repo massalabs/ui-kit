@@ -1,22 +1,22 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from "react";
+import React from 'react';
 
-import { ComponentPropsWithoutRef, useState, MouseEvent } from "react";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { ComponentPropsWithoutRef, useState, MouseEvent } from 'react';
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
-interface IOption extends ComponentPropsWithoutRef<"div"> {
+interface IOption extends ComponentPropsWithoutRef<'div'> {
   icon?: JSX.Element;
   item: string;
 }
 
-interface IDropdownProps extends ComponentPropsWithoutRef<"div"> {
+interface IDropdownProps extends ComponentPropsWithoutRef<'div'> {
   options: IOption[];
-  size?: "xs" | "md";
+  size?: 'xs' | 'md';
 }
 
 function Icon({ toggle }: { toggle: boolean }) {
-  let IconclassName = "w-6 h-6 stroke-current";
+  let IconclassName = 'w-6 h-6 stroke-current';
 
   return toggle ? (
     <FiChevronUp className={IconclassName} />
@@ -26,27 +26,27 @@ function Icon({ toggle }: { toggle: boolean }) {
 }
 
 export function Dropdown(props: IDropdownProps) {
-  let { size = "md", options } = props;
+  let { size = 'md', options } = props;
 
   const classes = {
     xs: {
-      button: "w-full px-3 py-4 h-7 rounded hover:rounded",
-      panel: "w-full rounded hover:rounded",
-      item: "px-3 py-4 h-7 rounded hover:rounded",
-      icon: "pr-3",
+      button: 'w-full px-3 py-4 h-7 rounded hover:rounded',
+      panel: 'w-full rounded hover:rounded',
+      item: 'px-3 py-4 h-7 rounded hover:rounded',
+      icon: 'pr-3',
     },
     md: {
-      button: "w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg",
-      panel: "w-full rounded-lg hover:rounded-lg",
-      item: "w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg",
-      icon: "pr-2",
+      button: 'w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg',
+      panel: 'w-full rounded-lg hover:rounded-lg',
+      item: 'w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg',
+      icon: 'pr-2',
     },
   };
 
   const firstObject = options[0];
   const [toggle, setToggle] = useState(false);
   const [selected, setSelected] = useState(firstObject);
-  const hidden = toggle ? "" : "hidden";
+  const hidden = toggle ? '' : 'hidden';
 
   const customButtonClass = classes[size].button;
   const customItemClass = classes[size].item;
@@ -59,7 +59,7 @@ export function Dropdown(props: IDropdownProps) {
 
   function handleOnClick(
     e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
-    idx: number
+    idx: number,
   ) {
     let { onClick } = options[idx];
 

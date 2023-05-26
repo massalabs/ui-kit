@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from "react";
+import React from 'react';
 
-import { ComponentPropsWithoutRef, useState } from "react";
-import { FiArchive, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
+import { ComponentPropsWithoutRef, useState } from 'react';
+import { FiArchive, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 
-interface IDragDropProps extends ComponentPropsWithoutRef<"input"> {
+interface IDragDropProps extends ComponentPropsWithoutRef<'input'> {
   placeholder?: string;
   allowed?: string[];
 }
@@ -13,28 +13,28 @@ interface IDragDropProps extends ComponentPropsWithoutRef<"input"> {
 // Jest fails with Enums
 // https://github.com/kulshekhar/ts-jest/issues/3397
 // this would be Status enum { NORMAL = "normal", ...}
-const NORMAL = "normal";
-const FAILED = "failed";
-const LOADED = "loaded";
+const NORMAL = 'normal';
+const FAILED = 'failed';
+const LOADED = 'loaded';
 const Status = { NORMAL, FAILED, LOADED };
 
 const LoadedStatus = {
   normal: {
-    style: "text-tertiary",
+    style: 'text-tertiary',
     icon: <FiArchive className="w-12 h-12" />,
   },
   failed: {
-    style: "text-s-error",
+    style: 'text-s-error',
     icon: <FiAlertCircle className="w-12 h-12" />,
   },
   loaded: {
-    style: "text-s-success",
+    style: 'text-s-success',
     icon: <FiCheckCircle className="w-12 h-12" />,
   },
 };
 
 export function DragDrop(props: IDragDropProps) {
-  const { placeholder, allowed = [".yaml"] } = props;
+  const { placeholder, allowed = ['.yaml'] } = props;
 
   const [isLoaded, setIsLoaded] = useState(Status.NORMAL);
   const [fileName, setFileName] = useState(placeholder);
@@ -49,7 +49,7 @@ export function DragDrop(props: IDragDropProps) {
   function isValidFile(file: string) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    if (!allowed.includes(file.split(".").pop())) {
+    if (!allowed.includes(file.split('.').pop())) {
       setIsLoaded(Status.FAILED);
       setFileName(`Owh! File not allowed. Allowed: ${allowed.toString()}`);
       return false;
@@ -65,10 +65,10 @@ export function DragDrop(props: IDragDropProps) {
 
     if (e.dataTransfer.items) {
       [...e.dataTransfer.items].forEach((item) => {
-        if (item.kind === "file") {
+        if (item.kind === 'file') {
           const file = item.getAsFile();
 
-          if (!isValidFile(file.name.toLowerCase() || "")) {
+          if (!isValidFile(file.name.toLowerCase() || '')) {
             return;
           } else {
             setIsLoaded(Status.LOADED);

@@ -1,19 +1,19 @@
-import { Tabs } from "./Tabs";
-import { Button } from "../Button";
+import { Tabs } from './Tabs';
+import { Button } from '../Button';
 
 export default {
-  title: "Components/Tabs",
+  title: 'Components/Tabs',
   component: Tabs,
 };
 
 const tabsConfig = [
   {
-    label: "Tab 1",
+    label: 'Tab 1',
     content: <Button> Tab 1 component </Button>,
-    onClickTab: () => console.log("Hello"),
+    onClickTab: () => console.log('Hello'),
   },
   {
-    label: "Tab 2",
+    label: 'Tab 2',
     content: <Button> Tab 2 component </Button>,
   },
 ];

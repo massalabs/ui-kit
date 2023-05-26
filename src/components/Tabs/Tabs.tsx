@@ -1,11 +1,11 @@
-import { ComponentPropsWithoutRef, useState } from "react";
+import { ComponentPropsWithoutRef, useState } from 'react';
 
 export interface TabConfig {
   label: string;
   content: string;
 }
 
-export interface TabsProps extends ComponentPropsWithoutRef<"div"> {
+export interface TabsProps extends ComponentPropsWithoutRef<'div'> {
   tabsConfig: TabConfig[];
 }
 
@@ -26,7 +26,7 @@ export function Tabs({ ...props }) {
         {tabsConfig.map((tab: TabConfig, index: number) => (
           <div
             className={`default-tab default-tab-hover ${
-              index === selectedIndex ? "default-tab-active" : ""
+              index === selectedIndex ? 'default-tab-active' : ''
             }`}
             key={`tab-${index}`}
             onClick={() => handleClick(index)}

@@ -1,15 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from "react";
+import React from 'react';
 
-import { ReactNode, ComponentPropsWithoutRef } from "react";
-import { IconContext } from "react-icons/lib";
+import { ReactNode, ComponentPropsWithoutRef } from 'react';
+import { IconContext } from 'react-icons/lib';
 
-export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
+export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   children?: ReactNode;
   preIcon?: ReactNode;
   posIcon?: ReactNode;
-  variant?: "secondary" | undefined;
+  variant?: 'secondary' | undefined;
 }
 
 export function Button(props: ButtonProps) {
@@ -36,13 +36,13 @@ export function Button(props: ButtonProps) {
     >
       <div className="w-fit m-auto flex gap-2 items-center">
         <div className="m-auto">
-          <IconContext.Provider value={{ className: "w-6 h-6" }}>
+          <IconContext.Provider value={{ className: 'w-6 h-6' }}>
             {preIcon}
           </IconContext.Provider>
         </div>
         {children}
         <div className="m-auto">
-          <IconContext.Provider value={{ className: "w-6 h-6" }}>
+          <IconContext.Provider value={{ className: 'w-6 h-6' }}>
             {posIcon}
           </IconContext.Provider>
         </div>

@@ -1,10 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from "react";
+import React from 'react';
 
-import { useState, cloneElement, ComponentPropsWithoutRef } from "react";
+import { useState, cloneElement, ComponentPropsWithoutRef } from 'react';
 
-interface ISideMenuItemProps extends ComponentPropsWithoutRef<"div"> {
+interface ISideMenuItemProps extends ComponentPropsWithoutRef<'div'> {
   label: string;
   icon: JSX.Element;
   active?: boolean;
@@ -12,23 +12,23 @@ interface ISideMenuItemProps extends ComponentPropsWithoutRef<"div"> {
   onClickItem?: () => void;
 }
 
-interface ISideMenuConfProps extends ComponentPropsWithoutRef<"div"> {
+interface ISideMenuConfProps extends ComponentPropsWithoutRef<'div'> {
   title: string;
   logo?: JSX.Element;
   fullMode?: boolean;
 }
 
-interface ISideMenuProps extends ComponentPropsWithoutRef<"div"> {
+interface ISideMenuProps extends ComponentPropsWithoutRef<'div'> {
   items?: ISideMenuItemProps[];
   conf: ISideMenuConfProps;
 }
 
-interface IShortItemProps extends ComponentPropsWithoutRef<"div"> {
+interface IShortItemProps extends ComponentPropsWithoutRef<'div'> {
   icon: JSX.Element;
   active?: boolean;
 }
 
-interface ILongItemProps extends ComponentPropsWithoutRef<"div"> {
+interface ILongItemProps extends ComponentPropsWithoutRef<'div'> {
   icon: JSX.Element;
   label: string;
   active?: boolean;
@@ -38,11 +38,11 @@ interface ILongItemProps extends ComponentPropsWithoutRef<"div"> {
 export function ShortItem(props: IShortItemProps) {
   const { icon, active } = props;
   const clonedIcon = cloneElement(icon, {
-    className: "w-6 h-6 stroke-current text-i-tertiary",
+    className: 'w-6 h-6 stroke-current text-i-tertiary',
   });
   const activeClass = active
-    ? "bg-c-default text-f-secondary"
-    : "hover:bg-tertiary text-f-primary";
+    ? 'bg-c-default text-f-secondary'
+    : 'hover:bg-tertiary text-f-primary';
 
   return (
     <div
@@ -56,11 +56,11 @@ export function ShortItem(props: IShortItemProps) {
 export function LongItem(props: ILongItemProps) {
   const { icon, label, active, onClickItem } = props;
   const clonedIcon = cloneElement(icon, {
-    className: "w-6 h-6 stroke-current text-i-tertiary",
+    className: 'w-6 h-6 stroke-current text-i-tertiary',
   });
   const activeClass = active
-    ? "bg-c-default text-f-secondary"
-    : "hover:bg-tertiary text-f-primary";
+    ? 'bg-c-default text-f-secondary'
+    : 'hover:bg-tertiary text-f-primary';
 
   return (
     <>
@@ -138,8 +138,8 @@ export function SideMenu(props: ISideMenuProps) {
 
   const [hover, setHover] = useState(true);
 
-  const fullModeClass = fullMode ? "fixed top-0 left-0 right-0" : "";
-  const hoverClass = hover ? "w-16" : "w-60";
+  const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0' : '';
+  const hoverClass = hover ? 'w-16' : 'w-60';
 
   function handleOnMouseOver(e: any) {
     e.preventDefault();

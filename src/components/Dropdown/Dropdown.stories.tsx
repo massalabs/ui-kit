@@ -1,13 +1,13 @@
-import { Dropdown } from "./Dropdown";
-import { MassaToken } from "../Icons/Svg/Massa/MassaToken";
-import { MassaLogo } from "../Icons/Svg/Massa/MassaLogo";
-import FranceFlag from "./../../assets/flags/france.svg";
-import UnitedStatesFlag from "../../assets/flags/unitedStates.svg";
-import ItalyFlag from "../../assets/flags/italy.svg";
-import BrazilFlag from "../../assets/flags/brazil.svg";
+import { Dropdown } from './Dropdown';
+import { MassaToken } from '../Icons/Svg/Massa/MassaToken';
+import { MassaLogo } from '../Icons/Svg/Massa/MassaLogo';
+import FranceFlag from './../../assets/flags/france.svg';
+import UnitedStatesFlag from '../../assets/flags/unitedStates.svg';
+import ItalyFlag from '../../assets/flags/italy.svg';
+import BrazilFlag from '../../assets/flags/brazil.svg';
 
 export default {
-  title: "Components/Dropdown",
+  title: 'Components/Dropdown',
   component: Dropdown,
 };
 
@@ -21,14 +21,14 @@ export const _Dropdown = {
               icon: (
                 <MassaToken size={32} className="bg-c-default rounded-full" />
               ),
-              item: "account 1 name",
-              onClick: () => console.log("option 1"),
+              item: 'account 1 name',
+              onClick: () => console.log('option 1'),
             },
-            { icon: <MassaLogo size={32} />, item: "account 2 name" },
-            { icon: <MassaLogo size={32} />, item: "account 3 name" },
-            { icon: <MassaLogo size={32} />, item: "account 4 name" },
-            { icon: <MassaLogo size={32} />, item: "account 5 name" },
-            { icon: <MassaLogo size={32} />, item: "account 6 name" },
+            { icon: <MassaLogo size={32} />, item: 'account 2 name' },
+            { icon: <MassaLogo size={32} />, item: 'account 3 name' },
+            { icon: <MassaLogo size={32} />, item: 'account 4 name' },
+            { icon: <MassaLogo size={32} />, item: 'account 5 name' },
+            { icon: <MassaLogo size={32} />, item: 'account 6 name' },
           ]}
         />
       </div>
@@ -50,8 +50,8 @@ export const _Dropdown = {
                   <FranceFlag />
                 </div>
               ),
-              item: "français",
-              onClick: () => console.log("option 1"),
+              item: 'français',
+              onClick: () => console.log('option 1'),
             },
             {
               icon: (
@@ -59,7 +59,7 @@ export const _Dropdown = {
                   <UnitedStatesFlag />
                 </div>
               ),
-              item: "english",
+              item: 'english',
             },
             {
               icon: (
@@ -67,7 +67,7 @@ export const _Dropdown = {
                   <BrazilFlag />
                 </div>
               ),
-              item: "português",
+              item: 'português',
             },
             {
               icon: (
@@ -75,7 +75,7 @@ export const _Dropdown = {
                   <ItalyFlag />
                 </div>
               ),
-              item: "italiano",
+              item: 'italiano',
             },
           ]}
         />
@@ -85,7 +85,7 @@ export const _Dropdown = {
 
       <div className="w-52">
         <Dropdown
-          size={"xs"}
+          size={'xs'}
           options={[
             {
               icon: (
@@ -93,8 +93,8 @@ export const _Dropdown = {
                   <FranceFlag />
                 </div>
               ),
-              item: "français",
-              onClick: () => console.log("option 1"),
+              item: 'français',
+              onClick: () => console.log('option 1'),
             },
             {
               icon: (
@@ -102,7 +102,7 @@ export const _Dropdown = {
                   <UnitedStatesFlag />
                 </div>
               ),
-              item: "english",
+              item: 'english',
             },
             {
               icon: (
@@ -110,7 +110,7 @@ export const _Dropdown = {
                   <BrazilFlag />
                 </div>
               ),
-              item: "português",
+              item: 'português',
             },
             {
               icon: (
@@ -118,7 +118,7 @@ export const _Dropdown = {
                   <ItalyFlag />
                 </div>
               ),
-              item: "italiano",
+              item: 'italiano',
             },
           ]}
         />
@@ -128,17 +128,17 @@ export const _Dropdown = {
 
       <div className="w-32">
         <Dropdown
-          size={"xs"}
+          size={'xs'}
           options={[
             {
               icon: (
                 <MassaToken size={16} className="bg-c-default rounded-full" />
               ),
-              item: "MAS",
-              onClick: () => console.log("option 1"),
+              item: 'MAS',
+              onClick: () => console.log('option 1'),
             },
-            { icon: <MassaLogo size={16} />, item: "MAS" },
-            { icon: <MassaLogo size={16} />, item: "MAS" },
+            { icon: <MassaLogo size={16} />, item: 'MAS' },
+            { icon: <MassaLogo size={16} />, item: 'MAS' },
           ]}
         />
       </div>

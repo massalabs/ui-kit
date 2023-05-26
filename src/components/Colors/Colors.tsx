@@ -1,4 +1,4 @@
-import { Theme, Alias } from "./Color";
+import { Theme, Alias } from './Color';
 
 export function Colors() {
   return (

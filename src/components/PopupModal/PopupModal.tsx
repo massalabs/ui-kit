@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from "react";
+import React from 'react';
 
 import {
   ReactNode,
@@ -10,11 +10,11 @@ import {
   cloneElement,
   isValidElement,
   Children,
-} from "react";
-import { FiX } from "react-icons/fi";
+} from 'react';
+import { FiX } from 'react-icons/fi';
 
-interface IPopupModalProps extends ComponentPropsWithoutRef<"div"> {
-  status?: "hidden" | "displayed" | undefined;
+interface IPopupModalProps extends ComponentPropsWithoutRef<'div'> {
+  status?: 'hidden' | 'displayed' | undefined;
   fullMode?: boolean;
   children?: ReactNode;
 
@@ -25,7 +25,7 @@ interface IPopupModalProps extends ComponentPropsWithoutRef<"div"> {
   onClose?: () => void;
 }
 
-interface IPopupModalNodeProps extends ComponentPropsWithoutRef<"div"> {
+interface IPopupModalNodeProps extends ComponentPropsWithoutRef<'div'> {
   children?: ReactNode;
   _onClose?: () => void;
 }
@@ -98,7 +98,7 @@ export function PopupModal(props: IPopupModalProps) {
     ...rest
   } = props;
   const [hidden, setHidden] = useState(status);
-  const fullModeClass = fullMode ? "fixed top-0 left-0 right-0" : "";
+  const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0' : '';
 
   useEffect(() => {
     handleOpen();
@@ -109,7 +109,7 @@ export function PopupModal(props: IPopupModalProps) {
   }
 
   function handleClose() {
-    setHidden("hidden");
+    setHidden('hidden');
 
     onClose?.();
   }

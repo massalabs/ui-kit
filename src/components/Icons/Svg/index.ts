@@ -1,1 +1,1 @@
-export * from "./Massa";
+export * from './Massa';
