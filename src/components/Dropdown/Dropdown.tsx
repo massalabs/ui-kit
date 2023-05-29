@@ -8,11 +8,13 @@ import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 interface IOption extends ComponentPropsWithoutRef<'div'> {
   icon?: JSX.Element;
   item: string;
+  select?: number;
 }
 
 interface IDropdownProps extends ComponentPropsWithoutRef<'div'> {
   options: IOption[];
   size?: 'xs' | 'md';
+  select?: number;
 }
 
 function Icon({ toggle }: { toggle: boolean }) {
@@ -26,7 +28,7 @@ function Icon({ toggle }: { toggle: boolean }) {
 }
 
 export function Dropdown(props: IDropdownProps) {
-  let { size = 'md', options } = props;
+  let { size = 'md', select = 0, options } = props;
 
   const classes = {
     xs: {
@@ -43,7 +45,7 @@ export function Dropdown(props: IDropdownProps) {
     },
   };
 
-  const firstObject = options[0];
+  const firstObject = options[select];
   const [toggle, setToggle] = useState(false);
   const [selected, setSelected] = useState(firstObject);
   const hidden = toggle ? '' : 'hidden';
