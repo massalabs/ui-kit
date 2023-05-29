@@ -121,6 +121,7 @@ export const _Dropdown = {
               item: 'italiano',
             },
           ]}
+          select={2}
         />
       </div>
 
