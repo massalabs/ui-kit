@@ -4,15 +4,17 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { createThemes } = require('tw-colors');
 
-const colorGreen = '#1AE19D';
-const colorWhite = '#FFFFFF';
-const colorDarkGrey = '#DADADA';
-const colorLightGrey = '#F1F1F1';
-const colorDarkBlue = '#151A26';
-const colorBasicBlue = '#1A202E';
-const colorLightBlue = '#2E374C';
-const colorWarning = '#FFA41D';
-const colorError = '#FF4F4F';
+import {
+  colorGreen,
+  colorWhite,
+  colorDarkGrey,
+  colorLightGrey,
+  colorDarkBlue,
+  colorBasicBlue,
+  colorLightBlue,
+  colorWarning,
+  colorError,
+} from './colors';
 
 /** @type {import('tailwindcss').Config} */
 import plugin from 'tailwindcss/plugin';
