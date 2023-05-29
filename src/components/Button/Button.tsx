@@ -16,8 +16,8 @@ export function Button(props: ButtonProps) {
   const { children, preIcon, posIcon, variant, ...rest } = props;
 
   const primaryClass = `bg-c-default text-primary
-                        hover:bg-c-hover
-                        active:bg-c-pressed 
+                        hover:bg-c-hover hover:border-c-hover
+                        active:bg-c-hover 
                         disabled:text-f-disabled-2 disabled:bg-c-disabled-1 disabled:border-c-disabled-1`;
 
   const secondaryClass = `text-f-primary
