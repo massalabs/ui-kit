@@ -31,10 +31,10 @@ export function Button(props: ButtonProps) {
     <button
       data-testid="button"
       type="button"
-      className={`default-button w-full px-4 py-3 ${buttonClass}`}
       {...rest}
+      className={`default-button px-4 py-3 ${buttonClass}`}
     >
-      <div className="w-fit m-auto flex gap-2 items-center">
+      <div className="w-fit m-auto flex gap-2 items-baseline">
         <div className="m-auto">
           <IconContext.Provider value={{ className: 'w-6 h-6' }}>
             {preIcon}
