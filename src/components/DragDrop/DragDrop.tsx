@@ -2,12 +2,13 @@
 // @ts-ignore
 import React from 'react';
 
-import { ComponentPropsWithoutRef, useState } from 'react';
+import { ComponentPropsWithoutRef, useRef, useState } from 'react';
 import { FiArchive, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 
 interface IDragDropProps extends ComponentPropsWithoutRef<'input'> {
   placeholder?: string;
   allowed?: string[];
+  onFileLoaded?: (file: File | null) => void;
 }
 
 // Jest fails with Enums
@@ -34,8 +35,9 @@ const LoadedStatus = {
 };
 
 export function DragDrop(props: IDragDropProps) {
-  const { placeholder, allowed = ['.yaml'] } = props;
+  const { placeholder, onFileLoaded, allowed = ['.yaml'] } = props;
 
+  const inputFileRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(Status.NORMAL);
   const [fileName, setFileName] = useState(placeholder);
 
@@ -52,15 +54,28 @@ export function DragDrop(props: IDragDropProps) {
     if (!allowed.includes(file.split('.').pop())) {
       setIsLoaded(Status.FAILED);
       setFileName(`Owh! File not allowed. Allowed: ${allowed.toString()}`);
+      onFileLoaded?.(null);
       return false;
     }
     return true;
   }
 
-  function dropHandler(e: {
-    preventDefault: () => void;
-    dataTransfer: { items: any; files: any };
-  }) {
+  function handleOnChange(e: any) {
+    e.preventDefault();
+
+    [...e.target.files].forEach((file) => {
+      if (!isValidFile(file.name.toLowerCase())) {
+        return;
+      } else {
+        setIsLoaded(Status.LOADED);
+        setFileName(file.name);
+
+        onFileLoaded?.(file);
+      }
+    });
+  }
+
+  function handleOnDropHandler(e: any) {
     e.preventDefault();
 
     if (e.dataTransfer.items) {
@@ -73,6 +88,8 @@ export function DragDrop(props: IDragDropProps) {
           } else {
             setIsLoaded(Status.LOADED);
             setFileName(file.name);
+
+            onFileLoaded?.(file);
           }
         }
       });
@@ -83,33 +100,44 @@ export function DragDrop(props: IDragDropProps) {
         } else {
           setIsLoaded(Status.LOADED);
           setFileName(file.name);
+
+          onFileLoaded?.(file);
         }
       });
     }
   }
 
-  function dragOverHandler(e: { preventDefault: () => void }) {
+  function handleDragOverHandler(e: any) {
     e.preventDefault();
   }
 
   return (
-    <div
-      data-testid="drag-drop"
-      className="w-full"
-      id="drop_zone"
-      onDrop={dropHandler}
-      onDragOver={dragOverHandler}
-    >
-      <label
-        className={`flex justify-center w-full h-24 px-4 transition ${loadedClass}
-                        bg-secondary rounded-lg appearance-none cursor-pointer`}
+    <form>
+      <div
+        data-testid="drag-drop"
+        className="w-full"
+        id="drop_zone"
+        onDrop={handleOnDropHandler}
+        onDragOver={handleDragOverHandler}
       >
-        <span className="flex items-center space-x-2">
-          {loadedIcon}
-          <span className="pl-5 mas-body2">{fileName}</span>
-        </span>
-        <input accept="*.yaml" type="file" name="upload" className="hidden" />
-      </label>
-    </div>
+        <label
+          className={`flex justify-center w-full h-24 px-4 transition ${loadedClass}
+                        bg-secondary rounded-lg appearance-none cursor-pointer`}
+        >
+          <span className="flex items-center space-x-2">
+            {loadedIcon}
+            <span className="pl-5 mas-body2">{fileName}</span>
+          </span>
+          <input
+            onChange={handleOnChange}
+            ref={inputFileRef}
+            accept="*.yaml"
+            type="file"
+            name="upload"
+            className="hidden"
+          />
+        </label>
+      </div>
+    </form>
   );
 }
