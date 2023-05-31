@@ -9,10 +9,11 @@ export interface BalanceProps extends ComponentPropsWithoutRef<'div'> {
   size: 'xs' | 'lg';
   amount: string;
   equal?: string;
+  customClass?: string;
 }
 
 export function Balance({ ...props }) {
-  const { size = 'lg', amount, equal } = props;
+  const { size = 'lg', amount, equal, customClass } = props;
 
   const isLg = size === 'lg';
   const sizeClass = isLg ? 'mas-banner mb-1' : 'mas-buttons mb-0.5';
@@ -22,7 +23,7 @@ export function Balance({ ...props }) {
   return (
     <div
       data-testid="balance"
-      className="flex items-center w-fit p-5 bg-primary"
+      className={`flex items-center w-fit p-5 bg-primary ${customClass}`}
     >
       <MassaLogo size={logoClass} className={iconClass} />
       <label className={`${sizeClass} text-f-primary`}>{amount}</label>
