@@ -29,12 +29,12 @@ export const _Primary = {
 export const _PrimaryWithLabel = {
   render: () => (
     <>
-      <Button preIcon={<FiDisc />} className="w-40">
+      <Button preIcon={<FiDisc />} customClass="w-40">
         <div className="flex items-center">Coins</div>
       </Button>
       <br />
       <br />
-      <Button className="w-40">
+      <Button customClass="w-40">
         <div className="flex items-center">
           Coins
           <label className="text-tertiary text-xs flex ml-1 items-center">
@@ -69,12 +69,12 @@ export const _Secondary = {
 export const _SecondaryWithLabel = {
   render: () => (
     <>
-      <Button variant="secondary" preIcon={<FiDisc />} className="w-40">
+      <Button variant="secondary" preIcon={<FiDisc />} customClass="w-40">
         <div className="flex items-center">Coins</div>
       </Button>
       <br />
       <br />
-      <Button variant="secondary" className="w-40">
+      <Button variant="secondary" customClass="w-40">
         <div className="flex items-center">
           Coins
           <label className="text-c-pressed text-xs flex ml-1 items-center">

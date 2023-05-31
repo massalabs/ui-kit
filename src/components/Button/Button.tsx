@@ -10,10 +10,11 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   preIcon?: ReactNode;
   posIcon?: ReactNode;
   variant?: 'secondary' | undefined;
+  customClass?: string;
 }
 
 export function Button(props: ButtonProps) {
-  const { children, preIcon, posIcon, variant, ...rest } = props;
+  const { children, preIcon, posIcon, variant, customClass, ...rest } = props;
 
   const primaryClass = `bg-c-default text-primary
                         hover:bg-c-hover hover:border-c-hover
@@ -31,8 +32,8 @@ export function Button(props: ButtonProps) {
     <button
       data-testid="button"
       type="button"
+      className={`default-button px-4 py-3 ${buttonClass} ${customClass}`}
       {...rest}
-      className={`default-button px-4 py-3 ${buttonClass}`}
     >
       <div className="w-fit m-auto flex gap-2 items-baseline">
         <div className="m-auto">
