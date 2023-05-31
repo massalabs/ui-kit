@@ -25,14 +25,16 @@ export function Button(props: ButtonProps) {
                           active:bg-neutral/[.3]                                                  
                           disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`;
 
-  const buttonClass = variant ? secondaryClass : primaryClass;
+  let className = variant ? secondaryClass : primaryClass;
+
+  if (props.className) className = className + ' ' + props.className;
 
   return (
     <button
       data-testid="button"
       type="button"
       {...rest}
-      className={`default-button px-4 py-3 ${buttonClass}`}
+      className={`default-button px-4 py-3 ${className}`}
     >
       <div className="w-fit m-auto flex gap-2 items-baseline">
         <div className="m-auto">
