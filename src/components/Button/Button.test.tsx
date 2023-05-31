@@ -37,7 +37,15 @@ describe('Components | Button', () => {
 
     let button = screen.getByTestId('button');
 
-    expect(button).toHaveClass('text-primary');
+    expect(button).toHaveClass('default-primary');
+  });
+
+  test('it should have default secondary class', () => {
+    render(<Button variant="secondary">something</Button>);
+
+    let button = screen.getByTestId('button');
+
+    expect(button).toHaveClass('default-secondary');
   });
 
   test('it should fire onClick event', () => {
