@@ -6,14 +6,15 @@ import { ComponentPropsWithoutRef } from 'react';
 
 interface SVGProps extends ComponentPropsWithoutRef<'div'> {
   size?: number;
+  customClass?: string;
 }
 
 export function MassaToken(props: SVGProps) {
-  let { size, ...rest } = props;
+  let { size, customClass, ...rest } = props;
 
   return (
     <div
-      className={`bg-primary w-fit rounded-full`}
+      className={`bg-primary w-fit rounded-full ${customClass}`}
       data-testid="svg-icon"
       {...rest}
     >
