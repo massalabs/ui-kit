@@ -38,6 +38,20 @@
     @apply rounded-lg mas-buttons w-full h-12 border border-c-default;
   }
 
+  .default-primary {
+    @apply bg-c-default text-primary
+          hover:bg-c-hover hover:border-c-hover
+          active:bg-c-hover 
+          disabled:text-f-disabled-2 disabled:bg-c-disabled-1 disabled:border-c-disabled-1;
+  }
+
+  .default-secondary {
+    @apply text-f-primary
+          hover:bg-neutral/[.15]
+          active:bg-neutral/[.3]                                                  
+          disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1;
+  }
+
   .default-tab {
     @apply mas-menu-default antialiased flex flex-row justify-center items-center w-full border-b h-14 text-info;
   }
