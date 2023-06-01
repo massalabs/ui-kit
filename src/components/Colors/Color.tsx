@@ -41,6 +41,7 @@ export function Alias() {
       <p className={classAlias}>c-pressed</p>
       <p className={classAlias}>c-disabled-1</p>
       <p className={classAlias}>c-disabled-2</p>
+      <p className={classAlias}>c-error</p>
     </div>
   );
   const Icons = () => (
@@ -106,6 +107,7 @@ export function Theme() {
       <Color color="bg-c-pressed" />
       <Color color="bg-c-disabled-1" />
       <Color color="bg-c-disabled-2" />
+      <Color color="bg-c-error" />
     </div>
   );
   const Icons = () => (

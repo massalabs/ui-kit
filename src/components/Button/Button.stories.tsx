@@ -85,3 +85,23 @@ export const _SecondaryWithLabel = {
     </>
   ),
 };
+
+export const _Danger = {
+  render: () => (
+    <>
+      <Button variant="danger" {...args}>
+        Secondary
+      </Button>
+
+      <br />
+      <br />
+
+      <Button variant="danger" {...args} disabled>
+        Secondary disabled
+      </Button>
+
+      <br />
+      <br />
+    </>
+  ),
+};
