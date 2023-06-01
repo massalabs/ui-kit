@@ -14,7 +14,7 @@ export interface IdenticonProps extends ComponentPropsWithoutRef<'img'> {
   customClass?: string;
 }
 
-export const Identicon = (props: IdenticonProps) => {
+export function Identicon(props: IdenticonProps) {
   const { username, size, saturation, lightness, customClass, ...rest } = props;
 
   const computedSize = size?.toString() || '64';
@@ -37,4 +37,4 @@ export const Identicon = (props: IdenticonProps) => {
       height={computedSize}
     />
   );
-};
+}
