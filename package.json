@@ -3,9 +3,6 @@
   "version": "0.0.3",
   "type": "module",
   "files": ["src", "presets"],
-  "jest": {
-    "testEnvironment": "jsdom"
-  },
   "main": "src/index.ts",
   "style": "src/global.css",
   "scripts": {
