@@ -1,4 +1,4 @@
-export * from './AccountSelector';
+export * from './Selector';
 export * from './Tabs';
 export * from './Input';
 export * from './Password';
