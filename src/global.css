@@ -41,7 +41,7 @@
   .default-primary {
     @apply bg-c-default text-primary
           hover:bg-c-hover hover:border-c-hover
-          active:bg-c-hover 
+          active:bg-c-pressed 
           disabled:text-f-disabled-2 disabled:bg-c-disabled-1 disabled:border-c-disabled-1;
   }
 
