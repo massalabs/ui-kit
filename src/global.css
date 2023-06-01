@@ -45,6 +45,13 @@
           disabled:text-f-disabled-2 disabled:bg-c-disabled-1 disabled:border-c-disabled-1;
   }
 
+  .default-danger {
+    @apply text-s-error border-s-error
+      hover:bg-s-error/[.15]
+      active:bg-s-error/[.3]                                                  
+      disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1;
+  }
+
   .default-secondary {
     @apply text-f-primary
           hover:bg-neutral/[.15]

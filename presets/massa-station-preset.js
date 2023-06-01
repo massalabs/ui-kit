@@ -48,6 +48,7 @@ module.exports = {
         'c-pressed': colorBasicBlue,
         'c-disabled-1': colorDarkGrey,
         'c-disabled-2': colorLightGrey,
+        'c-error': colorError,
         // icons:
         'i-primary': colorDarkBlue,
         'i-secondary': colorWhite,
@@ -77,6 +78,7 @@ module.exports = {
         'c-pressed': colorLightGrey,
         'c-disabled-1': colorDarkGrey,
         'c-disabled-2': colorLightGrey,
+        'c-error': colorError,
         // icons:
         'i-primary': colorWhite,
         'i-secondary': colorDarkBlue,

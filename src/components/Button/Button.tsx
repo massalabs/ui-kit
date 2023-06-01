@@ -9,7 +9,7 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   children?: ReactNode;
   preIcon?: ReactNode;
   posIcon?: ReactNode;
-  variant?: 'secondary' | 'primary' | undefined;
+  variant?: 'secondary' | 'primary' | 'danger' | undefined;
   customClass?: string;
 }
 
@@ -30,6 +30,7 @@ export function Button(props: ButtonProps) {
   const classes: Classes = {
     primary: 'default-primary',
     secondary: 'default-secondary',
+    danger: 'default-danger',
   };
 
   return (
