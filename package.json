@@ -3,9 +3,6 @@
   "version": "0.0.3",
   "type": "module",
   "files": ["src", "presets"],
-  "jest": {
-    "testEnvironment": "jsdom"
-  },
   "main": "src/index.ts",
   "style": "src/global.css",
   "scripts": {
@@ -22,6 +19,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "minidenticons": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
