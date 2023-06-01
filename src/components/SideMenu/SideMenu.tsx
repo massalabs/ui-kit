@@ -65,7 +65,7 @@ export function LongItem(props: ILongItemProps) {
   return (
     <>
       <div
-        className={`flex items-center w-full h-12 px-3 mt-2 rounded hover:cursor-pointer ${activeClass}`}
+        className={`flex items-center w-full h-12 px-3 mt-2 pl-5 rounded hover:cursor-pointer ${activeClass}`}
         onClick={onClickItem}
       >
         {clonedIcon}
@@ -80,7 +80,7 @@ function ShortMenu(props: ISideMenuProps) {
   const { logo } = conf;
 
   return (
-    <div className="flex flex-col items-center w-16 h-full overflow-hidden bg-secondary">
+    <div className="flex flex-col items-center w-20 h-full overflow-hidden bg-secondary">
       <div className="flex items-center justify-center mt-3">{logo}</div>
       <div className="flex flex-col items-center mt-3">
         {items
@@ -89,7 +89,7 @@ function ShortMenu(props: ISideMenuProps) {
             <ShortItem key={idx} {...props} />
           ))}
       </div>
-      <div className="w-full px-2 py-2 mt-auto">
+      <div className="w-full px-4 py-2 mt-auto">
         {items
           ?.filter((item) => item.footer)
           .map(({ ...props }, idx) => (
@@ -105,10 +105,10 @@ function LongMenu(props: ISideMenuProps) {
   const { logo, title } = conf;
 
   return (
-    <div className="flex flex-col items-center w-60 h-full overflow-hidden bg-secondary">
-      <div className="flex w-full items-center px-4 mt-3">
+    <div className="flex flex-col items-center w-64 h-full overflow-hidden bg-secondary">
+      <div className="flex w-full items-center px-5 mt-3">
         {logo}
-        <span className="w-full -ml-2 text-center text-f-primary mas-menu-active">
+        <span className="w-full ml-3 text-center text-f-primary mas-menu-active">
           {title}
         </span>
       </div>
@@ -139,7 +139,7 @@ export function SideMenu(props: ISideMenuProps) {
   const [hover, setHover] = useState(true);
 
   const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0' : '';
-  const hoverClass = hover ? 'w-16' : 'w-60';
+  const hoverClass = hover ? 'w-20' : 'w-64';
 
   function handleOnMouseOver(e: any) {
     e.preventDefault();

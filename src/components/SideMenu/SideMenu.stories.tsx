@@ -8,13 +8,13 @@ import {
   FiSettings,
   FiSun,
 } from 'react-icons/fi';
-import { MassaLogo } from '../Icons/Svg/Massa/MassaLogo';
+import { MassaWallet } from '../Icons/Svg/Massa/MassaWallet';
 
 export default { title: 'Components/SideMenu', component: SideMenu };
 
 let conf = {
   title: 'MassaStation',
-  logo: <MassaLogo />,
+  logo: <MassaWallet />,
   // fullMode is false to be able to show in storybook.
   // For most of the time it will be true.
   fullMode: false,
