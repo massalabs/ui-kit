@@ -15,9 +15,14 @@ export interface IdenticonProps extends ComponentPropsWithoutRef<'img'> {
 }
 
 export function Identicon(props: IdenticonProps) {
-  const { username, size, saturation, lightness, customClass, ...rest } = props;
-
-  const computedSize = size?.toString() || '64';
+  const {
+    username,
+    size = 64,
+    saturation,
+    lightness,
+    customClass,
+    ...rest
+  } = props;
 
   const svgURI = useMemo(
     () =>
@@ -32,9 +37,9 @@ export function Identicon(props: IdenticonProps) {
       className={`bg-neutral rounded-full ${customClass}`}
       src={svgURI}
       alt={username}
+      width={size.toString()}
+      height={size.toString()}
       {...rest}
-      width={computedSize}
-      height={computedSize}
     />
   );
 }
