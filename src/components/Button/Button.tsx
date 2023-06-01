@@ -23,7 +23,11 @@ export function Button(props: ButtonProps) {
     ...rest
   } = props;
 
-  const classes: any = {
+  interface Classes {
+    [key: string]: string | object;
+  }
+
+  const classes: Classes = {
     primary: 'default-primary',
     secondary: 'default-secondary',
   };
