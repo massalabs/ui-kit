@@ -65,8 +65,8 @@ export function Selector(props: SelectorProps) {
         {content}
       </div>
       <div className={`${CLASSES.root} gap-2`}>
-        {posIcon}
         {amount}
+        {posIcon}
       </div>
     </div>
   );
