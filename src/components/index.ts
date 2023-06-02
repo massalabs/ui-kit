@@ -12,3 +12,4 @@ export * from './Toggle';
 export * from './Balance';
 export * from './ThemeMode';
 export * from './RadioButton';
+export * from './Identicon';
