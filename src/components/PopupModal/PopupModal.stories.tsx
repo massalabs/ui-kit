@@ -66,7 +66,7 @@ export const _NoFooter = {
 
 export const _FullMode = {
   render: () => (
-    <div className="h-[450px]">
+    <div className="w-[750px]">
       <PopupModal fullMode={true}>
         <PopupModalHeader>
           <label className="text-f-primary">The title</label>
