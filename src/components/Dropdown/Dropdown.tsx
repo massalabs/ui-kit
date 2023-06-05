@@ -81,8 +81,8 @@ export function Dropdown(props: IDropdownProps) {
                     hover:bg-tertiary hover:border-tertiary  
                     disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`}
       >
-        <div className={customIconClass}>{selected.icon}</div>
-        <div className="mas-menu-active">{selected.item}</div>
+        <div className={customIconClass}>{selected?.icon}</div>
+        <div className="mas-menu-active">{selected?.item}</div>
         <Icon toggle={toggle} />
       </button>
       <div
