@@ -70,9 +70,7 @@ export function Plugin(props: PluginProps) {
               key={idx}
               className="flex items-center justify-center h-10 w-10 cursor-pointer "
             >
-              <IconContext.Provider
-                value={{ className: 'w-6 h-6 text-i-primary' }}
-              >
+              <IconContext.Provider value={{ className: 'w-6 h-6' }}>
                 {action}
               </IconContext.Provider>
             </div>
