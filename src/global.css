@@ -53,8 +53,9 @@
   }
 
   .default-toggle {
-    @apply w-12 h-10 text-f-primary
-      hover:bg-secondary                                            
+    @apply w-12 h-10 text-primary
+      bg-c-default       
+      hover:bg-c-pressed hover:border hover:border-c-pressed                            
       disabled:text-tertiary disabled:bg-secondary disabled:border-secondary disabled:hover:border-c-hover cursor-pointer;
   }
 

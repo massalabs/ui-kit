@@ -21,7 +21,7 @@ export function ButtonToggle(props: ButtonProps) {
     <button
       data-testid="button"
       type="button"
-      className={`default-button default-toggle ${customClass}`}
+      className={`default-button default-toggle border-0 ${customClass}`}
       {...rest}
     >
       <div className="w-fit m-auto flex gap-2 items-baseline">{children}</div>
@@ -33,9 +33,9 @@ export function ButtonIcon(props: ButtonProps) {
   const { children, model = 'single', customClass, ...rest } = props;
 
   const models: Models = {
-    single:
-      'disabled:text-tertiary disabled:bg-secondary disabled:border-tertiary disabled:hover:border-tertiary',
     border:
+      'disabled:text-tertiary disabled:bg-secondary disabled:border-tertiary disabled:hover:border-tertiary',
+    single:
       'border-0 bg-secondary hover:bg-tertiary disabled:bg-secondary disabled:text-tertiary',
   };
 
