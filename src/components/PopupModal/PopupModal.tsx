@@ -17,7 +17,7 @@ interface IPopupModalProps extends ComponentPropsWithoutRef<'div'> {
   status?: 'hidden' | 'displayed' | undefined;
   fullMode?: boolean;
   children?: ReactNode;
-
+  customClass?: string;
   // both exposed function should be declared as:
   // onOpen?(): any;
   // however by some reason jest does not recognize
@@ -95,6 +95,7 @@ export function PopupModal(props: IPopupModalProps) {
     children,
     onOpen,
     onClose,
+    customClass,
     ...rest
   } = props;
   const [hidden, setHidden] = useState(status);
@@ -128,7 +129,7 @@ export function PopupModal(props: IPopupModalProps) {
                   overflow-x-hidden overflow-y-auto`}
       {...rest}
     >
-      <div className="relative  max-h-full w-1/2">
+      <div className={`relative max-h-full w-2/3 ${customClass}`}>
         <div className="relative bg-primary rounded-lg shadow">
           {appendedChildren}
         </div>
