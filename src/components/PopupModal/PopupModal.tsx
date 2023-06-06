@@ -128,7 +128,7 @@ export function PopupModal(props: IPopupModalProps) {
                   overflow-x-hidden overflow-y-auto`}
       {...rest}
     >
-      <div className="relative  max-h-full w-1/2">
+      <div className="relative  max-h-full w-1/2 min-w-[745]">
         <div className="relative bg-primary rounded-lg shadow">
           {appendedChildren}
         </div>
