@@ -105,3 +105,44 @@ export const _Danger = {
     </>
   ),
 };
+
+export const _Toggle = {
+  render: () => (
+    <>
+      <Button variant="toggle">on</Button>&nbsp;
+      <Button variant="toggle" disabled>
+        off
+      </Button>
+    </>
+  ),
+};
+
+const colorWarning = '#FFA41D';
+
+export const _Icon = {
+  render: () => (
+    <>
+      <Button variant="icon">
+        <FiDisc />
+      </Button>
+      &nbsp;
+      <Button variant="icon" disabled>
+        <FiDisc />
+      </Button>
+      <br />
+      <br />
+      <Button variant="icon" model="border">
+        <FiDisc />
+      </Button>
+      &nbsp;
+      <Button variant="icon" model="border">
+        <FiDisc color={colorWarning} />
+      </Button>
+      <br />
+      <br />
+      <Button variant="icon" model="border" disabled>
+        <FiDisc />
+      </Button>
+    </>
+  ),
+};

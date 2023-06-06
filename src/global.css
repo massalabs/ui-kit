@@ -52,6 +52,17 @@
       disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1;
   }
 
+  .default-toggle {
+    @apply w-12 h-10 text-f-primary
+      hover:bg-secondary                                            
+      disabled:text-tertiary disabled:bg-secondary disabled:border-secondary disabled:hover:border-c-hover cursor-pointer;
+  }
+
+  .default-icon {
+    @apply w-10 h-10 text-f-primary
+      hover:bg-tertiary;
+  }
+
   .default-secondary {
     @apply text-f-primary
           hover:bg-neutral/[.15]
