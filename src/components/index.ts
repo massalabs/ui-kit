@@ -14,3 +14,4 @@ export * from './ThemeMode';
 export * from './RadioButton';
 export * from './Identicon';
 export * from './Transaction';
+export * from './Plugin';
