@@ -26,7 +26,7 @@ export function Tabs({ ...props }) {
 
   return (
     <div data-testid="tabs-selector" {...rest}>
-      <div className="w-full flex flex-row mb-2">
+      <div className="w-full flex flex-row mb-6">
         {tabsConfig.map((tab: TabConfig, index: number) => (
           <div
             className={`default-tab default-tab-hover ${
