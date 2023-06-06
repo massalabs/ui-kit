@@ -6,8 +6,10 @@ import { Button } from '../Button/Button';
 export default {
   title: 'Components/Plugin',
 };
+
 const colorWarning = '#FFA41D';
-const args = {
+
+const argsOn = {
   preIcon: <MassaWallet variant="rounded" size={40} />,
   topAction: (
     <Button onClick={() => console.log('topAction')} variant="toggle">
@@ -29,6 +31,29 @@ const args = {
   ],
 };
 
-export const _Plugin = {
-  render: () => <Plugin {...args} />,
+const argsOff = {
+  preIcon: <MassaWallet variant="rounded" size={40} />,
+  topAction: (
+    <Button onClick={() => console.log('topAction')} disabled variant="toggle">
+      off
+    </Button>
+  ),
+  title: `That's is the huge name of the plugin with limit of chars`,
+  subtitle: `Author's Name`,
+  actions: [
+    <Button variant="icon" disabled>
+      <FiArrowUpRight />
+    </Button>,
+    <Button variant="icon">
+      <FiTrash2 />
+    </Button>,
+  ],
+};
+
+export const _PluginOn = {
+  render: () => <Plugin {...argsOn} />,
+};
+
+export const _PluginOff = {
+  render: () => <Plugin {...argsOff} />,
 };
