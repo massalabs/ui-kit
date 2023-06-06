@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { ComponentPropsWithoutRef, useState, MouseEvent } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
@@ -49,6 +49,11 @@ export function Dropdown(props: IDropdownProps) {
   const [toggle, setToggle] = useState(false);
   const [selected, setSelected] = useState(firstObject);
   const hidden = toggle ? '' : 'hidden';
+
+  // refresh the selected item when the select prop changes
+  useEffect(() => {
+    setSelected(options[select]);
+  }, [select, options]);
 
   const customButtonClass = classes[size].button;
   const customItemClass = classes[size].item;
