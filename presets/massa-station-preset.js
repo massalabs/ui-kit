@@ -112,6 +112,12 @@ module.exports = {
           fontFamily: theme('fontFamily.Urbane'),
           lineHeight: '24px',
         },
+        '.mas-h2': {
+          fontSize: '20px',
+          fontWeight: '300',
+          fontFamily: theme('fontFamily.Urbane'),
+          lineHeight: '24px',
+        },
         '.mas-h3': {
           fontSize: '14px',
           fontWeight: '500',
