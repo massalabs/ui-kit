@@ -31,8 +31,6 @@ export function SidePanel({ ...props }) {
 
   const isRight = side === 'right';
 
-  console.log(isRight);
-
   const sideClass = isRight ? 'right-0' : 'left-0';
   const toggleClass = toggle ? 'w-[450px]' : 'w-10';
   const iconClass = isRight ? 'flex-row' : 'flex-row-reverse';
