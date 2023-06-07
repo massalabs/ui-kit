@@ -10,18 +10,23 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   preIcon?: ReactNode;
   posIcon?: ReactNode;
   model?: 'single' | 'border';
+  pressed?: boolean;
   variant?: 'secondary' | 'primary' | 'danger' | 'toggle' | 'icon' | undefined;
   customClass?: string;
 }
 
 export function ButtonToggle(props: ButtonProps) {
-  const { children, customClass, ...rest } = props;
+  const { children, customClass, pressed, ...rest } = props;
+
+  const pressedClass = pressed
+    ? 'text-tertiary bg-primary border-secondary hover:border-c-hover'
+    : '';
 
   return (
     <button
       data-testid="button"
       type="button"
-      className={`default-button default-toggle border-0 ${customClass}`}
+      className={`default-button default-toggle border-0 ${pressedClass} ${customClass}`}
       {...rest}
     >
       <div className="w-fit m-auto flex gap-2 items-baseline">{children}</div>
