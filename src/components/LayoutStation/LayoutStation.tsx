@@ -22,9 +22,7 @@ export function LayoutStation({ ...props }) {
       <div className="grid grid-cols-2">
         <div className="flex flex-row justify-start">{logo}</div>
         <div className="flex flex-row justify-end">
-          {navigator ? (
-            <div className="flex-row-reversed">{navigator}</div>
-          ) : null}
+          {navigator && <div className="flex-row-reversed">{navigator}</div>}
         </div>
       </div>
       {children}
