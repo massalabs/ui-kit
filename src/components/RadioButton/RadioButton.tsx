@@ -11,7 +11,7 @@ export function RadioButton(props: RadioButtonProps) {
   return (
     <div data-testid="radio-button">
       <div className="inline-flex items-center">
-        <label className="relative flex cursor-pointer items-center rounded-full p-3">
+        <label className="relative flex cursor-pointer items-center rounded-full">
           <input
             type="radio"
             className={`peer relative h-5 w-5
