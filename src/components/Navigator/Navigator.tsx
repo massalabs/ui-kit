@@ -5,11 +5,11 @@ import { TbTriangleFilled } from 'react-icons/tb';
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 import { Button } from '../Button';
 
-export interface IconNavigatorProps extends ComponentPropsWithoutRef<'ol'> {
+export interface INavigatorProps extends ComponentPropsWithoutRef<'ol'> {
   nbPages: number;
   activePage: {
     index: number;
-    logo: ReactNode;
+    icon: ReactNode;
   };
   onClickNext: () => void;
   onClickBack: () => void;
@@ -17,7 +17,7 @@ export interface IconNavigatorProps extends ComponentPropsWithoutRef<'ol'> {
 
 function fillIcon(
   nbPages: number,
-  activePage: { index: number; logo: ReactNode },
+  activePage: { index: number; icon: ReactNode },
 ) {
   let pages = [];
 
@@ -26,7 +26,7 @@ function fillIcon(
       i === activePage.index ? (
         <li key={i} data-testid={`active-page-${i}`}>
           <IconContext.Provider value={{ className: 'w-8 h-8' }}>
-            {activePage.logo}
+            {activePage.icon}
           </IconContext.Provider>
         </li>
       ) : (
@@ -44,12 +44,12 @@ function fillIcon(
   return pages;
 }
 
-export function IconNavigator(props: IconNavigatorProps) {
+export function Navigator(props: INavigatorProps) {
   const { nbPages, activePage, onClickNext, onClickBack, ...rest } = props;
 
   return (
     <ol
-      data-testid="icon-navigator"
+      data-testid="navigator"
       className="flex justify-center align-middle items-center gap-5 text-c-default"
       {...rest}
     >

@@ -1,42 +1,42 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { IconNavigator } from '.';
+import { Navigator } from '.';
 
 import { FiHome, FiCodepen, FiGlobe } from 'react-icons/fi';
 
 const pages = [
   {
-    logo: <FiHome />,
+    icon: <FiHome />,
   },
   {
-    logo: <FiCodepen />,
+    icon: <FiCodepen />,
   },
   {
-    logo: <FiGlobe />,
+    icon: <FiGlobe />,
   },
 ];
 
 describe('Components | IconNavigator', () => {
   test('it should render', () => {
     render(
-      <IconNavigator
+      <Navigator
         nbPages={pages.length}
-        activePage={{ index: 0, logo: pages[0].logo }}
+        activePage={{ index: 0, icon: pages[0].icon }}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
     );
 
-    let iconNavigator = screen.getByTestId('icon-navigator');
+    let iconNavigator = screen.getByTestId('navigator');
 
     expect(iconNavigator).toBeInTheDocument();
   });
 
   test('it has the 2nd page active', () => {
     render(
-      <IconNavigator
+      <Navigator
         nbPages={pages.length}
-        activePage={{ index: 1, logo: pages[1].logo }}
+        activePage={{ index: 1, icon: pages[1].icon }}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
@@ -49,9 +49,9 @@ describe('Components | IconNavigator', () => {
 
   test('it has the 1st page inactive, the 2nd page active and the 3rd page inactive', () => {
     render(
-      <IconNavigator
+      <Navigator
         nbPages={pages.length}
-        activePage={{ index: 1, logo: pages[1].logo }}
+        activePage={{ index: 1, icon: pages[1].icon }}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
@@ -68,9 +68,9 @@ describe('Components | IconNavigator', () => {
 
   test('it has backButton disable and nextButton enable if page 0 is active', () => {
     render(
-      <IconNavigator
+      <Navigator
         nbPages={pages.length}
-        activePage={{ index: 0, logo: pages[0].logo }}
+        activePage={{ index: 0, icon: pages[0].icon }}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
@@ -87,9 +87,9 @@ describe('Components | IconNavigator', () => {
 
   test('it has backButton enable and nextButton enable if page 1 is active', () => {
     render(
-      <IconNavigator
+      <Navigator
         nbPages={pages.length}
-        activePage={{ index: 1, logo: pages[1].logo }}
+        activePage={{ index: 1, icon: pages[1].icon }}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
@@ -106,9 +106,9 @@ describe('Components | IconNavigator', () => {
 
   test('it has backButton enable and nextButton disable if page 2 is active', () => {
     render(
-      <IconNavigator
+      <Navigator
         nbPages={pages.length}
-        activePage={{ index: 2, logo: pages[2].logo }}
+        activePage={{ index: 2, icon: pages[2].icon }}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
