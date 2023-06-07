@@ -64,7 +64,7 @@ export function PopupModalContent(props: IPopupModalNodeProps) {
 
   if (children) {
     return (
-      <div data-testid="popup-modal-content" className="p-6 space-y-6">
+      <div data-testid="popup-modal-content" className="p-6">
         {children}
       </div>
     );
