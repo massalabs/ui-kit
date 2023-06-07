@@ -41,7 +41,7 @@ export function PopupModalHeader(props: IPopupModalNodeProps) {
     return (
       <div
         data-testid="popup-modal-header"
-        className="flex items-start justify-between p-4 rounded-t"
+        className="flex items-start justify-between px-10 pt-10 rounded-t"
       >
         {children}
         <button
@@ -64,7 +64,7 @@ export function PopupModalContent(props: IPopupModalNodeProps) {
 
   if (children) {
     return (
-      <div data-testid="popup-modal-content" className="p-6">
+      <div data-testid="popup-modal-content" className="px-10">
         {children}
       </div>
     );
@@ -79,7 +79,7 @@ export function PopupModalFooter(props: IPopupModalNodeProps) {
     return (
       <div
         data-testid="popup-modal-footer"
-        className="flex items-center p-6 space-x-2 border-t border-tertiary rounded-b"
+        className="flex items-center px-10 pb-10 space-x-2 border-t border-tertiary rounded-b"
       >
         {children}
       </div>
@@ -125,7 +125,7 @@ export function PopupModal(props: IPopupModalProps) {
     <div
       data-testid="popup-modal"
       className={`${hidden} ${fullModeClass} 
-                  bg-tertiary bg-opacity-75 w-full p-8 h-screen flex justify-center items-center max-h-full
+                  bg-tertiary bg-opacity-75 w-full h-screen flex justify-center items-center max-h-full
                   overflow-x-hidden overflow-y-auto`}
       {...rest}
     >
