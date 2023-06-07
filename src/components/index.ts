@@ -17,3 +17,4 @@ export * from './Transaction';
 export * from './Plugin';
 export * from './Description';
 export * from './Pagination';
+export * from './IconNavigator';
