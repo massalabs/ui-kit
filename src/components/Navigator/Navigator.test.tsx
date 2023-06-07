@@ -4,24 +4,24 @@ import { Navigator } from '.';
 
 import { FiHome, FiCodepen, FiGlobe } from 'react-icons/fi';
 
-const pages = [
-  {
-    icon: <FiHome />,
-  },
-  {
-    icon: <FiCodepen />,
-  },
-  {
-    icon: <FiGlobe />,
-  },
-];
-
-describe('Components | IconNavigator', () => {
+describe('Components | Navigator', () => {
   test('it should render', () => {
     render(
       <Navigator
-        nbPages={pages.length}
-        activePage={{ index: 0, icon: pages[0].icon }}
+        items={[
+          {
+            icon: <FiHome />,
+            isActive: true,
+          },
+          {
+            icon: <FiCodepen />,
+            isActive: false,
+          },
+          {
+            icon: <FiGlobe />,
+            isActive: false,
+          },
+        ]}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
@@ -32,93 +32,153 @@ describe('Components | IconNavigator', () => {
     expect(iconNavigator).toBeInTheDocument();
   });
 
-  test('it has the 2nd page active', () => {
+  test('it has the 2nd item active', () => {
     render(
       <Navigator
-        nbPages={pages.length}
-        activePage={{ index: 1, icon: pages[1].icon }}
+        items={[
+          {
+            icon: <FiHome />,
+            isActive: false,
+          },
+          {
+            icon: <FiCodepen />,
+            isActive: true,
+          },
+          {
+            icon: <FiGlobe />,
+            isActive: false,
+          },
+        ]}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
     );
 
-    let page1 = screen.getByTestId('active-page-1');
+    let item1 = screen.getByTestId('active-item-1');
 
-    expect(page1).toBeInTheDocument();
+    expect(item1).toBeInTheDocument();
   });
 
-  test('it has the 1st page inactive, the 2nd page active and the 3rd page inactive', () => {
+  test('it has the 1st item inactive, the 2nd item active and the 3rd item inactive', () => {
     render(
       <Navigator
-        nbPages={pages.length}
-        activePage={{ index: 1, icon: pages[1].icon }}
+        items={[
+          {
+            icon: <FiHome />,
+            isActive: false,
+          },
+          {
+            icon: <FiCodepen />,
+            isActive: true,
+          },
+          {
+            icon: <FiGlobe />,
+            isActive: false,
+          },
+        ]}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
     );
 
-    let page0 = screen.getByTestId('inactive-page-0');
-    let page1 = screen.getByTestId('active-page-1');
-    let page2 = screen.getByTestId('inactive-page-2');
+    let item0 = screen.getByTestId('inactive-item-0');
+    let item1 = screen.getByTestId('active-item-1');
+    let item2 = screen.getByTestId('inactive-item-2');
 
-    expect(page0).toBeInTheDocument();
-    expect(page1).toBeInTheDocument();
-    expect(page2).toBeInTheDocument();
+    expect(item0).toBeInTheDocument();
+    expect(item1).toBeInTheDocument();
+    expect(item2).toBeInTheDocument();
   });
 
-  test('it has backButton disable and nextButton enable if page 0 is active', () => {
+  test('it has backButton disable and nextButton enable if item 0 is active', () => {
     render(
       <Navigator
-        nbPages={pages.length}
-        activePage={{ index: 0, icon: pages[0].icon }}
+        items={[
+          {
+            icon: <FiHome />,
+            isActive: true,
+          },
+          {
+            icon: <FiCodepen />,
+            isActive: false,
+          },
+          {
+            icon: <FiGlobe />,
+            isActive: false,
+          },
+        ]}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
     );
 
-    let page0 = screen.getByTestId('active-page-0');
+    let item0 = screen.getByTestId('active-item-0');
     let backButton = screen.getByTestId('button-back');
     let nextButton = screen.getByTestId('button-next');
 
-    expect(page0).toBeInTheDocument();
+    expect(item0).toBeInTheDocument();
     expect(backButton).toBeDisabled();
     expect(nextButton).toBeEnabled();
   });
 
-  test('it has backButton enable and nextButton enable if page 1 is active', () => {
+  test('it has backButton enable and nextButton enable if item 1 is active', () => {
     render(
       <Navigator
-        nbPages={pages.length}
-        activePage={{ index: 1, icon: pages[1].icon }}
+        items={[
+          {
+            icon: <FiHome />,
+            isActive: false,
+          },
+          {
+            icon: <FiCodepen />,
+            isActive: true,
+          },
+          {
+            icon: <FiGlobe />,
+            isActive: false,
+          },
+        ]}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
     );
 
-    let page1 = screen.getByTestId('active-page-1');
+    let item1 = screen.getByTestId('active-item-1');
     let backButton = screen.getByTestId('button-back');
     let nextButton = screen.getByTestId('button-next');
 
-    expect(page1).toBeInTheDocument();
+    expect(item1).toBeInTheDocument();
     expect(backButton).toBeEnabled();
     expect(nextButton).toBeEnabled();
   });
 
-  test('it has backButton enable and nextButton disable if page 2 is active', () => {
+  test('it has backButton enable and nextButton disable if item 2 is active', () => {
     render(
       <Navigator
-        nbPages={pages.length}
-        activePage={{ index: 2, icon: pages[2].icon }}
+        items={[
+          {
+            icon: <FiHome />,
+            isActive: false,
+          },
+          {
+            icon: <FiCodepen />,
+            isActive: false,
+          },
+          {
+            icon: <FiGlobe />,
+            isActive: true,
+          },
+        ]}
         onClickNext={() => console.log('Next clicked')}
         onClickBack={() => console.log('Back clicked')}
       />,
     );
 
-    let page2 = screen.getByTestId('active-page-2');
+    let item2 = screen.getByTestId('active-item-2');
     let backButton = screen.getByTestId('button-back');
     let nextButton = screen.getByTestId('button-next');
 
-    expect(page2).toBeInTheDocument();
+    expect(item2).toBeInTheDocument();
     expect(backButton).toBeEnabled();
     expect(nextButton).toBeDisabled();
   });
