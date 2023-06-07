@@ -109,8 +109,19 @@ export const _Danger = {
 export const _Toggle = {
   render: () => (
     <>
-      <Button variant="toggle">on</Button>&nbsp;
-      <Button variant="toggle" disabled>
+      <Button variant="toggle" onClick={() => console.log('normal')}>
+        on
+      </Button>
+      &nbsp;
+      <Button variant="toggle" disabled onClick={() => console.log('disabled')}>
+        off
+      </Button>
+      &nbsp;
+      <Button
+        variant="toggle"
+        pressed={true}
+        onClick={() => console.log('pressed')}
+      >
         off
       </Button>
     </>
