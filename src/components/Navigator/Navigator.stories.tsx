@@ -1,31 +1,31 @@
 import { ReactNode } from 'react';
-import { IconNavigator } from './IconNavigator';
+import { Navigator } from './Navigator';
 
 import { FiHome, FiCodepen, FiGlobe } from 'react-icons/fi';
 
-export default { title: 'Components/IconNavigator', component: IconNavigator };
+export default { title: 'Components/Navigator', component: Navigator };
 
 const pages = [
   {
-    logo: <FiHome />,
+    icon: <FiHome />,
   },
   {
-    logo: <FiCodepen />,
+    icon: <FiCodepen />,
   },
   {
-    logo: <FiGlobe />,
+    icon: <FiGlobe />,
   },
 ];
 
-export const _IconNavigator = {
+export const _Navigator = {
   render: () => (
     <>
-      {pages.map((page: { logo: ReactNode }, index: number) => (
+      {pages.map((page: { icon: ReactNode }, index: number) => (
         <>
           <div key={index}>
-            <IconNavigator
+            <Navigator
               nbPages={pages.length}
-              activePage={{ index: index, logo: page.logo }}
+              activePage={{ index: index, icon: page.icon }}
               onClickNext={() => console.log('Next clicked')}
               onClickBack={() => console.log('Back clicked')}
             />
