@@ -1,6 +1,7 @@
 import { MassaToken } from './Massa/MassaToken';
 import { MassaLogo } from './Massa/MassaLogo';
 import { MassaWallet } from './Massa/MassaWallet';
+import { StationLogo } from './Massa/StationLogo';
 
 export default { title: 'Icons/Massa' };
 
@@ -14,4 +15,14 @@ export const _MassaLogo = {
 
 export const _MassaWallet = {
   render: () => <MassaWallet size={40} />,
+};
+
+export const _StationLogo = {
+  render: () => (
+    <>
+      <StationLogo theme="dark" />
+      <br />
+      <StationLogo theme="light" />
+    </>
+  ),
 };
