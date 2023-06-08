@@ -23,7 +23,7 @@ export function Balance({ ...props }) {
   return (
     <div
       data-testid="balance"
-      className={`flex items-center w-fit p-5 bg-primary ${customClass}`}
+      className={`flex items-center w-fit ${customClass}`}
     >
       <MassaLogo size={logoClass} className={iconClass} />
       <label className={`${sizeClass} text-f-primary`}>{amount}</label>
