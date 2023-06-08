@@ -6,26 +6,30 @@ export default { title: 'Components/PluginWallet', component: PluginWallet };
 
 export const _PluginWalletActive = {
   render: () => (
-    <PluginWallet
-      isActive={true}
-      title={'Massawallet'}
-      iconActive={<WalletActive />}
-      iconInactive={<WalletInactive />}
-      onClickActive={() => console.log('intall')}
-      onClickInactive={() => console.log('launch')}
-    />
+    <div className="sm:w-80">
+      <PluginWallet
+        isActive={true}
+        title={'Massawallet'}
+        iconActive={<WalletActive />}
+        iconInactive={<WalletInactive />}
+        onClickActive={() => console.log('intall')}
+        onClickInactive={() => console.log('launch')}
+      />
+    </div>
   ),
 };
 
 export const _PluginWalletIncative = {
   render: () => (
-    <PluginWallet
-      isActive={false}
-      title={'Massawallet'}
-      iconActive={<WalletActive />}
-      iconInactive={<WalletInactive />}
-      onClickActive={() => console.log('intall')}
-      onClickInactive={() => console.log('launch')}
-    />
+    <div className="sm:w-80">
+      <PluginWallet
+        isActive={false}
+        title={'Massawallet'}
+        iconActive={<WalletActive />}
+        iconInactive={<WalletInactive />}
+        onClickActive={() => console.log('intall')}
+        onClickInactive={() => console.log('launch')}
+      />
+    </div>
   ),
 };

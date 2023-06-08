@@ -76,7 +76,7 @@ export function PluginWallet(props: PluginWalletProps) {
   } = props;
 
   return (
-    <div data-testid="pluginWallet" className="w-full sm:w-80 flex flex-col">
+    <div data-testid="pluginWallet" className="w-full flex flex-col">
       {isActive ? (
         <ActivePlugin
           title={title}
