@@ -2,27 +2,49 @@
 // @ts-ignore
 import React from 'react';
 
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode, useState } from 'react';
+import { ThemeMode } from '../ThemeMode';
+import { StationLogo } from '../Icons/Svg/Massa/StationLogo';
+import { useLocalStorage } from './../../util/useLocalStorage';
 
 export interface LayoutStationProps extends ComponentPropsWithoutRef<'div'> {
   children?: ReactNode;
   navigator?: Navigator;
   logo?: ReactNode;
+  onSetTheme?: () => void;
   customClass?: string;
+  overwrittenTheme?: string;
 }
 
 export function LayoutStation({ ...props }) {
-  const { children, navigator, logo, customClass } = props;
+  const { children, navigator, overwrittenTheme, onSetTheme, customClass } =
+    props;
+
+  const [storedTheme] = useLocalStorage<string>('massa-station-theme', 'light');
+  const [selectedTheme, setSelectedTheme] = useState(
+    overwrittenTheme || storedTheme || 'light',
+  );
+
+  function handleSetTheme(theme: string) {
+    setSelectedTheme(theme);
+
+    onSetTheme?.(theme);
+  }
 
   return (
     <div
       data-testid="layout-station"
       className={`bg-primary h-screen ${customClass}`}
     >
-      <div className="grid grid-cols-2">
-        <div className="flex flex-row justify-start">{logo}</div>
-        <div className="flex flex-row justify-end">
+      <div className="grid grid-cols-3">
+        <div className="flex flex-row justify-start">
+          <StationLogo theme={selectedTheme} />
+        </div>
+        <div className="flex flex-row justify-center">
           {navigator && <div className="flex-row-reversed">{navigator}</div>}
+        </div>
+        <div className="flex flex-row justify-end">
+          <ThemeMode onSetTheme={handleSetTheme} />
         </div>
       </div>
       {children}

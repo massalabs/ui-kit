@@ -4,8 +4,15 @@ import React from 'react';
 
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { useLocalStorage } from '../../util/useLocalStorage';
+import { ComponentPropsWithoutRef } from 'react';
 
-export function ThemeMode() {
+interface ThemeProps extends ComponentPropsWithoutRef<'div'> {
+  onSetTheme?: (theme: string) => void;
+}
+
+export function ThemeMode(props: ThemeProps) {
+  let { onSetTheme } = props;
+
   const [theme, setTheme] = useLocalStorage<string>(
     'massa-station-theme',
     'dark',
@@ -13,6 +20,8 @@ export function ThemeMode() {
 
   function handleClick() {
     setTheme(theme === 'dark' ? 'light' : 'dark');
+
+    onSetTheme?.(theme);
   }
 
   const themeIcons = {
