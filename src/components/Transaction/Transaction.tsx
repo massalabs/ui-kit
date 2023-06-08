@@ -57,7 +57,7 @@ export function Transaction(props: TransactionProps) {
   return (
     <div
       data-testid="transaction"
-      className={`h-14 w-full p-3 rounded-lg mas-menu-active cursor-pointer 
+      className={`h-16 w-full p-3 rounded-lg cursor-pointer 
                   flex flex-row items-center justify-between
                   ${CLASSES.root}
                   ${VARIANT.default}
@@ -65,11 +65,11 @@ export function Transaction(props: TransactionProps) {
       {...rest}
     >
       <div className={`${CLASSES.root}`}>
-        {clonedPreIcon}
+        <div>{clonedPreIcon}</div>
         <div className="flex-col grid justify-items-start">
-          <div>{title}</div>
-          <div className={`${CLASSES.root} gap-1`}>
-            <div>to:</div>
+          <div className="mas-menu-active">{title}</div>
+          <div className={`${CLASSES.root} gap-1 mas-body`}>
+            <div className="">to:</div>
             <div className="underline underline-offset-2">
               {address.slice(0, 4)}...{address.slice(-4)}
             </div>
@@ -77,11 +77,11 @@ export function Transaction(props: TransactionProps) {
         </div>
       </div>
       <div className="flex-col grid justify-items-end">
-        <div className={`${CLASSES.root} gap-2`}>
+        <div className={`${CLASSES.root} gap-2 mas-menu-active`}>
           {amount}
           {posIcon}
         </div>
-        <div>{date}</div>
+        <div className="mas-caption">{date}</div>
       </div>
     </div>
   );
