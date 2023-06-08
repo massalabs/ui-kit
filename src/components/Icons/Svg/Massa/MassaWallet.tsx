@@ -52,7 +52,11 @@ function Squared(props: SVGProps) {
   let { size, ...rest } = props;
 
   return (
-    <div className={`bg-primary w-fit`} data-testid="svg-icon" {...rest}>
+    <div
+      className={`bg-primary w-fit rounded-lg`}
+      data-testid="svg-icon"
+      {...rest}
+    >
       <svg
         width={size ?? 40}
         height={size ?? 40}
