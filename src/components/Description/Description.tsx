@@ -111,7 +111,7 @@ export function Description(props: DescriptionProps) {
                   ${customClass}`}
       {...rest}
     >
-      <div className={`${CLASSES.root} col-span-2`}>
+      <div className={`${CLASSES.root} col-span-2 justify-self-start`}>
         <div>{clonedPreIcon}</div>
         <div className="flex-col mas-subtitle">
           <div className="mas-menu-active">{title}</div>
