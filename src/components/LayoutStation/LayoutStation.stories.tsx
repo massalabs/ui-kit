@@ -2,7 +2,7 @@ import { LayoutStation } from './LayoutStation';
 import { FiHome, FiCodepen, FiGlobe } from 'react-icons/fi';
 import { Navigator } from './../Navigator/Navigator';
 
-export default { title: 'Components/LaytoutStation', component: LayoutStation };
+export default { title: 'Components' };
 
 let navigator = (
   <Navigator
