@@ -20,3 +20,4 @@ export * from './Pagination';
 export * from './Navigator';
 export * from './SidePanel';
 export * from './LayoutStation';
+export * from './Currency';
