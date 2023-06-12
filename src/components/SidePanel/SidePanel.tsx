@@ -49,7 +49,7 @@ export function SidePanel({ ...props }) {
     >
       <div className={`flex ${iconClass} h-full`}>
         <button onClick={toggleDropdown} className="p-2 flex items-center">
-          <FiMenu className="h-6 w-6" />
+          <FiMenu className="h-6 w-6 transform rotate-90" />
         </button>
         <div className="flex">{toggle ? children : null}</div>
       </div>
