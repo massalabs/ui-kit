@@ -21,6 +21,7 @@
   "dependencies": {
     "minidenticons": "^3.1.2",
     "react": "^18.2.0",
+    "react-currency-input-field": "^3.6.10",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "tw-colors": "^1.2.5",
