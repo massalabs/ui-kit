@@ -7,8 +7,6 @@ export default {
   title: 'Components/Plugin',
 };
 
-const colorWarning = '#FFA41D';
-
 const argsOn = {
   preIcon: <MassaWallet variant="rounded" size={40} />,
   topAction: (
@@ -20,7 +18,7 @@ const argsOn = {
   subtitle: `Author's Name`,
   actions: [
     <Button variant="icon" onClick={() => console.log('reload')}>
-      <FiRefreshCcw color={colorWarning} />
+      <FiRefreshCcw className="text-s-warning" />
     </Button>,
     <Button variant="icon" onClick={() => console.log('arrow')}>
       <FiArrowUpRight />
