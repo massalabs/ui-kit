@@ -99,7 +99,7 @@ export function PopupModal(props: IPopupModalProps) {
     ...rest
   } = props;
   const [hidden, setHidden] = useState(status);
-  const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0' : '';
+  const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0 z-10' : '';
 
   useEffect(() => {
     handleOpen();
