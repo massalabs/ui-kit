@@ -24,7 +24,10 @@ export const _Dropdown = {
               item: 'account 1 name',
               onClick: () => console.log('option 1'),
             },
-            { icon: <MassaLogo size={32} />, item: 'account 2 name' },
+            {
+              icon: <MassaLogo size={32} />,
+              item: 'account 2 name with a biiiiig content',
+            },
             { icon: <MassaLogo size={32} />, item: 'account 3 name' },
             { icon: <MassaLogo size={32} />, item: 'account 4 name' },
             { icon: <MassaLogo size={32} />, item: 'account 5 name' },
