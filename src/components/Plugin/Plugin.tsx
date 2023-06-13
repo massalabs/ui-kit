@@ -1,15 +1,16 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from 'react';
-import { ReactNode, ComponentPropsWithoutRef, cloneElement } from 'react';
+import { ReactNode, cloneElement } from 'react';
 import { IconContext } from 'react-icons/lib';
+import { truncate } from '../../util/truncate';
 
-export interface PluginProps extends ComponentPropsWithoutRef<'div'> {
+export interface PluginProps {
   preIcon: JSX.Element;
   topAction: ReactNode;
   title: string;
   subtitle?: string;
-  content?: string | ReactNode[];
+  content: string | ReactNode[];
   variant?: string;
   customClass?: string;
 }
@@ -21,13 +22,14 @@ interface classNames {
 export function Plugin(props: PluginProps) {
   const { content } = props;
 
-  if (typeof content === 'string') {
-    return <PluginStore {...props} />;
-  }
-  return <PluginStation {...props} />;
+  return typeof content === 'string' ? (
+    <PluginStore {...props} />
+  ) : (
+    <PluginActions {...props} />
+  );
 }
 
-export function PluginStation(props: PluginProps) {
+export function PluginActions(props: PluginProps) {
   let {
     preIcon,
     topAction,
@@ -72,7 +74,7 @@ export function PluginStation(props: PluginProps) {
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
       <p className="mb-3 text-f-primary mas-caption">{subtitle}</p>
       <div className="flex flex-row justify-end space-x-1 gap-2">
-        {(content as ReactNode[])?.map((content: ReactNode, idx: number) => {
+        {(content as ReactNode[]).map((content: ReactNode, idx: number) => {
           return (
             <div
               key={idx}
@@ -139,7 +141,9 @@ export function PluginStore(props: PluginProps) {
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
       <p className="mb-3 text-f-primary mas-caption">{subtitle}</p>
-      <div className="h-12 text-f-primary overflow-hidden">{content}</div>
+      <div className="mas-body2 max-h-11 text-f-primary">
+        {truncate(content as string)}
+      </div>
     </div>
   );
 }

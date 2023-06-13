@@ -19,7 +19,7 @@ const argsOn = {
       on
     </Button>
   ),
-  title: `Tplugin name - 30 characters...`,
+  title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
   content: [
     <Button variant="icon" onClick={() => console.log('reload')}>
