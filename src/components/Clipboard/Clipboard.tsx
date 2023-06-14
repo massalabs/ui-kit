@@ -2,15 +2,16 @@
 // @ts-ignore
 import React from 'react';
 
-import { useState } from 'react';
+import { useState, ComponentPropsWithoutRef } from 'react';
 import { FiCopy, FiCheckCircle } from 'react-icons/fi';
 import { InputMessage } from './../Input/Input';
 
-interface ClipboardProps {
+interface ClipboardProps extends ComponentPropsWithoutRef<'div'> {
   rawContent: string;
   displayedContent?: string;
   error?: string;
   success?: string;
+  customClass?: string;
 }
 
 export function Clipboard(props: ClipboardProps) {
@@ -19,6 +20,8 @@ export function Clipboard(props: ClipboardProps) {
     success: successMessage,
     rawContent,
     displayedContent = rawContent,
+    customClass,
+    ...rest
   } = props;
 
   const [success, setSuccess] = useState(false);
@@ -42,9 +45,10 @@ export function Clipboard(props: ClipboardProps) {
     <>
       <div
         data-testid="clipboard-field"
-        className="flex flex-row items-center mas-body2 justify-between w-full
-        h-12 px-3 rounded bg-secondary cursor-pointer"
+        className={`flex flex-row items-center mas-body2 justify-between w-full
+        h-12 px-3 rounded bg-secondary cursor-pointer ${customClass}`}
         onClick={handleCopyToClipboard}
+        {...rest}
       >
         <u className="text-f-primary pr-2 w-full truncate">
           {displayedContent}
