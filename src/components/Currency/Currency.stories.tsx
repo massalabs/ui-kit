@@ -39,6 +39,7 @@ export const _Currency = {
       <Currency placeholder={'something'} defaultValue="" />
       <br />
       <Currency
+        variant="nMAS"
         placeholder={'something'}
         defaultValue=""
         error="that's an error with|without content"

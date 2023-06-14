@@ -10,30 +10,67 @@ export interface ICurrencyProps
   extends ComponentPropsWithoutRef<typeof CurrencyInput> {
   error?: string | undefined;
   warning?: string | undefined;
+  variant?: 'nMAS' | 'MAS';
 }
 
 export function Currency(props: ICurrencyProps) {
-  const { error, warning, ...rest } = props;
+  const { variant = 'MAS' } = props;
 
-  const errorClass = error ? 'border-s-error' : '';
-  const warningClass = warning ? 'border-s-warning' : '';
-  const messageClass = errorClass || warningClass;
+  const isNMas = variant === 'nMAS';
+
+  function MAS(props: ICurrencyProps) {
+    const { error, warning, variant = 'MAS', ...rest } = props;
+
+    const errorClass = error ? 'border-s-error' : '';
+    const warningClass = warning ? 'border-s-warning' : '';
+    const messageClass = errorClass || warningClass;
+
+    return (
+      <>
+        <CurrencyInput
+          className={`w-full default-input mb-1 ${messageClass}`}
+          data-testid="currency-field"
+          decimalScale={9}
+          decimalsLimit={9}
+          disableAbbreviations={true}
+          allowNegativeValue={false}
+          suffix={' MAS'}
+          {...rest}
+        />
+        <InputMessage error={error} warning={warning} />
+      </>
+    );
+  }
+
+  function NMAS(props: ICurrencyProps) {
+    const { error, warning, variant = 'MAS', ...rest } = props;
+
+    const errorClass = error ? 'border-s-error' : '';
+    const warningClass = warning ? 'border-s-warning' : '';
+    const messageClass = errorClass || warningClass;
+
+    return (
+      <>
+        <CurrencyInput
+          className={`w-full default-input mb-1 ${messageClass}`}
+          data-testid="currency-field"
+          allowDecimals={false}
+          disableAbbreviations={true}
+          allowNegativeValue={false}
+          suffix={' nMAS'}
+          disableGroupSeparators={true}
+          {...rest}
+        />
+        <InputMessage error={error} warning={warning} />
+      </>
+    );
+  }
 
   return (
     <div className="flex-row">
       <div className="grid-cols-2">
         <div className="inline h-12">
-          <CurrencyInput
-            className={`w-full default-input mb-1 ${messageClass}`}
-            data-testid="currency-field"
-            decimalScale={9}
-            decimalsLimit={9}
-            disableAbbreviations={true}
-            allowNegativeValue={false}
-            suffix={' MAS'}
-            {...rest}
-          />
-          <InputMessage error={error} warning={warning} />
+          {isNMas ? <NMAS {...props} /> : <MAS {...props} />}
         </div>
       </div>
     </div>
