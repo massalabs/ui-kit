@@ -46,11 +46,13 @@ export function Clipboard(props: ClipboardProps) {
         h-12 px-3 rounded bg-secondary cursor-pointer"
         onClick={handleCopyToClipboard}
       >
-        <u className="text-f-primary">{displayedContent}</u>
+        <u className="text-f-primary pr-2 w-full truncate">
+          {displayedContent}
+        </u>
         {success ? (
-          <FiCheckCircle className="text-s-success" size={24} />
+          <FiCheckCircle className="w-6 h-6 text-s-success" />
         ) : (
-          <FiCopy className="text-f-primary" size={24} />
+          <FiCopy className="w-6 h-6 text-f-primary" />
         )}
       </div>
       {error || success ? (
