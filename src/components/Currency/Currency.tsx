@@ -6,12 +6,13 @@ import { ComponentPropsWithoutRef } from 'react';
 import { InputMessage } from './../Input/Input';
 import CurrencyInput from 'react-currency-input-field';
 
-export interface CurrencyProps extends ComponentPropsWithoutRef<'input'> {
+export interface ICurrencyProps
+  extends ComponentPropsWithoutRef<typeof CurrencyInput> {
   error?: string | undefined;
   warning?: string | undefined;
 }
 
-export function Currency(props: CurrencyProps) {
+export function Currency(props: ICurrencyProps) {
   const { error, warning, ...rest } = props;
 
   const errorClass = error ? 'border-s-error' : '';
@@ -22,11 +23,14 @@ export function Currency(props: CurrencyProps) {
     <div className="flex-row">
       <div className="grid-cols-2">
         <div className="inline h-12">
-          {/* eslint-disable */}
-          {/* @ts-ignore */}
           <CurrencyInput
             className={`w-full default-input mb-1 ${messageClass}`}
             data-testid="currency-field"
+            decimalScale={9}
+            decimalsLimit={9}
+            disableAbbreviations={true}
+            allowNegativeValue={false}
+            suffix={' MAS'}
             {...rest}
           />
           <InputMessage error={error} warning={warning} />
