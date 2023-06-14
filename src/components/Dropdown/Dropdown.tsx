@@ -18,7 +18,7 @@ interface IDropdownProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 function Icon({ toggle }: { toggle: boolean }) {
-  let IconclassName = 'w-6 h-6 stroke-current';
+  let IconclassName = 'w-6 h-6 min-w-fit stroke-current';
 
   return toggle ? (
     <FiChevronUp className={IconclassName} />
@@ -87,7 +87,7 @@ export function Dropdown(props: IDropdownProps) {
                     disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`}
       >
         <div className={customIconClass}>{selected?.icon}</div>
-        <div className="mas-menu-active">{selected?.item}</div>
+        <div className="mas-menu-active p-2 truncate">{selected?.item}</div>
         <Icon toggle={toggle} />
       </button>
       <div
