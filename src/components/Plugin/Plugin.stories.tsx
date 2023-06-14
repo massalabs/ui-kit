@@ -7,6 +7,7 @@ import {
 import { MassaWallet } from '../Icons/Svg/Massa/MassaWallet';
 import { Plugin } from './Plugin';
 import { Button } from '../Button/Button';
+import { Certificate } from '../Icons';
 
 export default {
   title: 'Components/Plugin',
@@ -21,6 +22,7 @@ const argsOn = {
   ),
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
+  subtitleIcon: <Certificate />,
   content: [
     <Button variant="icon" onClick={() => console.log('reload')}>
       <FiRefreshCcw className="text-s-warning" />

@@ -9,6 +9,7 @@ export interface PluginProps {
   topAction: JSX.Element;
   title: string;
   subtitle?: string;
+  subtitleIcon?: JSX.Element;
   content: string | ReactNode[];
   variant?: string;
   customClass?: string;
@@ -34,6 +35,7 @@ export function PluginActions(props: PluginProps) {
     topAction,
     title,
     subtitle,
+    subtitleIcon,
     content,
     variant = 'primary',
     customClass,
@@ -66,13 +68,16 @@ export function PluginActions(props: PluginProps) {
       className="w-80 h-44 p-4 bg-secondary rounded-lg shadow"
       {...rest}
     >
-      <div className="flex flex-row justify-between items-center h-10 mb-3">
-        <div>{clonedPreIcon}</div>
-        <div>{topAction}</div>
+      <div className="flex  justify-between items-center h-10 mb-3">
+        {clonedPreIcon}
+        {topAction}
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
-      <p className="mb-3 text-f-primary mas-caption">{subtitle}</p>
-      <div className="flex flex-row justify-end space-x-1 gap-2">
+      <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">
+        {subtitle}
+        {subtitleIcon}
+      </div>
+      <div className="flex justify-end space-x-1 gap-2">
         {(content as ReactNode[]).map((content: ReactNode, idx: number) => {
           return (
             <div
@@ -96,6 +101,7 @@ export function PluginStore(props: PluginProps) {
     topAction,
     title,
     subtitle,
+    subtitleIcon,
     content,
     variant = 'primary',
     customClass,
@@ -134,9 +140,9 @@ export function PluginStore(props: PluginProps) {
       className="w-80 h-44 p-4 bg-secondary rounded-lg shadow"
       {...rest}
     >
-      <div className="flex flex-row justify-between items-center h-10 mb-3">
-        <div>{clonedPreIcon}</div>
-        <div>{clonedTopAction}</div>
+      <div className="flex justify-between items-center h-10 mb-3">
+        {clonedPreIcon}
+        {clonedTopAction}
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
       <p className="mb-3 text-f-primary mas-caption">{subtitle}</p>
