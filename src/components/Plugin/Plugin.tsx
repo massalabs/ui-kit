@@ -1,49 +1,60 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from 'react';
-
-import { ReactNode, ComponentPropsWithoutRef, cloneElement } from 'react';
+import { ReactNode, cloneElement } from 'react';
 import { IconContext } from 'react-icons/lib';
 
-export interface PluginProps extends ComponentPropsWithoutRef<'div'> {
+export interface PluginProps {
   preIcon: JSX.Element;
-  topAction: ReactNode;
+  topAction: JSX.Element;
   title: string;
   subtitle?: string;
-  actions?: ReactNode[];
+  subtitleIcon?: JSX.Element;
+  content: string | ReactNode[];
   variant?: string;
   customClass?: string;
 }
 
-interface classNamees {
+interface classNames {
   [key: string]: string | object;
 }
 
 export function Plugin(props: PluginProps) {
+  const { content } = props;
+
+  return typeof content === 'string' || content instanceof String ? (
+    <PluginStore {...props} />
+  ) : (
+    <PluginActions {...props} />
+  );
+}
+
+export function PluginActions(props: PluginProps) {
   let {
     preIcon,
     topAction,
     title,
     subtitle,
-    actions,
+    subtitleIcon,
+    content,
     variant = 'primary',
     customClass,
     ...rest
   } = props;
 
-  const CLASSES: classNamees = {
+  const CLASSES: classNames = {
     root: 'flex justify-center items-center',
     primary: {
       default: 'default-primary',
-      preIcon: 'bg-tertiary text-f-secondary rounded-full h-10 w-10 mb-6',
+      preIcon: 'bg-tertiary text-f-secondary rounded-full h-10 w-10',
     },
     secondary: {
       default: 'default-secondary',
-      preIcon: 'bg-neutral text-f-secondary rounded-full h-10 w-10 mb-6',
+      preIcon: 'bg-neutral text-f-secondary rounded-full h-10 w-10',
     },
   };
 
-  const VARIANT = CLASSES[variant] as classNamees;
+  const VARIANT = CLASSES[variant] as classNames;
 
   const clonedPreIcon = preIcon
     ? cloneElement(preIcon, {
@@ -57,25 +68,86 @@ export function Plugin(props: PluginProps) {
       className="w-80 h-44 p-4 bg-secondary rounded-lg shadow"
       {...rest}
     >
-      <div className="grid grid-cols-2 h-10 mb-3">
-        <div className="flex flex-row justify-start">{clonedPreIcon}</div>
-        <div className="flex flex-row justify-end">{topAction}</div>
+      <div className="flex  justify-between items-center h-10 mb-3">
+        {clonedPreIcon}
+        {topAction}
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
-      <p className="mb-3 text-f-primary mas-caption">{subtitle}</p>
-      <div className="flex flex-row justify-end space-x-1 gap-2">
-        {actions?.map((action: ReactNode, idx: number) => {
+      <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">
+        {subtitle}
+        {subtitleIcon}
+      </div>
+      <div className="flex justify-end space-x-1 gap-2">
+        {(content as ReactNode[]).map((content: ReactNode, idx: number) => {
           return (
             <div
               key={idx}
               className="flex items-center justify-center h-10 w-10 cursor-pointer "
             >
               <IconContext.Provider value={{ className: 'w-6 h-6' }}>
-                {action}
+                {content}
               </IconContext.Provider>
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+export function PluginStore(props: PluginProps) {
+  let {
+    preIcon,
+    topAction,
+    title,
+    subtitle,
+    subtitleIcon,
+    content,
+    variant = 'primary',
+    customClass,
+    ...rest
+  } = props;
+
+  const CLASSES: classNames = {
+    root: 'flex justify-center items-center',
+    primary: {
+      default: 'default-primary',
+      preIcon: 'bg-tertiary text-f-secondary rounded-full h-10 w-10',
+    },
+    secondary: {
+      default: 'default-secondary',
+      preIcon: 'bg-neutral text-f-secondary rounded-full h-10 w-10',
+    },
+  };
+
+  const VARIANT = CLASSES[variant] as classNames;
+
+  const clonedPreIcon = preIcon
+    ? cloneElement(preIcon, {
+        className: VARIANT.preIcon,
+      })
+    : null;
+
+  const clonedTopAction = topAction
+    ? cloneElement(topAction, {
+        className: 'w-6 h-6 text-f-primary cursor-pointer',
+      })
+    : null;
+
+  return (
+    <div
+      data-testid="plugin"
+      className="w-80 h-44 p-4 bg-secondary rounded-lg shadow"
+      {...rest}
+    >
+      <div className="flex justify-between items-center h-10 mb-3">
+        {clonedPreIcon}
+        {clonedTopAction}
+      </div>
+      <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
+      <p className="mb-3 text-f-primary mas-caption">{subtitle}</p>
+      <div className="line-clamp-2 mas-body2 max-h-11 text-f-primary">
+        {content}
       </div>
     </div>
   );

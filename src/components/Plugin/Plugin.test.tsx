@@ -15,7 +15,7 @@ describe('Components | Buttons | Plugin', () => {
       ),
       title: `That's is the huge name of the plugin with limit of chars`,
       subtitle: `Author's Name`,
-      actions: [
+      content: [
         <Button variant="icon" onClick={() => console.log('reload')}>
           <FiRefreshCcw />
         </Button>,
