@@ -3,7 +3,7 @@
 import React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
 
-export type RadioButtonProps = ComponentPropsWithoutRef<'div'>;
+export type RadioButtonProps = ComponentPropsWithoutRef<'input'>;
 
 export function RadioButton(props: RadioButtonProps) {
   let { ...rest } = props;
