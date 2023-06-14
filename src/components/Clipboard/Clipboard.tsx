@@ -39,6 +39,10 @@ export function Clipboard(props: ClipboardProps) {
     navigator.clipboard.writeText(rawContent);
 
     setSuccess(true);
+
+    setTimeout(() => {
+      setSuccess(false);
+    }, 3000);
   }
 
   return (
