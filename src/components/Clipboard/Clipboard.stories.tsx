@@ -6,7 +6,7 @@ export const _Clipboard = {
   render: () => (
     <Clipboard
       displayedContent="formatted content"
-      rawContent={'this is the content'}
+      rawContent="this is the content"
       error="Oupps!"
       success="Copied!"
     />
