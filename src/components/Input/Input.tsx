@@ -7,6 +7,7 @@ import { ComponentPropsWithoutRef, ChangeEvent, cloneElement } from 'react';
 export interface InputProps extends ComponentPropsWithoutRef<'input'> {
   error?: string | undefined;
   warning?: string | undefined;
+  success?: string | undefined;
   icon?: JSX.Element;
   customClass?: string;
   onClickIcon?: () => void;
@@ -19,11 +20,14 @@ export function Input(props: InputProps) {
 }
 
 export function IconInput(props: InputProps) {
-  const { error, warning, icon, onClickIcon, customClass, ...rest } = props;
+  const { error, warning, success, icon, onClickIcon, customClass, ...rest } =
+    props;
 
   const errorClass = error ? 'border-s-error' : '';
   const warningClass = warning ? 'border-s-warning' : '';
-  const messageClass = errorClass || warningClass;
+  const successClass = success ? 'border-s-success' : '';
+  const messageClass = errorClass || warningClass || successClass;
+
   const clonedIcon = icon
     ? cloneElement(icon, {
         className: 'w-5 h-5 inline-block align-text-bottom text-neutral',
@@ -56,18 +60,19 @@ export function IconInput(props: InputProps) {
             {clonedIcon}
           </button>
         </div>
-        <InputMessage error={error} warning={warning} />
+        <InputMessage error={error} warning={warning} success={success} />
       </div>
     </div>
   );
 }
 
 export function RawInput(props: InputProps) {
-  const { error, warning, customClass, ...rest } = props;
+  const { error, warning, success, customClass, ...rest } = props;
 
   const errorClass = error ? 'border-s-error' : '';
   const warningClass = warning ? 'border-s-warning' : '';
-  const messageClass = errorClass || warningClass;
+  const successClass = success ? 'border-s-success' : '';
+  const messageClass = errorClass || warningClass || successClass;
 
   return (
     <div className="flex-row">
@@ -87,18 +92,19 @@ export function RawInput(props: InputProps) {
 }
 
 export function InputMessage(props: InputProps) {
-  const { error, warning } = props;
+  const { error, warning, success } = props;
 
   const errorClass = error ? 'mas-h3 text-s-error' : '';
   const warningClass = warning ? 'mas-h3 text-s-warning' : '';
+  const successClass = success ? 'mas-h3 text-s-success' : '';
 
-  const messageClass = errorClass || warningClass;
-  const hasMessage = error || warning;
+  const messageClass = errorClass || warningClass || successClass;
+  const hasMessage = error || warning || success;
 
   if (hasMessage) {
     return (
       <div data-testid="input-field-message" className={messageClass}>
-        {error || warning}
+        {error || warning || success}
       </div>
     );
   } else {
