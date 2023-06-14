@@ -65,6 +65,7 @@ export const _IconInput = {
         icon={<FiUsers />}
         onClickIcon={() => console.log('clicked')}
         customClass="border-0"
+        success="Woow!"
       />
     </>
   ),
