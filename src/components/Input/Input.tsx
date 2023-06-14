@@ -8,6 +8,7 @@ export interface InputProps extends ComponentPropsWithoutRef<'input'> {
   error?: string | undefined;
   warning?: string | undefined;
   icon?: JSX.Element;
+  customClass?: string;
   onClickIcon?: () => void;
 }
 
@@ -18,7 +19,7 @@ export function Input(props: InputProps) {
 }
 
 export function IconInput(props: InputProps) {
-  const { error, warning, icon, onClickIcon, ...rest } = props;
+  const { error, warning, icon, onClickIcon, customClass, ...rest } = props;
 
   const errorClass = error ? 'border-s-error' : '';
   const warningClass = warning ? 'border-s-warning' : '';
@@ -41,14 +42,14 @@ export function IconInput(props: InputProps) {
         <div className="inline h-12">
           <input
             data-testid="password-input"
-            className={`w-full default-input mb-1 ${messageClass}`}
+            className={`w-full default-input mb-1 ${messageClass} ${customClass}`}
             type="text"
             {...rest}
           />
         </div>
-        <div className="inline -ml-9">
+        <div className="inline -ml-10">
           <button
-            className="w-8 h-8 bg-transparent"
+            className="w-10 h-10 bg-transparent"
             data-testid="password-icon"
             onClick={handleOnClick}
           >
@@ -62,7 +63,7 @@ export function IconInput(props: InputProps) {
 }
 
 export function RawInput(props: InputProps) {
-  const { error, warning, ...rest } = props;
+  const { error, warning, customClass, ...rest } = props;
 
   const errorClass = error ? 'border-s-error' : '';
   const warningClass = warning ? 'border-s-warning' : '';
@@ -74,7 +75,7 @@ export function RawInput(props: InputProps) {
         <div className="inline h-12">
           <input
             data-testid="input-field"
-            className={`w-full default-input mb-1 ${messageClass}`}
+            className={`w-full default-input mb-1 ${messageClass} ${customClass}`}
             type="text"
             {...rest}
           />

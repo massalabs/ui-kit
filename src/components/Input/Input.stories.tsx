@@ -64,6 +64,7 @@ export const _IconInput = {
         defaultValue=""
         icon={<FiUsers />}
         onClickIcon={() => console.log('clicked')}
+        customClass="border-0"
       />
     </>
   ),
