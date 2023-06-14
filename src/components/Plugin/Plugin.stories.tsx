@@ -58,7 +58,6 @@ const argsStore = {
   topAction: <FiDownload onClick={() => console.log('download')} />,
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
-
   content: `plugin description - 80 characters max to let users know what the plugin does...`,
 };
 

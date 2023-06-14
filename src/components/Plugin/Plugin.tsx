@@ -3,11 +3,10 @@
 import React from 'react';
 import { ReactNode, cloneElement } from 'react';
 import { IconContext } from 'react-icons/lib';
-import { truncate } from '../../util/truncate';
 
 export interface PluginProps {
   preIcon: JSX.Element;
-  topAction: ReactNode;
+  topAction: JSX.Element;
   title: string;
   subtitle?: string;
   content: string | ReactNode[];
@@ -22,7 +21,7 @@ interface classNames {
 export function Plugin(props: PluginProps) {
   const { content } = props;
 
-  return typeof content === 'string' ? (
+  return typeof content === 'string' || content instanceof String ? (
     <PluginStore {...props} />
   ) : (
     <PluginActions {...props} />
@@ -45,11 +44,11 @@ export function PluginActions(props: PluginProps) {
     root: 'flex justify-center items-center',
     primary: {
       default: 'default-primary',
-      preIcon: 'bg-tertiary text-f-secondary rounded-full h-10 w-10 mb-6',
+      preIcon: 'bg-tertiary text-f-secondary rounded-full h-10 w-10',
     },
     secondary: {
       default: 'default-secondary',
-      preIcon: 'bg-neutral text-f-secondary rounded-full h-10 w-10 mb-6',
+      preIcon: 'bg-neutral text-f-secondary rounded-full h-10 w-10',
     },
   };
 
@@ -67,9 +66,9 @@ export function PluginActions(props: PluginProps) {
       className="w-80 h-44 p-4 bg-secondary rounded-lg shadow"
       {...rest}
     >
-      <div className="grid grid-cols-2 h-10 mb-3">
-        <div className="flex flex-row justify-start">{clonedPreIcon}</div>
-        <div className="flex flex-row justify-end">{topAction}</div>
+      <div className="flex flex-row justify-between items-center h-10 mb-3">
+        <div>{clonedPreIcon}</div>
+        <div>{topAction}</div>
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
       <p className="mb-3 text-f-primary mas-caption">{subtitle}</p>
@@ -107,11 +106,11 @@ export function PluginStore(props: PluginProps) {
     root: 'flex justify-center items-center',
     primary: {
       default: 'default-primary',
-      preIcon: 'bg-tertiary text-f-secondary rounded-full h-10 w-10 mb-6',
+      preIcon: 'bg-tertiary text-f-secondary rounded-full h-10 w-10',
     },
     secondary: {
       default: 'default-secondary',
-      preIcon: 'bg-neutral text-f-secondary rounded-full h-10 w-10 mb-6',
+      preIcon: 'bg-neutral text-f-secondary rounded-full h-10 w-10',
     },
   };
 
@@ -123,26 +122,26 @@ export function PluginStore(props: PluginProps) {
       })
     : null;
 
+  const clonedTopAction = topAction
+    ? cloneElement(topAction, {
+        className: 'w-6 h-6 text-f-primary cursor-pointer',
+      })
+    : null;
+
   return (
     <div
       data-testid="plugin"
       className="w-80 h-44 p-4 bg-secondary rounded-lg shadow"
       {...rest}
     >
-      <div className="grid grid-cols-2 h-10 mb-3">
-        <div className="flex flex-row justify-start">{clonedPreIcon}</div>
-        <div className="flex flex-row justify-end">
-          <IconContext.Provider
-            value={{ className: 'w-6 h-6 text-f-primary cursor-pointer' }}
-          >
-            {topAction}
-          </IconContext.Provider>
-        </div>
+      <div className="flex flex-row justify-between items-center h-10 mb-3">
+        <div>{clonedPreIcon}</div>
+        <div>{clonedTopAction}</div>
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
       <p className="mb-3 text-f-primary mas-caption">{subtitle}</p>
-      <div className="mas-body2 max-h-11 text-f-primary">
-        {truncate(content as string)}
+      <div className="line-clamp-2 mas-body2 max-h-11 text-f-primary">
+        {content}
       </div>
     </div>
   );
