@@ -9,7 +9,7 @@ export interface PluginProps {
   topAction: JSX.Element;
   title: string;
   subtitle?: string;
-  subtitleIcon?: JSX.Element;
+  subtitleIcon?: JSX.Element | null;
   content: string | ReactNode[];
   variant?: string;
   customClass?: string;
