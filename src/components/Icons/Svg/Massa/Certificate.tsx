@@ -56,8 +56,8 @@ export function Certificate(props: SVGProps) {
         <path
           d="M11.3333 6L7.66667 9.66595L6 7.99961"
           stroke="white"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </>
