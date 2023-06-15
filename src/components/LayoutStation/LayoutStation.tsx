@@ -34,7 +34,7 @@ export function LayoutStation({ ...props }) {
   return (
     <div
       data-testid="layout-station"
-      className={`bg-primary px-20 pt-12 pb-8 ${customClass}`}
+      className={`min-h-screen bg-primary px-20 pt-12 pb-8 ${customClass}`}
     >
       <div className="grid grid-cols-3">
         <div className="flex flex-row justify-start">
