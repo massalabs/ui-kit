@@ -145,7 +145,10 @@ export function PluginStore(props: PluginProps) {
         {clonedTopAction}
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
-      <p className="mb-3 text-f-primary mas-caption">{subtitle}</p>
+      <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">
+        {subtitle}
+        {subtitleIcon}
+      </div>
       <div className="line-clamp-2 mas-body2 max-h-11 text-f-primary">
         {content}
       </div>
