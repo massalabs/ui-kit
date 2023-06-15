@@ -18,11 +18,11 @@ function MAS(props: ICurrencyProps) {
       <CurrencyInput
         className={`w-full default-input mb-1 ${messageClass}`}
         data-testid="currency-field"
-        decimalScale={9}
         decimalsLimit={9}
         disableAbbreviations={true}
         allowNegativeValue={false}
         suffix={' MAS'}
+        intlConfig={{ locale: 'en-US' }}
         {...rest}
       />
       <InputMessage error={error} warning={warning} />
