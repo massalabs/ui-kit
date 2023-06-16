@@ -2,31 +2,35 @@
 // @ts-ignore
 import React from 'react';
 
+import { useState } from 'react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { useLocalStorage } from '../../util/useLocalStorage';
-import { ComponentPropsWithoutRef } from 'react';
 
-interface ThemeProps extends ComponentPropsWithoutRef<'div'> {
+interface ThemeProps {
   onSetTheme?: (theme: string) => void;
 }
 
 export function ThemeMode(props: ThemeProps) {
   let { onSetTheme } = props;
 
-  const [theme, setTheme] = useLocalStorage<string>(
+  const [storedTheme, setStoredTheme] = useLocalStorage<string>(
     'massa-station-theme',
     'theme-dark',
   );
+  const [theme, setTheme] = useState(storedTheme || 'theme-dark');
 
   function handleClick() {
-    setTheme(theme === 'theme-dark' ? 'theme-light' : 'theme-dark');
+    const newTheme = theme === 'theme-light' ? 'theme-dark' : 'theme-light';
 
-    onSetTheme?.(theme);
+    setTheme(newTheme);
+    setStoredTheme(newTheme);
+
+    onSetTheme?.(newTheme);
   }
 
   const themeIcons = {
-    dark: <FiSun className="h-8 w-8" />,
-    light: <FiMoon className="h-8 w-8" />,
+    'theme-dark': <FiSun className="h-8 w-8" />,
+    'theme-light': <FiMoon className="h-8 w-8" />,
   };
 
   return (

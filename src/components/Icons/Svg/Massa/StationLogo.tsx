@@ -5,7 +5,7 @@ import React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
 
 interface SVGProps extends ComponentPropsWithoutRef<'div'> {
-  theme?: 'light' | 'dark' | undefined;
+  theme?: 'theme-light' | 'theme-dark' | undefined;
 }
 
 /* eslint-disable max-len */
@@ -73,9 +73,9 @@ function DarkLogo() {
 /* eslint-enable max-len */
 
 export function StationLogo(props: SVGProps) {
-  let { theme = 'dark', ...rest } = props;
+  let { theme = 'theme-dark', ...rest } = props;
 
-  const isDark = theme === 'dark';
+  const isDark = theme === 'theme-dark';
 
   return (
     <div
