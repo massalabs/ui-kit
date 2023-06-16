@@ -44,7 +44,7 @@ export const _DashboardStation = {
             title={'Massawallet'}
             iconActive={<WalletActive />}
             iconInactive={<WalletInactive />}
-            onClickActive={() => console.log('intall')}
+            onClickActive={() => console.log('install')}
             onClickInactive={() => console.log('launch')}
           />,
           <Image4Light />,
