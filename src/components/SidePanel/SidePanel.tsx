@@ -44,7 +44,8 @@ export function SidePanel({ ...props }) {
   return (
     <div
       data-testid="side-panel"
-      className={`fixed top-0 ${sideClass} ${toggleClass} border-l-primary h-screen bg-secondary ${customClass}`}
+      className={`fixed top-0 ${sideClass} ${toggleClass} 
+      border-l-primary h-screen bg-secondary ${customClass}`}
       {...rest}
     >
       <div className={`flex ${iconClass} h-full`}>
