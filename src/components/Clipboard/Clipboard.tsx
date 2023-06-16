@@ -6,6 +6,10 @@ import { useState, ComponentPropsWithoutRef } from 'react';
 import { FiCopy, FiCheckCircle } from 'react-icons/fi';
 import { InputMessage } from './../Input/Input';
 
+// eslint-disable-next-line max-len
+// https://stackoverflow.com/questions/71873824/copy-text-to-clipboard-cannot-read-properties-of-undefined-reading-writetext
+import copy from 'copy-to-clipboard';
+
 interface ClipboardProps extends ComponentPropsWithoutRef<'div'> {
   rawContent: string;
   displayedContent?: string;
@@ -36,7 +40,8 @@ export function Clipboard(props: ClipboardProps) {
       return;
     }
 
-    navigator.clipboard.writeText(rawContent);
+    //
+    copy(rawContent);
 
     setSuccess(true);
 
