@@ -22,3 +22,4 @@ export * from './SidePanel';
 export * from './LayoutStation';
 export * from './Currency';
 export * from './Clipboard';
+export * from './DashboardStation';
