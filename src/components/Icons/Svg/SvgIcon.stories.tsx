@@ -20,9 +20,9 @@ export const _MassaWallet = {
 export const _StationLogo = {
   render: () => (
     <>
-      <StationLogo theme="dark" />
+      <StationLogo theme="theme-dark" />
       <br />
-      <StationLogo theme="light" />
+      <StationLogo theme="theme-light" />
     </>
   ),
 };

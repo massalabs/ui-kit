@@ -20,9 +20,12 @@ export function LayoutStation({ ...props }) {
   const { children, navigator, overwrittenTheme, onSetTheme, customClass } =
     props;
 
-  const [storedTheme] = useLocalStorage<string>('massa-station-theme', 'light');
+  const [storedTheme] = useLocalStorage<string>(
+    'massa-station-theme',
+    'theme-dark',
+  );
   const [selectedTheme, setSelectedTheme] = useState(
-    overwrittenTheme || storedTheme || 'light',
+    overwrittenTheme || storedTheme || 'theme-dark',
   );
 
   function handleSetTheme(theme: string) {
