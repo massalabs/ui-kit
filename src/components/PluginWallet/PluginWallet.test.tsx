@@ -16,7 +16,7 @@ describe('Components | PluginWallet', () => {
       />,
     );
 
-    let pluginWallet = screen.getByTestId('pluginWallet');
+    let pluginWallet = screen.getByTestId('plugin-wallet');
 
     expect(pluginWallet).toBeInTheDocument();
   });
