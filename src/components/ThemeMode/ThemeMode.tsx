@@ -15,11 +15,11 @@ export function ThemeMode(props: ThemeProps) {
 
   const [theme, setTheme] = useLocalStorage<string>(
     'massa-station-theme',
-    'dark',
+    'theme-dark',
   );
 
   function handleClick() {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(theme === 'theme-dark' ? 'theme-light' : 'theme-dark');
 
     onSetTheme?.(theme);
   }
@@ -32,7 +32,7 @@ export function ThemeMode(props: ThemeProps) {
   return (
     <button
       data-testid="theme-mode"
-      className={`bg-primary text-f-primary p-3 rounded-lg cursor-pointer 
+      className={`bg-primary text-f-primary p-3 rounded-lg cursor-pointer
                   flex flex-row items-center justify-center
                   hover:bg-tertiary
                   active:bg-secondary
