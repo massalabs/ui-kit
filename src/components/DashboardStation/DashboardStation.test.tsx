@@ -12,7 +12,7 @@ describe('Components | DashboardStation', () => {
       />,
     );
 
-    let dashboardStation = screen.getByTestId('dashboardStation');
+    let dashboardStation = screen.getByTestId('dashboard-station');
 
     expect(dashboardStation).toBeInTheDocument();
   });

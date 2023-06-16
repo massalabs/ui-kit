@@ -13,7 +13,10 @@ export interface IDashboardStationProps {
 
 export function DashboardStation(props: IDashboardStationProps) {
   let { imagesDark, imagesLight, components } = props;
-  const [storedTheme] = useLocalStorage<string>('massa-station-theme', 'dark');
+  const [storedTheme] = useLocalStorage<string>(
+    'massa-station-theme',
+    'theme-dark',
+  );
   const [images, setImages] = React.useState<ReactNode[]>([]);
 
   useEffect(() => {
@@ -23,7 +26,7 @@ export function DashboardStation(props: IDashboardStationProps) {
       const diff = imagesDark.length - components.length;
       for (let i = 0; i < diff; i++) {
         const imageToAdd =
-          storedTheme === 'dark' ? imagesDark[i] : imagesLight[i];
+          storedTheme === 'theme-dark' ? imagesDark[i] : imagesLight[i];
         listeImage.push(imageToAdd);
       }
 
@@ -36,7 +39,7 @@ export function DashboardStation(props: IDashboardStationProps) {
   return (
     <div
       className="grid lg:grid-cols-6 grid-cols-3 grid-rows-2 gap-8"
-      data-testid="dashboardStation"
+      data-testid="dashboard-station"
     >
       <div className="col-span-2 row-span-2">{images[0]}</div>
       <div className="col-start-3">{images[1]}</div>
