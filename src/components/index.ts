@@ -24,3 +24,4 @@ export * from './Currency';
 export * from './Clipboard';
 export * from './DashboardStation';
 export * from './PluginWallet';
+export * from './TextArea';

@@ -46,7 +46,7 @@ export function IconInput(props: InputProps) {
         <div className="inline h-12">
           <input
             data-testid="password-input"
-            className={`w-full default-input mb-1 ${messageClass} ${customClass}`}
+            className={`w-full default-input h-12 pl-3 pr-10 mb-1 ${messageClass} ${customClass}`}
             type="text"
             {...rest}
           />
@@ -80,7 +80,7 @@ export function RawInput(props: InputProps) {
         <div className="inline h-12">
           <input
             data-testid="input-field"
-            className={`w-full default-input mb-1 ${messageClass} ${customClass}`}
+            className={`w-full default-input h-12 pl-3 pr-10 mb-1 ${messageClass} ${customClass}`}
             type="text"
             {...rest}
           />

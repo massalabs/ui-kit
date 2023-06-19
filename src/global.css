@@ -24,13 +24,13 @@
           focus:border-brand focus:text-neutral
           bg-secondary
           placeholder-tertiary text-tertiary
-          rounded-lg h-12 pl-3 pr-10;
+          rounded-lg;
   }
 
   /* We rely on placeholder to change the border */
   /* once uncontrolled components not necessary have value property */
   .default-input:not(:placeholder-shown),
-  .default-input:not([value='']) {
+  .default-input:not([value='']):not([data-type='text-area']) {
     @apply border-brand text-neutral;
   }
 
@@ -41,21 +41,21 @@
   .default-primary {
     @apply bg-c-default text-primary
           hover:bg-c-hover hover:border-c-hover
-          active:bg-c-pressed 
+          active:bg-c-pressed
           disabled:text-f-disabled-2 disabled:bg-c-disabled-1 disabled:border-c-disabled-1;
   }
 
   .default-danger {
     @apply text-s-error border-s-error
       hover:bg-s-error/[.15]
-      active:bg-s-error/[.3]                                                  
+      active:bg-s-error/[.3]
       disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1;
   }
 
   .default-toggle {
     @apply w-12 h-10 text-primary
-      bg-c-default       
-      hover:bg-c-pressed hover:border hover:border-c-pressed                            
+      bg-c-default
+      hover:bg-c-pressed hover:border hover:border-c-pressed
       disabled:text-tertiary disabled:bg-primary disabled:border-secondary disabled:hover:border-c-hover;
   }
 
@@ -67,7 +67,7 @@
   .default-secondary {
     @apply text-f-primary
           hover:bg-neutral/[.15]
-          active:bg-neutral/[.3]                                                  
+          active:bg-neutral/[.3]
           disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1;
   }
 
