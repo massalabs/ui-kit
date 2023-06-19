@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { ComponentPropsWithoutRef } from 'react';
-import { InputMessage } from './../Input/Input';
+import { InputMessage } from '../Input';
 import CurrencyInput from 'react-currency-input-field';
 
 function MAS(props: ICurrencyProps) {
@@ -16,7 +16,7 @@ function MAS(props: ICurrencyProps) {
   return (
     <>
       <CurrencyInput
-        className={`w-full default-input mb-1 ${messageClass}`}
+        className={`w-full default-input h-12 pl-3 pr-10 mb-1 ${messageClass}`}
         data-testid="currency-field"
         decimalsLimit={9}
         disableAbbreviations={true}
@@ -40,7 +40,7 @@ function NMAS(props: ICurrencyProps) {
   return (
     <>
       <CurrencyInput
-        className={`w-full default-input mb-1 ${messageClass}`}
+        className={`w-full default-input h-12 pl-3 pr-10 mb-1 ${messageClass}`}
         data-testid="currency-field"
         allowDecimals={false}
         disableAbbreviations={true}
