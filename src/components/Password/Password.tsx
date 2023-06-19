@@ -4,7 +4,7 @@ import React from 'react';
 
 import { useState, ComponentPropsWithoutRef } from 'react';
 import { FiEyeOff, FiEye } from 'react-icons/fi';
-import { InputMessage } from '../index';
+import { InputMessage } from '../Input';
 
 export interface PasswordProps extends ComponentPropsWithoutRef<'input'> {
   error?: string | undefined;
