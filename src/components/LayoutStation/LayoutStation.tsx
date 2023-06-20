@@ -41,7 +41,9 @@ export function LayoutStation({ ...props }) {
     >
       <div className="grid grid-cols-3">
         <div className="flex flex-row justify-start">
-          <StationLogo theme={selectedTheme} />
+          <a href="/">
+            <StationLogo theme={selectedTheme} />
+          </a>
         </div>
         <div className="flex flex-row justify-center">
           {navigator && <div className="flex-row-reversed">{navigator}</div>}
