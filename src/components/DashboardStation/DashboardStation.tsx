@@ -2,7 +2,7 @@
 // @ts-ignore
 import React from 'react';
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useLocalStorage } from './../../util/useLocalStorage';
 
 export interface IDashboardStationProps {
@@ -17,7 +17,7 @@ export function DashboardStation(props: IDashboardStationProps) {
     'massa-station-theme',
     'theme-dark',
   );
-  const [images, setImages] = React.useState<ReactNode[]>([]);
+  const [images, setImages] = useState<ReactNode[]>([]);
 
   useEffect(() => {
     function loadImages() {
@@ -34,7 +34,7 @@ export function DashboardStation(props: IDashboardStationProps) {
     }
 
     loadImages();
-  }, [storedTheme]);
+  }, [storedTheme, components, imagesDark, imagesLight]);
 
   return (
     <div
