@@ -9,13 +9,14 @@ export interface IDashboardStationProps {
   imagesDark: ReactNode[];
   imagesLight: ReactNode[];
   components: ReactNode[];
+  theme?: string;
 }
 
 export function DashboardStation(props: IDashboardStationProps) {
-  let { imagesDark, imagesLight, components } = props;
+  let { imagesDark, imagesLight, components, theme } = props;
   const [storedTheme] = useLocalStorage<string>(
     'massa-station-theme',
-    'theme-dark',
+    theme || 'theme-dark',
   );
   const [images, setImages] = useState<ReactNode[]>([]);
 
@@ -34,7 +35,7 @@ export function DashboardStation(props: IDashboardStationProps) {
     }
 
     loadImages();
-  }, [storedTheme, components, imagesDark, imagesLight]);
+  }, [theme, storedTheme, components, imagesDark, imagesLight]);
 
   return (
     <div
