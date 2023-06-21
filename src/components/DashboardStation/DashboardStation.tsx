@@ -3,7 +3,6 @@
 import React from 'react';
 
 import { ReactNode, useEffect, useState } from 'react';
-import { useLocalStorage } from './../../util/useLocalStorage';
 
 export interface IDashboardStationProps {
   imagesDark: ReactNode[];
@@ -14,28 +13,25 @@ export interface IDashboardStationProps {
 
 export function DashboardStation(props: IDashboardStationProps) {
   let { imagesDark, imagesLight, components, theme } = props;
-  const [storedTheme] = useLocalStorage<string>(
-    'massa-station-theme',
-    theme || 'theme-dark',
-  );
+
   const [images, setImages] = useState<ReactNode[]>([]);
 
-  useEffect(() => {
-    function loadImages() {
-      let listeImage: ReactNode[] = [...components];
+  function loadImages() {
+    let imageList: ReactNode[] = [...components];
 
-      const diff = imagesDark.length - components.length;
-      for (let i = 0; i < diff; i++) {
-        const imageToAdd =
-          storedTheme === 'theme-dark' ? imagesDark[i] : imagesLight[i];
-        listeImage.push(imageToAdd);
-      }
-
-      setImages(listeImage);
+    const diff = imagesDark.length - components.length;
+    for (let i = 0; i < diff; i++) {
+      const imageToAdd =
+        theme === 'theme-dark' ? imagesDark[i] : imagesLight[i];
+      imageList.push(imageToAdd);
     }
 
+    setImages(imageList);
+  }
+
+  useEffect(() => {
     loadImages();
-  }, [theme, storedTheme, components, imagesDark, imagesLight]);
+  }, [theme]);
 
   return (
     <div
