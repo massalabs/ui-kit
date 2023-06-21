@@ -61,7 +61,7 @@ const argsStore = {
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
   subtitleIcon: <Certificate />,
-  content: `plugin description - 80 characters max to let users know what the plugin does...`,
+  content: `Unlock your creativity with powerful AI assistance and explore limitless possibilities`,
 };
 
 export const _PluginOn = {
