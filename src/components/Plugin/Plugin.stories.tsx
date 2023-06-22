@@ -61,7 +61,7 @@ const argsStore = {
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
   subtitleIcon: <Certificate />,
-  content: `Unlock your creativity with powerful AI assistance and explore limitless possibilities`,
+  content: `Praesentium quo dicta voluptatem nulla beatae aut molestiae consectetur a quos rezcze zececzec zezczecze`,
 };
 
 export const _PluginOn = {
