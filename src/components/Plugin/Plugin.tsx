@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from 'react';
+
 import { ReactNode, cloneElement } from 'react';
 import { IconContext } from 'react-icons/lib';
 import { truncate } from '../../util/truncate';
@@ -150,7 +151,7 @@ export function PluginStore(props: PluginProps) {
         {subtitle}
         {subtitleIcon}
       </div>
-      <div className="mas-body2 max-h-11 text-f-primary">
+      <div className="mas-body2 text-f-primary line-clamp-2 break-all">
         {truncate(content as string)}
       </div>
     </div>
