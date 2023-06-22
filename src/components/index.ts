@@ -27,3 +27,4 @@ export * from './PluginWallet';
 export * from './TextArea';
 export * from './DragDrop';
 export * from './Vote';
+export * from './Spinner';
