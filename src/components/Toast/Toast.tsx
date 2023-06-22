@@ -69,7 +69,6 @@ export function Toast(props: ToastProps) {
     <div data-testid="toast">
       <Toaster
         position="top-center"
-        containerClassName="ml-20 mb-12"
         toastOptions={{
           duration: 7000,
         }}
