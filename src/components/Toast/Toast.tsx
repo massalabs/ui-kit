@@ -67,7 +67,13 @@ export function Toast(props: ToastProps) {
 
   return (
     <div data-testid="toast">
-      <Toaster position="bottom-left">
+      <Toaster
+        position="bottom-left"
+        containerClassName="ml-20 mb-12"
+        toastOptions={{
+          duration: 7000,
+        }}
+      >
         {(t) => (
           <div
             className={`${theme} flex items-center w-fit p-4 text-primary bg-secondary rounded-lg shadow`}
