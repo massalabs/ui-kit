@@ -68,7 +68,7 @@ export function Toast(props: ToastProps) {
   return (
     <div data-testid="toast">
       <Toaster
-        position="bottom-left"
+        position="top-center"
         containerClassName="ml-20 mb-12"
         toastOptions={{
           duration: 7000,
