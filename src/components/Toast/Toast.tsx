@@ -8,6 +8,7 @@ import { ComponentPropsWithoutRef } from 'react';
 import { FiX, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import { Button } from '../Button';
 import { useLocalStorage } from '../../util/useLocalStorage';
+import { Transition } from '@headlessui/react';
 
 interface ToastProps extends ComponentPropsWithoutRef<'div'> {
   error?: string;
@@ -70,23 +71,35 @@ export function Toast(props: ToastProps) {
       <Toaster
         position="top-center"
         toastOptions={{
-          duration: 7000,
+          duration: 4000,
         }}
       >
         {(t) => (
-          <div
-            className={`${theme} flex items-center w-fit p-4 text-primary bg-secondary rounded-lg shadow`}
-            {...rest}
+          <Transition
+            appear
+            show={t.visible}
+            className="transform transition-all duration-200"
+            enter="transition ease-in-out transform"
+            enterFrom="-translate-y-0"
+            enterTo="translate-y-full"
+            leave="transition ease-in-out transform"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
           >
-            {t.type === 'error' || isError ? (
-              <Error error={t.message?.toString()} {...props} />
-            ) : (
-              <Success success={t.message?.toString()} {...props} />
-            )}
-            <Button variant="icon" onClick={() => toast.dismiss(t.id)}>
-              <FiX />
-            </Button>
-          </div>
+            <div
+              className={`${theme} flex items-center w-fit p-4 text-primary bg-secondary rounded-lg shadow`}
+              {...rest}
+            >
+              {t.type === 'error' || isError ? (
+                <Error error={t.message?.toString()} {...props} />
+              ) : (
+                <Success success={t.message?.toString()} {...props} />
+              )}
+              <Button variant="icon" onClick={() => toast.dismiss(t.id)}>
+                <FiX />
+              </Button>
+            </div>
+          </Transition>
         )}
       </Toaster>
     </div>
