@@ -76,14 +76,14 @@ export function Dropdown(props: IDropdownProps) {
   }
 
   return (
-    <div className="flex-none" data-testid="dropdown">
+    <div className="relative flex-none" data-testid="dropdown">
       <button
         data-testid={`dropdown-button`}
         onClick={toggleDropdown}
         className={`flex default-button border-secondary justify-between
                     ${customButtonClass}
                     items-center text-f-primary bg-secondary
-                    hover:bg-tertiary hover:border-tertiary  
+                    hover:bg-tertiary hover:border-tertiary
                     disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`}
       >
         <div className={customIconClass}>{selected?.icon}</div>
@@ -92,7 +92,7 @@ export function Dropdown(props: IDropdownProps) {
       </button>
       <div
         id="options"
-        className={`${hidden} mt-2 bg-secondary py-1.5 ${customPanelClass}`}
+        className={`${hidden} mt-2 bg-secondary py-1.5 absolute z-10 ${customPanelClass}`}
       >
         <ul
           className="h-auto max-h-64 overflow-y-auto"
