@@ -1,3 +1,4 @@
+import { Spinner } from '../Spinner';
 import { Button } from './Button';
 import { FiArrowUpRight, FiDisc } from 'react-icons/fi';
 
@@ -155,5 +156,13 @@ export const _Icon = {
         <FiDisc />
       </Button>
     </>
+  ),
+};
+
+export const _ButtonWithSpinner = {
+  render: () => (
+    <Button disabled>
+      <Spinner /> Install
+    </Button>
   ),
 };
