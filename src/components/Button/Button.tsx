@@ -29,7 +29,7 @@ export function ButtonToggle(props: ButtonProps) {
       className={`default-button default-toggle border-0 ${pressedClass} ${customClass}`}
       {...rest}
     >
-      <div className="w-fit m-auto flex gap-2 items-baseline">{children}</div>
+      <div className="w-fit m-auto flex gap-2 items-baseline"> {children}</div>
     </button>
   );
 }
@@ -96,7 +96,7 @@ export function Button(props: ButtonProps) {
       className={`default-button px-4 py-3 ${classes[variant]} ${customClass}`}
       {...rest}
     >
-      <div className="w-fit m-auto flex gap-2 items-baseline">
+      <div className="w-fit m-auto flex gap-2">
         <div className="m-auto">
           <IconContext.Provider value={{ className: 'w-6 h-6' }}>
             {preIcon}
