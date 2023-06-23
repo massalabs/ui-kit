@@ -34,8 +34,10 @@ export function ActivePlugin(props: ActivePluginProps) {
     <>
       {iconActive}
       <div className="w-full py-6 text-f-primary bg-secondary flex flex-col items-center">
-        <div className="w-4/5 px-4 py-2 text-center mas-subtitle min-[450px]:mas-title">
-          {title}
+        <div className="px-4 py-2 lg:h-14 mas-title text-center">
+          <p className="text-xl sm:text-4xl lg:text-2xl 2xl:text-4xl">
+            {title}
+          </p>
         </div>
         <div className="w-4/5 px-4 py-2">
           <Button onClick={onClickActive} preIcon={<FiArrowUpRight />}>
@@ -54,8 +56,8 @@ export function InactivePlugin(props: InactivePluginProps) {
     <>
       {iconInactive}
       <div className="w-full py-6 text-f-primary bg-secondary flex flex-col items-center">
-        <div className="w-4/5 px-4 py-2 text-center mas-buttons">
-          {`${title} is not installed in your station`}
+        <div className="w-4/5 px-4 py-2 mas-buttons lg:h-14 flex items-center justify-center">
+          <p className="text-center">{`${title} is not installed in your station`}</p>
         </div>
         <div className="w-4/5 px-4 py-2">
           <Button onClick={onClickInactive}>Install</Button>

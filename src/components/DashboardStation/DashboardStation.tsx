@@ -15,6 +15,7 @@ export function DashboardStation(props: IDashboardStationProps) {
   let { imagesDark, imagesLight, components, theme } = props;
 
   const [images, setImages] = useState<ReactNode[]>([]);
+  const sizeClass = 'h-full w-full';
 
   function loadImages() {
     let imageList: ReactNode[] = [...components];
@@ -38,20 +39,26 @@ export function DashboardStation(props: IDashboardStationProps) {
       className="grid lg:grid-cols-6 grid-cols-3 grid-rows-2 gap-8"
       data-testid="dashboard-station"
     >
-      <div className="col-span-2 row-span-2">{images[0]}</div>
-      <div className="col-start-3">{images[1]}</div>
-      <div className="col-start-3 row-start-2">{images[2]}</div>
+      <div className="col-span-2 row-span-2">
+        <div className={`${sizeClass}`}>{images[0]}</div>
+      </div>
+      <div className="col-start-3">
+        <div className={`${sizeClass}`}>{images[1]}</div>
+      </div>
+      <div className="col-start-3 row-start-2">
+        <div className={`${sizeClass}`}>{images[2]}</div>
+      </div>
       <div className="row-start-3 lg:col-span-2 lg:row-span-2 lg:col-start-4 lg:row-start-1">
-        {images[3]}
+        <div className={`${sizeClass}`}>{images[3]}</div>
       </div>
       <div className="col-start-1 row-start-4 lg:col-start-6 lg:row-start-1">
-        {images[4]}
+        <div className={`${sizeClass}`}>{images[4]}</div>
       </div>
       <div
         className="col-span-2 row-span-2 col-start-2 row-start-3
       lg:col-span-1 lg:row-span-1 lg:col-start-6 lg:row-start-2"
       >
-        {images[5]}
+        <div className={`${sizeClass}`}>{images[5]}</div>
       </div>
     </div>
   );
