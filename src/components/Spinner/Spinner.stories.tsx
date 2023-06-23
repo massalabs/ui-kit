@@ -11,7 +11,7 @@ export const _Default = {
 
 export const _Button = {
   render: () => (
-    <Button>
+    <Button disabled>
       <Spinner variant="button" />
     </Button>
   ),
