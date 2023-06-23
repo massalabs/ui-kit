@@ -41,6 +41,7 @@ export const _DashboardStation = {
         components={[
           <PluginWallet
             isActive={true}
+            isLoading={false}
             title={'Massawallet'}
             iconActive={<WalletActive />}
             iconInactive={<WalletInactive />}
