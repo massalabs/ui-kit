@@ -8,6 +8,7 @@ describe('Components | PluginWallet', () => {
     render(
       <PluginWallet
         isActive={true}
+        isLoading={false}
         title={'Massawallet'}
         iconActive={null}
         iconInactive={null}

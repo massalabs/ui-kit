@@ -5,9 +5,11 @@ import React from 'react';
 import { ReactNode } from 'react';
 import { Button } from '../Button';
 import { FiArrowUpRight } from 'react-icons/fi';
+import { Spinner } from '../Spinner';
 
 export interface PluginWalletProps {
   isActive: boolean;
+  isLoading: boolean;
   title: string;
   iconActive: ReactNode;
   iconInactive: ReactNode;
@@ -25,6 +27,11 @@ export interface InactivePluginProps {
   title: string;
   iconInactive: ReactNode;
   onClickInactive: () => void;
+}
+
+export interface LoadingPluginProps {
+  title: string;
+  iconInactive: ReactNode;
 }
 
 export function ActivePlugin(props: ActivePluginProps) {
@@ -67,9 +74,30 @@ export function InactivePlugin(props: InactivePluginProps) {
   );
 }
 
+export function LoadingPlugin(props: LoadingPluginProps) {
+  const { title, iconInactive } = props;
+
+  return (
+    <>
+      {iconInactive}
+      <div className="w-full py-6 text-f-primary bg-secondary flex flex-col items-center">
+        <div className="w-4/5 px-4 py-2 mas-buttons lg:h-14 flex items-center justify-center">
+          <p className="text-center">{`${title} installation`}</p>
+        </div>
+        <div className="w-4/5 px-4 py-2">
+          <Button disabled={true}>
+            <Spinner variant="button" />
+          </Button>
+        </div>
+      </div>
+    </>
+  );
+}
+
 export function PluginWallet(props: PluginWalletProps) {
   const {
     isActive,
+    isLoading,
     title,
     iconActive,
     iconInactive,
@@ -79,7 +107,9 @@ export function PluginWallet(props: PluginWalletProps) {
 
   return (
     <div data-testid="plugin-wallet" className="w-full flex flex-col">
-      {isActive ? (
+      {isLoading ? (
+        <LoadingPlugin title={title} iconInactive={iconInactive} />
+      ) : isActive ? (
         <ActivePlugin
           title={title}
           iconActive={iconActive}

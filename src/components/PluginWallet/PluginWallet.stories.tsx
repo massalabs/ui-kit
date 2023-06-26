@@ -9,7 +9,8 @@ export const _PluginWalletActive = {
     <div className="sm:w-80">
       <PluginWallet
         isActive={true}
-        title={'Massawallet'}
+        isLoading={false}
+        title={'Massa Wallet'}
         iconActive={<WalletActive />}
         iconInactive={<WalletInactive />}
         onClickActive={() => console.log('intall')}
@@ -24,7 +25,24 @@ export const _PluginWalletIncative = {
     <div className="sm:w-80">
       <PluginWallet
         isActive={false}
-        title={'Massawallet'}
+        isLoading={false}
+        title={'Massa Wallet'}
+        iconActive={<WalletActive />}
+        iconInactive={<WalletInactive />}
+        onClickActive={() => console.log('intall')}
+        onClickInactive={() => console.log('launch')}
+      />
+    </div>
+  ),
+};
+
+export const _PluginWalletLoading = {
+  render: () => (
+    <div className="sm:w-80">
+      <PluginWallet
+        isActive={false}
+        isLoading={true}
+        title={'Massa Wallet'}
         iconActive={<WalletActive />}
         iconInactive={<WalletInactive />}
         onClickActive={() => console.log('intall')}
