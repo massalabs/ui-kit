@@ -117,7 +117,7 @@ export function Dropdown(props: IDropdownProps) {
                   </div>
                   <div
                     data-testid={`dropdown-item-${idx}`}
-                    className="mas-menu-active truncate"
+                    className="mas-menu-active p-2 truncate"
                   >
                     {option.item}
                   </div>
