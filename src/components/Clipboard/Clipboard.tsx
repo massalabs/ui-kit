@@ -59,9 +59,9 @@ export function Clipboard(props: ClipboardProps) {
         onClick={handleCopyToClipboard}
         {...rest}
       >
-        <u className="text-f-primary pr-2 w-full truncate">
+        <p className="text-f-primary pr-2 w-full truncate">
           {displayedContent}
-        </u>
+        </p>
         {success ? (
           <FiCheckCircle className="w-6 h-6 text-s-success" />
         ) : (
