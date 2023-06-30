@@ -53,6 +53,7 @@ export function IconInput(props: InputProps) {
         </div>
         <div className="inline -ml-10">
           <button
+            type="button"
             className="w-10 h-10 bg-transparent"
             data-testid="password-icon"
             onClick={handleOnClick}
