@@ -56,6 +56,7 @@ export function Password(props: PasswordProps) {
         </div>
         <div className="inline -ml-9">
           <button
+            type="button"
             className="w-8 h-8 bg-transparent"
             data-testid="password-icon"
             onClick={toggleIcon}
