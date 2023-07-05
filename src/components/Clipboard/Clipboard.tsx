@@ -56,7 +56,7 @@ export function Clipboard(props: ClipboardProps) {
     }, 3000);
   }
 
-  function renderAddressHover() {
+  function displayAddressOnHover() {
     const divStyle: CSSProperties = {
       position: 'fixed',
       left: position.x + 30,
@@ -80,7 +80,7 @@ export function Clipboard(props: ClipboardProps) {
 
   return (
     <>
-      {isHovered && hover ? renderAddressHover() : null}
+      {isHovered && hover ? displayAddressOnHover() : null}
       <div
         data-testid="clipboard-field"
         className={`flex flex-row items-center mas-body2 justify-between w-full
