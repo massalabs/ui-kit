@@ -75,7 +75,7 @@ export function PluginActions(props: PluginProps) {
         {topAction}
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
-      <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">
+      <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption truncate">
         {subtitle}
         {subtitleIcon}
       </div>
@@ -147,7 +147,7 @@ export function PluginStore(props: PluginProps) {
         {clonedTopAction}
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
-      <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">
+      <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption truncate">
         {subtitle}
         {subtitleIcon}
       </div>

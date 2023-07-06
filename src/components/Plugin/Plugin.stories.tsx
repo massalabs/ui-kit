@@ -21,7 +21,7 @@ const argsOn = {
     </Button>
   ),
   title: `plugin name - 30 characters...`,
-  subtitle: `Author's Name`,
+  subtitle: `Author's Name Author's Name Praesentium quo dicta`,
   subtitleIcon: <Certificate />,
   content: [
     <Button variant="icon" onClick={() => console.log('reload')}>
@@ -59,7 +59,8 @@ const argsStore = {
   preIcon: <MassaWallet variant="rounded" size={40} />,
   topAction: <FiDownload onClick={() => console.log('download')} />,
   title: `plugin name - 30 characters...`,
-  subtitle: `Author's Name`,
+  subtitle: `Author's Name Praesentium quo dicta voluptatem nulla beatae aut molestiae consectetur a 
+  quos rezcze zececzec zezczecze`,
   subtitleIcon: <Certificate />,
   content: `Praesentium quo dicta voluptatem nulla beatae aut molestiae consectetur a quos rezcze zececzec zezczecze`,
 };
