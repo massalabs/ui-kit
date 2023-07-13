@@ -10,7 +10,9 @@ import {
   colorDarkGrey,
   colorLightGrey,
   colorDarkBlue,
+  colorDeepBlue,
   colorBasicBlue,
+  colorBrightBlue,
   colorLightBlue,
   colorWarning,
   colorError,
@@ -37,6 +39,8 @@ module.exports = {
         brand: colorGreen,
         neutral: colorDarkBlue,
         info: colorLightBlue,
+        'deep-blue': colorDeepBlue,
+        'bright-blue': colorBrightBlue,
         // states:
         's-success': colorGreen,
         's-error': colorError,
@@ -67,6 +71,8 @@ module.exports = {
         brand: colorGreen,
         neutral: colorWhite,
         info: colorDarkGrey,
+        'deep-blue': colorDeepBlue,
+        'bright-blue': colorBrightBlue,
         // states:
         's-success': colorGreen,
         's-error': colorError,
