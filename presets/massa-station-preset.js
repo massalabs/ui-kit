@@ -16,6 +16,7 @@ import {
   colorLightBlue,
   colorWarning,
   colorError,
+  colorBabyBlue,
 } from './colors';
 
 /** @type {import('tailwindcss').Config} */
@@ -40,6 +41,7 @@ module.exports = {
         neutral: colorDarkBlue,
         info: colorLightBlue,
         'deep-blue': colorDeepBlue,
+        'baby-blue': colorBabyBlue,
         'bright-blue': colorBrightBlue,
         // states:
         's-success': colorGreen,
