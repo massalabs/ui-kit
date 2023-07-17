@@ -34,6 +34,29 @@ export const _Dropdown = {
             { icon: <MassaLogo size={32} />, item: 'account 6 name' },
           ]}
         />
+
+        <br />
+
+        <Dropdown
+          readOnly={true}
+          options={[
+            {
+              icon: (
+                <MassaToken size={32} className="bg-c-default rounded-full" />
+              ),
+              item: 'account 1 name',
+              onClick: () => console.log('option 1'),
+            },
+            {
+              icon: <MassaLogo size={32} />,
+              item: 'account 2 name with a biiiiig content',
+            },
+            { icon: <MassaLogo size={32} />, item: 'account 3 name' },
+            { icon: <MassaLogo size={32} />, item: 'account 4 name' },
+            { icon: <MassaLogo size={32} />, item: 'account 5 name' },
+            { icon: <MassaLogo size={32} />, item: 'account 6 name' },
+          ]}
+        />
       </div>
 
       <br />
@@ -133,6 +156,24 @@ export const _Dropdown = {
       <div className="w-32">
         <Dropdown
           size={'xs'}
+          options={[
+            {
+              icon: (
+                <MassaToken size={16} className="bg-c-default rounded-full" />
+              ),
+              item: 'MAS',
+              onClick: () => console.log('option 1'),
+            },
+            { icon: <MassaLogo size={16} />, item: 'MAS' },
+            { icon: <MassaLogo size={16} />, item: 'MAS' },
+          ]}
+        />
+
+        <br />
+
+        <Dropdown
+          size={'xs'}
+          readOnly={true}
           options={[
             {
               icon: (
