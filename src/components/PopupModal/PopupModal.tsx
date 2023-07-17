@@ -18,6 +18,7 @@ interface IPopupModalProps extends ComponentPropsWithoutRef<'div'> {
   fullMode?: boolean;
   children?: ReactNode;
   customClass?: string;
+  customClassNested?: string;
   // both exposed function should be declared as:
   // onOpen?(): any;
   // however by some reason jest does not recognize
@@ -102,6 +103,7 @@ export function PopupModal(props: IPopupModalProps) {
     onOpen,
     onClose,
     customClass,
+    customClassNested,
     ...rest
   } = props;
   const [hidden, setHidden] = useState(status);
@@ -136,7 +138,9 @@ export function PopupModal(props: IPopupModalProps) {
       {...rest}
     >
       <div className={`relative max-h-full w-2/3 ${customClass}`}>
-        <div className="relative bg-primary rounded-lg shadow">
+        <div
+          className={`relative bg-primary rounded-lg shadow ${customClassNested}`}
+        >
           {appendedChildren}
         </div>
       </div>
