@@ -126,7 +126,6 @@ export function Theme() {
       <Color color="bg-f-disabled-2" />
     </div>
   );
-  const OtherColors = () => <Color color="bg-baby-blue" />;
 
   return (
     <div className="mb-2">
@@ -151,10 +150,6 @@ export function Theme() {
       <div className={baseClass} />
 
       <Fonts />
-
-      <div className={baseClass} />
-
-      <OtherColors />
     </div>
   );
 }

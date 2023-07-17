@@ -28,3 +28,4 @@ export * from './DragDrop';
 export * from './Vote';
 export * from './Spinner';
 export * from './Toast';
+export * from './Tag';
