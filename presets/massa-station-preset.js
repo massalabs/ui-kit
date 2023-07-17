@@ -16,6 +16,7 @@ import {
   colorLightBlue,
   colorWarning,
   colorError,
+  colorInfo,
 } from './colors';
 
 /** @type {import('tailwindcss').Config} */
@@ -46,6 +47,7 @@ module.exports = {
         's-error': colorError,
         's-warning': colorWarning,
         's-info': colorDarkGrey,
+        's-info-1': colorInfo,
         // components:
         'c-default': colorDarkBlue,
         'c-hover': colorLightBlue,
@@ -78,6 +80,7 @@ module.exports = {
         's-error': colorError,
         's-warning': colorWarning,
         's-info': colorDarkGrey,
+        's-info-1': colorInfo,
         // components:
         'c-default': colorWhite,
         'c-hover': colorDarkGrey,
