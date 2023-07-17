@@ -74,6 +74,7 @@ module.exports = {
         neutral: colorWhite,
         info: colorDarkGrey,
         'deep-blue': colorDeepBlue,
+        'baby-blue': colorBabyBlue,
         'bright-blue': colorBrightBlue,
         // states:
         's-success': colorGreen,

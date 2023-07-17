@@ -4,26 +4,26 @@ export default {
   title: 'Components/Tag',
 };
 
-const arg1 = {
+const argSuccess = {
   tagType: 'success',
   text: 'account #',
 };
 
-const arg2 = {
+const argError = {
   tagType: 'error',
   text: 'account #',
 };
-const arg3 = {
+const argInfo = {
   tagType: 'info',
   text: 'account #',
 };
 
 export const _TagSuccess = {
-  render: () => <Tag {...arg1} />,
+  render: () => <Tag {...argSuccess} />,
 };
 export const _TagError = {
-  render: () => <Tag {...arg2} />,
+  render: () => <Tag {...argError} />,
 };
 export const _TagInfo = {
-  render: () => <Tag {...arg3} />,
+  render: () => <Tag {...argInfo} />,
 };
