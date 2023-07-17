@@ -9,4 +9,4 @@ export const colorBrightBlue = '#4AB2FF';
 export const colorLightBlue = '#2E374C';
 export const colorWarning = '#FFA41D';
 export const colorError = '#FF4F4F';
-export const colorInfo = '#67B1D4';
+export const colorInfo = '#4AB2FF';
