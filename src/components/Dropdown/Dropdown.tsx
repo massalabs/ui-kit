@@ -15,6 +15,7 @@ interface IDropdownProps extends ComponentPropsWithoutRef<'div'> {
   options: IOption[];
   size?: 'xs' | 'md';
   select?: number;
+  readOnly?: boolean;
 }
 
 function Icon({ toggle }: { toggle: boolean }) {
@@ -28,7 +29,7 @@ function Icon({ toggle }: { toggle: boolean }) {
 }
 
 export function Dropdown(props: IDropdownProps) {
-  let { size = 'md', select = 0, options } = props;
+  let { size = 'md', select = 0, options, readOnly = false } = props;
 
   const classes = {
     xs: {
@@ -61,6 +62,8 @@ export function Dropdown(props: IDropdownProps) {
   const customPanelClass = classes[size].panel;
 
   function toggleDropdown() {
+    if (readOnly) return;
+
     setToggle(!toggle);
   }
 
@@ -77,6 +80,12 @@ export function Dropdown(props: IDropdownProps) {
 
   return (
     <div className="relative flex-none" data-testid="dropdown">
+      {readOnly && (
+        <div
+          className={`bg-primary absolute flex-none opacity-50 ${customButtonClass}`}
+        ></div>
+      )}
+
       <button
         data-testid={`dropdown-button`}
         onClick={toggleDropdown}
