@@ -1,7 +1,10 @@
-import { MassaToken } from './Massa/MassaToken';
-import { MassaLogo } from './Massa/MassaLogo';
-import { MassaWallet } from './Massa/MassaWallet';
-import { StationLogo } from './Massa/StationLogo';
+import {
+  MassaToken,
+  MassaLogo,
+  MassaWallet,
+  StationLogo,
+  BridgeLogo,
+} from './Massa';
 
 export default { title: 'Icons/Massa' };
 
@@ -23,6 +26,16 @@ export const _StationLogo = {
       <StationLogo theme="theme-dark" />
       <br />
       <StationLogo theme="theme-light" />
+    </>
+  ),
+};
+
+export const _BridgeLogo = {
+  render: () => (
+    <>
+      <BridgeLogo theme="theme-dark" />
+      <br />
+      <BridgeLogo theme="theme-light" />
     </>
   ),
 };
