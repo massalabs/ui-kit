@@ -27,11 +27,14 @@ interface IPopupModalProps extends ComponentPropsWithoutRef<'div'> {
 
 interface IPopupModalNodeProps extends ComponentPropsWithoutRef<'div'> {
   children?: ReactNode;
+  customClassHeader?: string;
+  customClassContent?: string;
+  customClassFooter?: string;
   _onClose?: () => void;
 }
 
 export function PopupModalHeader(props: IPopupModalNodeProps) {
-  const { children, _onClose } = props;
+  const { children, _onClose, customClassHeader } = props;
 
   function handleClose() {
     _onClose?.();
@@ -41,7 +44,7 @@ export function PopupModalHeader(props: IPopupModalNodeProps) {
     return (
       <div
         data-testid="popup-modal-header"
-        className="flex items-start justify-between px-10 pt-10 rounded-t"
+        className={`flex items-start justify-between px-10 pt-10 rounded-t ${customClassHeader}`}
       >
         {children}
         <button
@@ -60,11 +63,14 @@ export function PopupModalHeader(props: IPopupModalNodeProps) {
 }
 
 export function PopupModalContent(props: IPopupModalNodeProps) {
-  const { children } = props;
+  const { children, customClassContent } = props;
 
   if (children) {
     return (
-      <div data-testid="popup-modal-content" className="px-10">
+      <div
+        data-testid="popup-modal-content"
+        className={`px-10 ${customClassContent}`}
+      >
         {children}
       </div>
     );
@@ -73,13 +79,13 @@ export function PopupModalContent(props: IPopupModalNodeProps) {
 }
 
 export function PopupModalFooter(props: IPopupModalNodeProps) {
-  const { children } = props;
+  const { children, customClassFooter } = props;
 
   if (children) {
     return (
       <div
         data-testid="popup-modal-footer"
-        className="flex items-center px-10 pb-10 space-x-2 border-t border-tertiary rounded-b"
+        className={`flex items-center px-10 pb-10 space-x-2 border-t border-tertiary rounded-b ${customClassFooter}`}
       >
         {children}
       </div>
