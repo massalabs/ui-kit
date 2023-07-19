@@ -7,6 +7,8 @@ export default {
 export const _Tag = {
   render: () => (
     <>
+      <Tag type={'default'} content={'default type'} />
+      <br />
       <Tag type={'error'} content={'error type'} />
       <br />
       <Tag type={'success'} content={'success type'} />
