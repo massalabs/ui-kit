@@ -89,6 +89,7 @@ export function Dropdown(props: IDropdownProps) {
       <button
         data-testid={`dropdown-button`}
         onClick={toggleDropdown}
+        type="button"
         className={`flex default-button border-secondary justify-between
                     ${customButtonClass}
                     items-center text-f-primary bg-secondary
