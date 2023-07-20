@@ -93,7 +93,7 @@ export function Button(props: ButtonProps) {
     <button
       data-testid="button"
       type="button"
-      className={`default-button px-4 py-3 ${classes[variant]} ${customClass}`}
+      className={`default-button flex min-h-12 items-center px-4 ${classes[variant]} ${customClass}`}
       {...rest}
     >
       <div className="w-fit m-auto flex gap-2">
