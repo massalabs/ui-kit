@@ -5,7 +5,7 @@ export default { title: 'Components/Currency' };
 export const _Currency = {
   render: () => (
     <>
-      <Currency placeholder={'something'} defaultValue="" />
+      <Currency placeholder={'something'} defaultValue="1" disable={true} />
     </>
   ),
 };

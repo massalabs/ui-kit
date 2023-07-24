@@ -7,11 +7,14 @@ import { InputMessage } from '../Input';
 import CurrencyInput from 'react-currency-input-field';
 
 function MAS(props: ICurrencyProps) {
-  const { error, warning, variant = 'MAS', ...rest } = props;
+  const { error, warning, success, disable, variant = 'MAS', ...rest } = props;
 
+  const disabledClass = disable ? 'border-0' : '';
   const errorClass = error ? 'border-s-error' : '';
   const warningClass = warning ? 'border-s-warning' : '';
-  const messageClass = errorClass || warningClass;
+  const successClass = success ? 'border-s-success' : '';
+  const messageClass =
+    errorClass || warningClass || successClass || disabledClass;
 
   return (
     <>
@@ -23,6 +26,7 @@ function MAS(props: ICurrencyProps) {
         allowNegativeValue={false}
         suffix={' MAS'}
         intlConfig={{ locale: 'en-US' }}
+        disabled={disable}
         {...rest}
       />
       <InputMessage error={error} warning={warning} />
@@ -31,11 +35,14 @@ function MAS(props: ICurrencyProps) {
 }
 
 function NMAS(props: ICurrencyProps) {
-  const { error, warning, variant = 'MAS', ...rest } = props;
+  const { error, warning, success, disable, variant = 'MAS', ...rest } = props;
 
+  const disabledClass = disable ? 'border-0' : '';
   const errorClass = error ? 'border-s-error' : '';
   const warningClass = warning ? 'border-s-warning' : '';
-  const messageClass = errorClass || warningClass;
+  const successClass = success ? 'border-s-success' : '';
+  const messageClass =
+    errorClass || warningClass || successClass || disabledClass;
 
   return (
     <>
@@ -47,6 +54,7 @@ function NMAS(props: ICurrencyProps) {
         allowNegativeValue={false}
         suffix={' nMAS'}
         disableGroupSeparators={true}
+        disabled={disable}
         {...rest}
       />
       <InputMessage error={error} warning={warning} />
@@ -58,6 +66,8 @@ export interface ICurrencyProps
   extends ComponentPropsWithoutRef<typeof CurrencyInput> {
   error?: string | undefined;
   warning?: string | undefined;
+  success?: string | undefined;
+  disable?: boolean;
   variant?: 'nMAS' | 'MAS';
 }
 
