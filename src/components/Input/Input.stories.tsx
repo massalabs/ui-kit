@@ -37,7 +37,7 @@ export const _RegularInput = {
       <br />
 
       <h3>Uncontrolled components</h3>
-      <Input placeholder={'something'} defaultValue="" />
+      <Input placeholder={'something'} defaultValue="" disable={true} />
       <br />
       <Input
         placeholder={'something'}
@@ -66,6 +66,7 @@ export const _IconInput = {
         onClickIcon={() => console.log('clicked')}
         customClass="border-0"
         success="Woow!"
+        disable={true}
       />
     </>
   ),
