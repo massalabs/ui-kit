@@ -18,7 +18,7 @@ import {
   colorWarning,
   colorError,
   colorInfo,
-} from './colors';
+} from './bridgeColors';
 
 /** @type {import('tailwindcss').Config} */
 import plugin from 'tailwindcss/plugin';
