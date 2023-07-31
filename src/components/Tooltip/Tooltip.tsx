@@ -1,5 +1,9 @@
-import { cloneElement, useState } from 'react';
+import { ComponentPropsWithoutRef, cloneElement, useState } from 'react';
 import { FiHelpCircle } from 'react-icons/fi';
+
+export interface TooltipProps extends ComponentPropsWithoutRef<'div'> {
+  size: string;
+}
 
 export function Tooltip({ ...props }) {
   const { content, customClass, ...rest } = props;

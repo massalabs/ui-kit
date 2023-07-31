@@ -4,7 +4,7 @@ import { Tooltip } from '.';
 
 describe('Components | Toggle', () => {
   test('it should render', () => {
-    render(<Tooltip />);
+    render(<Tooltip content={'Hello I am tooltip content'} />);
 
     let tooltip = screen.getByTestId('Tooltip');
 
