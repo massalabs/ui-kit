@@ -70,11 +70,7 @@ export function BridgeLogo(props: SVGProps) {
   const isDark = theme === 'theme-dark';
 
   return (
-    <div
-      className={`bg-primary w-fit rounded-full`}
-      data-testid="station-logo"
-      {...rest}
-    >
+    <div className="w-fit" data-testid="station-logo" {...rest}>
       {isDark ? <DarkLogo /> : <LightLogo />}
     </div>
   );
