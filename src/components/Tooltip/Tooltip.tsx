@@ -15,7 +15,7 @@ export function Tooltip({ ...props }) {
   });
   return (
     <div
-      data-testid="tooltip"
+      data-testid="Tooltip"
       className="w-fit p-2 hover:cursor-pointer"
       {...rest}
       onMouseEnter={() => setShowTooltip(true)}
