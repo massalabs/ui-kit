@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { Button } from '../Button';
@@ -11,7 +14,7 @@ interface ITokenData {
   rawBalance: string;
 }
 
-export interface ToggleProps extends ComponentPropsWithoutRef<'div'> {
+export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   token: ITokenData;
   customClass?: string;
   onDelete?: () => void;
