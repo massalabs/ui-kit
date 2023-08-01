@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React from 'react';
 import { ComponentPropsWithoutRef, cloneElement, useState } from 'react';
 import { FiHelpCircle } from 'react-icons/fi';
 
