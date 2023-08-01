@@ -2,7 +2,7 @@
 // @ts-ignore
 import React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
-import { FiTrash } from 'react-icons/fi';
+import { FiTrash2 } from 'react-icons/fi';
 import { Button } from '../Button';
 import { Tooltip } from '../Tooltip';
 
@@ -17,6 +17,7 @@ interface ITokenData {
 export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   token: ITokenData;
   customClass?: string;
+  disable?: boolean;
   onDelete?: () => void;
 }
 
@@ -24,6 +25,7 @@ export function Token({ ...props }) {
   const {
     token: { logo, name, symbol, formattedBalance, rawBalance },
     onDelete,
+    disable,
     customClass,
     ...rest
   } = props;
@@ -44,9 +46,11 @@ export function Token({ ...props }) {
         </div>
       </div>
       <div>
-        <Button variant="icon" onClick={onDelete}>
-          <FiTrash />
-        </Button>
+        {disable ? null : (
+          <Button variant="icon" onClick={onDelete}>
+            <FiTrash2 size={24} />
+          </Button>
+        )}
       </div>
     </div>
   );

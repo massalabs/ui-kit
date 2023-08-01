@@ -31,7 +31,7 @@ const mrc721Token = {
 export const _TokenMassa = {
   render: () => (
     <>
-      <Token token={massaToken} onDelete={() => console.log('delete')} />
+      <Token token={massaToken} disable={true} />
     </>
   ),
 };
