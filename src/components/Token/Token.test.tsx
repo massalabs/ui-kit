@@ -10,12 +10,12 @@ const massaToken = {
   symbol: 'SYMBL',
 };
 
-describe('Components | Toggle', () => {
+describe('Components | Token', () => {
   test('it should render', () => {
     render(<Token token={massaToken} />);
 
-    let toggle = screen.getByTestId('token');
+    let token = screen.getByTestId('token');
 
-    expect(toggle).toBeInTheDocument();
+    expect(token).toBeInTheDocument();
   });
 });
