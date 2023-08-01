@@ -13,7 +13,6 @@ interface ITokenData {
 
 export interface ToggleProps extends ComponentPropsWithoutRef<'div'> {
   token: ITokenData;
-  tooltipContent?: string;
   customClass?: string;
   onDelete?: () => void;
 }
