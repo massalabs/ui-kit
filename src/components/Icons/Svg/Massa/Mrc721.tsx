@@ -1,4 +1,12 @@
-export function Mrc721({ ...props }) {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React, { ComponentPropsWithoutRef } from 'react';
+
+interface SVGProps extends ComponentPropsWithoutRef<'div'> {
+  size?: number;
+}
+
+export function Mrc721(props: SVGProps) {
   const { size } = props;
   return (
     <svg
