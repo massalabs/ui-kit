@@ -104,7 +104,7 @@ export function Mrc20(props: SVGProps) {
 22.8862H7.57522L5.72778 18.7515V22.8862H5V17.3519H5.78376L7.83115 
 21.9265L9.87853 17.3519H10.6543Z"
         stroke="white"
-        stroke-width="0.25"
+        strokeWidth="0.25"
       />
       <path
         d="M14.8237 22.8862L13.4961 20.6069H12.6163V22.8862H11.8885V17.3119H13.688C14.1092 
@@ -117,7 +117,7 @@ export function Mrc20(props: SVGProps) {
 14.5757 18.1836C14.3838 18.0024 14.0879 17.9117 13.688 
 17.9117H12.6163V20.0231Z"
         stroke="white"
-        stroke-width="0.25"
+        strokeWidth="0.25"
       />
       <path
         d="M16.4823 20.0951C16.4823 19.5512 16.605 19.0634 
@@ -137,12 +137,12 @@ export function Mrc20(props: SVGProps) {
 17.8499 22.5743C17.4287 22.3291 17.0955 21.9905 16.8502 21.5586C16.605 
 21.1268 16.4823 20.6389 16.4823 20.0951Z"
         stroke="white"
-        stroke-width="0.25"
+        strokeWidth="0.25"
       />
       <path
         d="M25.9712 19.6472V20.263H22.7801V19.6472H25.9712Z"
         stroke="white"
-        stroke-width="0.25"
+        strokeWidth="0.25"
       />
       <path
         d="M27.1291 22.3024C27.8062 21.7586 28.3367 21.3134 
@@ -158,7 +158,7 @@ export function Mrc20(props: SVGProps) {
 21.4253 28.7472 21.7932 28.2247 
 22.2144H30.9759V22.8222H27.1291V22.3024Z"
         stroke="white"
-        stroke-width="0.25"
+        strokeWidth="0.25"
       />
       <path
         d="M31.8172 19.9351C31.8172 19.0181 
@@ -184,7 +184,7 @@ export function Mrc20(props: SVGProps) {
 21.1427C35.0882 20.8175 35.1202 20.415 35.1202 
 19.9351Z"
         stroke="white"
-        stroke-width="0.25"
+        strokeWidth="0.25"
       />
     </svg>
   );

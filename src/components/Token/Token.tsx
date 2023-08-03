@@ -5,17 +5,15 @@ import { ComponentPropsWithoutRef } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import { Button } from '../Button';
 import { Tooltip } from '../Tooltip';
-
-interface ITokenData {
-  logo: string;
-  name: string;
-  symbol: string;
-  formattedBalance: string;
-  rawBalance: string;
-}
+import { formatUnits } from 'viem';
+import { formatValue } from 'react-currency-input-field';
 
 export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
-  token: ITokenData;
+  logo?: React.ReactNode;
+  name: string;
+  symbol: string;
+  decimals: number;
+  balance: string;
   customClass?: string;
   disable?: boolean;
   onDelete?: () => void;
@@ -23,12 +21,33 @@ export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
 
 export function Token({ ...props }) {
   const {
-    token: { logo, name, symbol, formattedBalance, rawBalance },
+    logo,
+    name,
+    symbol,
+    decimals,
+    balance,
     onDelete,
     disable,
     customClass,
     ...rest
   } = props;
+
+  const bigintBalance = BigInt(balance);
+
+  const formattedBalance = formatValue({
+    value: formatUnits(bigintBalance, decimals).toString(),
+    groupSeparator: ',',
+    decimalSeparator: '.',
+    decimalScale: 2,
+  });
+
+  const rawBalance = formatValue({
+    value: formatUnits(bigintBalance, decimals).toString(),
+    groupSeparator: ',',
+    decimalSeparator: '.',
+    decimalScale: decimals,
+  });
+
   return (
     <div
       data-testid="token"

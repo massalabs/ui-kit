@@ -4,34 +4,18 @@ import { Token } from './Token';
 
 export default { title: 'Components/Token', component: Token };
 
-const massaToken = {
-  logo: <MassaLogo size={40} />,
-  formattedBalance: '000,000,000.00',
-  name: 'Token',
-  symbol: 'SYMBL',
-  rawBalance: '000,000,000.000000000',
-};
-
-const mrc20Token = {
-  logo: <Mrc20 size={40} />,
-  formattedBalance: '000,000,000.00',
-  name: 'Token',
-  symbol: 'SYMBL',
-  rawBalance: '000,000,000.000000000',
-};
-
-const mrc721Token = {
-  logo: <Mrc721 size={40} />,
-  formattedBalance: '000,000,000.00',
-  name: 'Token',
-  symbol: 'SYMBL',
-  rawBalance: '000,000,000.000000000',
-};
-
 export const _TokenMassa = {
   render: () => (
     <>
-      <Token token={massaToken} disable={true} />
+      <Token
+        logo={<MassaLogo size={40} />}
+        name={'Massa'}
+        symbol={'XMA'}
+        decimals={18}
+        balance={'1000000000000000000'}
+        disable={false}
+        onDelete={() => console.log('delete')}
+      />
     </>
   ),
 };
@@ -39,7 +23,15 @@ export const _TokenMassa = {
 export const _TokenMrc = {
   render: () => (
     <>
-      <Token token={mrc20Token} onDelete={() => console.log('delete')} />
+      <Token
+        logo={<Mrc721 size={40} />}
+        name={'Massa'}
+        symbol={'XMA'}
+        decimals={9}
+        balance={'1000000000000000000'}
+        disable={false}
+        onDelete={() => console.log('delete')}
+      />
     </>
   ),
 };
@@ -47,9 +39,42 @@ export const _TokenMrc = {
 export const _MultipleTokens = {
   render: () => (
     <div className="flex flex-col w-full h-fit bg-primary gap-4">
-      <Token token={massaToken} onDelete={() => console.log('delete')} />
-      <Token token={mrc20Token} onDelete={() => console.log('delete')} />
-      <Token token={mrc721Token} onDelete={() => console.log('delete')} />
+      <Token
+        logo={<Mrc721 size={40} />}
+        name={'Massa'}
+        symbol={'XMA'}
+        decimals={12}
+        balance={'18178156156151817'}
+        disable={false}
+        onDelete={() => console.log('delete')}
+      />
+      <Token
+        logo={<MassaLogo size={40} />}
+        name={'Massa'}
+        symbol={'XMA'}
+        decimals={6}
+        balance={'16666155'}
+        disable={false}
+        onDelete={() => console.log('delete')}
+      />
+      <Token
+        logo={<Mrc20 size={40} />}
+        name={'Massa'}
+        symbol={'XMA'}
+        decimals={2}
+        balance={'117871871871'}
+        disable={false}
+        onDelete={() => console.log('delete')}
+      />
+      <Token
+        logo={<Mrc20 size={40} />}
+        name={'Massa'}
+        symbol={'XMA'}
+        decimals={18}
+        balance={'11'}
+        disable={false}
+        onDelete={() => console.log('delete')}
+      />
     </div>
   ),
 };
