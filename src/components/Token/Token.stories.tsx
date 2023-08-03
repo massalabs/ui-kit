@@ -26,7 +26,7 @@ export const _TokenMrc = {
       <Token
         logo={<Mrc721 size={40} />}
         name={'Massa'}
-        symbol={'XMA'}
+        symbol={'tDAI'}
         decimals={9}
         balance={'1000000000000000000'}
         disable={false}

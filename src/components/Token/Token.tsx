@@ -57,7 +57,10 @@ export function Token({ ...props }) {
       <div className="flex w-fit gap-2 items-center">
         {logo}
         <div className="flex flex-col ">
-          <p className="mas-menu-active">{`${name} (${symbol})`} </p>
+          <p className="mas-menu-active flex">
+            <p className="captalize">{name}</p>
+            <p>{`(${symbol})`}</p>
+          </p>
           <span className="flex items-center gap-2">
             <p className="mas-menu">{formattedBalance}</p>
             <Tooltip content={rawBalance} />
