@@ -15,7 +15,7 @@ export function Tag(props: TagProps) {
   let isInfo = type === 'info';
 
   let typeColor = isDefault
-    ? 'text-white'
+    ? 'text-f-primary'
     : isInfo
     ? 'text-s-info-1'
     : `text-s-${type}`;
@@ -28,8 +28,8 @@ export function Tag(props: TagProps) {
   return (
     <p
       data-testid="tag"
-      className={`${backgroundClass} rounded-full w-fit px-3 pb-0.5
-                  bg-opacity-30 ${typeColor} ${customClass}`}
+      className={`${backgroundClass} mas-caption rounded-full w-fit px-3 py-1
+        bg-opacity-30 ${typeColor} ${customClass}`}
     >
       {content}
     </p>
