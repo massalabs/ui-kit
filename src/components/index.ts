@@ -31,3 +31,4 @@ export * from './Toast';
 export * from './Tooltip';
 export * from './Token';
 export * from './Tag';
+export * from './FAQ';
