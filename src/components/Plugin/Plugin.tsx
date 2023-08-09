@@ -14,6 +14,7 @@ export interface PluginProps {
   subtitle?: string;
   subtitleIcon?: JSX.Element | null;
   content: string | ReactNode[];
+  topActionFunction: () => void;
   variant?: string;
   customClass?: string;
   warningMessage?: string;
@@ -37,6 +38,7 @@ export function PluginActions(props: PluginProps) {
   let {
     preIcon,
     topAction,
+    topActionFunction,
     title,
     subtitle,
     subtitleIcon,
@@ -66,6 +68,14 @@ export function PluginActions(props: PluginProps) {
       })
     : null;
 
+  const clonedTopAction = topAction
+    ? cloneElement(topAction, {
+        onClick: () => {
+          topActionFunction();
+        },
+      })
+    : null;
+
   return (
     <div
       data-testid="plugin"
@@ -74,7 +84,7 @@ export function PluginActions(props: PluginProps) {
     >
       <div className="flex  justify-between items-center h-10 mb-3">
         {clonedPreIcon}
-        {topAction}
+        {clonedTopAction}
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
       <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">
@@ -110,6 +120,7 @@ export function PluginStore(props: PluginProps) {
     variant = 'primary',
     customClass,
     warningMessage,
+    topActionFunction,
     ...rest
   } = props;
   const CLASSES: classNames = {
@@ -136,22 +147,20 @@ export function PluginStore(props: PluginProps) {
   const clonedTopAction = topAction
     ? cloneElement(topAction, {
         className: 'w-6 h-6 text-f-primary cursor-pointer',
+        onClick: () => {
+          topActionFunction();
+        },
       })
     : null;
 
-  const clonedTopActionDisabled = preIcon
+  const clonedTopActionDisabled = topAction
     ? cloneElement(topAction, {
-        className: 'w-6 h-6 text-tertiary cursor-pointer',
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onClick: () => {},
+        className: 'w-6 h-6 text-tertiary',
       })
     : null;
-  const clonedWarning = cloneElement(
-    <FiAlertTriangle {...topAction} color="#FFA41D" />,
-    {
-      className: 'w-6 h-6 text-f-primary cursor-pointer',
-    },
-  );
+  const clonedWarning = cloneElement(<FiAlertTriangle color="#FFA41D" />, {
+    className: 'w-6 h-6 text-f-primary cursor-pointer',
+  });
 
   function TopAction() {
     return (
