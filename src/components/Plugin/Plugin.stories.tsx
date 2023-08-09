@@ -75,3 +75,12 @@ export const _PluginOff = {
 export const _PluginStore = {
   render: () => <Plugin {...argsStore} />,
 };
+export const _PluginStoreIncompatible = {
+  render: () => (
+    <Plugin
+      {...argsStore}
+      warning={true}
+      warningMessage="Available in Massa Station version 10"
+    />
+  ),
+};
