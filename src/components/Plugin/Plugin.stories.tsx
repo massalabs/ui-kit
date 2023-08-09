@@ -79,7 +79,6 @@ export const _PluginStoreIncompatible = {
   render: () => (
     <Plugin
       {...argsStore}
-      warning={true}
       warningMessage="Available in Massa Station version 10"
     />
   ),

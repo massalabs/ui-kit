@@ -16,7 +16,6 @@ export interface PluginProps {
   content: string | ReactNode[];
   variant?: string;
   customClass?: string;
-  warning?: boolean;
   warningMessage?: string;
 }
 
@@ -110,7 +109,6 @@ export function PluginStore(props: PluginProps) {
     content,
     variant = 'primary',
     customClass,
-    warning,
     warningMessage,
     ...rest
   } = props;
@@ -158,7 +156,7 @@ export function PluginStore(props: PluginProps) {
   function TopAction() {
     return (
       <div className="flex items-center gap-4 p-2">
-        {warning ? (
+        {warningMessage ? (
           <>
             <div
               onMouseEnter={() => setShowTooltip(true)}
