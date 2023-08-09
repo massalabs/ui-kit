@@ -7,19 +7,21 @@ interface IFAQ extends ComponentPropsWithoutRef<'div'> {
   children?: ReactNode;
   title: string;
   customClass?: string;
+  state?: boolean;
 }
 
 interface IFAQCategory extends ComponentPropsWithoutRef<'div'> {
   categoryTitle: string;
+  state?: boolean;
 }
 
 export function FAQ(props: IFAQ) {
-  const { title, children, customClass } = props;
-  const [extend, setExtend] = useState(false);
+  const { title, children, customClass, state } = props;
+  const [extend, setExtend] = useState(state || false);
 
   return (
     <div
-      className={`rounded-lg text-neutral border border-tertiary bg-primary-30 opactity-30 w-full ${customClass}`}
+      className={`rounded-lg text-neutral border border-tertiary bg-primary-30 w-full ${customClass}`}
       data-testid="faq"
     >
       <div
@@ -37,8 +39,8 @@ export function FAQ(props: IFAQ) {
 }
 
 export function FAQCategory(props: IFAQCategory) {
-  const { categoryTitle, children } = props;
-  const [active, setActive] = useState<boolean>(false);
+  const { categoryTitle, children, state } = props;
+  const [active, setActive] = useState<boolean>(state || false);
 
   return (
     <div>
