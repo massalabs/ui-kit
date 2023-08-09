@@ -68,14 +68,6 @@ export function PluginActions(props: PluginProps) {
       })
     : null;
 
-  const clonedTopAction = topAction
-    ? cloneElement(topAction, {
-        onClick: () => {
-          topActionFunction();
-        },
-      })
-    : null;
-
   return (
     <div
       data-testid="plugin"
@@ -84,7 +76,7 @@ export function PluginActions(props: PluginProps) {
     >
       <div className="flex  justify-between items-center h-10 mb-3">
         {clonedPreIcon}
-        {clonedTopAction}
+        <div onClick={() => topActionFunction?.()}>{topAction}</div>
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
       <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">
