@@ -9,7 +9,6 @@ describe('Components | Buttons | Plugin', () => {
     const args = {
       preIcon: <MassaWallet size={40} />,
       topAction: <Button variant="toggle">on</Button>,
-      topActionFunction: () => console.log('topAction'),
       title: `That's is the huge name of the plugin with limit of chars`,
       subtitle: `Author's Name`,
       content: [

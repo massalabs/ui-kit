@@ -15,7 +15,7 @@ export interface PluginProps {
   content: string | ReactNode[];
   variant?: string;
   customClass?: string;
-  OverrideTopAction?: ReactNode[];
+  topActions?: ReactNode[];
 }
 
 interface classNames {
@@ -108,7 +108,7 @@ export function PluginStore(props: PluginProps) {
     content,
     variant = 'primary',
     customClass,
-    OverrideTopAction,
+    topActions,
     ...rest
   } = props;
   const CLASSES: classNames = {
@@ -146,8 +146,8 @@ export function PluginStore(props: PluginProps) {
       <div className="flex justify-between items-center h-10 mb-3">
         {clonedPreIcon}
         <div className="flex items-center gap-4 p-2">
-          {OverrideTopAction
-            ? OverrideTopAction.map((action, index) => {
+          {topActions
+            ? topActions.map((action, index) => {
                 return (
                   <IconContext.Provider key={index} value={{}}>
                     {action}

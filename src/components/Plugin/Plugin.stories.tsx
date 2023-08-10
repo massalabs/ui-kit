@@ -79,7 +79,7 @@ export const _PluginStoreIncompatible = {
   render: () => (
     <Plugin
       {...argsStore}
-      OverrideTopAction={[
+      topActions={[
         <FiAlertTriangle color="#FFA41D" />,
         <FiDownload className="w-6 h-10 text-tertiary" />,
       ]}
