@@ -1,13 +1,13 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { Token } from '.';
-import { Mrc721 } from '../Icons';
+import { FT1 } from '../Icons';
 
 describe('Components | Token', () => {
   test('it should render', () => {
     render(
       <Token
-        logo={<Mrc721 size={40} />}
+        logo={<FT1 size={40} />}
         name={'Massa'}
         symbol={'XMA'}
         decimals={9}

@@ -1,4 +1,4 @@
-import { FT1, MassaLogo, Mrc20, Mrc721 } from '../Icons';
+import { FT1, MassaLogo } from '../Icons';
 
 import { Token } from './Token';
 
