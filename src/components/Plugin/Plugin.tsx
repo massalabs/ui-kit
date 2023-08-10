@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { ReactNode, cloneElement } from 'react';
 import { IconContext } from 'react-icons/lib';
 import { truncate } from '../../util/truncate';
-import { FiAlertTriangle } from 'react-icons/fi';
 
 export interface PluginProps {
   preIcon: JSX.Element;
@@ -14,10 +13,9 @@ export interface PluginProps {
   subtitle?: string;
   subtitleIcon?: JSX.Element | null;
   content: string | ReactNode[];
-  topActionFunction: () => void;
   variant?: string;
   customClass?: string;
-  warningMessage?: string;
+  OverrideTopAction?: ReactNode[];
 }
 
 interface classNames {
@@ -38,7 +36,6 @@ export function PluginActions(props: PluginProps) {
   let {
     preIcon,
     topAction,
-    topActionFunction,
     title,
     subtitle,
     subtitleIcon,
@@ -76,7 +73,7 @@ export function PluginActions(props: PluginProps) {
     >
       <div className="flex  justify-between items-center h-10 mb-3">
         {clonedPreIcon}
-        <div onClick={() => topActionFunction?.()}>{topAction}</div>
+        {topAction}
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
       <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">
@@ -111,8 +108,7 @@ export function PluginStore(props: PluginProps) {
     content,
     variant = 'primary',
     customClass,
-    warningMessage,
-    topActionFunction,
+    OverrideTopAction,
     ...rest
   } = props;
   const CLASSES: classNames = {
@@ -126,7 +122,6 @@ export function PluginStore(props: PluginProps) {
       preIcon: 'bg-neutral text-f-secondary rounded-full h-10 w-10',
     },
   };
-  const [showTooltip, setShowTooltip] = useState(false);
 
   const VARIANT = CLASSES[variant] as classNames;
 
@@ -139,53 +134,8 @@ export function PluginStore(props: PluginProps) {
   const clonedTopAction = topAction
     ? cloneElement(topAction, {
         className: 'w-6 h-6 text-f-primary cursor-pointer',
-        onClick: () => {
-          topActionFunction();
-        },
       })
     : null;
-
-  const clonedTopActionDisabled = topAction
-    ? cloneElement(topAction, {
-        className: 'w-6 h-6 text-tertiary',
-      })
-    : null;
-  const clonedWarning = cloneElement(<FiAlertTriangle color="#FFA41D" />, {
-    className: 'w-6 h-6 text-f-primary cursor-pointer',
-  });
-
-  function TopAction() {
-    return (
-      <div className="flex items-center gap-4 p-2">
-        {warningMessage ? (
-          <>
-            <div
-              onMouseEnter={() => setShowTooltip(true)}
-              onMouseLeave={() => setShowTooltip(false)}
-            >
-              {clonedWarning}
-              <ToolTip showTooltip={showTooltip} content={warningMessage} />
-            </div>
-            {clonedTopActionDisabled}
-          </>
-        ) : (
-          <>{clonedTopAction}</>
-        )}
-      </div>
-    );
-  }
-  function ToolTip({ ...props }) {
-    const { showTooltip, content } = props;
-    return (
-      <>
-        {showTooltip && (
-          <div className="flex flex-col w-96 absolute z-10 t-10 l-10 bg-tertiary p-3 rounded-lg text-neutral">
-            {content}
-          </div>
-        )}
-      </>
-    );
-  }
 
   return (
     <div
@@ -195,7 +145,17 @@ export function PluginStore(props: PluginProps) {
     >
       <div className="flex justify-between items-center h-10 mb-3">
         {clonedPreIcon}
-        <TopAction />
+        <div className="flex items-center gap-4 p-2">
+          {OverrideTopAction
+            ? OverrideTopAction.map((action, index) => {
+                return (
+                  <IconContext.Provider key={index} value={{}}>
+                    {action}
+                  </IconContext.Provider>
+                );
+              })
+            : clonedTopAction}
+        </div>
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
       <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">

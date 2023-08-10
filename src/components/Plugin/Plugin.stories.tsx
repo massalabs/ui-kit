@@ -3,6 +3,7 @@ import {
   FiTrash2,
   FiRefreshCcw,
   FiDownload,
+  FiAlertTriangle,
 } from 'react-icons/fi';
 import { MassaWallet } from '../Icons/Svg/Massa/MassaWallet';
 import { Plugin } from './Plugin';
@@ -12,7 +13,6 @@ import { Certificate } from '../Icons';
 export default {
   title: 'Components/Plugin',
 };
-
 const argsOn = {
   preIcon: <img src="https://placehold.jp/40x40.png" />,
   topAction: <Button variant="toggle">on</Button>,
@@ -79,7 +79,10 @@ export const _PluginStoreIncompatible = {
   render: () => (
     <Plugin
       {...argsStore}
-      warningMessage="Available in Massa Station version 10"
+      OverrideTopAction={[
+        <FiAlertTriangle color="#FFA41D" />,
+        <FiDownload className="w-6 h-10 text-tertiary" />,
+      ]}
     />
   ),
 };
