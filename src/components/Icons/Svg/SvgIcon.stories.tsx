@@ -4,8 +4,7 @@ import {
   MassaWallet,
   StationLogo,
   BridgeLogo,
-  Mrc20,
-  Mrc721,
+  FT1,
 } from './Massa';
 
 export default { title: 'Icons/Massa' };
@@ -42,10 +41,6 @@ export const _BridgeLogo = {
   ),
 };
 
-export const _Mrc20 = {
-  render: () => <Mrc20 size={40} />,
-};
-
-export const _Mrc721 = {
-  render: () => <Mrc721 size={40} />,
+export const _FT1 = {
+  render: () => <FT1 size={40} />,
 };
