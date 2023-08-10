@@ -28,6 +28,7 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.8.0",
+    "react-number-format": "^5.2.2",
     "tw-colors": "^1.2.5",
     "viem": "^1.5.2",
     "vite-plugin-svgr": "^3.2.0"
