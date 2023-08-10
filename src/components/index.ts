@@ -20,6 +20,7 @@ export * from './Pagination';
 export * from './Navigator';
 export * from './SidePanel';
 export * from './Currency';
+export * from './Money';
 export * from './Clipboard';
 export * from './DashboardStation';
 export * from './PluginWallet';
