@@ -1,4 +1,4 @@
-import { MassaLogo, Mrc20, Mrc721 } from '../Icons';
+import { FT1, MassaLogo } from '../Icons';
 
 import { Token } from './Token';
 
@@ -24,7 +24,7 @@ export const _TokenMrc = {
   render: () => (
     <>
       <Token
-        logo={<Mrc721 size={40} />}
+        logo={<FT1 size={40} />}
         name={'Massa'}
         symbol={'XMA'}
         decimals={9}
@@ -40,7 +40,7 @@ export const _MultipleTokens = {
   render: () => (
     <div className="flex flex-col w-full h-fit bg-primary gap-4">
       <Token
-        logo={<Mrc721 size={40} />}
+        logo={<MassaLogo size={40} />}
         name={'Massa'}
         symbol={'XMA'}
         decimals={12}
@@ -58,7 +58,7 @@ export const _MultipleTokens = {
         onDelete={() => console.log('delete')}
       />
       <Token
-        logo={<Mrc20 size={40} />}
+        logo={<FT1 size={40} />}
         name={'Massa'}
         symbol={'XMA'}
         decimals={2}
@@ -67,7 +67,7 @@ export const _MultipleTokens = {
         onDelete={() => console.log('delete')}
       />
       <Token
-        logo={<Mrc20 size={40} />}
+        logo={<FT1 size={40} />}
         name={'Massa'}
         symbol={'XMA'}
         decimals={18}
