@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ReactNode, cloneElement } from 'react';
 import { IconContext } from 'react-icons/lib';
@@ -15,6 +15,7 @@ export interface PluginProps {
   content: string | ReactNode[];
   variant?: string;
   customClass?: string;
+  topActions?: ReactNode[];
 }
 
 interface classNames {
@@ -107,9 +108,9 @@ export function PluginStore(props: PluginProps) {
     content,
     variant = 'primary',
     customClass,
+    topActions,
     ...rest
   } = props;
-
   const CLASSES: classNames = {
     root: 'flex justify-center items-center',
     primary: {
@@ -144,7 +145,17 @@ export function PluginStore(props: PluginProps) {
     >
       <div className="flex justify-between items-center h-10 mb-3">
         {clonedPreIcon}
-        {clonedTopAction}
+        <div className="flex items-center gap-4 p-2">
+          {topActions
+            ? topActions.map((action, index) => {
+                return (
+                  <IconContext.Provider key={index} value={{}}>
+                    {action}
+                  </IconContext.Provider>
+                );
+              })
+            : clonedTopAction}
+        </div>
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
       <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">

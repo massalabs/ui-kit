@@ -3,6 +3,7 @@ import {
   FiTrash2,
   FiRefreshCcw,
   FiDownload,
+  FiAlertTriangle,
 } from 'react-icons/fi';
 import { MassaWallet } from '../Icons/Svg/Massa/MassaWallet';
 import { Plugin } from './Plugin';
@@ -12,14 +13,10 @@ import { Certificate } from '../Icons';
 export default {
   title: 'Components/Plugin',
 };
-
 const argsOn = {
   preIcon: <img src="https://placehold.jp/40x40.png" />,
-  topAction: (
-    <Button onClick={() => console.log('topAction')} variant="toggle">
-      on
-    </Button>
-  ),
+  topAction: <Button variant="toggle">on</Button>,
+  topActionFunction: () => console.log('download'),
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
   subtitleIcon: <Certificate />,
@@ -39,10 +36,12 @@ const argsOn = {
 const argsOff = {
   preIcon: <MassaWallet variant="rounded" size={40} />,
   topAction: (
-    <Button onClick={() => console.log('topAction')} disabled variant="toggle">
+    <Button disabled variant="toggle">
       off
     </Button>
   ),
+  topActionFunction: () => console.log('download'),
+
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
   content: [
@@ -57,7 +56,8 @@ const argsOff = {
 
 const argsStore = {
   preIcon: <MassaWallet variant="rounded" size={40} />,
-  topAction: <FiDownload onClick={() => console.log('download')} />,
+  topAction: <FiDownload />,
+  topActionFunction: () => console.log('download'),
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
   subtitleIcon: <Certificate />,
@@ -74,4 +74,15 @@ export const _PluginOff = {
 
 export const _PluginStore = {
   render: () => <Plugin {...argsStore} />,
+};
+export const _PluginStoreIncompatible = {
+  render: () => (
+    <Plugin
+      {...argsStore}
+      topActions={[
+        <FiAlertTriangle color="#FFA41D" />,
+        <FiDownload className="w-6 h-10 text-tertiary" />,
+      ]}
+    />
+  ),
 };
