@@ -7,6 +7,7 @@ export const _Money = {
     <>
       <Money placeholder={'something'} />
       <Money variant="nMAS" placeholder={'something'} />
+      <Money variant="nMAS" placeholder={'disabled'} disabled={true} />
     </>
   ),
 };
