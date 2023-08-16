@@ -19,7 +19,7 @@ interface IDropdownProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 function Icon({ toggle }: { toggle: boolean }) {
-  let IconclassName = 'w-6 h-6 min-w-fit stroke-current';
+  let IconclassName = 'max-w-fit stroke-current';
 
   return toggle ? (
     <FiChevronUp className={IconclassName} />
