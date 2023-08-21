@@ -14,10 +14,7 @@ export const _Tooltip = {
 export const _TooltipCustomIcon = {
   render: () => (
     <>
-      <Tooltip
-        content={'Hello I am tooltip content'}
-        customIcon={<FiAirplay />}
-      />
+      <Tooltip content={'Hello I am tooltip content'} icon={<FiAirplay />} />
     </>
   ),
 };

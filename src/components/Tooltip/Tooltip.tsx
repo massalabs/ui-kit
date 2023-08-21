@@ -5,15 +5,15 @@ import { ComponentPropsWithoutRef, cloneElement, useState } from 'react';
 import { FiHelpCircle } from 'react-icons/fi';
 
 export interface TooltipProps extends ComponentPropsWithoutRef<'div'> {
-  customIcon?: ReactNode;
+  icon?: ReactNode;
 }
 
 export function Tooltip({ ...props }) {
   const { content, customIcon, customClass, ...rest } = props;
 
   const [showTooltip, setShowTooltip] = useState(false);
-  const icon = customIcon || <FiHelpCircle />;
-  const clonedIcon = cloneElement(icon, {
+  const baseIcon = customIcon || <FiHelpCircle />;
+  const clonedIcon = cloneElement(baseIcon, {
     className: 'stroke-current text-neutral',
   });
   return (
