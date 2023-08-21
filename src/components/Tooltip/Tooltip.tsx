@@ -1,18 +1,18 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { ComponentPropsWithoutRef, cloneElement, useState } from 'react';
 import { FiHelpCircle } from 'react-icons/fi';
 
 export interface TooltipProps extends ComponentPropsWithoutRef<'div'> {
-  size: string;
+  customIcon?: ReactNode;
 }
 
 export function Tooltip({ ...props }) {
-  const { content, customClass, ...rest } = props;
+  const { content, customIcon, customClass, ...rest } = props;
 
   const [showTooltip, setShowTooltip] = useState(false);
-  const icon = <FiHelpCircle />;
+  const icon = customIcon || <FiHelpCircle />;
   const clonedIcon = cloneElement(icon, {
     className: 'stroke-current text-neutral',
   });
