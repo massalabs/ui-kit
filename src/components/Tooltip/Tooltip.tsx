@@ -9,10 +9,10 @@ export interface TooltipProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export function Tooltip({ ...props }) {
-  const { content, customIcon, customClass, ...rest } = props;
+  const { content, icon, customClass, ...rest } = props;
 
   const [showTooltip, setShowTooltip] = useState(false);
-  const baseIcon = customIcon || <FiHelpCircle />;
+  const baseIcon = icon || <FiHelpCircle />;
   const clonedIcon = cloneElement(baseIcon, {
     className: 'stroke-current text-neutral',
   });
