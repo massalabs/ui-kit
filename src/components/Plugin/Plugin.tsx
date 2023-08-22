@@ -8,14 +8,14 @@ import { truncate } from '../../util/truncate';
 
 export interface PluginProps {
   preIcon: JSX.Element;
-  topAction: JSX.Element;
+  topAction?: JSX.Element;
+  topActions?: ReactNode[];
   title: string;
   subtitle?: string;
   subtitleIcon?: JSX.Element | null;
   content: string | ReactNode[];
   variant?: string;
   customClass?: string;
-  topActions?: ReactNode[];
 }
 
 interface classNames {
