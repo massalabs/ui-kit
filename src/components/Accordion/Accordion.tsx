@@ -3,26 +3,29 @@
 import React, { ComponentPropsWithoutRef, ReactNode, useState } from 'react';
 import { FiChevronDown, FiChevronUp, FiMinus, FiPlus } from 'react-icons/fi';
 
-interface IFAQ extends ComponentPropsWithoutRef<'div'> {
+interface AccordionProps extends ComponentPropsWithoutRef<'div'> {
   children?: ReactNode;
   title: string;
   customClass?: string;
   state?: boolean;
 }
 
-interface IFAQCategory extends ComponentPropsWithoutRef<'div'> {
-  categoryTitle: string;
+interface AccordionCategory extends ComponentPropsWithoutRef<'div'> {
+  categoryTitle: string | React.ReactNode;
   state?: boolean;
+  isChild?: boolean;
+  iconOpen?: ReactNode;
+  iconClose?: ReactNode;
 }
 
-export function FAQ(props: IFAQ) {
+export function Accordion(props: AccordionProps) {
   const { title, children, customClass, state } = props;
   const [extend, setExtend] = useState(state || false);
 
   return (
     <div
       className={`rounded-lg text-neutral border border-tertiary bg-primary-30 w-full ${customClass}`}
-      data-testid="faq"
+      data-testid="accordion"
     >
       <div
         className="flex items-center justify-between p-5 cursor-pointer"
@@ -38,29 +41,40 @@ export function FAQ(props: IFAQ) {
   );
 }
 
-export function FAQCategory(props: IFAQCategory) {
-  const { categoryTitle, children, state } = props;
+export function AccordionCategory(props: AccordionCategory) {
+  const { categoryTitle, children, state, iconOpen, iconClose, isChild } =
+    props;
   const [active, setActive] = useState<boolean>(state || false);
 
+  const baseIconClose = <FiMinus size={20} />;
+  const baseIconOpen = <FiPlus size={20} />;
+
+  const isNotChild = isChild === false;
+
   return (
-    <div>
-      <hr
-        className="h-0.5 border-t-0 bg-transparent bg-gradient-to-r 
+    <div className="text-neutral">
+      {isNotChild ? null : (
+        <hr
+          className="h-0.5 border-t-0 bg-transparent bg-gradient-to-r 
         from-transparent via-tertiary to-transparent opacity-100"
-      />
+        />
+      )}
+
       <div
         className="flex items-center justify-between p-5 cursor-pointer"
         onClick={() => setActive(!active)}
       >
-        <p className="mas-menu-default">{categoryTitle}</p>
-        <div>{active ? <FiMinus size={20} /> : <FiPlus size={20} />}</div>
+        <div className="mas-menu-default w-full">{categoryTitle}</div>
+        <div>
+          {active ? iconClose || baseIconClose : iconOpen || baseIconOpen}
+        </div>
       </div>
       {active && children}
     </div>
   );
 }
 
-export function FAQContent(props: ComponentPropsWithoutRef<'div'>) {
+export function AccordionContent(props: ComponentPropsWithoutRef<'div'>) {
   const { children } = props;
   return <div className="px-5 pb-5 mas-body2 text-info">{children}</div>;
 }
