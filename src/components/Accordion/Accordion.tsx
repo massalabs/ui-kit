@@ -16,6 +16,11 @@ interface AccordionCategory extends ComponentPropsWithoutRef<'div'> {
   isChild?: boolean;
   iconOpen?: ReactNode;
   iconClose?: ReactNode;
+  customClass?: string;
+}
+
+interface AccordionContent extends ComponentPropsWithoutRef<'div'> {
+  customClass?: string;
 }
 
 export function Accordion(props: AccordionProps) {
@@ -42,8 +47,15 @@ export function Accordion(props: AccordionProps) {
 }
 
 export function AccordionCategory(props: AccordionCategory) {
-  const { categoryTitle, children, state, iconOpen, iconClose, isChild } =
-    props;
+  const {
+    categoryTitle,
+    children,
+    state,
+    iconOpen,
+    iconClose,
+    isChild,
+    customClass,
+  } = props;
   const [active, setActive] = useState<boolean>(state || false);
 
   const baseIconClose = <FiMinus size={20} />;
@@ -61,7 +73,7 @@ export function AccordionCategory(props: AccordionCategory) {
       )}
 
       <div
-        className="flex items-center justify-between p-5 cursor-pointer"
+        className={`flex w-full items-center justify-between p-5 cursor-pointer ${customClass}`}
         onClick={() => setActive(!active)}
       >
         <div className="mas-menu-default w-full">{categoryTitle}</div>
@@ -74,7 +86,11 @@ export function AccordionCategory(props: AccordionCategory) {
   );
 }
 
-export function AccordionContent(props: ComponentPropsWithoutRef<'div'>) {
-  const { children } = props;
-  return <div className="px-5 pb-5 mas-body2 text-info">{children}</div>;
+export function AccordionContent(props: AccordionContent) {
+  const { children, customClass } = props;
+  return (
+    <div className={`p-5 w-full mas-body2 text-info ${customClass}`}>
+      {children}
+    </div>
+  );
 }
