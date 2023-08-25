@@ -30,8 +30,9 @@ export const _AccordionSign = {
         iconClose={<FiChevronUp />}
         categoryTitle={'Forward Burn Description'}
         isChild={false}
+        customClass={'bg-red-500'}
       >
-        <AccordionContent>
+        <AccordionContent customClass={'bg-blue-500'}>
           <p>
             This is a description of the sign operation. This is a description
             of the sign operation. This is a description of the sign operation.
