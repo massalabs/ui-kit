@@ -13,6 +13,7 @@ export interface PluginProps {
   title: string;
   subtitle?: string;
   subtitleIcon?: JSX.Element | null;
+  version?: string;
   content: string | ReactNode[];
   variant?: string;
   customClass?: string;
@@ -105,6 +106,7 @@ export function PluginStore(props: PluginProps) {
     title,
     subtitle,
     subtitleIcon,
+    version,
     content,
     variant = 'primary',
     customClass,
@@ -158,9 +160,12 @@ export function PluginStore(props: PluginProps) {
         </div>
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
-      <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">
-        {subtitle}
-        {subtitleIcon}
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center h-full gap-1 text-f-primary mas-caption">
+          {subtitle}
+          {subtitleIcon}
+        </div>
+        <div className="text-info mas-caption">{version}</div>
       </div>
       <div className="mas-body2 text-f-primary line-clamp-2 break-all">
         {truncate(content as string)}
