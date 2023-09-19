@@ -41,6 +41,7 @@ export function PluginActions(props: PluginProps) {
     subtitle,
     subtitleIcon,
     content,
+    version,
     variant = 'primary',
     customClass,
     ...rest
@@ -77,9 +78,12 @@ export function PluginActions(props: PluginProps) {
         {topAction}
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
-      <div className="flex items-center gap-1 mb-3 text-f-primary mas-caption">
-        {subtitle}
-        {subtitleIcon}
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center h-full gap-1 text-f-primary mas-caption">
+          {subtitle}
+          {subtitleIcon}
+        </div>
+        <div className="text-info mas-caption">{version}</div>
       </div>
       <div className="flex justify-end space-x-1 gap-2">
         {(content as ReactNode[]).map((content: ReactNode, idx: number) => {

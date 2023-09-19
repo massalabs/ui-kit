@@ -20,6 +20,7 @@ const argsOn = {
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
   subtitleIcon: <Certificate />,
+  version: 'v.1.0.2',
   content: [
     <Button variant="icon" onClick={() => console.log('reload')}>
       <FiRefreshCcw className="text-s-warning" />
@@ -44,6 +45,7 @@ const argsOff = {
 
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
+  version: 'v.1.0.2',
   content: [
     <Button variant="icon" disabled>
       <FiArrowUpRight />
