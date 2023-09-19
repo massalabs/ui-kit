@@ -61,6 +61,7 @@ const argsStore = {
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
   subtitleIcon: <Certificate />,
+  version: 'v.1.0.2',
   content: `Praesentium quo dicta voluptatem nulla beatae aut molestiae consectetur a quos rezcze zececzec zezczecze`,
 };
 
