@@ -74,7 +74,7 @@ export function CrashedPlugin(props: MSPluginProps) {
       {iconActive}
       <div className="w-full py-6 text-f-primary bg-secondary flex flex-col items-center">
         <div className="w-4/5 px-4 py-2 mas-buttons lg:h-14 flex items-center justify-center">
-          <p className="text-center">{`${title} encountered unexepted error`}</p>
+          <p className="text-center">{`${title} can’t be opened. Reinstall it from the Module store.`}</p>
         </div>
       </div>
     </>
