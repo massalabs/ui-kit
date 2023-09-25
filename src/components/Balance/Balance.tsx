@@ -20,7 +20,7 @@ export function Balance({ ...props }) {
   const sizeClass = isLg
     ? 'mas-banner mb-1'
     : isMd
-    ? 'mas-banner text-3xl mb-1'
+    ? 'mas-banner text-2xl mb-1'
     : 'mas-buttons mb-0.5';
   const iconClass = isLg || isMd ? 'mr-2' : 'mr-1';
   const logoClass = isLg || isMd ? 32 : 16;
