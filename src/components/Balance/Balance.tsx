@@ -6,7 +6,7 @@ import { ComponentPropsWithoutRef } from 'react';
 import { MassaLogo } from '../Icons/Svg/Massa/MassaLogo';
 
 export interface BalanceProps extends ComponentPropsWithoutRef<'div'> {
-  size: 'xs' | 'lg';
+  size: 'xs' | 'md' | 'lg';
   amount: string;
   equal?: string;
   customClass?: string;
@@ -16,9 +16,14 @@ export function Balance({ ...props }) {
   const { size = 'lg', amount, equal, customClass } = props;
 
   const isLg = size === 'lg';
-  const sizeClass = isLg ? 'mas-banner mb-1' : 'mas-buttons mb-0.5';
-  const iconClass = isLg ? 'mr-2' : 'mr-1';
-  const logoClass = isLg ? 32 : 16;
+  const isMd = size === 'md';
+  const sizeClass = isLg
+    ? 'mas-banner mb-1'
+    : isMd
+    ? 'mas-banner text-3xl mb-1'
+    : 'mas-buttons mb-0.5';
+  const iconClass = isLg || isMd ? 'mr-2' : 'mr-1';
+  const logoClass = isLg || isMd ? 32 : 16;
 
   return (
     <div

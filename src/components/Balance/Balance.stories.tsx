@@ -13,6 +13,10 @@ export const _Balance = {
 
       <br />
 
+      <Balance size="md" amount={'12.345.67'} />
+
+      <br />
+
       <Balance size="xs" amount={'12.345.67'} />
     </>
   ),
