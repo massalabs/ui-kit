@@ -83,7 +83,7 @@ export function PluginActions(props: PluginProps) {
           {subtitle}
           {subtitleIcon}
         </div>
-        <div className="text-info mas-caption">{version}</div>
+        <div className="text-info mas-caption">v{version}</div>
       </div>
       <div className="flex justify-end space-x-1 gap-2">
         {(content as ReactNode[]).map((content: ReactNode, idx: number) => {
@@ -169,7 +169,7 @@ export function PluginStore(props: PluginProps) {
           {subtitle}
           {subtitleIcon}
         </div>
-        <div className="text-info mas-caption">{version}</div>
+        <div className="text-info mas-caption">v{version}</div>
       </div>
       <div className="mas-body2 text-f-primary line-clamp-2 break-all">
         {truncate(content as string)}
