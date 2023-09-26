@@ -1,9 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { ComponentPropsWithoutRef, useState, MouseEvent } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import useClickOutside from '../../util/useClickOutside';
 
 interface IOption extends ComponentPropsWithoutRef<'div'> {
   icon?: JSX.Element;
@@ -31,6 +32,8 @@ function Icon({ toggle }: { toggle: boolean }) {
 export function Dropdown(props: IDropdownProps) {
   let { size = 'md', select = 0, options, readOnly = false } = props;
 
+  const ref = useRef(null);
+
   const classes = {
     xs: {
       button: 'w-full px-3 py-4 h-7 rounded hover:rounded',
@@ -50,6 +53,10 @@ export function Dropdown(props: IDropdownProps) {
   const [toggle, setToggle] = useState(false);
   const [selected, setSelected] = useState(firstObject);
   const hidden = toggle ? '' : 'hidden';
+
+  useClickOutside(ref, () => {
+    setToggle(false);
+  });
 
   // refresh the selected item when the select prop changes
   useEffect(() => {
@@ -79,7 +86,7 @@ export function Dropdown(props: IDropdownProps) {
   }
 
   return (
-    <div className="relative flex-none" data-testid="dropdown">
+    <div ref={ref} className="relative flex-none" data-testid="dropdown">
       {readOnly && (
         <div
           className={`bg-primary absolute flex-none opacity-50 ${customButtonClass}`}
