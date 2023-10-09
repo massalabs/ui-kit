@@ -33,7 +33,12 @@ export function Balance({ ...props }) {
       <MassaLogo size={logoClass} className={iconClass} />
       <label className={`${sizeClass} text-f-primary`}>{amount}</label>
       {equal ? (
-        <label className="ml-2 mt-3 body2 text-info">≈ {equal}</label>
+        <label
+          data-testid="balance-equal"
+          className="ml-2 mt-3 body2 text-info"
+        >
+          ≈ {equal}
+        </label>
       ) : null}
     </div>
   );
