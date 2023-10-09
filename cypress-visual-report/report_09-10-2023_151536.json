@@ -1,0 +1,42 @@
+{
+  "total": 2,
+  "totalPassed": 2,
+  "totalFailed": 0,
+  "totalSuites": 1,
+  "suites": [
+    {
+      "name": "Balance.cy.tsx",
+      "path": "cypress/component/integration/Balance.cy.tsx",
+      "tests": [
+        {
+          "status": "pass",
+          "name": "Balance.cy.tsx-balance-with-equal",
+          "percentage": 0,
+          "failureThreshold": 0,
+          "specPath": "cypress/component/integration/Balance.cy.tsx",
+          "specFilename": "Balance.cy.tsx",
+          "baselinePath": "cypress-visual-screenshots/baseline/Balance.cy.tsx-balance-with-equal.png",
+          "diffPath": "",
+          "comparisonPath": "cypress-visual-screenshots/comparison/Balance.cy.tsx-balance-with-equal.png"
+        },
+        {
+          "status": "pass",
+          "name": "Balance.cy.tsx-balance-without-equal",
+          "percentage": 0,
+          "failureThreshold": 0,
+          "specPath": "cypress/component/integration/Balance.cy.tsx",
+          "specFilename": "Balance.cy.tsx",
+          "baselinePath": "cypress-visual-screenshots/baseline/Balance.cy.tsx-balance-without-equal.png",
+          "diffPath": "",
+          "comparisonPath": "cypress-visual-screenshots/comparison/Balance.cy.tsx-balance-without-equal.png"
+        }
+      ]
+    }
+  ],
+  "startedAt": "2023-10-09T13:15:36.570Z",
+  "endedAt": "2023-10-09T13:15:38.104Z",
+  "duration": 693,
+  "browserName": "chrome",
+  "browserVersion": "117.0.5938.149",
+  "cypressVersion": "13.3.0"
+}
