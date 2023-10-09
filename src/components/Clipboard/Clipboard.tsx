@@ -16,7 +16,6 @@ interface ClipboardProps extends ComponentPropsWithoutRef<'div'> {
   error?: string;
   success?: string;
   customClass?: string;
-  toggleHover?: boolean;
 }
 
 export function Clipboard(props: ClipboardProps) {
@@ -26,7 +25,6 @@ export function Clipboard(props: ClipboardProps) {
     rawContent,
     displayedContent = rawContent,
     customClass,
-    toggleHover,
     ...rest
   } = props;
 

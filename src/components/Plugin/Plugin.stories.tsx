@@ -9,6 +9,7 @@ import { MassaWallet } from '../Icons/Svg/Massa/MassaWallet';
 import { Plugin } from './Plugin';
 import { Button } from '../Button/Button';
 import { Certificate } from '../Icons';
+import { Tag } from '../Tag';
 
 export default {
   title: 'Components/Plugin',
@@ -19,8 +20,9 @@ const argsOn = {
   topActionFunction: () => console.log('download'),
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
+  tag: <Tag type="warning" content="beta" />,
   subtitleIcon: <Certificate />,
-  version: 'v.1.0.2',
+  version: '1.0.2',
   content: [
     <Button variant="icon" onClick={() => console.log('reload')}>
       <FiRefreshCcw className="text-s-warning" />
@@ -45,7 +47,7 @@ const argsOff = {
 
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
-  version: 'v.1.0.2',
+  version: '1.0.2',
   content: [
     <Button variant="icon" disabled>
       <FiArrowUpRight />
@@ -63,7 +65,7 @@ const argsStore = {
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
   subtitleIcon: <Certificate />,
-  version: 'v.1.0.2',
+  version: '1.0.2',
   content: `Praesentium quo dicta voluptatem nulla beatae aut molestiae consectetur a quos rezcze zececzec zezczecze`,
 };
 
