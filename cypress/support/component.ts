@@ -48,5 +48,9 @@ compareSnapshotCommand();
 
 Cypress.Commands.add('mount', mount);
 
+after(() => {
+  cy.task('generateReport');
+});
+
 // Example use:
 // cy.mount(<MyComponent />)
