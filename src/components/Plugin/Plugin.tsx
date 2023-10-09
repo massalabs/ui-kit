@@ -11,6 +11,7 @@ export interface PluginProps {
   topAction?: JSX.Element;
   topActions?: ReactNode[];
   title: string;
+  tag?: ReactNode;
   subtitle?: string;
   subtitleIcon?: JSX.Element | null;
   version?: string;
@@ -40,6 +41,7 @@ export function PluginActions(props: PluginProps) {
     title,
     subtitle,
     subtitleIcon,
+    tag,
     content,
     version,
     variant = 'primary',
@@ -73,8 +75,11 @@ export function PluginActions(props: PluginProps) {
       className="w-80 h-44 p-4 bg-secondary rounded-lg shadow"
       {...rest}
     >
-      <div className="flex  justify-between items-center h-10 mb-3">
-        {clonedPreIcon}
+      <div className="flex justify-between items-center h-10 mb-3">
+        <div className="flex items-center gap-4">
+          <div>{clonedPreIcon}</div>
+          <div>{tag}</div>
+        </div>
         {topAction}
       </div>
       <h5 className="mb-2 text-f-primary mas-menu-active truncate">{title}</h5>
