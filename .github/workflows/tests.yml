@@ -1,33 +1,43 @@
-name: Tests
+name: Cypress Tests with Dependency and Artifact Caching
 
-on:
-  push:
-  workflow_call:
+on: push
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x]
-
+  install:
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm run test
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
+      - name: Cypress install
+        uses: cypress-io/github-action@v6
         with:
-          name: test-results-${{ matrix.node-version }}
-          path: |
-            ./cypress-visual-report/*
-            ./cypress-visual-screenshots/*
+          # Disable running of tests within install job
+          runTests: false
+          build: npm run build
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
           if-no-files-found: error
-          retention-days: 7
+          path: build
+
+  cypress-run:
+    runs-on: ubuntu-22.04
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download the build folder
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm start
+          browser: chrome
