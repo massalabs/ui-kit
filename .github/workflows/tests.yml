@@ -33,10 +33,15 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-      # - name: Check Test Results and Set Status
-      #   if: ${{ failure() }}
-      #   run: exit 1
-        
+      - name: Download Artifact
+        if: always()
+        uses: actions/download-artifact@v2
+        with:
+          name: test-results-${{ matrix.node-version }}
+      - name: List Artifact Contents
+        if: always()
+        run: |
+          ls ${{ github.workspace }}/test-results-${{ matrix.node-version }}        
 
       
           
