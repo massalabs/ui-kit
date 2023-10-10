@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+cypress-visual-screenshots
+
+cypress-visual-report
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -21,3 +21,11 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run test
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: |
+            ./cypress-visual-report/cypress-visual-report.html
+          
