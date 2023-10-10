@@ -18,7 +18,7 @@ export function Balance({ ...props }) {
   const isLg = size === 'lg';
   const isMd = size === 'md';
   const sizeClass = isLg
-    ? 'mas-banner mb-2'
+    ? 'mas-banner mb-14'
     : isMd
     ? 'mas-banner text-2xl mb-1'
     : 'mas-buttons mb-0.5';

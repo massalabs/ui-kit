@@ -16,8 +16,6 @@ cypress-visual-screenshots
 
 cypress-visual-report
 
-cypress/screenshots
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
