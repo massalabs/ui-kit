@@ -12,7 +12,10 @@ dist
 dist-ssr
 *.local
 
-# cypress-visual-screenshots
+cypress/screenshots
+
+cypress-visual-screenshots/comparison
+cypress-visual-screenshots/diff
 
 cypress-visual-report
 

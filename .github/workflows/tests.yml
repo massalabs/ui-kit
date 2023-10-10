@@ -20,12 +20,23 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      - run: npm run test
-
+      - run: npm run test 
+  
       - name: Upload Artifacts
+        if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: test-results
+          name: test-results-${{ matrix.node-version }}
           path: |
-            ./cypress-visual-report/cypress-visual-report.html
+            ./cypress-visual-report/*
+            ./cypress-visual-screenshots/*
+          if-no-files-found: error
+          retention-days: 7
+
+      # - name: Check Test Results and Set Status
+      #   if: ${{ failure() }}
+      #   run: exit 1
+        
+
+      
           
