@@ -32,5 +32,3 @@ jobs:
             ./cypress-visual-screenshots/*
           if-no-files-found: error
           retention-days: 7
-      
-          
