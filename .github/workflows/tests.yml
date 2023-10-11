@@ -23,7 +23,7 @@ jobs:
 
       - run: npm run test
         env:
-          - VITE_CI_TEST: true
+          VITE_CI_TEST: true
       - name: Upload Artifacts
         if: always()
         uses: actions/upload-artifact@v2
