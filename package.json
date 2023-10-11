@@ -14,11 +14,13 @@
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "cy:open": "cypress open",
-    "cy:run-e2e": "cypress run",
-    "cy:run-component": "cypress run --component --browser chrome",
+    "cy:e2e": "cypress run",
+    "cy:e2e-ci": "export VITE_CI_TEST=true && cypress run",
+    "cy:component": "cypress run --component --browser chrome",
+    "cy:component-ci": "export VITE_CI_TEST=true && cypress run --component --browser chrome",
     "fmt": "npm run prettier:fix && npm run lint:fix",
     "fmt:check": "npm run prettier && npm run lint",
-    "test": "jest && npm run cy:run-component",
+    "test": "jest && npm run cy:component",
     "prepare": "husky install"
   },
   "dependencies": {
