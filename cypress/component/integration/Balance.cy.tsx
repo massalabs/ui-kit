@@ -1,6 +1,7 @@
 import '../../../src/global.css';
 import React from 'react';
 import { Balance } from '../../../src/components';
+import { compareSnapshot } from '../../compareSnapshot';
 
 describe('Component | Integration | Balance', function () {
   describe('Balance', () => {
@@ -20,7 +21,7 @@ describe('Component | Integration | Balance', function () {
       it('should match snapshot', () => {
         cy.mount(<Balance amount={'0123456.78'} equal={'000123456,78'} />);
 
-        cy.compareSnapshot('balance-with-equal');
+        compareSnapshot(cy, 'balance-with-equal');
       });
     });
 
@@ -36,7 +37,7 @@ describe('Component | Integration | Balance', function () {
       it('should match snapshot', () => {
         cy.mount(<Balance amount={'0123456.78'} />);
 
-        cy.compareSnapshot('balance-without-equal');
+        compareSnapshot(cy, 'balance-without-equal');
       });
     });
   });
