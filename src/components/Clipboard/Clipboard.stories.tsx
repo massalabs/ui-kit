@@ -12,3 +12,12 @@ export const _Clipboard = {
     />
   ),
 };
+
+export const _Rawcontent = {
+  render: () => (
+    <Clipboard
+      rawContent="this is the content"
+      displayedContent="formatted content"
+    />
+  ),
+};

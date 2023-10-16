@@ -37,6 +37,11 @@ export function Clipboard(props: ClipboardProps) {
 
     if (!displayedContent || !rawContent) {
       setError(true);
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+
       return;
     }
 
@@ -58,20 +63,28 @@ export function Clipboard(props: ClipboardProps) {
         onClick={handleCopyToClipboard}
         {...rest}
       >
-        <p className="text-f-primary pr-2 w-full truncate">
+        <p
+          className="text-f-primary pr-2 w-full truncate"
+          data-testid="clipboard-content"
+        >
           {displayedContent}
         </p>
         {success ? (
           <FiCheckCircle className="w-6 h-6 text-s-success" />
         ) : (
-          <FiCopy className="w-6 h-6 text-f-primary" />
+          <FiCopy
+            data-testid="clipboard-copy-icon"
+            className="w-6 h-6 text-f-primary"
+          />
         )}
       </div>
       {error || success ? (
-        <InputMessage
-          error={error ? errorMessage : ''}
-          success={success ? successMessage : ''}
-        />
+        <div data-testid="clipboard-input-message">
+          <InputMessage
+            error={error ? errorMessage : ''}
+            success={success ? successMessage : ''}
+          />
+        </div>
       ) : null}
     </>
   );
