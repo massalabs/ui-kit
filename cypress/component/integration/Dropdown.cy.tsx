@@ -172,22 +172,20 @@ describe('Component | Integration | Dropdown', function () {
 
       it('should render', () => {
         cy.get('[data-testid="dropdown"]').should('exist');
-      });
+        it('should open and close when clicked', () => {
+          cy.get('[data-testid="dropdown"]').should('exist');
 
-      // init state
-      it('should open and close when clicked', () => {
-        cy.get('[data-testid="dropdown"]').should('exist');
+          for (let i = 1; i <= 6; i++) {
+            cy.get(`[data-testid="dropdown-option-${i}"]`).should('exist');
+          }
 
-        for (let i = 1; i <= 6; i++) {
-          cy.get(`[data-testid="dropdown-option-${i}"]`).should('exist');
-        }
-
-        cy.get('[data-testid="dropdown-option-1"]').should('be.visible');
-        for (let i = 2; i <= 6; i++) {
-          cy.get(`[data-testid="dropdown-option-${i}"]`).should(
-            'not.be.visible',
-          );
-        }
+          cy.get('[data-testid="dropdown-option-1"]').should('be.visible');
+          for (let i = 2; i <= 6; i++) {
+            cy.get(`[data-testid="dropdown-option-${i}"]`).should(
+              'not.be.visible',
+            );
+          }
+        });
 
         // open
         cy.get('[data-testid="dropdown-button"]').should('exist').click();
@@ -255,23 +253,20 @@ describe('Component | Integration | Dropdown', function () {
 
       it('should render', () => {
         cy.get('[data-testid="dropdown"]').should('exist');
-      });
+        it('should open and close when clicked', () => {
+          cy.get('[data-testid="dropdown"]').should('exist');
 
-      // init state
-      it('should open and close when clicked', () => {
-        cy.get('[data-testid="dropdown"]').should('exist');
+          for (let i = 1; i <= 6; i++) {
+            cy.get(`[data-testid="dropdown-option-${i}"]`).should('exist');
+          }
 
-        for (let i = 1; i <= 6; i++) {
-          cy.get(`[data-testid="dropdown-option-${i}"]`).should('exist');
-        }
-
-        cy.get('[data-testid="dropdown-option-1"]').should('be.visible');
-        for (let i = 2; i <= 6; i++) {
-          cy.get(`[data-testid="dropdown-option-${i}"]`).should(
-            'not.be.visible',
-          );
-        }
-
+          cy.get('[data-testid="dropdown-option-1"]').should('be.visible');
+          for (let i = 2; i <= 6; i++) {
+            cy.get(`[data-testid="dropdown-option-${i}"]`).should(
+              'not.be.visible',
+            );
+          }
+        });
         // open state
         cy.get('[data-testid="dropdown-button"]').should('exist').click();
 
@@ -351,10 +346,6 @@ describe('Component | Integration | Dropdown', function () {
 
       it('should render', () => {
         cy.get('[data-testid="dropdown"]').should('exist');
-      });
-
-      // init state
-      it('should open and close and fire fn when clicked', () => {
         cy.get('[data-testid="dropdown"]').should('exist');
 
         for (let i = 1; i <= 6; i++) {
@@ -373,6 +364,17 @@ describe('Component | Integration | Dropdown', function () {
           'contain',
           'account 1 name',
         );
+      });
+
+      // init state
+      it('should fire fn when clicked', () => {
+        cy.window().then((win) => {
+          cy.stub(win.console, 'log').as('consoleLog');
+        });
+
+        cy.get('[data-testid="dropdown-option-1"]').click({ multiple: true });
+
+        cy.get('@consoleLog').should('be.calledWith', 'option 1');
 
         // open state
         cy.get('[data-testid="dropdown-button"]').should('exist').click();
@@ -381,13 +383,15 @@ describe('Component | Integration | Dropdown', function () {
           cy.get(`[data-testid="dropdown-option-${i}"]`).should('be.visible');
         }
 
-        cy.get(`[data-testid="dropdown-option-4"]`).click();
+        cy.get(`[data-testid="dropdown-option-5"]`).click();
+
+        cy.get('@consoleLog').should('be.calledWith', 'option 5');
 
         // close state
-        cy.get('[data-testid="dropdown-option-4"]').should('be.visible');
+        cy.get('[data-testid="dropdown-option-5"]').should('be.visible');
 
         for (let i = 1; i <= 6; i++) {
-          if (i === 4) {
+          if (i === 5) {
             continue;
           } else {
             cy.get(`[data-testid="dropdown-option-${i}"]`).should(
@@ -399,12 +403,12 @@ describe('Component | Integration | Dropdown', function () {
         cy.get('[data-testid="dropdown-selected-icon"]').should('be.visible');
         cy.get('[data-testid="dropdown-selected-item"]').should(
           'contain',
-          'account 4 name',
+          'account 5 name',
         );
       });
 
       it('should match snapshot', () => {
-        compareSnapshot(cy, 'default-option-dropdown-flow');
+        compareSnapshot(cy, 'fire-function-dropdown-flow');
       });
     });
   });
