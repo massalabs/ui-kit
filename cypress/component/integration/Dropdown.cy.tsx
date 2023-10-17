@@ -305,5 +305,107 @@ describe('Component | Integration | Dropdown', function () {
         compareSnapshot(cy, 'default-option-dropdown-flow');
       });
     });
+
+    describe('fire function dropdown flow', () => {
+      beforeEach(() => {
+        cy.mount(
+          <Dropdown
+            options={[
+              {
+                icon: (
+                  <MassaToken
+                    data-testid="dropdown-option-1"
+                    size={32}
+                    className="bg-c-default rounded-full"
+                  />
+                ),
+                item: 'account 1 name',
+                onClick: () => console.log('option 1'),
+              },
+              {
+                icon: <MassaLogo data-testid="dropdown-option-2" size={32} />,
+                item: 'account 2 name with a biiiiig content',
+                onClick: () => console.log('option 2'),
+              },
+              {
+                icon: <MassaLogo data-testid="dropdown-option-3" size={32} />,
+                item: 'account 3 name',
+              },
+              {
+                icon: <MassaLogo data-testid="dropdown-option-4" size={32} />,
+                item: 'account 4 name',
+              },
+              {
+                icon: <MassaLogo data-testid="dropdown-option-5" size={32} />,
+                item: 'account 5 name',
+                onClick: () => console.log('option 5'),
+              },
+              {
+                icon: <MassaLogo data-testid="dropdown-option-6" size={32} />,
+                item: 'account 6 name',
+              },
+            ]}
+          />,
+        );
+      });
+
+      it('should render', () => {
+        cy.get('[data-testid="dropdown"]').should('exist');
+      });
+
+      // init state
+      it('should open and close and fire fn when clicked', () => {
+        cy.get('[data-testid="dropdown"]').should('exist');
+
+        for (let i = 1; i <= 6; i++) {
+          cy.get(`[data-testid="dropdown-option-${i}"]`).should('exist');
+        }
+
+        cy.get('[data-testid="dropdown-option-1"]').should('be.visible');
+        for (let i = 2; i <= 6; i++) {
+          cy.get(`[data-testid="dropdown-option-${i}"]`).should(
+            'not.be.visible',
+          );
+        }
+
+        cy.get('[data-testid="dropdown-selected-icon"]').should('be.visible');
+        cy.get('[data-testid="dropdown-selected-item"]').should(
+          'contain',
+          'account 1 name',
+        );
+
+        // open state
+        cy.get('[data-testid="dropdown-button"]').should('exist').click();
+
+        for (let i = 1; i <= 6; i++) {
+          cy.get(`[data-testid="dropdown-option-${i}"]`).should('be.visible');
+        }
+
+        cy.get(`[data-testid="dropdown-option-4"]`).click();
+
+        // close state
+        cy.get('[data-testid="dropdown-option-4"]').should('be.visible');
+
+        for (let i = 1; i <= 6; i++) {
+          if (i === 4) {
+            continue;
+          } else {
+            cy.get(`[data-testid="dropdown-option-${i}"]`).should(
+              'not.be.visible',
+            );
+          }
+        }
+
+        cy.get('[data-testid="dropdown-selected-icon"]').should('be.visible');
+        cy.get('[data-testid="dropdown-selected-item"]').should(
+          'contain',
+          'account 4 name',
+        );
+      });
+
+      it('should match snapshot', () => {
+        compareSnapshot(cy, 'default-option-dropdown-flow');
+      });
+    });
   });
 });
