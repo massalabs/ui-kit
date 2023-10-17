@@ -5,7 +5,7 @@ import { truncate } from '../../../src/util/truncate';
 describe('Component | Unit | Util | Truncate', () => {
   before(() => {
     // check if the import worked correctly
-    expect(truncate, 'truncate').to.be.a('function');
+    expect(truncate).to.be.a('function');
   });
 
   context('truncate', function () {
