@@ -6,28 +6,29 @@ import { compareSnapshot } from '../../compareSnapshot';
 describe('Component | Integration | Clipboard', function () {
   describe('Clipboard', () => {
     describe('clipboard with only raw-content', () => {
-      it('should render', () => {
+      beforeEach(() => {
         cy.mount(<Clipboard rawContent={'raw content'} />);
-
+      });
+      it('should render', () => {
         cy.get('[data-testid="clipboard-field"]').should('exist');
         cy.get('[data-testid="clipboard-content"]').contains('raw content');
       });
 
       it('should match snapshot', () => {
-        cy.mount(<Clipboard rawContent={'raw content'} />);
         compareSnapshot(cy, 'clipboard-with-only-raw-content');
       });
     });
 
     describe('clipboard with diplayed content', () => {
-      it('should render', () => {
+      beforeEach(() => {
         cy.mount(
           <Clipboard
             rawContent={'raw content'}
             displayedContent={'formatted content'}
           />,
         );
-
+      });
+      it('should render', () => {
         cy.get('[data-testid="clipboard-field"]').should('exist');
         cy.get('[data-testid="clipboard-content"]').contains(
           'formatted content',
@@ -35,18 +36,12 @@ describe('Component | Integration | Clipboard', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Clipboard
-            rawContent={'raw content'}
-            displayedContent={'formatted content'}
-          />,
-        );
         compareSnapshot(cy, 'clipboard-with-displayed-content');
       });
     });
 
     describe('clipboard success flow', () => {
-      it('should render', () => {
+      beforeEach(() => {
         cy.mount(
           <Clipboard
             rawContent={'raw content'}
@@ -54,7 +49,8 @@ describe('Component | Integration | Clipboard', function () {
             displayedContent={'formatted content'}
           />,
         );
-
+      });
+      it('should render', () => {
         cy.get('[data-testid="clipboard-field"]').should('exist');
         cy.get('[data-testid="clipboard-content"]').contains(
           'formatted content',
@@ -62,13 +58,6 @@ describe('Component | Integration | Clipboard', function () {
       });
 
       it('should fire the copy clipboard function', () => {
-        cy.mount(
-          <Clipboard
-            rawContent={'raw content'}
-            success="Copied!"
-            displayedContent={'formatted content'}
-          />,
-        );
         cy.get('[data-testid="clipboard-field"]').should('exist');
         cy.get('[data-testid="clipboard-content"]').contains(
           'formatted content',
@@ -98,27 +87,20 @@ describe('Component | Integration | Clipboard', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Clipboard
-            rawContent={'raw content'}
-            success="Copied!"
-            displayedContent={'formatted content'}
-          />,
-        );
         compareSnapshot(cy, 'clipboard-success-flow');
       });
     });
 
     describe('clipboard raw content success flow', () => {
-      it('should render', () => {
+      beforeEach(() => {
         cy.mount(<Clipboard rawContent={'raw content'} success="Copied!" />);
-
+      });
+      it('should render', () => {
         cy.get('[data-testid="clipboard-field"]').should('exist');
         cy.get('[data-testid="clipboard-content"]').contains('raw content');
       });
 
       it('should fire the copy clipboard function', () => {
-        cy.mount(<Clipboard rawContent={'raw content'} success="Copied!" />);
         cy.get('[data-testid="clipboard-field"]').should('exist');
         cy.get('[data-testid="clipboard-content"]').contains('raw content');
         cy.on('window:confirm', () => true);
@@ -146,15 +128,15 @@ describe('Component | Integration | Clipboard', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(<Clipboard rawContent={'raw content'} success="Copied!" />);
         compareSnapshot(cy, 'clipboard-raw-content-success-flow');
       });
     });
 
     describe('clipboard error flow', () => {
-      it('should render', () => {
+      beforeEach(() => {
         cy.mount(<Clipboard rawContent={''} error="Oupps!" />);
-
+      });
+      it('should render', () => {
         cy.get('[data-testid="clipboard-field"]').should('exist');
         cy.get('[data-testid="clipboard-content"]')
           .contains('foo')
@@ -162,7 +144,6 @@ describe('Component | Integration | Clipboard', function () {
       });
 
       it('should not fire the copy clipboard function', () => {
-        cy.mount(<Clipboard rawContent={''} error="Oupps!" />);
         cy.get('[data-testid="clipboard-field"]').should('exist');
         cy.get('[data-testid="clipboard-content"]')
           .contains('foo')
