@@ -9,74 +9,73 @@ describe('Component | Integration | Button', function () {
     // PRIMARY VARIANT
 
     describe('primary button with both icons', () => {
-      it('should render primary button with both icons', () => {
+      beforeEach(() => {
         cy.mount(
           <Button
             preIcon={<FiArrowUpRight data-testid="preIcon" />}
             posIcon={<FiArrowUpRight data-testid="posIcon" />}
           />,
         );
-
+      });
+      it('should render primary button with both icons', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('exist');
         cy.get('[data-testid="posIcon"]').should('exist');
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Button preIcon={<FiArrowUpRight />} posIcon={<FiArrowUpRight />} />,
-        );
         compareSnapshot(cy, 'primary-button-with-both-icons');
       });
     });
 
     describe('primary button without icons', () => {
-      it('should render primary button without icons', () => {
+      beforeEach(() => {
         cy.mount(<Button />);
-
+      });
+      it('should render primary button without icons', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('not.exist');
         cy.get('[data-testid="posIcon"]').should('not.exist');
       });
 
       it('should match snapshot', () => {
-        cy.mount(<Button />);
         compareSnapshot(cy, 'primary-button-without-icons');
       });
     });
 
     describe('primary button with preIcon', () => {
-      it('should render primary button with preIcon', () => {
+      beforeEach(() => {
         cy.mount(<Button preIcon={<FiArrowUpRight data-testid="preIcon" />} />);
+      });
 
+      it('should render primary button with preIcon', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('exist');
         cy.get('[data-testid="posIcon"]').should('not.exist');
       });
 
       it('should match snapshot', () => {
-        cy.mount(<Button preIcon={<FiArrowUpRight />} />);
         compareSnapshot(cy, 'primary-button-with-preIcon');
       });
     });
 
     describe('primary button with posIcon', () => {
-      it('should render primary button with posIcon', () => {
+      beforeEach(() => {
         cy.mount(<Button posIcon={<FiArrowUpRight data-testid="posIcon" />} />);
-
+      });
+      it('should render primary button with posIcon', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('not.exist');
         cy.get('[data-testid="posIcon"]').should('exist');
       });
 
       it('should match snapshot', () => {
-        cy.mount(<Button posIcon={<FiArrowUpRight />} />);
         compareSnapshot(cy, 'primary-button-with-posIcon');
       });
     });
 
     describe('primary button with both icons and with children', () => {
-      it('should render primary button with both icons and children', () => {
+      beforeEach(() => {
         cy.mount(
           <Button
             preIcon={<FiArrowUpRight data-testid="preIcon" />}
@@ -85,7 +84,8 @@ describe('Component | Integration | Button', function () {
             <div data-testid="children">Children</div>
           </Button>,
         );
-
+      });
+      it('should render primary button with both icons and children', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('exist');
         cy.get('[data-testid="posIcon"]').should('exist');
@@ -94,26 +94,19 @@ describe('Component | Integration | Button', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Button
-            posIcon={<FiArrowUpRight data-testid="posIcon" />}
-            preIcon={<FiArrowUpRight data-testid="preIcon" />}
-          >
-            <div data-testid="children">Children</div>
-          </Button>,
-        );
         compareSnapshot(cy, 'primary-button-with-both-icons-and-with-children');
       });
     });
 
     describe('primary button with preIcon with children', () => {
-      it('should render primary button with preIcon and with children', () => {
+      beforeEach(() => {
         cy.mount(
           <Button preIcon={<FiArrowUpRight data-testid="preIcon" />}>
             <div data-testid="children">Children</div>
           </Button>,
         );
-
+      });
+      it('should render primary button with preIcon and with children', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('exist');
         cy.get('[data-testid="posIcon"]').should('not.exist');
@@ -122,23 +115,19 @@ describe('Component | Integration | Button', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Button posIcon={<FiArrowUpRight data-testid="posIcon" />}>
-            <div data-testid="children">Children</div>
-          </Button>,
-        );
         compareSnapshot(cy, 'primary-button-with-preIcon-with-children');
       });
     });
 
     describe('primary button with posIcon with children', () => {
-      it('should render primary button with posIcon and children', () => {
+      beforeEach(() => {
         cy.mount(
           <Button posIcon={<FiArrowUpRight data-testid="posIcon" />}>
             <div data-testid="children">Children</div>
           </Button>,
         );
-
+      });
+      it('should render primary button with posIcon and children', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('not.exist');
         cy.get('[data-testid="posIcon"]').should('exist');
@@ -147,23 +136,19 @@ describe('Component | Integration | Button', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Button posIcon={<FiArrowUpRight data-testid="posIcon" />}>
-            <div data-testid="children">Children</div>
-          </Button>,
-        );
         compareSnapshot(cy, 'primary-button-with-posIcon-with-children');
       });
     });
 
     describe('primary button without icons and with children', () => {
-      it('should render primary button without icons and children', () => {
+      beforeEach(() => {
         cy.mount(
           <Button>
             <div data-testid="children">Children</div>
           </Button>,
         );
-
+      });
+      it('should render primary button without icons and children', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('not.exist');
         cy.get('[data-testid="posIcon"]').should('not.exist');
@@ -172,11 +157,6 @@ describe('Component | Integration | Button', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Button>
-            <div>Children</div>
-          </Button>,
-        );
         compareSnapshot(cy, 'primary-button-without-icons-and-with-children');
       });
     });
@@ -184,7 +164,7 @@ describe('Component | Integration | Button', function () {
     // SECONDARY VARIANT
 
     describe('secondary button with both icons', () => {
-      it('should render secondary button with both icons', () => {
+      beforeEach(() => {
         cy.mount(
           <Button
             variant="secondary"
@@ -192,81 +172,75 @@ describe('Component | Integration | Button', function () {
             posIcon={<FiArrowUpRight data-testid="posIcon" />}
           />,
         );
-
+      });
+      it('should render secondary button with both icons', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('exist');
         cy.get('[data-testid="posIcon"]').should('exist');
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Button
-            variant="secondary"
-            preIcon={<FiArrowUpRight />}
-            posIcon={<FiArrowUpRight />}
-          />,
-        );
         compareSnapshot(cy, 'secondary-button-with-both-icons');
       });
     });
 
     describe('secondary button without icons', () => {
-      it('should render secondary button without icons', () => {
+      beforeEach(() => {
         cy.mount(<Button variant="secondary" />);
-
+      });
+      it('should render secondary button without icons', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('not.exist');
         cy.get('[data-testid="posIcon"]').should('not.exist');
       });
 
       it('should match snapshot', () => {
-        cy.mount(<Button variant="secondary" />);
         compareSnapshot(cy, 'secondary-button-without-icons');
       });
     });
 
     describe('secondary button with preIcon', () => {
-      it('should render secondary button with preIcon', () => {
+      beforeEach(() => {
         cy.mount(
           <Button
             variant="secondary"
             preIcon={<FiArrowUpRight data-testid="preIcon" />}
           />,
         );
-
+      });
+      it('should render secondary button with preIcon', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('exist');
         cy.get('[data-testid="posIcon"]').should('not.exist');
       });
 
       it('should match snapshot', () => {
-        cy.mount(<Button variant="secondary" preIcon={<FiArrowUpRight />} />);
         compareSnapshot(cy, 'secondary-button-with-preIcon');
       });
     });
 
     describe('secondary button with posIcon', () => {
-      it('should render secondary button with posIcon', () => {
+      beforeEach(() => {
         cy.mount(
           <Button
             variant="secondary"
             posIcon={<FiArrowUpRight data-testid="posIcon" />}
           />,
         );
-
+      });
+      it('should render secondary button with posIcon', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('not.exist');
         cy.get('[data-testid="posIcon"]').should('exist');
       });
 
       it('should match snapshot', () => {
-        cy.mount(<Button variant="secondary" posIcon={<FiArrowUpRight />} />);
         compareSnapshot(cy, 'secondary-button-with-posIcon');
       });
     });
 
     describe('secondary button with both icons and with children', () => {
-      it('should render secondary button with both icons and children', () => {
+      beforeEach(() => {
         cy.mount(
           <Button
             variant="secondary"
@@ -276,7 +250,8 @@ describe('Component | Integration | Button', function () {
             <div data-testid="children">Children</div>
           </Button>,
         );
-
+      });
+      it('should render secondary button with both icons and children', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('exist');
         cy.get('[data-testid="posIcon"]').should('exist');
@@ -285,15 +260,6 @@ describe('Component | Integration | Button', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Button
-            variant="secondary"
-            posIcon={<FiArrowUpRight data-testid="posIcon" />}
-            preIcon={<FiArrowUpRight data-testid="preIcon" />}
-          >
-            <div data-testid="children">Children</div>
-          </Button>,
-        );
         compareSnapshot(
           cy,
           'secondary-button-with-both-icons-and-with-children',
@@ -302,7 +268,7 @@ describe('Component | Integration | Button', function () {
     });
 
     describe('secondary button with preIcon with children', () => {
-      it('should render secondary button with preIcon and with children', () => {
+      beforeEach(() => {
         cy.mount(
           <Button
             variant="secondary"
@@ -311,7 +277,8 @@ describe('Component | Integration | Button', function () {
             <div data-testid="children">Children</div>
           </Button>,
         );
-
+      });
+      it('should render secondary button with preIcon and with children', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('exist');
         cy.get('[data-testid="posIcon"]').should('not.exist');
@@ -320,20 +287,12 @@ describe('Component | Integration | Button', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Button
-            variant="secondary"
-            posIcon={<FiArrowUpRight data-testid="posIcon" />}
-          >
-            <div data-testid="children">Children</div>
-          </Button>,
-        );
         compareSnapshot(cy, 'primary-button-with-preIcon-with-children');
       });
     });
 
     describe('secondary button with posIcon with children', () => {
-      it('should render secondary button with posIcon and children', () => {
+      beforeEach(() => {
         cy.mount(
           <Button
             variant="secondary"
@@ -342,7 +301,8 @@ describe('Component | Integration | Button', function () {
             <div data-testid="children">Children</div>
           </Button>,
         );
-
+      });
+      it('should render secondary button with posIcon and children', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('not.exist');
         cy.get('[data-testid="posIcon"]').should('exist');
@@ -351,26 +311,19 @@ describe('Component | Integration | Button', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Button
-            variant="secondary"
-            posIcon={<FiArrowUpRight data-testid="posIcon" />}
-          >
-            <div data-testid="children">Children</div>
-          </Button>,
-        );
         compareSnapshot(cy, 'secondary-button-with-posIcon-with-children');
       });
     });
 
     describe('secondary button without icons and with children', () => {
-      it('should render secondary button without icons and children', () => {
+      beforeEach(() => {
         cy.mount(
           <Button variant="secondary">
             <div data-testid="children">Children</div>
           </Button>,
         );
-
+      });
+      it('should render secondary button without icons and children', () => {
         cy.get('[data-testid="button"]').should('exist');
         cy.get('[data-testid="preIcon"]').should('not.exist');
         cy.get('[data-testid="posIcon"]').should('not.exist');
@@ -379,11 +332,6 @@ describe('Component | Integration | Button', function () {
       });
 
       it('should match snapshot', () => {
-        cy.mount(
-          <Button variant="secondary">
-            <div>Children</div>
-          </Button>,
-        );
         compareSnapshot(cy, 'secondary-button-without-icons-and-with-children');
       });
     });
