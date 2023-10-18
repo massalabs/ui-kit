@@ -20,9 +20,16 @@ import './commands';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { mount } from 'cypress/react18';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import compareSnapshotCommand from 'cypress-image-diff-js/dist/command';
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { RecurseDefaults } from 'cypress-recurse';
 
 // Augment the Cypress namespace to include type definitions for
