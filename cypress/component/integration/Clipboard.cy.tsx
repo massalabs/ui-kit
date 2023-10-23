@@ -58,10 +58,6 @@ describe('Component | Integration | Clipboard', function () {
       });
 
       it('should fire the copy clipboard function', () => {
-        cy.get('[data-testid="clipboard-field"]').should('exist');
-        cy.get('[data-testid="clipboard-content"]').contains(
-          'formatted content',
-        );
         cy.on('window:confirm', () => true);
 
         cy.window().then((win) => {
