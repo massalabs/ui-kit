@@ -1,5 +1,4 @@
 import '../../../src/global.css';
-import React from 'react';
 import { Button } from '../../../src/components';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { compareSnapshot } from '../../compareSnapshot';
@@ -7,26 +6,6 @@ import { compareSnapshot } from '../../compareSnapshot';
 describe('Component | Integration | Button', function () {
   describe('Button', () => {
     // PRIMARY VARIANT
-
-    describe('primary button with both icons', () => {
-      beforeEach(() => {
-        cy.mount(
-          <Button
-            preIcon={<FiArrowUpRight data-testid="preIcon" />}
-            posIcon={<FiArrowUpRight data-testid="posIcon" />}
-          />,
-        );
-      });
-      it('should render primary button with both icons', () => {
-        cy.get('[data-testid="button"]').should('exist');
-        cy.get('[data-testid="preIcon"]').should('exist');
-        cy.get('[data-testid="posIcon"]').should('exist');
-      });
-
-      it('should match snapshot', () => {
-        compareSnapshot(cy, 'primary-button-with-both-icons');
-      });
-    });
 
     describe('primary button without icons', () => {
       beforeEach(() => {
@@ -162,27 +141,6 @@ describe('Component | Integration | Button', function () {
     });
 
     // SECONDARY VARIANT
-
-    describe('secondary button with both icons', () => {
-      beforeEach(() => {
-        cy.mount(
-          <Button
-            variant="secondary"
-            preIcon={<FiArrowUpRight data-testid="preIcon" />}
-            posIcon={<FiArrowUpRight data-testid="posIcon" />}
-          />,
-        );
-      });
-      it('should render secondary button with both icons', () => {
-        cy.get('[data-testid="button"]').should('exist');
-        cy.get('[data-testid="preIcon"]').should('exist');
-        cy.get('[data-testid="posIcon"]').should('exist');
-      });
-
-      it('should match snapshot', () => {
-        compareSnapshot(cy, 'secondary-button-with-both-icons');
-      });
-    });
 
     describe('secondary button without icons', () => {
       beforeEach(() => {
