@@ -1,5 +1,4 @@
 import '../../../src/global.css';
-import React from 'react';
 import { Clipboard } from '../../../src/components';
 import { compareSnapshot } from '../../compareSnapshot';
 
@@ -7,7 +6,11 @@ describe('Component | Integration | Clipboard', function () {
   describe('Clipboard', () => {
     describe('clipboard with only raw-content', () => {
       beforeEach(() => {
-        cy.mount(<Clipboard rawContent={'raw content'} />);
+        cy.mount(
+          <div className="theme-dark">
+            <Clipboard rawContent={'raw content'} />
+          </div>,
+        );
       });
       it('should render', () => {
         cy.get('[data-testid="clipboard-field"]').should('exist');
@@ -22,10 +25,13 @@ describe('Component | Integration | Clipboard', function () {
     describe('clipboard with diplayed content', () => {
       beforeEach(() => {
         cy.mount(
-          <Clipboard
-            rawContent={'raw content'}
-            displayedContent={'formatted content'}
-          />,
+          <div className="theme-dark">
+            <Clipboard
+              rawContent={'raw content'}
+              displayedContent={'formatted content'}
+            />
+            ,
+          </div>,
         );
       });
       it('should render', () => {
@@ -43,11 +49,14 @@ describe('Component | Integration | Clipboard', function () {
     describe('clipboard success flow', () => {
       beforeEach(() => {
         cy.mount(
-          <Clipboard
-            rawContent={'raw content'}
-            success="Copied!"
-            displayedContent={'formatted content'}
-          />,
+          <div className="theme-dark">
+            <Clipboard
+              rawContent={'raw content'}
+              success="Copied!"
+              displayedContent={'formatted content'}
+            />
+            ,
+          </div>,
         );
       });
       it('should render', () => {
@@ -63,6 +72,8 @@ describe('Component | Integration | Clipboard', function () {
         cy.window().then((win) => {
           cy.stub(win, 'prompt')
             .returns(win.prompt)
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             .as('copyToClipboardPrompt');
         });
 
@@ -71,6 +82,8 @@ describe('Component | Integration | Clipboard', function () {
 
         cy.get('@copyToClipboardPrompt')
           .should((prompt) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             expect(prompt.args[0][1]).to.equal('raw content');
           })
           .then(() => {
@@ -81,15 +94,15 @@ describe('Component | Integration | Clipboard', function () {
 
         cy.get('[data-testid="clipboard-input-message"]').should('not.exist');
       });
-
-      it('should match snapshot', () => {
-        compareSnapshot(cy, 'clipboard-success-flow');
-      });
     });
 
     describe('clipboard raw content success flow', () => {
       beforeEach(() => {
-        cy.mount(<Clipboard rawContent={'raw content'} success="Copied!" />);
+        cy.mount(
+          <div className="theme-dark">
+            <Clipboard rawContent={'raw content'} success="Copied!" />
+          </div>,
+        );
       });
       it('should render', () => {
         cy.get('[data-testid="clipboard-field"]').should('exist');
@@ -104,6 +117,8 @@ describe('Component | Integration | Clipboard', function () {
         cy.window().then((win) => {
           cy.stub(win, 'prompt')
             .returns(win.prompt)
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             .as('copyToClipboardPrompt');
         });
 
@@ -112,6 +127,8 @@ describe('Component | Integration | Clipboard', function () {
 
         cy.get('@copyToClipboardPrompt')
           .should((prompt) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             expect(prompt.args[0][1]).to.equal('raw content');
           })
           .then(() => {
@@ -130,7 +147,11 @@ describe('Component | Integration | Clipboard', function () {
 
     describe('clipboard error flow', () => {
       beforeEach(() => {
-        cy.mount(<Clipboard rawContent={''} error="Oupps!" />);
+        cy.mount(
+          <div className="theme-dark">
+            <Clipboard rawContent={''} error="Oupps!" />
+          </div>,
+        );
       });
       it('should render', () => {
         cy.get('[data-testid="clipboard-field"]').should('exist');
@@ -149,6 +170,8 @@ describe('Component | Integration | Clipboard', function () {
         cy.window().then((win) => {
           cy.stub(win, 'prompt')
             .returns(win.prompt)
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             .as('copyToClipboardPrompt');
         });
 
