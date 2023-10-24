@@ -33,7 +33,11 @@ describe('Component | Integration | Balance', function () {
         cy.get('[data-testid="balance"] [data-testid="svg-icon"]').should(
           'exist',
         );
-        cy.get('[data-testid="balance"]').should('contain', '0123456.78');
+
+        cy.get('[data-testid="balance-amount"]').should(
+          'contain',
+          '0123456.78',
+        );
         cy.get('[data-testid="balance-equal"]').should('not.exist');
       });
 
