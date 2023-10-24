@@ -31,7 +31,12 @@ export function Balance({ ...props }) {
       className={`flex items-center w-fit ${customClass}`}
     >
       <MassaLogo size={logoClass} className={iconClass} />
-      <label className={`${sizeClass} text-f-primary`}>{amount}</label>
+      <label
+        data-testid="balance-amount"
+        className={`${sizeClass} text-f-primary`}
+      >
+        {amount}
+      </label>
       {equal ? (
         <label
           data-testid="balance-equal"
