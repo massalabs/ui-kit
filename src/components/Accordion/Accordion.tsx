@@ -10,7 +10,7 @@ interface AccordionProps extends ComponentPropsWithoutRef<'div'> {
   state?: boolean;
 }
 
-interface AccordionCategory extends ComponentPropsWithoutRef<'div'> {
+interface AccordionCategoryProps extends ComponentPropsWithoutRef<'div'> {
   categoryTitle: string | React.ReactNode;
   state?: boolean;
   isChild?: boolean;
@@ -19,7 +19,7 @@ interface AccordionCategory extends ComponentPropsWithoutRef<'div'> {
   customClass?: string;
 }
 
-interface AccordionContent extends ComponentPropsWithoutRef<'div'> {
+interface AccordionContentProps extends ComponentPropsWithoutRef<'div'> {
   customClass?: string;
 }
 
@@ -46,7 +46,7 @@ export function Accordion(props: AccordionProps) {
   );
 }
 
-export function AccordionCategory(props: AccordionCategory) {
+export function AccordionCategory(props: AccordionCategoryProps) {
   const {
     categoryTitle,
     children,
@@ -86,7 +86,7 @@ export function AccordionCategory(props: AccordionCategory) {
   );
 }
 
-export function AccordionContent(props: AccordionContent) {
+export function AccordionContent(props: AccordionContentProps) {
   const { children, customClass } = props;
   return (
     <div className={`p-5 w-full mas-body2 text-info ${customClass}`}>
