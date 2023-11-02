@@ -1,6 +1,7 @@
 export * from './Selector';
 export * from './Tabs';
 export * from './Input';
+export * from './InlineInput';
 export * from './Password';
 export * from './Button';
 export * from './PopupModal';
