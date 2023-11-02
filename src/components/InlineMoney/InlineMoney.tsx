@@ -4,7 +4,7 @@ import React, { ComponentPropsWithoutRef } from 'react';
 
 import { NumberFormatValues, NumericFormat } from 'react-number-format';
 
-interface InlineInputProps
+interface InlineMoneyProps
   extends ComponentPropsWithoutRef<typeof NumericFormat> {
   value: string;
   disabled?: boolean;
@@ -13,7 +13,7 @@ interface InlineInputProps
   customClass?: string;
 }
 
-export function InlineInput(props: InlineInputProps) {
+export function InlineMoney(props: InlineMoneyProps) {
   const { disabled, value, onValueChange, suffix, customClass, ...rest } =
     props;
 
@@ -23,7 +23,7 @@ export function InlineInput(props: InlineInputProps) {
 
   return (
     <NumericFormat
-      data-testid="inline-input"
+      data-testid="inline-money"
       className={`default-input border-none focus:border-none rounded-none
         text-right bg-primary underline-offset-4 ${underline} ${customClass}`}
       decimalScale={9}
