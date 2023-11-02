@@ -6,7 +6,7 @@ import { NumberFormatValues, NumericFormat } from 'react-number-format';
 
 interface InlineInputProps {
   name: string;
-  disabled: boolean;
+  disabled?: boolean;
   value: string;
   onValueChange?: (event: NumberFormatValues) => void;
 }
