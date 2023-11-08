@@ -94,7 +94,7 @@ export function Dropdown(props: IDropdownProps) {
       )}
 
       <button
-        data-testid={`dropdown-button`}
+        data-testid="dropdown-button"
         onClick={toggleDropdown}
         type="button"
         className={`flex default-button border-secondary justify-between
@@ -103,8 +103,15 @@ export function Dropdown(props: IDropdownProps) {
                     hover:bg-tertiary hover:border-tertiary
                     disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`}
       >
-        <div className={customIconClass}>{selected?.icon}</div>
-        <div className="mas-menu-active p-2 truncate">{selected?.item}</div>
+        <div data-testid="dropdown-selected-icon" className={customIconClass}>
+          {selected?.icon}
+        </div>
+        <div
+          data-testid="dropdown-selected-item"
+          className="mas-menu-active p-2 truncate"
+        >
+          {selected?.item}
+        </div>
         <Icon toggle={toggle} />
       </button>
       <div
