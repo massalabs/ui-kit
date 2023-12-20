@@ -18,7 +18,7 @@ export function MassaLogo(props: SVGProps) {
   }
 
   if (!secondaryColor) {
-    secondaryColor = '#000000';
+    secondaryColor = 'white';
   }
 
   return (
