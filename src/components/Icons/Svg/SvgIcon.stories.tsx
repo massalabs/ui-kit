@@ -5,6 +5,7 @@ import {
   StationLogo,
   BridgeLogo,
   FT1,
+  InterrogationPoint,
 } from './Massa';
 
 export default { title: 'Icons/Massa' };
@@ -49,4 +50,8 @@ export const _BridgeLogo = {
 
 export const _FT1 = {
   render: () => <FT1 size={40} />,
+};
+
+export const _InterrogationPoint = {
+  render: () => <InterrogationPoint size={40} />,
 };
