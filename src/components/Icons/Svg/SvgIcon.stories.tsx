@@ -17,6 +17,12 @@ export const _MassaLogo = {
   render: () => <MassaLogo size={40} />,
 };
 
+export const _MassaLogoCustomColors = {
+  render: () => (
+    <MassaLogo size={40} primaryColor="black" secondaryColor="white" />
+  ),
+};
+
 export const _MassaWallet = {
   render: () => <MassaWallet size={40} />,
 };
