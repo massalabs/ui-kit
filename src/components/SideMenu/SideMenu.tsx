@@ -21,6 +21,7 @@ interface ISideMenuConfProps extends ComponentPropsWithoutRef<'div'> {
 interface ISideMenuProps extends ComponentPropsWithoutRef<'div'> {
   items?: ISideMenuItemProps[];
   conf: ISideMenuConfProps;
+  onClickLogo?: () => void;
 }
 
 interface IShortItemProps extends ComponentPropsWithoutRef<'div'> {
@@ -76,12 +77,17 @@ export function LongItem(props: ILongItemProps) {
 }
 
 function ShortMenu(props: ISideMenuProps) {
-  const { items, conf } = props;
+  const { items, conf, onClickLogo } = props;
   const { logo } = conf;
 
   return (
     <div className="flex flex-col items-center w-20 h-full overflow-hidden bg-secondary">
-      <div className="flex items-center justify-center mt-3">{logo}</div>
+      <div
+        className="flex items-center justify-center mt-3 hover:cursor-pointer"
+        onClick={onClickLogo}
+      >
+        {logo}
+      </div>
       <div className="flex flex-col items-center mt-3">
         {items
           ?.filter((item) => !item.footer)
@@ -101,12 +107,15 @@ function ShortMenu(props: ISideMenuProps) {
 }
 
 function LongMenu(props: ISideMenuProps) {
-  const { items, conf } = props;
+  const { items, conf, onClickLogo } = props;
   const { logo, title } = conf;
 
   return (
     <div className="flex flex-col items-center w-64 h-full overflow-hidden bg-secondary">
-      <div className="flex w-full items-center px-5 mt-3">
+      <div
+        className="flex w-full items-center px-5 mt-3 hover:cursor-pointer"
+        onClick={onClickLogo}
+      >
         {logo}
         <span className="w-full ml-3 text-center text-f-primary mas-menu-active">
           {title}
@@ -133,7 +142,7 @@ function LongMenu(props: ISideMenuProps) {
 }
 
 export function SideMenu(props: ISideMenuProps) {
-  const { items, conf } = props;
+  const { items, conf, onClickLogo } = props;
   const { fullMode } = conf;
 
   const [hover, setHover] = useState(true);
@@ -141,7 +150,7 @@ export function SideMenu(props: ISideMenuProps) {
   const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0' : '';
   const hoverClass = hover ? 'w-20' : 'w-64';
 
-  function handleOnMouseOver(e: any) {
+  function handleOnMouseOver(e: React.MouseEvent) {
     e.preventDefault();
     setHover(!hover);
   }
@@ -154,9 +163,9 @@ export function SideMenu(props: ISideMenuProps) {
       onMouseLeave={hover ? undefined : handleOnMouseOver}
     >
       {hover ? (
-        <ShortMenu items={items} conf={conf} />
+        <ShortMenu items={items} conf={conf} onClickLogo={onClickLogo} />
       ) : (
-        <LongMenu items={items} conf={conf} />
+        <LongMenu items={items} conf={conf} onClickLogo={onClickLogo} />
       )}
     </div>
   );

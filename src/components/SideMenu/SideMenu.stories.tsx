@@ -73,5 +73,11 @@ let items = [
 ];
 
 export const _SideMenu = {
-  render: () => <SideMenu conf={conf} items={items} />,
+  render: () => (
+    <SideMenu
+      conf={conf}
+      items={items}
+      onClickLogo={() => alert('logo clicked')}
+    />
+  ),
 };
