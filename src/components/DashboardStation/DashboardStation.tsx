@@ -3,12 +3,13 @@
 import React from 'react';
 
 import { ReactNode, useEffect, useState } from 'react';
+import { Theme } from '../Icons';
 
 export interface IDashboardStationProps {
   imagesDark: ReactNode[];
   imagesLight: ReactNode[];
   components: ReactNode[];
-  theme?: string;
+  theme?: Theme | undefined;
 }
 
 export function DashboardStation(props: IDashboardStationProps) {

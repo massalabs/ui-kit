@@ -14,17 +14,17 @@ export interface SidePanelProps extends ComponentPropsWithoutRef<'div'> {
   side?: 'left' | 'right';
   customClass?: string;
   children?: ReactNode;
-  onOpen?: () => void;
-  onClose?: () => void;
+  onOpen?: (e: ChangeEvent<unknown>) => void;
+  onClose?: (e: ChangeEvent<unknown>) => void;
 }
 
-export function SidePanel({ ...props }) {
+export function SidePanel(props: SidePanelProps) {
   const {
     side = 'right',
-    children,
-    onClose,
-    onOpen,
     customClass,
+    children,
+    onOpen,
+    onClose,
     ...rest
   } = props;
   const [toggle, setToggle] = useState(false);

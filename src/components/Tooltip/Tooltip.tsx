@@ -6,9 +6,10 @@ import { FiHelpCircle } from 'react-icons/fi';
 
 export interface TooltipProps extends ComponentPropsWithoutRef<'div'> {
   icon?: ReactNode;
+  customClass?: string;
 }
 
-export function Tooltip({ ...props }) {
+export function Tooltip(props: TooltipProps) {
   const { content, icon, customClass, ...rest } = props;
 
   const [showTooltip, setShowTooltip] = useState(false);

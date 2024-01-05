@@ -4,14 +4,13 @@ import React, { ComponentPropsWithoutRef, ReactNode, useState } from 'react';
 import { FiChevronDown, FiChevronUp, FiMinus, FiPlus } from 'react-icons/fi';
 
 interface AccordionProps extends ComponentPropsWithoutRef<'div'> {
-  children?: ReactNode;
   title: string;
   customClass?: string;
   state?: boolean;
 }
 
 interface AccordionCategoryProps extends ComponentPropsWithoutRef<'div'> {
-  categoryTitle: string | React.ReactNode;
+  categoryTitle: string | ReactNode;
   state?: boolean;
   isChild?: boolean;
   iconOpen?: ReactNode;

@@ -6,14 +6,16 @@ import { ComponentPropsWithoutRef, useState } from 'react';
 
 export interface TabConfig {
   label: string;
-  content: string;
+  content: React.ReactNode | string;
+  onClickTab?: () => void;
 }
 
 export interface TabsProps extends ComponentPropsWithoutRef<'div'> {
   tabsConfig: TabConfig[];
+  defaultIndex?: number | undefined;
 }
 
-export function Tabs({ ...props }) {
+export function Tabs(props: TabsProps) {
   const { tabsConfig, defaultIndex, ...rest } = props;
   const [selectedIndex, setSelectedIndex] = useState(defaultIndex ?? 0);
 

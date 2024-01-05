@@ -4,12 +4,12 @@ import React from 'react';
 
 import { ComponentPropsWithoutRef } from 'react';
 
-export interface ToggleProps extends ComponentPropsWithoutRef<'div'> {
-  size?: 'sm' | 'md' | 'lg';
+export interface ToggleProps extends ComponentPropsWithoutRef<'input'> {
+  tShirtSize?: 'sm' | 'md' | 'lg' | undefined;
 }
 
-export function Toggle({ ...props }) {
-  const { size = 'md', ...rest } = props;
+export function Toggle(props: ToggleProps) {
+  const { tShirtSize: size = 'md', ...rest } = props;
 
   const isSm = size === 'sm';
   const isMd = size === 'md';

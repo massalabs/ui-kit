@@ -19,16 +19,16 @@ export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   onDelete?: () => void;
 }
 
-export function Token({ ...props }) {
+export function Token(props: TokenProps) {
   const {
     logo,
     name,
     symbol,
     decimals,
     balance,
-    onDelete,
-    disable,
     customClass,
+    disable,
+    onDelete,
     ...rest
   } = props;
 

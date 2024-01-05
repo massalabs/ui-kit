@@ -4,8 +4,9 @@ import React from 'react';
 
 import { ComponentPropsWithoutRef } from 'react';
 
+export type Theme = 'theme-light' | 'theme-dark';
 interface SVGProps extends ComponentPropsWithoutRef<'div'> {
-  theme?: 'theme-light' | 'theme-dark' | undefined;
+  theme?: Theme | undefined;
 }
 
 /* eslint-disable max-len */

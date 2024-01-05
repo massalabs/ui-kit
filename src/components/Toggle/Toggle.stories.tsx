@@ -5,13 +5,13 @@ export default { title: 'Components/Toggle', component: Toggle };
 export const _Toggle = {
   render: () => (
     <>
-      <Toggle size="sm" value="1" onClick={() => console.log('clicked')} />
+      <Toggle tShirtSize="sm" onClick={() => console.log('clicked')} />
       <br />
-      <Toggle value="1" />
+      <Toggle />
       <br />
-      <Toggle size="lg" value="1" />
+      <Toggle tShirtSize="lg" />
       <br />
-      <Toggle value="1" disabled />
+      <Toggle disabled />
     </>
   ),
 };
