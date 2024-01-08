@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
+import React, { ChangeEvent, DragEvent } from 'react';
 
 import { ComponentPropsWithoutRef, useRef, useState } from 'react';
 import { FiArchive, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
@@ -60,8 +60,12 @@ export function DragDrop(props: IDragDropProps) {
     return true;
   }
 
-  function handleOnChange(e: any) {
+  function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
+
+    if (!e.target.files) {
+      return;
+    }
 
     [...e.target.files].forEach((file) => {
       if (!isValidFile(file.name.toLowerCase())) {
@@ -75,13 +79,20 @@ export function DragDrop(props: IDragDropProps) {
     });
   }
 
-  function handleOnDropHandler(e: any) {
+  function handleOnDropHandler(e: DragEvent) {
     e.preventDefault();
+
+    if (!e.dataTransfer) {
+      return;
+    }
 
     if (e.dataTransfer.items) {
       [...e.dataTransfer.items].forEach((item) => {
         if (item.kind === 'file') {
           const file = item.getAsFile();
+          if (!file) {
+            return;
+          }
 
           if (!isValidFile(file.name.toLowerCase() || '')) {
             return;
@@ -107,7 +118,7 @@ export function DragDrop(props: IDragDropProps) {
     }
   }
 
-  function handleDragOverHandler(e: any) {
+  function handleDragOverHandler(e: DragEvent) {
     e.preventDefault();
   }
 
