@@ -10,7 +10,7 @@ const tabsConfig = [
   {
     label: 'Tab 1',
     content: <Button> Tab 1 component </Button>,
-    onClickTab: () => console.log('Hello'),
+    onClickTab: () => console.log('tab clicked'),
   },
   {
     label: 'Tab 2',

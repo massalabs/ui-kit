@@ -6,13 +6,13 @@ import { ComponentPropsWithoutRef } from 'react';
 import { MassaLogo } from '../Icons/Svg/Massa/MassaLogo';
 
 export interface BalanceProps extends ComponentPropsWithoutRef<'div'> {
-  size: 'xs' | 'md' | 'lg';
+  size?: 'xs' | 'md' | 'lg' | undefined;
   amount: string;
   equal?: string;
   customClass?: string;
 }
 
-export function Balance({ ...props }) {
+export function Balance(props: BalanceProps) {
   const { size = 'lg', amount, equal, customClass } = props;
 
   const isLg = size === 'lg';

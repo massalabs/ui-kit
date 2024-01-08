@@ -2,11 +2,6 @@
 // @ts-ignore
 import React from 'react';
 
-import { ComponentPropsWithoutRef } from 'react';
-
-export interface ColorRectangleProps extends ComponentPropsWithoutRef<'div'> {
-  theme: string;
-}
 const baseClass = 'w-40 h-10 mb-2';
 function Color({ color }: { color: string }) {
   return <div id={color} className={`${baseClass} ${color}`} />;
