@@ -3,8 +3,8 @@
 import React from 'react';
 
 import { ComponentPropsWithoutRef } from 'react';
+import { Theme } from '../../../../util/types';
 
-export type Theme = 'theme-light' | 'theme-dark';
 interface SVGProps extends ComponentPropsWithoutRef<'div'> {
   theme?: Theme | undefined;
 }

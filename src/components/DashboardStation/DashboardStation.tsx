@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { ReactNode, useEffect, useState } from 'react';
-import { Theme } from '../Icons';
+import { Theme } from '../../util/types';
 
 export interface IDashboardStationProps {
   imagesDark: ReactNode[];

@@ -5,7 +5,7 @@ import React from 'react';
 import { useState } from 'react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { useLocalStorage } from '../../util/useLocalStorage';
-import { Theme } from '../Icons';
+import { Theme } from '../../util/types';
 
 interface ThemeProps {
   onSetTheme?: (theme: Theme) => void;
