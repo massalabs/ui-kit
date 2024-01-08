@@ -75,7 +75,7 @@
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "lint-staged": "^13.2.1",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.31",
     "postcss-loader": "^7.2.4",
     "prop-types": "^15.8.1",
     "react-test-renderer": "^18.2.0",
