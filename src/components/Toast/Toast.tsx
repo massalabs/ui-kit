@@ -10,11 +10,14 @@ import { Button } from '../Button';
 import { useLocalStorage } from '../../util/useLocalStorage';
 import { Transition } from '@headlessui/react';
 
-interface ToastProps extends ComponentPropsWithoutRef<'div'> {
+export interface ToastProps extends ComponentPropsWithoutRef<'div'> {
   error?: string;
   success?: string;
   theme?: string;
+  durationMs?: number;
 }
+
+const defaultDurationMs = 10000;
 
 function Error(props: ToastProps) {
   const { error } = props;
@@ -71,7 +74,7 @@ export function Toast(props: ToastProps) {
       <Toaster
         position="top-center"
         toastOptions={{
-          duration: 4000,
+          duration: props.durationMs ?? defaultDurationMs,
         }}
       >
         {(t) => (
