@@ -12,25 +12,32 @@ interface IOption extends ComponentPropsWithoutRef<'div'> {
   select?: number;
 }
 
-interface IDropdownProps extends ComponentPropsWithoutRef<'div'> {
+interface DropdownProps extends ComponentPropsWithoutRef<'div'> {
   options: IOption[];
   size?: 'xs' | 'md';
   select?: number;
   readOnly?: boolean;
+  defaultItem?: IOption;
 }
 
 function Icon({ toggle }: { toggle: boolean }) {
-  let IconclassName = 'max-w-fit stroke-current';
+  let IconClassName = 'max-w-fit stroke-current';
 
   return toggle ? (
-    <FiChevronUp className={IconclassName} />
+    <FiChevronUp className={IconClassName} />
   ) : (
-    <FiChevronDown className={IconclassName} />
+    <FiChevronDown className={IconClassName} />
   );
 }
 
-export function Dropdown(props: IDropdownProps) {
-  let { size = 'md', select = 0, options, readOnly = false } = props;
+export function Dropdown(props: DropdownProps) {
+  let {
+    size = 'md',
+    select = 0,
+    options,
+    readOnly = false,
+    defaultItem,
+  } = props;
 
   const ref = useRef(null);
 
@@ -51,7 +58,7 @@ export function Dropdown(props: IDropdownProps) {
 
   const firstObject = options[select];
   const [toggle, setToggle] = useState(false);
-  const [selected, setSelected] = useState(firstObject);
+  const [selected, setSelected] = useState(defaultItem ?? firstObject);
   const hidden = toggle ? '' : 'hidden';
 
   useClickOutside(ref, () => {
@@ -60,7 +67,7 @@ export function Dropdown(props: IDropdownProps) {
 
   // refresh the selected item when the select prop changes
   useEffect(() => {
-    setSelected(options[select]);
+    setSelected(defaultItem ?? options[select]);
   }, [select, options]);
 
   const customButtonClass = classes[size].button;

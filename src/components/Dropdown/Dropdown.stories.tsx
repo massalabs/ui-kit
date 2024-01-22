@@ -173,6 +173,24 @@ export const _Dropdown = {
 
         <Dropdown
           size={'xs'}
+          options={[
+            {
+              icon: (
+                <MassaToken size={16} className="bg-c-default rounded-full" />
+              ),
+              item: 'MAS',
+              onClick: () => console.log('option 1'),
+            },
+            { icon: <MassaLogo size={16} />, item: 'MAS' },
+            { icon: <MassaLogo size={16} />, item: 'MAS' },
+          ]}
+          defaultItem={{ item: 'Select a token' }}
+        />
+
+        <br />
+
+        <Dropdown
+          size={'xs'}
           readOnly={true}
           options={[
             {
