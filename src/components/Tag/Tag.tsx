@@ -4,12 +4,12 @@ import React from 'react';
 
 interface TagProps {
   type: string;
-  content: string;
+  children: React.ReactNode;
   customClass?: string;
 }
 
 export function Tag(props: TagProps) {
-  const { content, type, customClass } = props;
+  const { children, type, customClass } = props;
 
   let isDefault = type === 'default';
   let isInfo = type === 'info';
@@ -31,7 +31,7 @@ export function Tag(props: TagProps) {
       className={`${backgroundClass} mas-caption rounded-full w-fit px-3 py-1
         bg-opacity-30 ${typeColor} ${customClass}`}
     >
-      {content}
+      {children}
     </p>
   );
 }

@@ -27,7 +27,7 @@ export function Tooltip(props: TooltipProps) {
       {icon || defaultIcon}
       {showTooltip && (
         <div
-          className={`w-fit z-10 absolute bg-tertiary p-3 rounded-lg text-neutral ml-2 ${customClass} `}
+          className={`w-fit z-10 absolute bg-tertiary p-3 rounded-lg text-neutral ml-2 ${customClass}`}
         >
           {content}
         </div>

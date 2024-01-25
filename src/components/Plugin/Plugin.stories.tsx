@@ -20,7 +20,7 @@ const argsOn = {
   topActionFunction: () => console.log('download'),
   title: `plugin name - 30 characters...`,
   subtitle: `Author's Name`,
-  tag: <Tag type="warning" content="beta" />,
+  tag: <Tag type="warning">Beta</Tag>,
   subtitleIcon: <Certificate />,
   version: '1.0.2',
   content: [
