@@ -7,15 +7,15 @@ export default {
 export const _Tag = {
   render: () => (
     <>
-      <Tag type={'default'} content={'default type'} />
+      <Tag type={'default'}>default type</Tag>
       <br />
-      <Tag type={'error'} content={'error type'} />
+      <Tag type={'error'}>error type</Tag>
       <br />
-      <Tag type={'success'} content={'success type'} />
+      <Tag type={'success'}>success type</Tag>
       <br />
-      <Tag type={'info'} content={'info type'} />
+      <Tag type={'info'}>info type</Tag>
       <br />
-      <Tag type={'warning'} content={'warning type'} />
+      <Tag type={'warning'}>warning type</Tag>
     </>
   ),
 };

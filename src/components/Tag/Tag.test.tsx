@@ -4,7 +4,7 @@ import { Tag } from './Tag';
 
 describe('Components | Tag', () => {
   test('it should render', () => {
-    render(<Tag type="default" content="default type" />);
+    render(<Tag type="default">default type</Tag>);
 
     let tag = screen.getByTestId('tag');
 
@@ -12,7 +12,7 @@ describe('Components | Tag', () => {
   });
 
   test('it should have white class with 30% opacity', () => {
-    render(<Tag type="default" content="default type" />);
+    render(<Tag type="default">default type</Tag>);
 
     let tag = screen.getByTestId('tag');
 
@@ -20,7 +20,7 @@ describe('Components | Tag', () => {
   });
 
   test('it should have info-1 class', () => {
-    render(<Tag type="info" content="info type" />);
+    render(<Tag type="info">info type</Tag>);
 
     let tag = screen.getByTestId('tag');
 
@@ -28,7 +28,7 @@ describe('Components | Tag', () => {
   });
 
   test('it should have error class', () => {
-    render(<Tag type="error" content="error type" />);
+    render(<Tag type="error">error type</Tag>);
 
     let tag = screen.getByTestId('tag');
 
@@ -36,7 +36,7 @@ describe('Components | Tag', () => {
   });
 
   test('it should have success class', () => {
-    render(<Tag type="success" content="success type" />);
+    render(<Tag type="success">success type</Tag>);
 
     let tag = screen.getByTestId('tag');
 
@@ -44,7 +44,7 @@ describe('Components | Tag', () => {
   });
 
   test('it should have warning class', () => {
-    render(<Tag type="warning" content="warning type" />);
+    render(<Tag type="warning">warning type</Tag>);
 
     let tag = screen.getByTestId('tag');
 
