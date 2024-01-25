@@ -11,6 +11,7 @@ import { useLocalStorage } from '../../util/useLocalStorage';
 import { Transition } from '@headlessui/react';
 
 export interface ToastProps extends ComponentPropsWithoutRef<'div'> {
+  storageKey: string;
   error?: string;
   success?: string;
   theme?: string;
@@ -56,12 +57,9 @@ function Success(props: ToastProps) {
 export const toast = _toast;
 
 export function Toast(props: ToastProps) {
-  const { error, theme: _theme, ...rest } = props;
+  const { storageKey, error, theme: _theme, ...rest } = props;
 
-  const [storedTheme] = useLocalStorage<string>(
-    'massa-station-theme',
-    'theme-dark',
-  );
+  const [storedTheme] = useLocalStorage<string>(storageKey, 'theme-dark');
   const [theme, setTheme] = useState<string>(storedTheme);
   const isError = Boolean(error);
 
