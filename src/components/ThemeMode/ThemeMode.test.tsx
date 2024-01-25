@@ -4,7 +4,7 @@ import { ThemeMode } from './ThemeMode';
 
 describe('Components | Button | ThemeMode', () => {
   test('it should render', () => {
-    render(<ThemeMode />);
+    render(<ThemeMode storageKey="test-theme" />);
 
     let button = screen.getByTestId('theme-mode');
 

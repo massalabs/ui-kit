@@ -18,7 +18,7 @@ export const _Toast = {
       <Button onClick={() => toast.success('Uuurraa! This is a success CSS')}>
         Create SUCCESS Toast
       </Button>
-      <Toast theme="theme-dark" />
+      <Toast storageKey="stories-theme" theme="theme-dark" />
     </>
   ),
 };

@@ -9,13 +9,14 @@ import { Theme } from '../../util/types';
 
 interface ThemeProps {
   onSetTheme?: (theme: Theme) => void;
+  storageKey: string;
 }
 
 export function ThemeMode(props: ThemeProps) {
-  let { onSetTheme } = props;
+  let { onSetTheme, storageKey } = props;
 
   const [storedTheme, setStoredTheme] = useLocalStorage<string>(
-    'massa-station-theme',
+    storageKey,
     'theme-dark',
   );
   const [theme, setTheme] = useState(storedTheme || 'theme-dark');

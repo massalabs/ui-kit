@@ -6,5 +6,5 @@ export default {
 };
 
 export const _ThemeMode = {
-  render: () => <ThemeMode />,
+  render: () => <ThemeMode storageKey="stories-theme" />,
 };

@@ -28,7 +28,12 @@ export function useLocalStorage<T>(
 ): [T, (value: T) => void] {
   const [value, setValue] = useState<T>(() => {
     const storedValue = localStorage.getItem(storageKey);
-    return storedValue ? JSON.parse(storedValue) : fallbackState;
+    try {
+      return storedValue ? JSON.parse(storedValue) : fallbackState;
+    } catch (error) {
+      console.error(error);
+      return fallbackState;
+    }
   });
 
   useEffect(() => {
