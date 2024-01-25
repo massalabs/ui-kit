@@ -3,7 +3,6 @@ import {
   MassaLogo,
   MassaWallet,
   StationLogo,
-  BridgeLogo,
   FT1,
   InterrogationPoint,
 } from './Massa';
@@ -34,16 +33,6 @@ export const _StationLogo = {
       <StationLogo theme="theme-dark" />
       <br />
       <StationLogo theme="theme-light" />
-    </>
-  ),
-};
-
-export const _BridgeLogo = {
-  render: () => (
-    <>
-      <BridgeLogo theme="theme-dark" />
-      <br />
-      <BridgeLogo theme="theme-light" />
     </>
   ),
 };
