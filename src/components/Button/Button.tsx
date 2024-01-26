@@ -96,7 +96,7 @@ export function Button(props: ButtonProps) {
       className={`default-button flex min-h-12 items-center px-4 ${classes[variant]} ${customClass}`}
       {...rest}
     >
-      <div className="w-fit m-auto flex gap-2">
+      <div className="w-fit m-auto flex items-center gap-2">
         <div className="m-auto">
           <IconContext.Provider value={{ className: 'w-6 h-6' }}>
             {preIcon}
