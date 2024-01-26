@@ -35,7 +35,7 @@ interface IPopupModalNodeProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export function PopupModalHeader(props: IPopupModalNodeProps) {
-  const { children, _onClose, customClassHeader } = props;
+  const { children, _onClose, customClassHeader = '' } = props;
 
   function handleClose() {
     _onClose?.();
@@ -64,7 +64,7 @@ export function PopupModalHeader(props: IPopupModalNodeProps) {
 }
 
 export function PopupModalContent(props: IPopupModalNodeProps) {
-  const { children, customClassContent } = props;
+  const { children, customClassContent = '' } = props;
 
   if (children) {
     return (
@@ -80,7 +80,7 @@ export function PopupModalContent(props: IPopupModalNodeProps) {
 }
 
 export function PopupModalFooter(props: IPopupModalNodeProps) {
-  const { children, customClassFooter } = props;
+  const { children, customClassFooter = '' } = props;
 
   if (children) {
     return (

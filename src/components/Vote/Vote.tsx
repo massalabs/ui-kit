@@ -14,7 +14,7 @@ export interface VoteProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export function Vote(props: VoteProps) {
-  const { votes, voted, onVote, customClass, ...rest } = props;
+  const { votes, voted, onVote, customClass = '', ...rest } = props;
 
   const isVote = voted === 'VOTE';
   const isUnVote = voted === 'UNVOTE';

@@ -13,7 +13,7 @@ export interface BalanceProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export function Balance(props: BalanceProps) {
-  const { size = 'lg', amount, equal, customClass } = props;
+  const { size = 'lg', amount, equal, customClass = '' } = props;
 
   const isLg = size === 'lg';
   const isMd = size === 'md';

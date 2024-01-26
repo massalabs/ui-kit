@@ -9,7 +9,7 @@ interface TagProps {
 }
 
 export function Tag(props: TagProps) {
-  const { children, type, customClass } = props;
+  const { children, type, customClass = '' } = props;
 
   let isDefault = type === 'default';
   let isInfo = type === 'info';

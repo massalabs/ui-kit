@@ -80,7 +80,7 @@ export function IconInput(props: InputProps) {
 }
 
 export function RawInput(props: InputProps) {
-  const { error, warning, success, disable, customClass, ...rest } = props;
+  const { error, warning, success, disable, customClass = '', ...rest } = props;
 
   const disabledClass = disable ? 'border-0' : '';
   const errorClass = error ? 'border-s-error' : '';

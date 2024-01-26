@@ -10,7 +10,7 @@ interface SVGProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export function MassaToken(props: SVGProps) {
-  let { size, customClass, ...rest } = props;
+  let { size, customClass = '', ...rest } = props;
 
   return (
     <div

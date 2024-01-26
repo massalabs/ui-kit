@@ -16,7 +16,7 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
 }
 
 export function ButtonToggle(props: ButtonProps) {
-  const { children, customClass, pressed, ...rest } = props;
+  const { children, customClass = '', pressed, ...rest } = props;
 
   const pressedClass = pressed
     ? 'text-tertiary bg-primary border-secondary hover:border-c-hover'
@@ -35,7 +35,7 @@ export function ButtonToggle(props: ButtonProps) {
 }
 
 export function ButtonIcon(props: ButtonProps) {
-  const { children, model = 'single', customClass, ...rest } = props;
+  const { children, model = 'single', customClass = '', ...rest } = props;
 
   const models: Models = {
     border:
