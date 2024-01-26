@@ -31,7 +31,7 @@ export function useLocalStorage<T>(
     try {
       return storedValue ? JSON.parse(storedValue) : fallbackState;
     } catch (error) {
-      console.error(error);
+      console.error(`for storage key ${storageKey}: ${error}`);
       return fallbackState;
     }
   });
