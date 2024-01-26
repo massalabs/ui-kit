@@ -23,7 +23,7 @@ interface AccordionContentProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export function Accordion(props: AccordionProps) {
-  const { title, children, customClass, state } = props;
+  const { title, children, customClass = '', state } = props;
   const [extend, setExtend] = useState(state || false);
 
   return (
@@ -86,7 +86,7 @@ export function AccordionCategory(props: AccordionCategoryProps) {
 }
 
 export function AccordionContent(props: AccordionContentProps) {
-  const { children, customClass } = props;
+  const { children, customClass = '' } = props;
   return (
     <div className={`p-5 w-full mas-body2 text-info ${customClass}`}>
       {children}

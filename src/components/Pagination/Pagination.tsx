@@ -105,7 +105,7 @@ export interface PaginationProps {
 }
 
 export function Pagination(props: PaginationProps) {
-  const { pages, currentPage, customClass, onPageChange } = props;
+  const { pages, currentPage, customClass = '', onPageChange } = props;
   const pageClass = 'px-3 py-1 rounded-lg cursor-pointer';
   const currentpageClass = `${pageClass} bg-f-primary text-f-secondary`;
 

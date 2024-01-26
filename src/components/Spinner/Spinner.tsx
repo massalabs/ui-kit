@@ -2,13 +2,13 @@
 // @ts-ignore
 import React from 'react';
 
-interface SpinerProps {
+interface SpinnerProps {
   variant?: 'button';
   customClass?: string;
 }
 
-export function Spinner(props: SpinerProps) {
-  const { variant = 'default', customClass } = props;
+export function Spinner(props: SpinnerProps) {
+  const { variant = 'default', customClass = '' } = props;
 
   const gradientColorClass =
     variant === 'button'

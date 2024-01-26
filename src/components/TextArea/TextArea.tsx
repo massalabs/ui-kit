@@ -12,7 +12,7 @@ interface TextAreaProps extends ComponentPropsWithoutRef<'textarea'> {
 }
 
 export function TextArea(props: TextAreaProps) {
-  const { error, warning, success, customClass, ...rest } = props;
+  const { error, warning, success, customClass = '', ...rest } = props;
 
   const errorClass = error ? 'border-s-error' : '';
   const warningClass = warning ? 'border-s-warning' : '';
