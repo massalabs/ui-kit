@@ -33,3 +33,4 @@ export * from './Tooltip';
 export * from './Token';
 export * from './Tag';
 export * from './Accordion';
+export * from './Fetching';
