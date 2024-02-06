@@ -6,7 +6,7 @@ export default { title: 'Components/Tooltip', component: Tooltip };
 export const _Tooltip = {
   render: () => (
     <>
-      <Tooltip content={'Hello I am tooltip content'} />
+      <Tooltip body={'Hello I am tooltip content'} />
     </>
   ),
 };
@@ -14,7 +14,7 @@ export const _Tooltip = {
 export const _TooltipCustomIcon = {
   render: () => (
     <>
-      <Tooltip content={'Hello I am tooltip content'}>
+      <Tooltip body={<p>Hello I am tooltip content</p>}>
         <FiAirplay size={48} className="text-s-warning" />
       </Tooltip>
     </>

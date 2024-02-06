@@ -5,12 +5,12 @@ import { ComponentPropsWithoutRef, useState } from 'react';
 import { FiHelpCircle } from 'react-icons/fi';
 
 export interface TooltipProps extends ComponentPropsWithoutRef<'div'> {
-  children?: ReactNode;
   customClass?: string;
+  body: ReactNode | string;
 }
 
 export function Tooltip(props: TooltipProps) {
-  const { content, children, customClass = '', ...rest } = props;
+  const { body, children, customClass = '', ...rest } = props;
 
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -29,7 +29,7 @@ export function Tooltip(props: TooltipProps) {
         <div
           className={`w-fit z-10 absolute bg-tertiary p-3 rounded-lg text-neutral ml-2 ${customClass}`}
         >
-          {content}
+          {body}
         </div>
       )}
     </div>
