@@ -60,7 +60,7 @@ export function Token(props: TokenProps) {
           <p className="mas-menu-active">{`${name} (${symbol})`} </p>
           <span className="flex items-center gap-2">
             <p className="mas-menu">{formattedBalance}</p>
-            <Tooltip content={rawBalance} />
+            <Tooltip body={rawBalance} />
           </span>
         </div>
       </div>
