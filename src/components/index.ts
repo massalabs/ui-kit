@@ -22,7 +22,6 @@ export * from './SidePanel';
 export * from './Money';
 export * from './InlineMoney';
 export * from './Clipboard';
-export * from './DashboardStation';
 export * from './PluginWallet';
 export * from './TextArea';
 export * from './DragDrop';
