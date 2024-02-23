@@ -162,7 +162,7 @@ export const _Icon = {
 export const _ButtonWithSpinner = {
   render: () => (
     <Button disabled>
-      <Spinner /> Install
+      <Spinner variant="button" /> Install
     </Button>
   ),
 };
