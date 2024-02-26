@@ -21,6 +21,7 @@
     "fmt": "npm run prettier:fix && npm run lint:fix",
     "fmt:check": "npm run prettier && npm run lint",
     "test": "jest && npm run cy:component",
+    "test:unit": "jest",
     "prepare": "husky install"
   },
   "dependencies": {
