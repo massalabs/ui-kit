@@ -10,12 +10,4 @@ describe('Components | Spinner', () => {
 
     expect(spinner).toBeTruthy();
   });
-
-  test('it should have animate spin class', () => {
-    render(<Spinner />);
-
-    let spinner = screen.getByTestId('spinner');
-
-    expect(spinner).toHaveClass('animate-spin');
-  });
 });

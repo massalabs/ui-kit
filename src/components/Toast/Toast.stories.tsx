@@ -1,4 +1,4 @@
-import { Toast, toast } from './Toast';
+import { Toast, ToastContent, toast } from './Toast';
 import { Button } from './../Button/Button';
 
 export default { title: 'Components/Toast' };
@@ -14,11 +14,32 @@ export const _Toast = {
         Create ERROR Toast
       </Button>
       <br />
-      <br />
       <Button onClick={() => toast.success('Uuurraa! This is a success CSS')}>
         Create SUCCESS Toast
       </Button>
-      <Toast storageKey="stories-theme" theme="theme-dark" />
+      <br />
+      <Button
+        onClick={() =>
+          toast((t) => <ToastContent t={t}>Toast content</ToastContent>, {
+            duration: Infinity,
+          })
+        }
+      >
+        Create info infinite Toast
+      </Button>
+      <br />
+      <Button
+        onClick={() =>
+          toast.loading(
+            (t) => <ToastContent t={t}>Work in Progress</ToastContent>,
+            { duration: Infinity },
+          )
+        }
+      >
+        Create loading Toast
+      </Button>
+
+      <Toast />
     </>
   ),
 };
