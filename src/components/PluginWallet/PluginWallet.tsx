@@ -93,7 +93,7 @@ export function LoadingPlugin(props: MSPluginProps) {
         </div>
         <div className="w-4/5 px-4 py-2">
           <Button disabled={true}>
-            <Spinner color="c-disabled-2" />
+            <Spinner />
           </Button>
         </div>
       </div>

@@ -1,29 +1,19 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from 'react';
+import { ImSpinner2 } from 'react-icons/im';
 
-interface SpinnerProps {
+interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
   customClass?: string;
-  size?: 'sm' | 'md' | 'lg';
-  color?: string;
+  size?: number;
 }
 
 export function Spinner(props: SpinnerProps) {
-  const { customClass = '', size = 'sm', color = 'neutral' } = props;
-
-  const sizeToClass = {
-    sm: 'w-6 h-6',
-    md: 'w-8 h-8',
-    lg: 'w-12 h-12 border-4',
-  };
-
-  const sizeClass = sizeToClass[size] || sizeToClass['lg'];
+  const { size = 24, ...rest } = props;
 
   return (
-    <div
-      data-testid="spinner"
-      className={`animate-spin ${sizeClass} rounded-full border-2 border-t-transparent
-        border-${color} ${customClass}`}
-    />
+    <div data-testid="spinner" {...rest}>
+      <ImSpinner2 size={size} className="animate-spin" />
+    </div>
   );
 }
