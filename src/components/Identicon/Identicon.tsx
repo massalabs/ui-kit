@@ -4,7 +4,7 @@ import React from 'react';
 
 import { ComponentPropsWithoutRef, useMemo } from 'react';
 
-import { identicon } from 'minidenticons';
+import { minidenticon } from 'minidenticons';
 
 export interface IdenticonProps extends ComponentPropsWithoutRef<'img'> {
   username: string;
@@ -27,7 +27,7 @@ export function Identicon(props: IdenticonProps) {
   const svgURI = useMemo(
     () =>
       'data:image/svg+xml;utf8,' +
-      encodeURIComponent(identicon(username, saturation, lightness)),
+      encodeURIComponent(minidenticon(username, saturation, lightness)),
     [username, saturation, lightness],
   );
 
