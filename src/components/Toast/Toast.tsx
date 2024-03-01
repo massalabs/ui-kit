@@ -75,6 +75,10 @@ export function ToastContent(props: ToastContentProps) {
     content = (t.message as CallableFunction)().props.children;
   }
 
+  const divStateClassNames = ` text-${state} bg-${
+    toastTypeToBGThemeState[t.type]
+  } bg-opacity-25 rounded-lg`;
+
   return (
     <Transition
       appear
@@ -93,9 +97,7 @@ export function ToastContent(props: ToastContentProps) {
       >
         <div
           className={`inline-flex items-center justify-center flex-shrink-0
-            w-10 h-10 text-${state} bg-${
-      toastTypeToBGThemeState[t.type]
-    } bg-opacity-25 rounded-lg`}
+            w-10 h-10 ${divStateClassNames}`}
         >
           {toastIcons[t.type]}
         </div>
