@@ -3,6 +3,14 @@ import { Button } from './../Button/Button';
 
 export default { title: 'Components/Toast' };
 
+function ToastContentExample() {
+  return (
+    <div>
+      <p>Toast content</p>
+    </div>
+  );
+}
+
 export const _Toast = {
   render: () => (
     <>
@@ -20,9 +28,16 @@ export const _Toast = {
       <br />
       <Button
         onClick={() =>
-          toast((t) => <ToastContent t={t}>Toast content</ToastContent>, {
-            duration: Infinity,
-          })
+          toast(
+            (t) => (
+              <ToastContent t={t}>
+                <ToastContentExample />
+              </ToastContent>
+            ),
+            {
+              duration: Infinity,
+            },
+          )
         }
       >
         Create info infinite Toast

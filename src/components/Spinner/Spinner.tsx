@@ -9,10 +9,10 @@ interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function Spinner(props: SpinnerProps) {
-  const { size = 24, ...rest } = props;
+  const { size = 24, customClass = '', ...rest } = props;
 
   return (
-    <div data-testid="spinner" {...rest}>
+    <div data-testid="spinner" className={customClass} {...rest}>
       <ImSpinner2 size={size} className="animate-spin" />
     </div>
   );
