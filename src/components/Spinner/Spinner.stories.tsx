@@ -7,9 +7,8 @@ export default {
 export const _Default = {
   render: () => (
     <div className="flex space-x-4">
-      <Spinner size="sm" />
-      <Spinner size="md" />
-      <Spinner size="lg" />
+      <Spinner />
+      <Spinner size={44} />
     </div>
   ),
 };

@@ -4,13 +4,7 @@ import { Toast } from './Toast';
 
 describe('Components | Toast', () => {
   test('it should render', () => {
-    render(
-      <Toast
-        storageKey="test-theme"
-        content="this is the content"
-        error="Oupps!"
-      />,
-    );
+    render(<Toast />);
 
     let input = screen.getByTestId('toast');
 
