@@ -71,7 +71,7 @@ export function ToastContent(props: ToastContentProps) {
   if (typeof t.message === 'string') {
     content = t.message;
   } else {
-    if (!t.message) return;
+    if (!t.message) return null;
     content = (t.message as CallableFunction)().props.children;
   }
 
