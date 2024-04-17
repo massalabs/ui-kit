@@ -5,34 +5,31 @@ export default { title: 'Components/RedirectTile', component: RedirectTile };
 export const _Standard = {
   render: () => (
     <div className="flex gap-2">
-      <RedirectTile
-        title="Massa Bridge"
-        description="Bridge tokens between Ethereum and Massa Chains."
-        logo={
+      <RedirectTile url="https://bridge.massa.net">
+        <div className="flex gap-2 items-center">
           <img
             width={40}
             height={40}
             className="rounded-full"
             src="https://placehold.jp/150x150.png"
           />
-        }
-        url="https://bridge.massa.net"
-      />
+          <h1>Massa Bridge</h1>
+        </div>
+        <p>Bridge tokens between Ethereum and Massa Chains.</p>
+      </RedirectTile>
 
-      <RedirectTile
-        title="Massa Bridge"
-        description="Bridge tokens between Ethereum and Massa Chains."
-        variant="secondary"
-        logo={
+      <RedirectTile variant="secondary" url="https://bridge.massa.net">
+        <div>
           <img
             width={40}
             height={40}
             className="rounded-full"
             src="https://placehold.jp/150x150.png"
           />
-        }
-        url="https://bridge.massa.net"
-      />
+          <h1>Massa Bridge</h1>
+        </div>
+        <p>Bridge tokens between Ethereum and Massa Chains.</p>
+      </RedirectTile>
     </div>
   ),
 };
@@ -43,20 +40,19 @@ export const _Large = {
       <RedirectTile
         size="lg"
         title="LARGE MASSA BRIDGE"
-        description="Bridge tokens between Ethereum and Massa Chains."
-        subtitle="This is the subtitle"
-        customClass="justify-evenly text-center"
-        customHeaderClass=" flex flex-col items-start"
-        logo={
+        url="https://bridge.massa.net"
+      >
+        <div className="flex gap-6 items-center">
           <img
-            width={100}
-            height={100}
+            width={40}
+            height={40}
             className="rounded-full"
             src="https://placehold.jp/150x150.png"
           />
-        }
-        url="https://bridge.massa.net"
-      />
+          <h1>Massa Bridge</h1>
+        </div>
+        <p>Bridge tokens between Ethereum and Massa Chains.</p>
+      </RedirectTile>
     </>
   ),
 };
@@ -67,18 +63,20 @@ export const _Custom = {
       <RedirectTile
         size="cs"
         title="custom bridge"
-        description="This is the custom bridge component."
         customSize="w-[400px] h-[200px]"
-        logo={
+        url="https://bridge.massa.net"
+      >
+        <div className="flex gap-6 items-center">
           <img
-            width={60}
-            height={60}
+            width={40}
+            height={40}
             className="rounded-full"
             src="https://placehold.jp/150x150.png"
           />
-        }
-        url="https://bridge.massa.net"
-      />
+          <h1>Massa Bridge</h1>
+        </div>
+        <p>Bridge tokens between Ethereum and Massa Chains.</p>
+      </RedirectTile>
     </>
   ),
 };

@@ -5,12 +5,10 @@ import { RedirectTile } from './RedirectTile';
 describe('Components | RedirectTile', () => {
   test('it should render', () => {
     render(
-      <RedirectTile
-        title="this is a title"
-        url="foo bar"
-        description="RedirectTile description"
-        size="md"
-      />,
+      <RedirectTile url="foo bar" size="md">
+        <h1>Header 1</h1>
+        <p>Paragraph</p>
+      </RedirectTile>,
     );
 
     let input = screen.getByTestId('RedirectTile');

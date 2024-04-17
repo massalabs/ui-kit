@@ -1,14 +1,9 @@
-import { ReactNode } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { openInNewTab } from '../../util/utils';
 
-export interface RedirectTileProps {
-  title: ReactNode;
-  subtitle?: ReactNode;
-  description?: ReactNode;
-  logo?: ReactNode;
+export interface RedirectTileProps extends ComponentPropsWithoutRef<'div'> {
   variant?: 'secondary' | 'primary';
   customClass?: string;
-  customHeaderClass?: string;
   size?: 'md' | 'lg' | 'cs';
   customSize?: string;
   url: string;
@@ -27,14 +22,10 @@ export function RedirectTile(props: RedirectTileProps) {
   const {
     variant = 'primary',
     customClass,
-    customHeaderClass,
-    title,
-    subtitle,
-    description,
-    logo,
     customSize,
     size = 'md',
     url,
+    children,
     ...rest
   } = props;
 
@@ -57,12 +48,7 @@ export function RedirectTile(props: RedirectTileProps) {
       hover:cursor-pointer border ${sizes[size]} ${classes[variant]} ${customClass}`}
       {...rest}
     >
-      <div className={`flex items-center gap-4 ${customHeaderClass}`}>
-        {logo}
-        <div className="mas-menu-active">{title}</div>
-        {subtitle && <div className="mas-caption">{subtitle}</div>}
-      </div>
-      <div className="mas-body">{description}</div>
+      {children}
     </div>
   );
 }
