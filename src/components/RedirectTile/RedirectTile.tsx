@@ -1,11 +1,9 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { openInNewTab } from '../../util/utils';
 
 export interface RedirectTileProps extends ComponentPropsWithoutRef<'div'> {
   variant?: 'secondary' | 'primary';
   customClass?: string;
-  header?: ReactNode;
-  body: ReactNode;
   size?: 'md' | 'lg' | 'cs';
   customSize?: string;
   url: string;
@@ -23,8 +21,6 @@ const classes: Classes = {
 export function RedirectTile(props: RedirectTileProps) {
   const {
     variant = 'primary',
-    header,
-    body,
     customClass,
     customSize,
     size = 'md',
@@ -52,8 +48,7 @@ export function RedirectTile(props: RedirectTileProps) {
       hover:cursor-pointer border ${sizes[size]} ${classes[variant]} ${customClass}`}
       {...rest}
     >
-      {header && header}
-      {body}
+      {children}
     </div>
   );
 }
