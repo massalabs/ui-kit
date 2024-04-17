@@ -18,7 +18,7 @@ export const _Standard = {
         <p>Bridge tokens between Ethereum and Massa Chains.</p>
       </RedirectTile>
 
-      <RedirectTile variant="secondary" url="https://bridge.massa.net">
+      <RedirectTile url="https://bridge.massa.net">
         <div>
           <img
             width={40}

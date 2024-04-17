@@ -6,25 +6,14 @@ import { ComponentPropsWithoutRef } from 'react';
 import { openInNewTab } from '../../util/utils';
 
 export interface RedirectTileProps extends ComponentPropsWithoutRef<'div'> {
-  variant?: 'secondary' | 'primary';
   customClass?: string;
   size?: 'md' | 'lg' | 'cs';
   customSize?: string;
   url: string;
 }
 
-interface Classes {
-  [key: string]: string | object;
-}
-
-const classes: Classes = {
-  primary: 'default-primary',
-  secondary: 'default-secondary',
-};
-
 export function RedirectTile(props: RedirectTileProps) {
   const {
-    variant = 'primary',
     customClass,
     customSize,
     size = 'md',
@@ -48,8 +37,9 @@ export function RedirectTile(props: RedirectTileProps) {
     <div
       onClick={() => handleRedirect()}
       data-testid="RedirectTile"
-      className={`flex flex-col gap-6 justify-center px-4 rounded-2xl 
-      hover:cursor-pointer border ${sizes[size]} ${classes[variant]} ${customClass}`}
+      className={`flex flex-col gap-6 justify-center p-4 rounded-2xl 
+      hover:cursor-pointer bg-secondary text-neutral 
+      hover:bg-tertiary active:bg-secondary ${sizes[size]} ${customClass}`}
       {...rest}
     >
       {children}
