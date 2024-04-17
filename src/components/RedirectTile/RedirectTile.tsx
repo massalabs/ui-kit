@@ -1,12 +1,12 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { openInNewTab } from '../../util/utils';
 
-export interface RedirectTileProps extends ComponentPropsWithoutRef<'div'> {
-  title: string;
-  subtitle?: string;
-  description?: string;
+export interface RedirectTileProps {
+  title: ReactNode;
+  subtitle?: ReactNode;
+  description?: ReactNode;
   logo?: ReactNode;
-  variant?: 'secondary' | 'primary' | undefined;
+  variant?: 'secondary' | 'primary';
   customClass?: string;
   customHeaderClass?: string;
   size?: 'md' | 'lg' | 'cs';

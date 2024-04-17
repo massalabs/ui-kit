@@ -44,6 +44,7 @@ export const _Large = {
         size="lg"
         title="LARGE MASSA BRIDGE"
         description="Bridge tokens between Ethereum and Massa Chains."
+        subtitle="This is the subtitle"
         customClass="justify-evenly text-center"
         customHeaderClass=" flex flex-col items-start"
         logo={
