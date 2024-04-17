@@ -27,6 +27,7 @@ export * from './TextArea';
 export * from './DragDrop';
 export * from './Vote';
 export * from './Spinner';
+export * from './RedirectTile';
 export * from './Toast';
 export * from './Tooltip';
 export * from './Token';
