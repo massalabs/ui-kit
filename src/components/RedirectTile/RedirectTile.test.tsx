@@ -5,10 +5,22 @@ import { RedirectTile } from './RedirectTile';
 describe('Components | RedirectTile', () => {
   test('it should render', () => {
     render(
-      <RedirectTile url="foo bar" size="md">
-        <h1>Header 1</h1>
-        <p>Paragraph</p>
-      </RedirectTile>,
+      <RedirectTile
+        header={
+          <div>
+            <img
+              width={40}
+              height={40}
+              className="rounded-full"
+              src="https://placehold.jp/150x150.png"
+            />
+            <h1>Massa Bridge</h1>
+          </div>
+        }
+        body={<p>Bridge tokens between Ethereum and Massa Chains.</p>}
+        url="foo bar"
+        size="md"
+      />,
     );
 
     let input = screen.getByTestId('RedirectTile');
