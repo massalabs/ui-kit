@@ -37,7 +37,7 @@ export function RedirectTile(props: RedirectTileProps) {
     <div
       onClick={() => handleRedirect()}
       data-testid="RedirectTile"
-      className={`flex flex-col gap-6 justify-center p-4 rounded-2xl 
+      className={`flex flex-col gap-6 justify-center p-4 rounded-md 
       hover:cursor-pointer bg-secondary text-neutral 
       hover:bg-tertiary active:bg-secondary ${sizes[size]} ${customClass}`}
       {...rest}
