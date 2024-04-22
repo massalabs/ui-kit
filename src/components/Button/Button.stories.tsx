@@ -150,6 +150,10 @@ export const _Icon = {
       <Button variant="icon" model="border">
         <FiDisc color={colorWarning} />
       </Button>
+      &nbsp;
+      <Button hoverText="this is a hovered icon" variant="icon" model="border">
+        <FiDisc color={colorWarning} />
+      </Button>
       <br />
       <br />
       <Button variant="icon" model="border" disabled>
