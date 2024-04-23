@@ -13,7 +13,7 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   pressed?: boolean;
   variant?: 'secondary' | 'primary' | 'danger' | 'toggle' | 'icon' | undefined;
   customClass?: string;
-  hoverText?: string;
+  hoverText?: ReactNode;
 }
 
 export function ButtonToggle(props: ButtonProps) {
