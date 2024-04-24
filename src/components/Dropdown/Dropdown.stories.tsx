@@ -205,6 +205,50 @@ export const _Dropdown = {
           ]}
         />
       </div>
+
+      <br />
+
+      {/* custom item */}
+      <div className="w-[300px]">
+        <Dropdown
+          options={[
+            {
+              icon: (
+                <MassaToken size={32} className="bg-c-default rounded-full" />
+              ),
+              item: <CustomItem title="account 1 name" subtitle="subtitle" />,
+              itemPreview: 'account 1 name',
+              onClick: () => console.log('option 1'),
+            },
+            {
+              icon: <MassaLogo size={32} />,
+              item: <CustomItem title="account 2 name" subtitle="subtitle" />,
+              itemPreview: 'account 2 name',
+            },
+            {
+              icon: <MassaLogo size={32} />,
+              item: <CustomItem title="3 name" subtitle="nothing" />,
+              itemPreview: '3 name',
+            },
+            {
+              icon: <MassaLogo size={32} />,
+              item: <CustomItem title="4 name" subtitle="nothing" />,
+              itemPreview: '4 name',
+            },
+          ]}
+        />
+      </div>
+
+      <br />
     </>
   ),
 };
+
+function CustomItem(props: { title: string; subtitle: string }) {
+  return (
+    <>
+      <p>{props.title}</p>
+      <p className="text-sm text-gray-500">{props.subtitle}</p>
+    </>
+  );
+}

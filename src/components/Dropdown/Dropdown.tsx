@@ -1,14 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React, { useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 
 import { ComponentPropsWithoutRef, useState, MouseEvent } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import useClickOutside from '../../util/useClickOutside';
 
 interface IOption extends ComponentPropsWithoutRef<'div'> {
-  icon?: JSX.Element;
-  item: string;
+  icon?: ReactNode;
+  item: ReactNode;
+  itemPreview?: ReactNode;
   select?: number;
 }
 
@@ -92,6 +93,12 @@ export function Dropdown(props: DropdownProps) {
     onClick?.(e);
   }
 
+  function renderPreview(option?: IOption) {
+    if (option) {
+      return option.itemPreview ?? option.item;
+    }
+  }
+
   return (
     <div ref={ref} className="relative flex-none" data-testid="dropdown">
       {readOnly && (
@@ -117,7 +124,7 @@ export function Dropdown(props: DropdownProps) {
           data-testid="dropdown-selected-item"
           className="mas-menu-active p-2 truncate"
         >
-          {selected?.item}
+          {renderPreview(selected)}
         </div>
         <Icon toggle={toggle} />
       </button>
