@@ -1,5 +1,4 @@
 import { Dropdown } from './Dropdown';
-import { MassaToken } from '../Icons/Svg/Massa/MassaToken';
 import { MassaLogo } from '../Icons/Svg/Massa/MassaLogo';
 import FranceFlag from './../../assets/flags/france.svg';
 import UnitedStatesFlag from '../../assets/flags/unitedStates.svg';
@@ -19,7 +18,7 @@ export const _Dropdown = {
           options={[
             {
               icon: (
-                <MassaToken size={32} className="bg-c-default rounded-full" />
+                <MassaLogo size={32} className="bg-c-default rounded-full" />
               ),
               item: 'account 1 name',
               onClick: () => console.log('option 1'),
@@ -42,7 +41,7 @@ export const _Dropdown = {
           options={[
             {
               icon: (
-                <MassaToken size={32} className="bg-c-default rounded-full" />
+                <MassaLogo size={32} className="bg-c-default rounded-full" />
               ),
               item: 'account 1 name',
               onClick: () => console.log('option 1'),
@@ -159,7 +158,7 @@ export const _Dropdown = {
           options={[
             {
               icon: (
-                <MassaToken size={16} className="bg-c-default rounded-full" />
+                <MassaLogo size={16} className="bg-c-default rounded-full" />
               ),
               item: 'MAS',
               onClick: () => console.log('option 1'),
@@ -176,7 +175,7 @@ export const _Dropdown = {
           options={[
             {
               icon: (
-                <MassaToken size={16} className="bg-c-default rounded-full" />
+                <MassaLogo size={16} className="bg-c-default rounded-full" />
               ),
               item: 'MAS',
               onClick: () => console.log('option 1'),
@@ -195,7 +194,7 @@ export const _Dropdown = {
           options={[
             {
               icon: (
-                <MassaToken size={16} className="bg-c-default rounded-full" />
+                <MassaLogo size={16} className="bg-c-default rounded-full" />
               ),
               item: 'MAS',
               onClick: () => console.log('option 1'),
@@ -214,7 +213,7 @@ export const _Dropdown = {
           options={[
             {
               icon: (
-                <MassaToken size={32} className="bg-c-default rounded-full" />
+                <MassaLogo size={32} className="bg-c-default rounded-full" />
               ),
               item: <CustomItem title="account 1 name" subtitle="subtitle" />,
               itemPreview: 'account 1 name',
