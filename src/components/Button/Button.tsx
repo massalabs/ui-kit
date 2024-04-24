@@ -6,7 +6,6 @@ import { ReactNode, ComponentPropsWithoutRef } from 'react';
 import { IconContext } from 'react-icons/lib';
 
 export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
-  children?: ReactNode;
   preIcon?: ReactNode;
   posIcon?: ReactNode;
   model?: 'single' | 'border';
