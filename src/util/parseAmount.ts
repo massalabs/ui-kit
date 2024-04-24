@@ -1,6 +1,6 @@
 import currency from 'currency.js';
 import { formatValue } from 'react-currency-input-field';
-import { formatUnits } from 'viem';
+import { formatUnits, parseUnits } from 'viem';
 
 export interface FormattedAmount {
   amountFormattedPreview: string;
@@ -113,4 +113,20 @@ function roundDecimalPartToOneSignificantDigit(decimalPart: string): string {
   }
 
   return '0'.repeat(countLeadingZeros(decimalPart)) + roundedDigit;
+}
+
+export function formatAmountToDisplay(
+  amount: string,
+  tokenDecimal: number,
+): FormattedAmount {
+  if (!tokenDecimal || !amount) {
+    return {
+      amountFormattedFull: '0',
+      amountFormattedPreview: '0',
+    };
+  }
+  // parsing to Bigint to get correct amount
+  const amt = parseUnits(amount, tokenDecimal);
+  // formatting it to string for display
+  return formatAmount(amt.toString(), tokenDecimal);
 }
