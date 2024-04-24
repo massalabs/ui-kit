@@ -6,7 +6,7 @@ import { ComponentPropsWithoutRef, useState, MouseEvent } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import useClickOutside from '../../util/useClickOutside';
 
-interface IOption extends ComponentPropsWithoutRef<'div'> {
+export interface IOption extends ComponentPropsWithoutRef<'div'> {
   icon?: ReactNode;
   item: ReactNode;
   itemPreview?: ReactNode;
@@ -38,21 +38,22 @@ export function Dropdown(props: DropdownProps) {
     options,
     readOnly = false,
     defaultItem,
+    ...rest
   } = props;
 
   const ref = useRef(null);
 
   const classes = {
     xs: {
-      button: 'w-full px-3 py-4 h-7 rounded hover:rounded',
-      panel: 'w-full rounded hover:rounded',
+      button: 'px-3 py-4 h-7 rounded hover:rounded',
+      panel: 'rounded hover:rounded',
       item: 'px-3 py-4 h-7 rounded hover:rounded',
       icon: 'pr-3',
     },
     md: {
-      button: 'w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg',
-      panel: 'w-full rounded-lg hover:rounded-lg',
-      item: 'w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg',
+      button: 'px-6 py-3 h-14 rounded-lg hover:rounded-lg',
+      panel: 'rounded-lg hover:rounded-lg',
+      item: 'px-6 py-3 h-14 rounded-lg hover:rounded-lg',
       icon: 'pr-2',
     },
   };
@@ -100,13 +101,12 @@ export function Dropdown(props: DropdownProps) {
   }
 
   return (
-    <div ref={ref} className="relative flex-none" data-testid="dropdown">
-      {readOnly && (
-        <div
-          className={`bg-primary absolute flex-none opacity-50 ${customButtonClass}`}
-        ></div>
-      )}
-
+    <div
+      ref={ref}
+      className="relative flex-none"
+      data-testid="dropdown"
+      {...rest}
+    >
       <button
         data-testid="dropdown-button"
         onClick={toggleDropdown}
