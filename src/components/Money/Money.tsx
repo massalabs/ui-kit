@@ -7,7 +7,15 @@ import { InputMessage } from '../Input';
 import { NumericFormat } from 'react-number-format';
 
 function MAS(props: IMoneyProps) {
-  const { error, warning, success, disable, variant = 'MAS', ...rest } = props;
+  const {
+    error,
+    warning,
+    success,
+    disable,
+    variant = 'MAS',
+    customClass,
+    ...rest
+  } = props;
 
   const disabledClass = disable ? 'border-0' : '';
   const errorClass = error ? 'border-s-error' : '';
@@ -19,7 +27,7 @@ function MAS(props: IMoneyProps) {
   return (
     <>
       <NumericFormat
-        className={`w-full default-input h-12 pl-3 pr-10 mb-1 ${messageClass}`}
+        className={`w-full default-input h-12 pl-3 pr-10 mb-1 ${messageClass} ${customClass}`}
         data-testid="money-field"
         decimalScale={9}
         allowNegative={false}
@@ -67,6 +75,7 @@ export interface IMoneyProps
   success?: string | undefined;
   disable?: boolean;
   variant?: 'nMAS' | 'MAS';
+  customClass?: string;
 }
 
 export function Money(props: IMoneyProps) {
