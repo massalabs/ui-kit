@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React from 'react';
 import { SVGProps } from './svgInterface';
 
 export function WEthMassaSvg(props: SVGProps) {
