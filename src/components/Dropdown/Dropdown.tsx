@@ -19,6 +19,7 @@ interface DropdownProps extends ComponentPropsWithoutRef<'div'> {
   select?: number;
   readOnly?: boolean;
   defaultItem?: IOption;
+  panelClass?: string;
 }
 
 function Icon({ toggle }: { toggle: boolean }) {
@@ -38,6 +39,7 @@ export function Dropdown(props: DropdownProps) {
     options,
     readOnly = false,
     defaultItem,
+    panelClass = '',
     ...rest
   } = props;
 
@@ -45,15 +47,15 @@ export function Dropdown(props: DropdownProps) {
 
   const classes = {
     xs: {
-      button: 'px-3 py-4 h-7 rounded hover:rounded',
-      panel: 'rounded hover:rounded',
+      button: 'w-full px-3 py-4 h-7 rounded hover:rounded',
+      panel: `w-full rounded hover:rounded ${panelClass}`,
       item: 'px-3 py-4 h-7 rounded hover:rounded',
       icon: 'pr-3',
     },
     md: {
-      button: 'px-6 py-3 h-14 rounded-lg hover:rounded-lg',
-      panel: 'rounded-lg hover:rounded-lg',
-      item: 'px-6 py-3 h-14 rounded-lg hover:rounded-lg',
+      button: 'w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg',
+      panel: `w-full rounded-lg hover:rounded-lg ${panelClass}`,
+      item: 'w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg',
       icon: 'pr-2',
     },
   };
