@@ -20,6 +20,7 @@ interface DropdownProps extends ComponentPropsWithoutRef<'div'> {
   readOnly?: boolean;
   defaultItem?: IOption;
   panelClass?: string;
+  fullWidth?: boolean;
 }
 
 function Icon({ toggle }: { toggle: boolean }) {
@@ -40,6 +41,7 @@ export function Dropdown(props: DropdownProps) {
     readOnly = false,
     defaultItem,
     panelClass = '',
+    fullWidth = true,
     ...rest
   } = props;
 
@@ -47,15 +49,23 @@ export function Dropdown(props: DropdownProps) {
 
   const classes = {
     xs: {
-      button: 'w-full px-3 py-4 h-7 rounded hover:rounded',
-      panel: `w-full rounded hover:rounded ${panelClass}`,
+      button: `${
+        fullWidth ? 'w-full' : ''
+      } px-3 py-4 h-7 rounded hover:rounded`,
+      panel: `${fullWidth ? 'w-full' : ''} rounded hover:rounded ${panelClass}`,
       item: 'px-3 py-4 h-7 rounded hover:rounded',
       icon: 'pr-3',
     },
     md: {
-      button: 'w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg',
-      panel: `w-full rounded-lg hover:rounded-lg ${panelClass}`,
-      item: 'w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg',
+      button: `${
+        fullWidth ? 'w-full' : ''
+      } px-6 py-3 h-14 rounded-lg hover:rounded-lg`,
+      panel: `${
+        fullWidth ? 'w-full' : ''
+      } rounded-lg hover:rounded-lg ${panelClass}`,
+      item: `${
+        fullWidth ? 'w-full' : ''
+      } px-6 py-3 h-14 rounded-lg hover:rounded-lg`,
       icon: 'pr-2',
     },
   };
