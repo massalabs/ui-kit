@@ -7,6 +7,13 @@ export interface FormattedAmount {
   amountFormattedFull: string;
 }
 
+/**
+ * reverse format FT amount
+ */
+export function parseAmount(amount: string, tokenDecimal: number): bigint {
+  return parseUnits(amount, tokenDecimal);
+}
+
 export function formatFTAmount(
   bigintBalance: bigint,
   decimals: number,
