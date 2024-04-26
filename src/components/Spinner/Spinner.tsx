@@ -1,9 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
-interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SpinnerProps extends ComponentPropsWithoutRef<'div'> {
   customClass?: string;
   size?: number;
 }

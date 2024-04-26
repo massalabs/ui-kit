@@ -1,5 +1,5 @@
 import '../../../src/global.css';
-import { Dropdown, MassaLogo, MassaToken } from '../../../src/components';
+import { Dropdown, MassaLogo } from '../../../src/components';
 import { compareSnapshot } from '../../compareSnapshot';
 
 describe('Component | Integration | Dropdown', function () {
@@ -11,7 +11,7 @@ describe('Component | Integration | Dropdown', function () {
             options={[
               {
                 icon: (
-                  <MassaToken
+                  <MassaLogo
                     data-testid="dropdown-option-1"
                     size={32}
                     className="bg-c-default rounded-full"
@@ -54,7 +54,7 @@ describe('Component | Integration | Dropdown', function () {
               options={[
                 {
                   icon: (
-                    <MassaToken
+                    <MassaLogo
                       size={32}
                       className="bg-c-default rounded-full"
                     />
@@ -90,7 +90,7 @@ describe('Component | Integration | Dropdown', function () {
               options={[
                 {
                   icon: (
-                    <MassaToken
+                    <MassaLogo
                       size={32}
                       className="bg-c-default rounded-full"
                     />

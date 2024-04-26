@@ -53,6 +53,23 @@ export const _Toast = {
       >
         Create loading Toast
       </Button>
+      <br />
+      <Button
+        onClick={() =>
+          toast.error(
+            (t) => (
+              <ToastContent t={t}>
+                <ToastContentExample />
+              </ToastContent>
+            ),
+            {
+              duration: Infinity,
+            },
+          )
+        }
+      >
+        Create Error custom infinite Toast
+      </Button>
 
       <Toast />
     </>

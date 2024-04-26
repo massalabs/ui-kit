@@ -1,14 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React, { useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 
 import { ComponentPropsWithoutRef, useState, MouseEvent } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import useClickOutside from '../../util/useClickOutside';
 
-interface IOption extends ComponentPropsWithoutRef<'div'> {
-  icon?: JSX.Element;
-  item: string;
+export interface IOption extends ComponentPropsWithoutRef<'div'> {
+  icon?: ReactNode;
+  item: ReactNode;
+  itemPreview?: ReactNode;
   select?: number;
 }
 
@@ -18,6 +19,8 @@ interface DropdownProps extends ComponentPropsWithoutRef<'div'> {
   select?: number;
   readOnly?: boolean;
   defaultItem?: IOption;
+  panelClass?: string;
+  fullWidth?: boolean;
 }
 
 function Icon({ toggle }: { toggle: boolean }) {
@@ -37,21 +40,32 @@ export function Dropdown(props: DropdownProps) {
     options,
     readOnly = false,
     defaultItem,
+    panelClass = '',
+    fullWidth = true,
+    ...rest
   } = props;
 
   const ref = useRef(null);
 
   const classes = {
     xs: {
-      button: 'w-full px-3 py-4 h-7 rounded hover:rounded',
-      panel: 'w-full rounded hover:rounded',
+      button: `${
+        fullWidth ? 'w-full' : ''
+      } px-3 py-4 h-7 rounded hover:rounded`,
+      panel: `${fullWidth ? 'w-full' : ''} rounded hover:rounded ${panelClass}`,
       item: 'px-3 py-4 h-7 rounded hover:rounded',
       icon: 'pr-3',
     },
     md: {
-      button: 'w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg',
-      panel: 'w-full rounded-lg hover:rounded-lg',
-      item: 'w-full px-6 py-3 h-14 rounded-lg hover:rounded-lg',
+      button: `${
+        fullWidth ? 'w-full' : ''
+      } px-6 py-3 h-14 rounded-lg hover:rounded-lg`,
+      panel: `${
+        fullWidth ? 'w-full' : ''
+      } rounded-lg hover:rounded-lg ${panelClass}`,
+      item: `${
+        fullWidth ? 'w-full' : ''
+      } px-6 py-3 h-14 rounded-lg hover:rounded-lg`,
       icon: 'pr-2',
     },
   };
@@ -92,14 +106,19 @@ export function Dropdown(props: DropdownProps) {
     onClick?.(e);
   }
 
-  return (
-    <div ref={ref} className="relative flex-none" data-testid="dropdown">
-      {readOnly && (
-        <div
-          className={`bg-primary absolute flex-none opacity-50 ${customButtonClass}`}
-        ></div>
-      )}
+  function renderPreview(option?: IOption) {
+    if (option) {
+      return option.itemPreview ?? option.item;
+    }
+  }
 
+  return (
+    <div
+      ref={ref}
+      className="relative flex-none"
+      data-testid="dropdown"
+      {...rest}
+    >
       <button
         data-testid="dropdown-button"
         onClick={toggleDropdown}
@@ -117,7 +136,7 @@ export function Dropdown(props: DropdownProps) {
           data-testid="dropdown-selected-item"
           className="mas-menu-active p-2 truncate"
         >
-          {selected?.item}
+          {renderPreview(selected)}
         </div>
         <Icon toggle={toggle} />
       </button>

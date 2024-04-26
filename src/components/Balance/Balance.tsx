@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { ComponentPropsWithoutRef } from 'react';
 import { MassaLogo } from '../Icons/Svg/Massa/MassaLogo';
@@ -8,12 +8,21 @@ import { MassaLogo } from '../Icons/Svg/Massa/MassaLogo';
 export interface BalanceProps extends ComponentPropsWithoutRef<'div'> {
   size?: 'xs' | 'md' | 'lg' | undefined;
   amount: string;
+  symbol?: string;
+  icon?: ReactNode;
   equal?: string;
   customClass?: string;
 }
 
 export function Balance(props: BalanceProps) {
-  const { size = 'lg', amount, equal, customClass = '' } = props;
+  const {
+    size = 'lg',
+    amount,
+    symbol,
+    icon: iconProps,
+    equal,
+    customClass = '',
+  } = props;
 
   const isLg = size === 'lg';
   const isMd = size === 'md';
@@ -25,17 +34,22 @@ export function Balance(props: BalanceProps) {
   const iconClass = isLg || isMd ? 'mr-2' : 'mr-1';
   const logoClass = isLg || isMd ? 32 : 16;
 
+  let icon = iconProps;
+  if (!iconProps) {
+    icon = <MassaLogo size={logoClass} className={iconClass} />;
+  }
+
   return (
     <div
       data-testid="balance"
       className={`flex items-center w-fit ${customClass}`}
     >
-      <MassaLogo size={logoClass} className={iconClass} />
+      {icon}
       <label
         data-testid="balance-amount"
         className={`${sizeClass} text-f-primary`}
       >
-        {amount}
+        {amount} {symbol}
       </label>
       {equal ? (
         <label

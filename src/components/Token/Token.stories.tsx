@@ -71,7 +71,7 @@ export const _MultipleTokens = {
         name={'Massa'}
         symbol={'XMA'}
         decimals={18}
-        balance={'11'}
+        balance={'11'} // 0.000000000000000011
         disable={false}
         onDelete={() => console.log('delete')}
       />

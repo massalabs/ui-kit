@@ -92,7 +92,7 @@ export function ToastContent(props: ToastContentProps) {
       leaveTo="opacity-0"
     >
       <div
-        className="theme-dark flex items-center w-fit p-4 text-f-primary bg-c-default rounded-lg shadow"
+        className="flex items-center w-fit p-4 text-f-primary bg-primary rounded-lg shadow"
         {...rest}
       >
         <div
@@ -104,11 +104,7 @@ export function ToastContent(props: ToastContentProps) {
         <div className={`ml-3 text-sm font-normal pr-2 text-${state}`}>
           {content}
         </div>
-        <Button
-          customClass="theme-light"
-          variant="icon"
-          onClick={() => toast.dismiss(t.id)}
-        >
+        <Button variant="icon" onClick={() => toast.dismiss(t.id)}>
           <FiX />
         </Button>
       </div>
