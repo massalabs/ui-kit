@@ -1,4 +1,4 @@
-import { getIcon } from '../Icons';
+import { getAssetIcons } from '../Icons';
 import { Balance } from './Balance';
 
 export default { title: 'Components/Balance', component: Balance };
@@ -26,7 +26,7 @@ export const _Balance = {
         customClass="p-0 bg-transparent mb-3"
         amount={'12.567'}
         symbol={'WETH'}
-        icon={getIcon('WETH', false, false, 32, 'mr-3')}
+        icon={getAssetIcons('WETH', false, false, 32, 'mr-3')}
       />
     </>
   ),

@@ -14,7 +14,7 @@ import { WEthMassaSvg } from './WEthMassaSvg';
 import { WEthSvg } from './WEthSvg';
 import { MassaLogo } from '../Massa';
 
-export function getIcon(
+export function getAssetIcons(
   symbolEVM: string,
   nativeToken = false,
   isMainnet = false,
