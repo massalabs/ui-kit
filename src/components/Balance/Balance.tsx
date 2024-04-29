@@ -5,7 +5,7 @@ import React, { ReactNode } from 'react';
 import { ComponentPropsWithoutRef } from 'react';
 import { MassaLogo } from '../Icons/Svg/Massa/MassaLogo';
 
-export interface BalanceProps extends ComponentPropsWithoutRef<'div'> {
+interface BalanceProps extends ComponentPropsWithoutRef<'div'> {
   size?: 'xs' | 'md' | 'lg' | undefined;
   amount: string;
   symbol?: string;

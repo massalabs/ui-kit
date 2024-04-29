@@ -85,7 +85,9 @@ function padWithZeros(input: string, length: number): string {
   return input.padStart(length, '0');
 }
 
-function roundDecimalPartToOneSignificantDigit(decimalPart: string): string {
+export function roundDecimalPartToOneSignificantDigit(
+  decimalPart: string,
+): string {
   function countLeadingZeros(str: string) {
     // Match leading zeros using a regular expression
     const result = str.match(/^0+/);
