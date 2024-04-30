@@ -14,6 +14,10 @@ function ToastContentExample() {
 export const _Toast = {
   render: () => (
     <>
+      <p className="text-f-primary">
+        Theme dark doesn't work for Toast, you will see only theme light toats.
+      </p>
+      <br />
       <Button
         onClick={() => {
           toast.error('Euhh! This is an error message!');
