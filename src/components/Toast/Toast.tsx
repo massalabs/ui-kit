@@ -49,23 +49,13 @@ export function ToastContent(props: ToastContentProps) {
     custom: t.icon ?? <FiInfo size={24} />,
   };
 
-  const toastTypeToThemeState = {
-    success: 's-success',
-    error: 's-error',
-    loading: 'f-secondary',
-    blank: 'f-secondary',
-    custom: 'f-secondary',
+  const typeToTextClass = {
+    success: 'text-s-success',
+    error: 'text-s-error',
+    loading: 'text-f-primary',
+    blank: 'text-f-primary',
+    custom: 'text-f-primary',
   };
-
-  const toastTypeToBGThemeState = {
-    success: 's-success',
-    error: 's-error',
-    loading: 'info',
-    blank: 'info',
-    custom: 'info',
-  };
-
-  const state = toastTypeToThemeState[t.type];
 
   let content;
   if (typeof t.message === 'string') {
@@ -75,9 +65,7 @@ export function ToastContent(props: ToastContentProps) {
     content = (t.message as CallableFunction)().props.children;
   }
 
-  const divStateClassNames = ` text-${state} bg-${
-    toastTypeToBGThemeState[t.type]
-  } bg-opacity-25 rounded-lg`;
+  const textClassName = typeToTextClass[t.type];
 
   return (
     <Transition
@@ -92,18 +80,17 @@ export function ToastContent(props: ToastContentProps) {
       leaveTo="opacity-0"
     >
       <div
-        className="flex items-center w-fit p-4 text-f-primary bg-primary rounded-lg shadow"
+        className={`flex items-center w-fit p-4 rounded-lg shadow-2xl
+          bg-secondary ${textClassName}`}
         {...rest}
       >
         <div
           className={`inline-flex items-center justify-center flex-shrink-0
-            w-10 h-10 ${divStateClassNames}`}
+            w-10 h-10`}
         >
           {toastIcons[t.type]}
         </div>
-        <div className={`ml-3 text-sm font-normal pr-2 text-${state}`}>
-          {content}
-        </div>
+        <div className="ml-3 text-sm font-normal pr-2">{content}</div>
         <Button variant="icon" onClick={() => toast.dismiss(t.id)}>
           <FiX />
         </Button>
