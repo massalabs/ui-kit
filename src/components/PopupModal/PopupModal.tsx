@@ -102,7 +102,7 @@ export function PopupModal(props: IPopupModalProps) {
     children,
     onOpen,
     onClose,
-    customClass,
+    customClass = '',
     customClassNested,
     ...rest
   } = props;

@@ -21,7 +21,7 @@ export interface SidePanelProps extends ComponentPropsWithoutRef<'div'> {
 export function SidePanel(props: SidePanelProps) {
   const {
     side = 'right',
-    customClass,
+    customClass = '',
     children,
     onOpen,
     onClose,

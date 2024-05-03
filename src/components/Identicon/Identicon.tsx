@@ -20,7 +20,7 @@ export function Identicon(props: IdenticonProps) {
     size = 64,
     saturation,
     lightness,
-    customClass,
+    customClass = '',
     ...rest
   } = props;
 

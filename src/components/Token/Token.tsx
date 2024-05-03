@@ -25,7 +25,7 @@ export function Token(props: TokenProps) {
     symbol,
     decimals,
     balance,
-    customClass,
+    customClass = '',
     disable,
     onDelete,
     ...rest

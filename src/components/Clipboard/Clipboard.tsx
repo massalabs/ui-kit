@@ -24,7 +24,7 @@ export function Clipboard(props: ClipboardProps) {
     success: successMessage,
     rawContent,
     displayedContent = rawContent,
-    customClass,
+    customClass = '',
     ...rest
   } = props;
 

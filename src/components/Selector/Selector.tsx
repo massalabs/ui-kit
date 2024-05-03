@@ -24,7 +24,7 @@ export function Selector(props: SelectorProps) {
     content,
     posIcon,
     amount,
-    customClass,
+    customClass = '',
     variant = 'primary',
     children,
     ...rest

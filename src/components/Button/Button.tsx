@@ -94,7 +94,7 @@ export function Button(props: ButtonProps) {
     preIcon,
     posIcon,
     variant = 'primary',
-    customClass,
+    customClass = '',
     ...rest
   } = props;
 
