@@ -1,7 +1,6 @@
-import React from 'react';
-
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
+import React from 'react';
 
 export function FetchingRound() {
   return (
@@ -12,12 +11,22 @@ export function FetchingRound() {
   );
 }
 
-export function FetchingLine() {
+interface FetchingProps {
+  height?: number;
+  width?: number;
+}
+
+export function FetchingLine(props: FetchingProps) {
+  const { height = 2, width = 24 } = props;
+
   return (
-    <div data-testid="fetching-line" className="shadow rounded-md w-24 pt-0.5">
-      <div className="animate-pulse flex">
+    <div
+      data-testid="fetching-line"
+      className={`shadow animate-pulse rounded-md w-${width} pt-0.5`}
+    >
+      <div className="flex">
         <div className="flex-1 space-y-6 py-1">
-          <div className="h-2 bg-c-disabled-1 rounded"></div>
+          <div className={`h-${height} bg-c-disabled-1 rounded`}></div>
         </div>
       </div>
     </div>
