@@ -13,7 +13,7 @@ function MAS(props: IMoneyProps) {
     success,
     disable,
     variant = 'MAS',
-    customClass,
+    customClass = '',
     ...rest
   } = props;
 

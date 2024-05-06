@@ -14,8 +14,14 @@ interface InlineMoneyProps
 }
 
 export function InlineMoney(props: InlineMoneyProps) {
-  const { disabled, value, onValueChange, suffix, customClass, ...rest } =
-    props;
+  const {
+    disabled,
+    value,
+    onValueChange,
+    suffix,
+    customClass = '',
+    ...rest
+  } = props;
 
   const underline = disabled ? '' : 'underline';
 

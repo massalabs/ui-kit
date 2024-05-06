@@ -14,7 +14,7 @@ export interface RedirectTileProps extends ComponentPropsWithoutRef<'div'> {
 
 export function RedirectTile(props: RedirectTileProps) {
   const {
-    customClass,
+    customClass = '',
     customSize,
     size = 'md',
     url,

@@ -30,7 +30,7 @@ export function Transaction(props: TransactionProps) {
     date,
     variant = 'primary',
     children,
-    customClass,
+    customClass = '',
     ...rest
   } = props;
 

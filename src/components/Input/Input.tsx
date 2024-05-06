@@ -28,7 +28,7 @@ export function IconInput(props: InputProps) {
     disable,
     icon,
     onClickIcon,
-    customClass,
+    customClass = '',
     ...rest
   } = props;
 

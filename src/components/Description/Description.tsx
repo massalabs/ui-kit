@@ -74,7 +74,7 @@ export function Description(props: DescriptionProps) {
     onVoteUp,
     onVoteDown,
     variant = 'primary',
-    customClass,
+    customClass = '',
     ...rest
   } = props;
 

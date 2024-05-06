@@ -45,7 +45,7 @@ export function PluginActions(props: PluginProps) {
     content,
     version,
     variant = 'primary',
-    customClass,
+    customClass = '',
     ...rest
   } = props;
 
@@ -109,7 +109,7 @@ export function PluginActions(props: PluginProps) {
 }
 
 export function PluginStore(props: PluginProps) {
-  let {
+  const {
     preIcon,
     topAction,
     title,
@@ -118,7 +118,6 @@ export function PluginStore(props: PluginProps) {
     version,
     content,
     variant = 'primary',
-    customClass,
     topActions,
     ...rest
   } = props;

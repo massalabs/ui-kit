@@ -53,7 +53,7 @@ export function AccordionCategory(props: AccordionCategoryProps) {
     iconOpen,
     iconClose,
     isChild,
-    customClass,
+    customClass = '',
   } = props;
   const [active, setActive] = useState<boolean>(state || false);
 
