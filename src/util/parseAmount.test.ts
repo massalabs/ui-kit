@@ -4,6 +4,14 @@ import {
 } from './parseAmount';
 
 describe('formatAmount', () => {
+  test('formats an empty string', () => {
+    const result = formatAmount('', 18);
+    expect(result).toEqual({
+      amountFormattedPreview: '0.0',
+      amountFormattedFull: '0.000000000000000000',
+    });
+  });
+
   test('formats an amount with default parameters', () => {
     const result = formatAmount('123456789012345678901', 18);
     expect(result).toEqual({

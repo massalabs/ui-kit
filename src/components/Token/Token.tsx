@@ -5,7 +5,8 @@ import { ComponentPropsWithoutRef } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import { Button } from '../Button';
 import { Tooltip } from '../Tooltip';
-import { formatFTAmount, parseAmount } from '../../util/parseAmount';
+import { formatFTAmount } from '../../util/parseAmount';
+import { DollarValue } from '../DollarValue';
 
 export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   logo?: React.ReactNode;
@@ -14,6 +15,7 @@ export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   decimals: number;
   balance: string;
   dollarValue?: string;
+  dollarValueError?: React.ReactNode;
   customClass?: string;
   disable?: boolean;
   onDelete?: () => void;
@@ -27,6 +29,7 @@ export function Token(props: TokenProps) {
     decimals,
     balance,
     dollarValue,
+    dollarValueError,
     customClass = '',
     disable,
     onDelete,
@@ -49,13 +52,6 @@ export function Token(props: TokenProps) {
     rawBalance = undefined;
   }
 
-  let dollarValueFormatted = '';
-  if (dollarValue !== undefined && dollarValue !== '') {
-    const dollarValueBigInt = parseAmount(dollarValue, 2);
-    const { amountFormattedPreview } = formatFTAmount(dollarValueBigInt, 2);
-    dollarValueFormatted = amountFormattedPreview;
-  }
-
   return (
     <div
       data-testid="token"
@@ -74,13 +70,10 @@ export function Token(props: TokenProps) {
               </>
             ) : null}
             <div className="flex items-center gap-1">
-              {dollarValueFormatted ? (
-                <>
-                  <p className="mas-caption text-info">
-                    ≈ ${dollarValueFormatted}
-                  </p>
-                </>
-              ) : null}
+              <DollarValue
+                dollarValue={dollarValue}
+                dollarValueError={dollarValueError}
+              />
             </div>
           </div>
         </div>
