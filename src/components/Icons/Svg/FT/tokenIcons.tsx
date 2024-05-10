@@ -12,7 +12,7 @@ import { TDaiSvg } from './TDaiSvg';
 import { USDCSvg } from './USDCSvg';
 import { WEthMassaSvg } from './WEthMassaSvg';
 import { WEthSvg } from './WEthSvg';
-import { MassaLogo } from '../Massa';
+import { FT1, MassaLogo } from '../Massa';
 import { WMasSvg } from './WMasSvg';
 
 export function getAssetIcons(
@@ -31,7 +31,12 @@ export function getAssetIcons(
     WMAS: tokens.WMAS,
     MAS: <MassaLogo size={size} className={customClass} />,
   };
-  return icons[symbolEVM as keyof typeof icons];
+
+  if (symbolEVM in icons) {
+    return icons[symbolEVM as keyof typeof icons];
+  } else {
+    return <FT1 size={size} />;
+  }
 }
 
 function getTokenIcons(
