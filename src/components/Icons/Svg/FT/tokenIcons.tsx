@@ -13,6 +13,7 @@ import { USDCSvg } from './USDCSvg';
 import { WEthMassaSvg } from './WEthMassaSvg';
 import { WEthSvg } from './WEthSvg';
 import { MassaLogo } from '../Massa';
+import { WMasSvg } from './WMasSvg';
 
 export function getAssetIcons(
   symbolEVM: string,
@@ -27,6 +28,7 @@ export function getAssetIcons(
     WETH: tokens.WETH,
     USDC: tokens.USDC,
     DAI: tokens.tDAI,
+    WMAS: tokens.WMAS,
     MAS: <MassaLogo size={size} className={customClass} />,
   };
   return icons[symbolEVM as keyof typeof icons];
@@ -55,6 +57,11 @@ function getTokenIcons(
           <USDCSvg size={size} />
         </div>
       ),
+      WMAS: (
+        <div className={customClass}>
+          <WMasSvg size={size} />
+        </div>
+      ),
     };
   } else if (isMainnet) {
     return {
@@ -73,6 +80,11 @@ function getTokenIcons(
           <USDCMassaSvg size={size} />
         </div>
       ),
+      WMAS: (
+        <div className={customClass}>
+          <WMasSvg size={size} />
+        </div>
+      ),
     };
   }
   return {
@@ -89,6 +101,11 @@ function getTokenIcons(
     USDC: (
       <div className={customClass}>
         <SepoliaUSDCSvg size={size} />
+      </div>
+    ),
+    WMAS: (
+      <div className={customClass}>
+        <WMasSvg size={size} />
       </div>
     ),
   };
