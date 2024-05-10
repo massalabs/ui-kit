@@ -64,24 +64,24 @@ export function Token(props: TokenProps) {
     >
       <div className="flex w-fit gap-2 items-center">
         {logo}
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <p className="mas-menu-active">{`${name} (${symbol})`} </p>
-          <div className="flex items-center gap-2">
-            <span className="flex items-center gap-2">
-              {formattedBalance !== undefined ? (
+          <div className="flex items-center gap-1">
+            {formattedBalance ? (
+              <>
+                <Tooltip body={rawBalance} customClass="p-0" />
+                <p className="mas-menu">{formattedBalance}</p>
+              </>
+            ) : null}
+            <div className="flex items-center gap-1">
+              {dollarValueFormatted ? (
                 <>
-                  <p className="mas-menu">{formattedBalance}</p>
-                  <Tooltip body={rawBalance} />
+                  <p className="mas-caption text-info">
+                    ≈ ${dollarValueFormatted}
+                  </p>
                 </>
               ) : null}
-            </span>
-            <span className="flex items-center gap-2">
-              {dollarValueFormatted !== '' ? (
-                <>
-                  <p className="mas-menu">≈ ${dollarValueFormatted}</p>
-                </>
-              ) : null}
-            </span>
+            </div>
           </div>
         </div>
       </div>
