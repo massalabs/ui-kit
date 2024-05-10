@@ -25,6 +25,14 @@ export const _FetchingLine = {
   ),
 };
 
+export const _CustomFetchingLine = {
+  render: () => (
+    <div data-testid="fi-sun">
+      <FetchingLine height={4} width={32} />
+    </div>
+  ),
+};
+
 export const _FetchingStatus = {
   render: () => (
     <div data-testid="fi-sun">

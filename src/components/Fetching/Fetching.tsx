@@ -19,14 +19,17 @@ interface FetchingProps {
 export function FetchingLine(props: FetchingProps) {
   const { height = 2, width = 24 } = props;
 
+  const widthClass = `w-${width}`;
+  const heightClass = `h-${height}`;
+
   return (
     <div
       data-testid="fetching-line"
-      className={`shadow animate-pulse rounded-md w-${width} pt-0.5`}
+      className={`shadow animate-pulse rounded-md ${widthClass} pt-0.5`}
     >
       <div className="flex">
         <div className="flex-1 space-y-6 py-1">
-          <div className={`h-${height} bg-c-disabled-1 rounded`}></div>
+          <div className={`${heightClass} bg-c-disabled-1 rounded`}></div>
         </div>
       </div>
     </div>
