@@ -27,7 +27,7 @@ export const _FetchingLine = {
 
 export const _CustomFetchingLine = {
   render: () => (
-    <div data-testid="fi-sun">
+    <div data-testid="fetching-line">
       <FetchingLine height={4} width={32} />
     </div>
   ),
