@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import { Button } from '../Button';
 import { Tooltip } from '../Tooltip';
-import { formatFTAmount } from '../../util/parseAmount';
+import { formatFTAmount, parseAmount } from '../../util/parseAmount';
 
 export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   logo?: React.ReactNode;
@@ -13,6 +13,7 @@ export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   symbol: string;
   decimals: number;
   balance: string;
+  dollarValue?: string;
   customClass?: string;
   disable?: boolean;
   onDelete?: () => void;
@@ -25,18 +26,35 @@ export function Token(props: TokenProps) {
     symbol,
     decimals,
     balance,
+    dollarValue,
     customClass = '',
     disable,
     onDelete,
     ...rest
   } = props;
 
-  const bigintBalance = BigInt(balance);
+  let formattedBalance: string | undefined;
+  let rawBalance: string | undefined;
+  let bigintBalance = BigInt(0);
+  if (balance !== '') {
+    bigintBalance = BigInt(balance);
+    const { amountFormattedPreview, amountFormattedFull } = formatFTAmount(
+      bigintBalance,
+      decimals,
+    );
+    rawBalance = amountFormattedFull;
+    formattedBalance = amountFormattedPreview;
+  } else {
+    formattedBalance = undefined;
+    rawBalance = undefined;
+  }
 
-  const {
-    amountFormattedPreview: formattedBalance,
-    amountFormattedFull: rawBalance,
-  } = formatFTAmount(bigintBalance, decimals);
+  let dollarValueFormatted = '';
+  if (dollarValue !== undefined && dollarValue !== '') {
+    const dollarValueBigInt = parseAmount(dollarValue, 2);
+    const { amountFormattedPreview } = formatFTAmount(dollarValueBigInt, 2);
+    dollarValueFormatted = amountFormattedPreview;
+  }
 
   return (
     <div
@@ -46,12 +64,25 @@ export function Token(props: TokenProps) {
     >
       <div className="flex w-fit gap-2 items-center">
         {logo}
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <p className="mas-menu-active">{`${name} (${symbol})`} </p>
-          <span className="flex items-center gap-2">
-            <p className="mas-menu">{formattedBalance}</p>
-            <Tooltip body={rawBalance} />
-          </span>
+          <div className="flex items-center gap-1">
+            {formattedBalance ? (
+              <>
+                <Tooltip body={rawBalance} customClass="p-0" />
+                <p className="mas-menu">{formattedBalance}</p>
+              </>
+            ) : null}
+            <div className="flex items-center gap-1">
+              {dollarValueFormatted ? (
+                <>
+                  <p className="mas-caption text-info">
+                    ≈ ${dollarValueFormatted}
+                  </p>
+                </>
+              ) : null}
+            </div>
+          </div>
         </div>
       </div>
       <div>

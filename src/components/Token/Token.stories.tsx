@@ -20,6 +20,39 @@ export const _TokenMassa = {
   ),
 };
 
+export const _TokenNoBalance = {
+  render: () => (
+    <>
+      <Token
+        logo={<MassaLogo size={40} />}
+        name={'Massa'}
+        symbol={'XMA'}
+        decimals={18}
+        balance={''}
+        disable={false}
+        onDelete={() => console.log('delete')}
+      />
+    </>
+  ),
+};
+
+export const _TokenWithDollars = {
+  render: () => (
+    <>
+      <Token
+        logo={<MassaLogo size={40} />}
+        name={'Massa'}
+        symbol={'XMA'}
+        decimals={9}
+        balance={'144876576543000000'}
+        dollarValue="14765.432"
+        disable={false}
+        onDelete={() => console.log('delete')}
+      />
+    </>
+  ),
+};
+
 export const _TokenMrc = {
   render: () => (
     <>
