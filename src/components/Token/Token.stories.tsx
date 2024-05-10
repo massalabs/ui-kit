@@ -53,6 +53,23 @@ export const _TokenWithDollars = {
   ),
 };
 
+export const _TokenWithDollarsError = {
+  render: () => (
+    <>
+      <Token
+        logo={<MassaLogo size={40} />}
+        name={'Massa'}
+        symbol={'XMA'}
+        decimals={9}
+        balance={'144876576543000000'}
+        dollarValueError="Error retrieving dollar value"
+        disable={false}
+        onDelete={() => console.log('delete')}
+      />
+    </>
+  ),
+};
+
 export const _TokenMrc = {
   render: () => (
     <>
