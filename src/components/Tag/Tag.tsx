@@ -6,10 +6,11 @@ interface TagProps {
   type: string;
   children: React.ReactNode;
   customClass?: string;
+  onClick?: () => void;
 }
 
 export function Tag(props: TagProps) {
-  const { children, type, customClass = '' } = props;
+  const { children, type, customClass = '', onClick } = props;
 
   let isDefault = type === 'default';
   let isInfo = type === 'info';
@@ -30,6 +31,7 @@ export function Tag(props: TagProps) {
       data-testid="tag"
       className={`${backgroundClass} mas-caption rounded-full w-fit px-3 py-1
         bg-opacity-30 ${typeColor} ${customClass}`}
+      onClick={onClick}
     >
       {children}
     </div>
