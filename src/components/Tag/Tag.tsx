@@ -2,6 +2,13 @@
 // @ts-ignore
 import React, { ComponentPropsWithoutRef } from 'react';
 
+export const tagTypes = {
+  success: 'success',
+  error: 'error',
+  warning: 'warning',
+  info: 'info',
+};
+
 interface TagProps extends ComponentPropsWithoutRef<'div'> {
   type: string;
   children: React.ReactNode;

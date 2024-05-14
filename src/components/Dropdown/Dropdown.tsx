@@ -4,7 +4,7 @@ import React, { ReactNode, useEffect, useRef } from 'react';
 
 import { ComponentPropsWithoutRef, useState, MouseEvent } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import useClickOutside from '../../util/useClickOutside';
+import useClickOutside from '../../lib/util/hooks/useClickOutside';
 
 export interface IOption extends ComponentPropsWithoutRef<'div'> {
   icon?: ReactNode;

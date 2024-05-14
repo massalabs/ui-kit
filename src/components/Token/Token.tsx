@@ -5,8 +5,8 @@ import { ComponentPropsWithoutRef } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import { Button } from '../Button';
 import { Tooltip } from '../Tooltip';
-import { formatFTAmount } from '../../util/parseAmount';
 import { DollarValue } from '../DollarValue';
+import { formatFTAmount } from '../../lib/util/parseAmount';
 
 export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   logo?: React.ReactNode;

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { truncate } from '../../../src/util/truncate';
+import { truncate } from '../../../src/lib/util/truncate';
 
 describe('Component | Unit | Util | Truncate', () => {
   before(() => {

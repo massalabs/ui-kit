@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { ComponentPropsWithoutRef } from 'react';
-import { openInNewTab } from '../../util/utils';
+import { openInNewTab } from '../../lib/util/utils';
 
 export interface RedirectTileProps extends ComponentPropsWithoutRef<'div'> {
   customClass?: string;

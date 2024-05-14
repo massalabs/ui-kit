@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import { ReactNode, cloneElement } from 'react';
 import { IconContext } from 'react-icons/lib';
-import { truncate } from '../../util/truncate';
+import { truncate } from '../../lib/util/truncate';
 
 export interface PluginProps {
   preIcon: JSX.Element;
