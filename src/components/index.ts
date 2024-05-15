@@ -34,3 +34,4 @@ export * from './Token';
 export * from './Tag';
 export * from './Accordion';
 export * from './Fetching';
+export * from './MNS';
