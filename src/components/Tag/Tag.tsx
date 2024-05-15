@@ -1,15 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 
-interface TagProps {
+interface TagProps extends ComponentPropsWithoutRef<'div'> {
   type: string;
   children: React.ReactNode;
   customClass?: string;
 }
 
 export function Tag(props: TagProps) {
-  const { children, type, customClass = '' } = props;
+  const { children, type, customClass = '', ...rest } = props;
 
   let isDefault = type === 'default';
   let isInfo = type === 'info';
@@ -30,6 +30,7 @@ export function Tag(props: TagProps) {
       data-testid="tag"
       className={`${backgroundClass} mas-caption rounded-full w-fit px-3 py-1
         bg-opacity-30 ${typeColor} ${customClass}`}
+      {...rest}
     >
       {children}
     </div>

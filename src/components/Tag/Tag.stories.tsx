@@ -16,6 +16,16 @@ export const _Tag = {
       <Tag type={'info'}>info type</Tag>
       <br />
       <Tag type={'warning'}>warning type</Tag>
+      <br />
+      <Tag
+        type={'default'}
+        customClass="hover:cursor-pointer"
+        onClick={() => {
+          console.log('foo');
+        }}
+      >
+        OnClick
+      </Tag>
     </>
   ),
 };
