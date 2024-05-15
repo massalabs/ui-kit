@@ -26,8 +26,6 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
-    "@massalabs/massa-web3": "^4.0.2-dev",
-    "@massalabs/wallet-provider": "^2.0.1-dev",
     "copy-to-clipboard": "^3.3.3",
     "currency.js": "^2.0.4",
     "dot-object": "^2.1.5",
@@ -42,6 +40,10 @@
     "viem": "^1.5.2",
     "vite-plugin-svgr": "^3.2.0",
     "zustand": "^4.5.2"
+  },
+  "peerDependencies": {
+    "@massalabs/massa-web3": "^4.0.2-dev",
+    "@massalabs/wallet-provider": "^2.0.1-dev"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.21.4",
