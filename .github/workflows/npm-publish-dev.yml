@@ -2,7 +2,7 @@ name: Npm nightly publish
 
 on:
   push:
-    branches: [main]
+    branches: [main, 428-include-a-lib-to-connect-wallets]
 
 jobs:
   test:
