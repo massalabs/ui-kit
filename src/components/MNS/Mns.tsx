@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { MassaLogo, Tag } from '..';
 
 interface MnsProps extends ComponentPropsWithoutRef<'div'> {
