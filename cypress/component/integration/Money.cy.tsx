@@ -1,5 +1,4 @@
 import '../../../src/global.css';
-import React from 'react';
 import { Money } from '../../../src/components';
 import { compareSnapshot } from '../../compareSnapshot';
 
