@@ -17,7 +17,7 @@ export function DollarValue(props: DollarValueProps) {
 
   if (dollarValueError) {
     return (
-      <p
+      <div
         data-testid="dollar-value"
         className={`mas-menu ${customClass}`}
         {...rest}
@@ -25,7 +25,7 @@ export function DollarValue(props: DollarValueProps) {
         <Tooltip body={dollarValueError}>
           <FiAlertTriangle className="text-s-warning" />
         </Tooltip>
-      </p>
+      </div>
     );
   }
 
