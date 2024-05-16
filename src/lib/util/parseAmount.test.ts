@@ -1,5 +1,6 @@
 import {
   formatAmount,
+  formatStandard,
   roundDecimalPartToOneSignificantDigit,
 } from './parseAmount';
 
@@ -84,5 +85,77 @@ describe('roundDecimalPartToOneSignificantDigit', () => {
 
   test('should round up and handle carry-over with trailing zeroes', () => {
     expect(roundDecimalPartToOneSignificantDigit('0099')).toEqual('01');
+  });
+});
+
+describe('formatStandard', () => {
+  test('formats an empty string', () => {
+    const result = formatStandard('', 18);
+    expect(result).toEqual('0');
+  });
+
+  test('formats an amount with default parameters', () => {
+    const result = formatStandard('123456789012345678901', 18);
+    expect(result).toEqual('123.456789012345678901');
+  });
+
+  test('formats an amount with less than the specified decimals', () => {
+    const result = formatStandard('12345', 8);
+    expect(result).toEqual('0.00012345');
+  });
+
+  test('adds padding zeroes when necessary', () => {
+    const result = formatStandard('1', 18);
+    expect(result).toEqual('0.000000000000000001');
+  });
+
+  test('handles amount with exact decimals length', () => {
+    const result = formatStandard('1000000000000000000', 18);
+    expect(result).toEqual('1');
+  });
+
+  test('formats an amount with less than the specified decimals and round up', () => {
+    const result = formatStandard('69000', 9);
+    expect(result).toEqual('0.000069');
+  });
+
+  it('formatStandard with min  string value', () => {
+    const value = '0000000000';
+
+    const result = formatStandard(value.toString());
+
+    expect(result).toBe('0');
+  });
+
+  it('formatStandard with min bigint value', () => {
+    const value = 0n;
+
+    const result = formatStandard(value.toString());
+
+    expect(result).toBe('0');
+  });
+
+  it('formatStandard with mid range string value', () => {
+    const value = '10000000000000';
+
+    const result = formatStandard(value.toString());
+
+    expect(result).toBe('10,000');
+  });
+
+  it('formatStandard with mid range bigint value', () => {
+    const value = 10000000000000n;
+
+    const result = formatStandard(value.toString());
+
+    expect(result).toBe('10,000');
+  });
+
+  it('formatStandard with max string value', () => {
+    const value = '922337203600000000000';
+
+    const result = formatStandard(value.toString());
+
+    expect(result).toBe('922,337,203,600');
   });
 });
