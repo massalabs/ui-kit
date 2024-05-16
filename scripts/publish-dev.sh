@@ -3,7 +3,7 @@ set -e
 
 NPM_PACKAGE=$(cat package.json | jq -r '.name')
 
-TAG=next # change it back to dev when we are ready to publish to dev
+TAG=dev
 
 npm version --preid $TAG --no-git-tag-version --no-commit-hooks prepatch
 #Use timestamp as package suffix
