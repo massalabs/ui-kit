@@ -1,0 +1,8 @@
+{
+  "steps": {
+    "failed-timeout": "Operation failed due to timeout, please retry with more fees."
+  },
+  "balance": {
+    "error": "We couldn't fetch your balance! Please, try again!"
+  }
+}

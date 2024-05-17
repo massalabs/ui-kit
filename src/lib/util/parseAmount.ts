@@ -7,6 +7,17 @@ export interface FormattedAmount {
   amountFormattedFull: string;
 }
 
+function removeTrailingZeros(numStr: string): string {
+  return numStr.replace(/\.?0+$/, '');
+}
+
+// Like format amount but remove the trailing zeros
+export function formatStandard(amount: string, decimals = 9): string {
+  return removeTrailingZeros(
+    formatAmount(amount, decimals).amountFormattedFull,
+  );
+}
+
 /**
  * reverse format FT amount
  */
