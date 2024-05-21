@@ -1,3 +1,4 @@
+import { Toast, toast } from '../Toast';
 import { Card } from './Card';
 
 export default { title: 'Components/Card' };
@@ -20,6 +21,14 @@ export const _Card = {
         <Card enableBorder={true}>
           <div>I am a card component with a border</div>
         </Card>
+
+        <Card
+          onClick={() => toast.success('hazzzzzza')}
+          customClass="hover:cursor-pointer"
+        >
+          <div>Click me!</div>
+        </Card>
+        <Toast />
       </div>
     </>
   ),
