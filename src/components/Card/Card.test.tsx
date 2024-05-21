@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { Card } from './Card';
 
-describe('Components | Buttons | Description', () => {
+describe('Components | Card', () => {
   test('it should render', () => {
     render(
       <Card>
@@ -10,7 +10,7 @@ describe('Components | Buttons | Description', () => {
       </Card>,
     );
 
-    let description = screen.getByTestId('catd');
+    let description = screen.getByTestId('card');
 
     expect(description).toBeInTheDocument();
   });
