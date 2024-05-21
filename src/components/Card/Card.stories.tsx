@@ -10,9 +10,9 @@ export const _Card = {
           <div>I am a card component</div>
         </Card>
         <Card
-          bgColor={'bg-blue-100'}
+          bgColor={'bg-blue-800'}
           enableBorder={true}
-          customClass="rounded-2xl border-pink-300"
+          customClass="rounded-2xl border-pink-300 w-96 h-96 flex flex-col justify-center items-center"
         >
           <div>I am a custom card component</div>
         </Card>

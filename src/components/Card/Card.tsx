@@ -17,6 +17,7 @@ export function Card({
   const borderClass = enableBorder ? 'border border-tertiary' : 'border-none';
   return (
     <div
+      data-testid="card"
       className={`${bgColor} ${borderClass} w-full h-fit text-f-primary rounded-lg p-4 ${customClass}`}
     >
       {children}
