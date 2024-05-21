@@ -12,6 +12,7 @@ export interface InputProps extends ComponentPropsWithoutRef<'input'> {
   icon?: JSX.Element;
   customClass?: string;
   onClickIcon?: () => void;
+  rightText?: string;
 }
 
 export function Input(props: InputProps) {
@@ -80,7 +81,15 @@ export function IconInput(props: InputProps) {
 }
 
 export function RawInput(props: InputProps) {
-  const { error, warning, success, disable, customClass = '', ...rest } = props;
+  const {
+    error,
+    warning,
+    success,
+    disable,
+    customClass = '',
+    rightText,
+    ...rest
+  } = props;
 
   const disabledClass = disable ? 'border-0' : '';
   const errorClass = error ? 'border-s-error' : '';
@@ -100,8 +109,19 @@ export function RawInput(props: InputProps) {
             disabled={disable}
             {...rest}
           />
-          <InputMessage error={error} warning={warning} success={success} />
         </div>
+        {rightText && (
+          <div className="inline -ml-16">
+            <button
+              type="button"
+              className="w-10 h-10 bg-transparent mas-body text-tertiary"
+              disabled={true}
+            >
+              {rightText}
+            </button>
+          </div>
+        )}
+        <InputMessage error={error} warning={warning} success={success} />
       </div>
     </div>
   );
