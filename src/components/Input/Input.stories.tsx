@@ -50,6 +50,12 @@ export const _RegularInput = {
         defaultValue=""
         warning="that's a warning with|without content"
       />
+
+      <Input
+        placeholder={'something'}
+        defaultValue=""
+        success="that's a success with|without content"
+      />
     </>
   ),
 };

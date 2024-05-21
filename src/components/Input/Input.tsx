@@ -100,7 +100,7 @@ export function RawInput(props: InputProps) {
             disabled={disable}
             {...rest}
           />
-          <InputMessage error={error} warning={warning} />
+          <InputMessage error={error} warning={warning} success={success} />
         </div>
       </div>
     </div>
