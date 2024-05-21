@@ -59,7 +59,7 @@ export const _RegularInput = {
       <Input
         placeholder={'something with right text'}
         defaultValue=""
-        rightText="👍"
+        rightText={'👍'}
       />
     </>
   ),

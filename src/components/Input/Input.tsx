@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { ComponentPropsWithoutRef, ChangeEvent, cloneElement } from 'react';
 
@@ -12,7 +12,7 @@ export interface InputProps extends ComponentPropsWithoutRef<'input'> {
   icon?: JSX.Element;
   customClass?: string;
   onClickIcon?: () => void;
-  rightText?: string;
+  rightText?: React.ReactNode;
 }
 
 export function Input(props: InputProps) {
