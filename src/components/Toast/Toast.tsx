@@ -42,21 +42,12 @@ export function ToastContent(props: ToastContentProps) {
   const { t, ...rest } = props;
 
   const toastIcons = {
-    success: <FiCheckCircle size={24} />,
-    error: <FiAlertCircle size={24} />,
-    loading: <Spinner />,
-    blank: <FiInfo size={24} />,
+    success: <FiCheckCircle size={24} className="text-s-success" />,
+    error: <FiAlertCircle size={24} className="text-s-error" />,
+    loading: <Spinner className="text-f-primary" />,
+    blank: <FiInfo size={24} className="text-f-primary" />,
     custom: t.icon ?? <FiInfo size={24} />,
   };
-
-  const typeToTextClass = {
-    success: 'text-s-success',
-    error: 'text-s-error',
-    loading: 'text-f-primary',
-    blank: 'text-f-primary',
-    custom: 'text-f-primary',
-  };
-
   let content;
   if (typeof t.message === 'string') {
     content = t.message;
@@ -64,8 +55,6 @@ export function ToastContent(props: ToastContentProps) {
     if (!t.message) return null;
     content = (t.message as CallableFunction)().props.children;
   }
-
-  const textClassName = typeToTextClass[t.type];
 
   return (
     <Transition
@@ -81,7 +70,7 @@ export function ToastContent(props: ToastContentProps) {
     >
       <div
         className={`flex items-center w-fit p-4 rounded-lg shadow-2xl
-          bg-secondary ${textClassName}`}
+          bg-secondary text-f-primary`}
         {...rest}
       >
         <div
