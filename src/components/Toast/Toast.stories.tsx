@@ -18,19 +18,17 @@ export const _Toast = {
         Theme dark doesn't work for Toast, you will see only theme light toats.
       </p>
       <br />
-      <div className="theme-dark">
-        <Button
-          onClick={() => {
-            toast.error('Euhh! This is an error message!');
-          }}
-        >
-          Create ERROR Toast
-        </Button>
-        <br />
-        <Button onClick={() => toast.success('Uuurraa! This is a success CSS')}>
-          Create SUCCESS Toast
-        </Button>
-      </div>
+      <Button
+        onClick={() => {
+          toast.error('Euhh! This is an error message!');
+        }}
+      >
+        Create ERROR Toast
+      </Button>
+      <br />
+      <Button onClick={() => toast.success('Uuurraa! This is a success CSS')}>
+        Create SUCCESS Toast
+      </Button>
       <br />
       <Button
         onClick={() =>
