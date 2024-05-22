@@ -19,7 +19,7 @@ export function Tooltip(props: TooltipProps) {
   return (
     <div
       data-testid="Tooltip"
-      className="w-fit p-2 hover:cursor-pointer"
+      className="w-fit hover:cursor-pointer"
       {...rest}
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
@@ -27,7 +27,7 @@ export function Tooltip(props: TooltipProps) {
       {children || defaultIcon}
       {showTooltip && (
         <div
-          className={`w-fit z-10 absolute bg-tertiary p-3 rounded-lg text-neutral ml-2 ${customClass}`}
+          className={`w-fit z-10 absolute bg-tertiary rounded-lg text-neutral ml-2 ${customClass}`}
         >
           {body}
         </div>
