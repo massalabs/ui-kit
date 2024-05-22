@@ -65,7 +65,7 @@ export function Token(props: TokenProps) {
           <div className="flex items-center gap-1">
             {formattedBalance ? (
               <>
-                <Tooltip body={rawBalance} customClass="p-0" />
+                <Tooltip body={rawBalance} />
                 <p className="mas-menu">{formattedBalance}</p>
               </>
             ) : null}
