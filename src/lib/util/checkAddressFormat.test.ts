@@ -1,4 +1,4 @@
-import { checkAddressFormat } from '../checkAddressFormat';
+import { checkAddressFormat } from './checkAddressFormat';
 
 describe('checkAddressFormat', () => {
   test('should return true for a valid address', () => {
