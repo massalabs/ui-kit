@@ -5,10 +5,6 @@ Tech:
 - React typescript
 - tailwind
 
-## Presentation
-
-The shareable preset our in the `presets` directory.
-
 ## How to use it?
 
 - `npm install @massalabs/react-ui-kit -D`
@@ -24,6 +20,18 @@ export default {
   ],
   presets: [require("@massalabs/react-ui-kit/presets/massa-station-preset.js")],
 };
+```
+
+- update your `vite.config.ts` file:
+
+```typescript
+export default ({ mode }) => {
+  ...
+  return defineConfig({
+    ...
+    optimizeDeps: {
+      include: ['react-dom', 'dot-object', 'copy-to-clipboard'],
+    },
 ```
 
 - import the global css in you main tsx file (`main.tsx` or `App.tsx`):
@@ -64,6 +72,18 @@ You can now use our custom colors thanks to `className`:
 
 - `<p className="bg-primary"></p>`
 - `<p className="text-neutral"></p>`
+
+#### Create your own theme
+
+You can create your own theme by creating a new file in the `presets` directory.
+
+Copy this file <https://github.com/massalabs/ui-kit/blob/main/presets/massa-station-preset.js>.
+
+Update the `tailwind.config.js` file to use your new theme to change preset:
+
+```js
+  presets: [require('./src/themes/preset.js')],
+```
 
 ### Typography
 

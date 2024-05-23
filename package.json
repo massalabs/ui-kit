@@ -28,7 +28,6 @@
     "@headlessui/react": "^1.7.15",
     "copy-to-clipboard": "^3.3.3",
     "currency.js": "^2.0.4",
-    "dot-object": "^2.1.5",
     "minidenticons": "^4.2.1",
     "react": "^18.2.0",
     "react-currency-input-field": "^3.6.11",
@@ -43,7 +42,9 @@
   },
   "peerDependencies": {
     "@massalabs/massa-web3": "^4.0.2-dev",
-    "@massalabs/wallet-provider": "^2.0.1-dev"
+    "@massalabs/wallet-provider": "^2.0.1-dev",
+    "dot-object": "^2.1.5",
+    "@types/dot-object": "^2.1.6"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.21.4",
@@ -63,7 +64,6 @@
     "@testing-library/dom": "^9.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
-    "@types/dot-object": "^2.1.6",
     "@types/jest": "^29.5.1",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.0.11",
