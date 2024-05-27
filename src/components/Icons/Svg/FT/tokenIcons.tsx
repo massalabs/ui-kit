@@ -2,7 +2,7 @@
 // @ts-ignore
 import React from 'react';
 import { ReactNode } from 'react';
-
+import { bsc, bscTestnet } from 'viem/chains';
 import { USDCMassaSvg } from './ETHUSDCSvg';
 import { SepoliaDaiSvg } from './SepoliaDaiSvg';
 import { SepoliaUSDCSvg } from './SepoliaUSDCSvg';
@@ -14,21 +14,33 @@ import { WEthMassaSvg } from './WEthMassaSvg';
 import { WEthSvg } from './WEthSvg';
 import { FT1, MassaLogo } from '../Massa';
 import { WMasSvg } from './WMasSvg';
+import { BSCUsdc } from './BSCUsdc';
+import { BSCWeth } from './BSCWeth';
+import { BSCDai } from './BSCDai';
+import { BSC } from './BSC';
 
 export function getAssetIcons(
   symbolEVM: string,
   nativeToken = false,
   isMainnet = false,
+  chainId: number,
   size?: number,
   customClass = '',
 ): ReactNode {
-  const tokens = getTokenIcons(nativeToken, isMainnet, size, customClass);
+  const tokens = getTokenIcons(
+    nativeToken,
+    isMainnet,
+    chainId,
+    size,
+    customClass,
+  );
   const icons = {
     tDAI: tokens.tDAI,
     WETH: tokens.WETH,
     USDC: tokens.USDC,
     DAI: tokens.tDAI,
     WMAS: tokens.WMAS,
+    BNB: tokens.BNB,
     MAS: <MassaLogo size={size} className={customClass} />,
   };
 
@@ -42,76 +54,59 @@ export function getAssetIcons(
 function getTokenIcons(
   nativeToken = false,
   isMainnet = false,
+  chainId?: number,
   size?: number,
   customClass = '',
 ) {
+  const createSvgElement = (
+    SvgComponent: React.FC<{ size?: number }>,
+    size?: number,
+    customClass = '',
+  ) => (
+    <div className={customClass}>
+      <SvgComponent size={size} />
+    </div>
+  );
+
   if (!nativeToken) {
     return {
-      tDAI: (
-        <div className={customClass}>
-          <TDaiSvg size={size} />
-        </div>
-      ),
-      WETH: (
-        <div className={customClass}>
-          <WEthSvg size={size} />
-        </div>
-      ),
-      USDC: (
-        <div className={customClass}>
-          <USDCSvg size={size} />
-        </div>
-      ),
-      WMAS: (
-        <div className={customClass}>
-          <WMasSvg size={size} />
-        </div>
-      ),
+      tDAI: createSvgElement(TDaiSvg, size, customClass),
+      WETH: createSvgElement(WEthSvg, size, customClass),
+      USDC: createSvgElement(USDCSvg, size, customClass),
+      WMAS: createSvgElement(WMasSvg, size, customClass),
     };
   } else if (isMainnet) {
+    if (chainId === bsc.id) {
+      return {
+        tDAI: createSvgElement(BSCDai, size, customClass),
+        BNB: createSvgElement(BSC, size, customClass),
+        WETH: createSvgElement(BSCWeth, size, customClass),
+        USDC: createSvgElement(BSCUsdc, size, customClass),
+        WMAS: createSvgElement(WMasSvg, size, customClass),
+      };
+    } else {
+      return {
+        tDAI: createSvgElement(TDaiMassaSvg, size, customClass),
+        WETH: createSvgElement(WEthMassaSvg, size, customClass),
+        USDC: createSvgElement(USDCMassaSvg, size, customClass),
+        WMAS: createSvgElement(WMasSvg, size, customClass),
+      };
+    }
+  }
+  if (chainId === bscTestnet.id) {
     return {
-      tDAI: (
-        <div className={customClass}>
-          <TDaiMassaSvg size={size} />
-        </div>
-      ),
-      WETH: (
-        <div className={customClass}>
-          <WEthMassaSvg size={size} />
-        </div>
-      ),
-      USDC: (
-        <div className={customClass}>
-          <USDCMassaSvg size={size} />
-        </div>
-      ),
-      WMAS: (
-        <div className={customClass}>
-          <WMasSvg size={size} />
-        </div>
-      ),
+      tDAI: createSvgElement(BSCDai, size, customClass),
+      WETH: createSvgElement(BSCWeth, size, customClass),
+      USDC: createSvgElement(BSCUsdc, size, customClass),
+      WMAS: createSvgElement(WMasSvg, size, customClass),
+      BNB: createSvgElement(BSC, size, customClass),
     };
   }
+
   return {
-    tDAI: (
-      <div className={customClass}>
-        <SepoliaDaiSvg size={size} />
-      </div>
-    ),
-    WETH: (
-      <div className={customClass}>
-        <SepoliaWethSvg size={size} />
-      </div>
-    ),
-    USDC: (
-      <div className={customClass}>
-        <SepoliaUSDCSvg size={size} />
-      </div>
-    ),
-    WMAS: (
-      <div className={customClass}>
-        <WMasSvg size={size} />
-      </div>
-    ),
+    tDAI: createSvgElement(SepoliaDaiSvg, size, customClass),
+    WETH: createSvgElement(SepoliaWethSvg, size, customClass),
+    USDC: createSvgElement(SepoliaUSDCSvg, size, customClass),
+    WMAS: createSvgElement(WMasSvg, size, customClass),
   };
 }
