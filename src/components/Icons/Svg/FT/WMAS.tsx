@@ -3,7 +3,7 @@
 import React from 'react';
 import { SVGProps } from './svgInterface';
 
-export function WMasSvg(props: SVGProps) {
+export function WMAS(props: SVGProps) {
   const { size } = props;
   return (
     <svg

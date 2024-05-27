@@ -1,12 +1,27 @@
-export * from './ETHUSDCSvg';
-export * from './SepoliaDaiSvg';
-export * from './SepoliaUSDCSvg';
-export * from './SepoliaWethSvg';
-export * from './svgInterface';
-export * from './TDaiMassaSvg';
-export * from './TDaiSvg';
+export * from './BNB';
+export * from './BNBFromBSC';
+export * from './DAIFromBSCNative';
+export * from './USDCFromBSCNative';
+export * from './WETHFromBSCNative';
+export * from './DAIFromBSC';
+export * from './USDCFromBSC';
+export * from './WETHFromBSC';
+
+export * from './DAI';
+export * from './USDC';
+export * from './WETH';
+
+export * from './FT1';
+
+export * from './DAIFromEthereum';
+export * from './USDCFromEthereum';
+export * from './WETHFromEthereum';
+
+export * from './DAIFromSepolia';
+export * from './USDCFromSepolia';
+export * from './WETHFromSepolia';
+
+export * from './WMAS';
+
 export * from './tokenIcons';
-export * from './USDCSvg';
-export * from './WEthMassaSvg';
-export * from './WEthSvg';
-export * from './WMasSvg';
+export * from './svgInterface';
