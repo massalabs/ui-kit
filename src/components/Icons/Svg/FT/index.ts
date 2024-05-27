@@ -10,3 +10,7 @@ export * from './USDCSvg';
 export * from './WEthMassaSvg';
 export * from './WEthSvg';
 export * from './WMasSvg';
+export * from './BSC';
+export * from './BSCDai';
+export * from './BSCUsdc';
+export * from './BSCWeth';
