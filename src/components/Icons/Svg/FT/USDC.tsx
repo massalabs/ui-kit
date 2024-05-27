@@ -4,7 +4,7 @@ import React from 'react';
 import { SVGProps } from './svgInterface';
 
 /* eslint-disable max-len */
-export function ETHUSDC(props: SVGProps) {
+export function USDC(props: SVGProps) {
   const { size } = props;
   return (
     <svg

@@ -4,7 +4,7 @@ import React from 'react';
 import { SVGProps } from './svgInterface';
 
 /* eslint-disable max-len */
-export function MassaUSDC(props: SVGProps) {
+export function USDCFromEthereum(props: SVGProps) {
   const { size } = props;
   return (
     <svg

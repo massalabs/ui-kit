@@ -1,21 +1,25 @@
-export * from './BSCBNB';
-export * from './BSCDAI';
-export * from './BSCUSDC';
-export * from './BSCWETH';
+export * from './BNB';
+export * from './BNBFromBSC';
+export * from './DAIFromBSCNative';
+export * from './USDCFromBSCNative';
+export * from './WETHFromBSCNative';
+export * from './DAIFromBSC';
+export * from './USDCFromBSC';
+export * from './WETHFromBSC';
 
-export * from './ETHDAI';
-export * from './ETHUSDC';
+export * from './DAI';
+export * from './USDC';
 export * from './WETH';
 
 export * from './FT1';
 
-export * from './MassaDAI';
-export * from './MassaUSDC';
-export * from './MassaWETH';
+export * from './DAIFromEthereum';
+export * from './USDCFromEthereum';
+export * from './WETHFromEthereum';
 
-export * from './SepoliaDAI';
-export * from './SepoliaUSDC';
-export * from './SepoliaWETH';
+export * from './DAIFromSepolia';
+export * from './USDCFromSepolia';
+export * from './WETHFromSepolia';
 
 export * from './WMAS';
 
