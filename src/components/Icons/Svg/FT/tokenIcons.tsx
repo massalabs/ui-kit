@@ -2,111 +2,85 @@
 // @ts-ignore
 import React from 'react';
 import { ReactNode } from 'react';
-import { bsc, bscTestnet } from 'viem/chains';
-import { USDCMassaSvg } from './ETHUSDCSvg';
-import { SepoliaDaiSvg } from './SepoliaDaiSvg';
-import { SepoliaUSDCSvg } from './SepoliaUSDCSvg';
-import { SepoliaWethSvg } from './SepoliaWethSvg';
-import { TDaiMassaSvg } from './TDaiMassaSvg';
-import { TDaiSvg } from './TDaiSvg';
-import { USDCSvg } from './USDCSvg';
-import { WEthMassaSvg } from './WEthMassaSvg';
-import { WEthSvg } from './WEthSvg';
-import { FT1, MassaLogo } from '../Massa';
-import { WMasSvg } from './WMasSvg';
-import { BSCUsdc } from './BSCUsdc';
-import { BSCWeth } from './BSCWeth';
-import { BSCDai } from './BSCDai';
-import { BSC } from './BSC';
+import { bsc, bscTestnet, sepolia } from 'viem/chains';
+import { MassaLogo } from '../Massa';
+import {
+  BSCBNB,
+  BSCDAI,
+  BSCUSDC,
+  BSCWETH,
+  ETHDAI,
+  ETHUSDC,
+  FT1,
+  MassaDAI,
+  MassaUSDC,
+  MassaWETH,
+  SepoliaDAI,
+  SepoliaUSDC,
+  SepoliaWETH,
+  WETH,
+  WMAS,
+} from '.';
+import { BUILDNET_CHAIN_ID, MAINNET_CHAIN_ID } from '@massalabs/massa-web3';
+
+const createElement = (
+  Component: React.FC<{ size?: number }>,
+  size?: number,
+  customClass = '',
+) => (
+  <div className={customClass}>
+    <Component size={size} />
+  </div>
+);
 
 export function getAssetIcons(
-  symbolEVM: string,
-  nativeToken = false,
-  isMainnet = false,
+  symbol: string,
   chainId: number,
   size?: number,
   customClass = '',
 ): ReactNode {
-  const tokens = getTokenIcons(
-    nativeToken,
-    isMainnet,
-    chainId,
-    size,
-    customClass,
-  );
   const icons = {
-    tDAI: tokens.tDAI,
-    WETH: tokens.WETH,
-    USDC: tokens.USDC,
-    DAI: tokens.tDAI,
-    WMAS: tokens.WMAS,
-    BNB: tokens.BNB,
+    // Native
+    DAI: createElement(ETHDAI, size, customClass),
+    USDC: createElement(ETHUSDC, size, customClass),
+    WETH: createElement(WETH, size, customClass),
+    BNB: createElement(BSCBNB, size, customClass),
+    WMAS: createElement(WMAS, size, customClass),
     MAS: <MassaLogo size={size} className={customClass} />,
+    // Overwrite
+    ...getTokenIcons(chainId, size, customClass),
   };
 
-  if (symbolEVM in icons) {
-    return icons[symbolEVM as keyof typeof icons];
+  if (symbol in icons) {
+    return icons[symbol as keyof typeof icons];
   } else {
     return <FT1 size={size} />;
   }
 }
 
-function getTokenIcons(
-  nativeToken = false,
-  isMainnet = false,
-  chainId?: number,
-  size?: number,
-  customClass = '',
-) {
-  const createSvgElement = (
-    SvgComponent: React.FC<{ size?: number }>,
-    size?: number,
-    customClass = '',
-  ) => (
-    <div className={customClass}>
-      <SvgComponent size={size} />
-    </div>
-  );
-
-  if (!nativeToken) {
-    return {
-      tDAI: createSvgElement(TDaiSvg, size, customClass),
-      WETH: createSvgElement(WEthSvg, size, customClass),
-      USDC: createSvgElement(USDCSvg, size, customClass),
-      WMAS: createSvgElement(WMasSvg, size, customClass),
-    };
-  } else if (isMainnet) {
-    if (chainId === bsc.id) {
+function getTokenIcons(chainId?: number, size?: number, customClass = '') {
+  switch (chainId) {
+    case bsc.id:
+    case bscTestnet.id:
       return {
-        tDAI: createSvgElement(BSCDai, size, customClass),
-        BNB: createSvgElement(BSC, size, customClass),
-        WETH: createSvgElement(BSCWeth, size, customClass),
-        USDC: createSvgElement(BSCUsdc, size, customClass),
-        WMAS: createSvgElement(WMasSvg, size, customClass),
+        DAI: createElement(BSCDAI, size, customClass),
+        USDC: createElement(BSCUSDC, size, customClass),
+        WETH: createElement(BSCWETH, size, customClass),
       };
-    } else {
+    case Number(MAINNET_CHAIN_ID):
+    case Number(BUILDNET_CHAIN_ID):
       return {
-        tDAI: createSvgElement(TDaiMassaSvg, size, customClass),
-        WETH: createSvgElement(WEthMassaSvg, size, customClass),
-        USDC: createSvgElement(USDCMassaSvg, size, customClass),
-        WMAS: createSvgElement(WMasSvg, size, customClass),
+        DAI: createElement(MassaDAI, size, customClass),
+        USDC: createElement(MassaUSDC, size, customClass),
+        WETH: createElement(MassaWETH, size, customClass),
       };
-    }
+    case sepolia.id:
+      return {
+        DAI: createElement(SepoliaDAI, size, customClass),
+        USDC: createElement(SepoliaUSDC, size, customClass),
+        WETH: createElement(SepoliaWETH, size, customClass),
+      };
+    default:
+      return {};
   }
-  if (chainId === bscTestnet.id) {
-    return {
-      tDAI: createSvgElement(BSCDai, size, customClass),
-      WETH: createSvgElement(BSCWeth, size, customClass),
-      USDC: createSvgElement(BSCUsdc, size, customClass),
-      WMAS: createSvgElement(WMasSvg, size, customClass),
-      BNB: createSvgElement(BSC, size, customClass),
-    };
-  }
-
-  return {
-    tDAI: createSvgElement(SepoliaDaiSvg, size, customClass),
-    WETH: createSvgElement(SepoliaWethSvg, size, customClass),
-    USDC: createSvgElement(SepoliaUSDCSvg, size, customClass),
-    WMAS: createSvgElement(WMasSvg, size, customClass),
-  };
 }

@@ -5,7 +5,7 @@ import React from 'react';
 import { SVGProps } from './svgInterface';
 
 /* eslint-disable max-len */
-export function SepoliaDaiSvg(props: SVGProps) {
+export function SepoliaDAI(props: SVGProps) {
   const { size } = props;
   return (
     <svg

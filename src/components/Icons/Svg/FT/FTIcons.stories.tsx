@@ -1,105 +1,100 @@
+import { BUILDNET_CHAIN_ID, MAINNET_CHAIN_ID } from '@massalabs/massa-web3';
 import { getAssetIcons } from './tokenIcons';
 import { mainnet, sepolia, bsc, bscTestnet } from 'viem/chains';
 export default { title: 'Icons/FT' };
-
 export const _FT = {
   render: () => (
-    <div className="text-f-primary">
-      <h2 className="mas-subtitle">NON-NATIVE MAINNET</h2>
-      <br />
-      <p>DAI non-native, mainnet</p>
-      {getAssetIcons('DAI', false, true, mainnet.id, 44)}
-
-      <br />
-      <p>WETH non-native, mainnet</p>
-      {getAssetIcons('WETH', false, true, mainnet.id, 44)}
-
-      <br />
-      <p>USDC non-native, mainnet</p>
-      {getAssetIcons('USDC', false, true, mainnet.id, 44)}
-      <br />
-      <p>WMAS non-native, mainnet</p>
-      {getAssetIcons('WMAS', false, true, mainnet.id, 44)}
-      <br />
-      <p>WMAS native, mainnet</p>
-      {getAssetIcons('WMAS', true, false, mainnet.id, 44)}
-
-      <br />
-      <h2 className="mas-subtitle">NATIVE TESTNET</h2>
-      <br />
-      <p>DAI native, testnet</p>
-      {getAssetIcons('DAI', true, false, sepolia.id, 52)}
-
-      <br />
-      <p>USDC native, testnet</p>
-      {getAssetIcons('USDC', true, false, sepolia.id, 52)}
-
-      <br />
-      <p>WETH native, testnet</p>
-      {getAssetIcons('WETH', true, false, sepolia.id, 52)}
-
-      <br />
-      <p>WMAS native, testnet</p>
-      {getAssetIcons('WMAS', true, false, sepolia.id, 52)}
-      <br />
-      <p>DAI(BSC) native, testnet</p>
-      {getAssetIcons('DAI', true, false, bscTestnet.id, 52)}
-
-      <br />
-      <p>WETH(BSC) native, testnet</p>
-      {getAssetIcons('WETH', true, false, bscTestnet.id, 52)}
-
-      <br />
-      <p>USDC(BSC) native, testnet</p>
-      {getAssetIcons('USDC', true, false, bscTestnet.id, 52)}
-
-      <br />
-      <p>BNB(BSC) native, testnet</p>
-      {getAssetIcons('BNB', true, false, bscTestnet.id, 52)}
-
-      <br />
-      <p>WMAS(BSC) native, testnet</p>
-      {getAssetIcons('WMAS', true, false, bscTestnet.id, 52)}
-
-      <br />
-      <h2 className="mas-subtitle">NATIVE MAINNET</h2>
-      <br />
-      <p>USDC native, mainnet</p>
-      {getAssetIcons('USDC', true, true, mainnet.id, 52)}
-      <br />
-      <p>DAI native, mainnet</p>
-      {getAssetIcons('DAI', true, true, mainnet.id, 52)}
-
-      <br />
-      <p>WETH native, mainnet</p>
-      {getAssetIcons('WETH', true, true, mainnet.id, 52)}
-
-      <br />
-      <p>WMAS native, mainnet</p>
-      {getAssetIcons('WMAS', true, true, mainnet.id, 52)}
-
-      <p>DAI(BSC) native, mainnet</p>
-      {getAssetIcons('DAI', true, true, bsc.id, 52)}
-
-      <br />
-      <p>WETH(BSC) native, mainnet</p>
-      {getAssetIcons('WETH', true, true, bsc.id, 52)}
-
-      <br />
-      <p>USDC(BSC) native, mainnet</p>
-      {getAssetIcons('USDC', true, true, bsc.id, 52)}
-
-      <br />
-      <p>BNB(BSC) native, mainnet</p>
-      {getAssetIcons('BNB', true, true, bsc.id, 52)}
-
-      <br />
-      <p>WMAS(BSC) native, mainnet</p>
-      {getAssetIcons('WMAS', true, true, bsc.id, 52)}
-
-      <br />
-      <p>unknown</p>
-      {getAssetIcons('', false, false, 0, 52)}
+    <div className="flex flex-col gap-10 text-f-primary">
+      <div className="flex flex-row gap-4 items-center">
+        <h2 className="mas-subtitle">Ethereum</h2>
+        <p>BNB:</p>
+        {getAssetIcons('BNB', mainnet.id, 52)}
+        <p>DAI:</p>
+        {getAssetIcons('DAI', mainnet.id, 44)}
+        <p>USDC:</p>
+        {getAssetIcons('USDC', mainnet.id, 44)}
+        <p>WETH:</p>
+        {getAssetIcons('WETH', mainnet.id, 44)}
+        <p>WMAS:</p>
+        {getAssetIcons('WMAS', mainnet.id, 44)}
+        <p>Unknown:</p>
+        {getAssetIcons('', mainnet.id, 52)}
+      </div>
+      <div className="flex flex-row gap-4 items-center">
+        <h2 className="mas-subtitle">Sepolia</h2>
+        <p>BNB:</p>
+        {getAssetIcons('BNB', sepolia.id, 52)}
+        <p>DAI:</p>
+        {getAssetIcons('DAI', sepolia.id, 52)}
+        <p>USDC:</p>
+        {getAssetIcons('USDC', sepolia.id, 52)}
+        <p>WETH:</p>
+        {getAssetIcons('WETH', sepolia.id, 52)}
+        <p>WMAS:</p>
+        {getAssetIcons('WMAS', sepolia.id, 44)}
+        <p>Unknown:</p>
+        {getAssetIcons('', sepolia.id, 52)}
+      </div>
+      <div className="flex flex-row gap-4 items-center">
+        <h2 className="mas-subtitle">BSC</h2>
+        <p>BNB:</p>
+        {getAssetIcons('BNB', bsc.id, 52)}
+        <p>DAI:</p>
+        {getAssetIcons('DAI', bsc.id, 52)}
+        <p>USDC:</p>
+        {getAssetIcons('USDC', bsc.id, 52)}
+        <p>WETH:</p>
+        {getAssetIcons('WETH', bsc.id, 52)}
+        <p>WMAS:</p>
+        {getAssetIcons('WMAS', bsc.id, 52)}
+        <p>Unknown:</p>
+        {getAssetIcons('', bsc.id, 52)}
+      </div>
+      <div className="flex flex-row gap-4 items-center">
+        <h2 className="mas-subtitle">BSC Testnet</h2>
+        <p>BNB:</p>
+        {getAssetIcons('BNB', bscTestnet.id, 52)}
+        <p>DAI:</p>
+        {getAssetIcons('DAI', bscTestnet.id, 52)}
+        <p>USDC:</p>
+        {getAssetIcons('USDC', bscTestnet.id, 52)}
+        <p>WETH:</p>
+        {getAssetIcons('WETH', bscTestnet.id, 52)}
+        <p>WMAS:</p>
+        {getAssetIcons('WMAS', bscTestnet.id, 52)}
+        <p>Unknown:</p>
+        {getAssetIcons('', bscTestnet.id, 52)}
+      </div>
+      <div className="flex flex-row gap-4 items-center">
+        <h2 className="mas-subtitle">Massa Mainnet</h2>
+        <p>BNB:</p>
+        {getAssetIcons('BNB', Number(MAINNET_CHAIN_ID), 52)}
+        <p>DAI:</p>
+        {getAssetIcons('DAI', Number(MAINNET_CHAIN_ID), 52)}
+        <p>USDC:</p>
+        {getAssetIcons('USDC', Number(MAINNET_CHAIN_ID), 52)}
+        <p>WETH:</p>
+        {getAssetIcons('WETH', Number(MAINNET_CHAIN_ID), 52)}
+        <p>WMAS:</p>
+        {getAssetIcons('WMAS', Number(MAINNET_CHAIN_ID), 52)}
+        <p>Unknown:</p>
+        {getAssetIcons('', Number(MAINNET_CHAIN_ID), 52)}
+      </div>
+      <div className="flex flex-row gap-4 items-center">
+        <h2 className="mas-subtitle">Massa Buildnet</h2>
+        <p>BNB:</p>
+        {getAssetIcons('BNB', Number(BUILDNET_CHAIN_ID), 52)}
+        <p>DAI:</p>
+        {getAssetIcons('DAI', Number(BUILDNET_CHAIN_ID), 52)}
+        <p>USDC:</p>
+        {getAssetIcons('USDC', Number(BUILDNET_CHAIN_ID), 52)}
+        <p>WETH:</p>
+        {getAssetIcons('WETH', Number(BUILDNET_CHAIN_ID), 52)}
+        <p>WMAS:</p>
+        {getAssetIcons('WMAS', Number(BUILDNET_CHAIN_ID), 52)}
+        <p>Unknown:</p>
+        {getAssetIcons('', Number(BUILDNET_CHAIN_ID), 52)}
+      </div>
     </div>
   ),
 };

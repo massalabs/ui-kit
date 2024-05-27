@@ -3,7 +3,7 @@
 import React from 'react';
 import { SVGProps } from './svgInterface';
 
-export function WEthMassaSvg(props: SVGProps) {
+export function MassaWETH(props: SVGProps) {
   const { size } = props;
   /* eslint-disable max-len */
   return (

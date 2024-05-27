@@ -27,7 +27,7 @@ export const _Balance = {
         customClass="p-0 bg-transparent mb-3"
         amount={'12.567'}
         symbol={'WETH'}
-        icon={getAssetIcons('WETH', false, false, sepolia.id, 32, 'mr-3')}
+        icon={getAssetIcons('WETH', sepolia.id, 32, 'mr-3')}
       />
     </>
   ),

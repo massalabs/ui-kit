@@ -1,8 +1,8 @@
+import { FT1 } from './FT';
 import {
   MassaLogo,
   MassaWallet,
   StationLogo,
-  FT1,
   InterrogationPoint,
 } from './Massa';
 

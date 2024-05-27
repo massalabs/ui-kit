@@ -2,7 +2,7 @@
 
 import { SVGProps } from './svgInterface';
 
-export function BSCWeth(props: SVGProps) {
+export function BSCWETH(props: SVGProps) {
   let { size } = props;
   return (
     <svg

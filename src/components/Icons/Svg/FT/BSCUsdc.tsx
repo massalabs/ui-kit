@@ -2,7 +2,7 @@
 
 import { SVGProps } from './svgInterface';
 
-export function BSCUsdc(props: SVGProps) {
+export function BSCUSDC(props: SVGProps) {
   let { size } = props;
   return (
     <svg

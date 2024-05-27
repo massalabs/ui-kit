@@ -2,7 +2,7 @@
 
 import { SVGProps } from './svgInterface';
 
-export function BSCDai(props: SVGProps) {
+export function BSCDAI(props: SVGProps) {
   let { size } = props;
   return (
     <svg

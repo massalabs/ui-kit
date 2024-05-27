@@ -2,7 +2,7 @@
 
 import { SVGProps } from './svgInterface';
 
-export function BSC(props: SVGProps) {
+export function BSCBNB(props: SVGProps) {
   let { size } = props;
   return (
     <svg
