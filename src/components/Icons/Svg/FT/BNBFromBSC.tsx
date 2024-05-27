@@ -1,7 +1,9 @@
-/* eslint-disable max-len */
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React from 'react';
 import { SVGProps } from './svgInterface';
 
+/* eslint-disable max-len */
 export function BNBFromBSC(props: SVGProps) {
   let { size } = props;
   return (
