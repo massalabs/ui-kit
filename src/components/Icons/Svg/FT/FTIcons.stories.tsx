@@ -60,6 +60,7 @@ export const _FT = {
           <div className="flex flex-wrap gap-4">
             {createBridgedFt(Bsc, BNB)}
             {createBridgedFt(Eth, DAI)}
+            {createBridgedFt(Eth, DAI, 66)}
           </div>
         </div>
 
