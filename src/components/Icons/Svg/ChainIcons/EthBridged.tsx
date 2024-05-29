@@ -2,7 +2,7 @@
 // @ts-ignore
 import React from 'react';
 
-import { SVGProps } from '../svgInterface';
+import { SVGProps } from '../FT/svgInterface';
 
 /* eslint-disable max-len */
 export function EthBridged(props: SVGProps) {

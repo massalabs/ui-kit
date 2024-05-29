@@ -12,7 +12,7 @@ import {
   EthBridged,
   Sepolia,
   SepoliaBridged,
-} from './chainIcons';
+} from '../ChainIcons';
 
 export function createBridgedFt(
   ChainIcon: React.FC<SVGProps>,
