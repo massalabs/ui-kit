@@ -1,36 +1,47 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import { ReactNode } from 'react';
 import { bsc, bscTestnet, mainnet, sepolia } from 'viem/chains';
 import { MassaLogo } from '../Massa';
+import { BNB, DAI, USDC, FT1, WMAS, WETH } from '.';
 import {
-  BNB,
-  DAIFromBSC,
-  USDCFromBSC,
-  WETHFromBSC,
-  DAI,
-  USDC,
-  FT1,
-  DAIFromEthereum,
-  USDCFromEthereum,
-  WETHFromEthereum,
-  DAIFromSepolia,
-  USDCFromSepolia,
-  WETHFromSepolia,
-  WMAS,
-  WETH,
-} from '.';
+  Bsc,
+  BscBridged,
+  Eth,
+  EthBridged,
+  Sepolia,
+  SepoliaBridged,
+} from './chainIcons';
 
-const createElement = (
-  Component: React.FC<{ size?: number }>,
+interface ChainIconProps extends ComponentPropsWithoutRef<'svg'> {
+  size?: number;
+}
+
+interface FtIconProps {
+  size?: number;
+}
+
+export function createCustomFt(
+  ChainIcon: React.FC<ChainIconProps>,
+  FtIcon: React.FC<FtIconProps>,
   size?: number,
-  customClass = '',
-) => (
-  <div className={customClass}>
-    <Component size={size} />
-  </div>
-);
+) {
+  return (
+    <div>
+      <ChainIcon className="relative top-3 left-7 " />
+      <FtIcon size={size} />
+    </div>
+  );
+}
+
+export function createNativeFt(FtIcon: React.FC<FtIconProps>, size?: number) {
+  return (
+    <>
+      <FtIcon size={size} />
+    </>
+  );
+}
 
 /**
  * Return the icon of the asset.
@@ -45,19 +56,19 @@ const createElement = (
 export function getAssetIcons(
   symbol: string,
   originChainId?: number,
+  isNative = true,
   size?: number,
-  customClass = '',
 ): ReactNode {
   const icons = {
     // Native
-    BNB: createElement(BNB, size, customClass),
-    DAI: createElement(DAI, size, customClass),
-    USDC: createElement(USDC, size, customClass),
-    WETH: createElement(WETH, size, customClass),
-    WMAS: createElement(WMAS, size, customClass),
-    MAS: <MassaLogo size={size} className={customClass} />,
+    BNB: createNativeFt(BNB, size),
+    DAI: createNativeFt(DAI, size),
+    USDC: createNativeFt(USDC, size),
+    WETH: createNativeFt(WETH, size),
+    WMAS: createNativeFt(WMAS, size),
+    MAS: <MassaLogo size={size} />,
     // Overwrite
-    ...getTokenIcons(originChainId, size, customClass),
+    ...getTokenIcons(isNative, originChainId, size),
   };
 
   if (symbol in icons) {
@@ -68,30 +79,56 @@ export function getAssetIcons(
 }
 
 function getTokenIcons(
+  isNative: boolean,
   originChainId?: number,
   size?: number,
-  customClass = '',
 ) {
   switch (originChainId) {
     case bsc.id:
     case bscTestnet.id:
-      return {
-        DAI: createElement(DAIFromBSC, size, customClass),
-        USDC: createElement(USDCFromBSC, size, customClass),
-        WETH: createElement(WETHFromBSC, size, customClass),
-      };
+      if (isNative) {
+        return {
+          DAI: createCustomFt(Bsc, DAI, size),
+          USDC: createCustomFt(Bsc, USDC, size),
+          WETH: createCustomFt(Bsc, WETH, size),
+          BNB: createCustomFt(Bsc, BNB, size),
+        };
+      } else {
+        return {
+          DAI: createCustomFt(BscBridged, DAI, size),
+          USDC: createCustomFt(BscBridged, USDC, size),
+          WETH: createCustomFt(BscBridged, WETH, size),
+          BNB: createCustomFt(BscBridged, BNB, size),
+        };
+      }
     case mainnet.id:
-      return {
-        DAI: createElement(DAIFromEthereum, size, customClass),
-        USDC: createElement(USDCFromEthereum, size, customClass),
-        WETH: createElement(WETHFromEthereum, size, customClass),
-      };
+      if (isNative) {
+        return {
+          DAI: createCustomFt(Eth, DAI, size),
+          USDC: createCustomFt(Eth, USDC, size),
+          WETH: createCustomFt(Eth, WETH, size),
+        };
+      } else {
+        return {
+          DAI: createCustomFt(EthBridged, DAI, size),
+          USDC: createCustomFt(EthBridged, USDC, size),
+          WETH: createCustomFt(EthBridged, WETH, size),
+        };
+      }
     case sepolia.id:
-      return {
-        DAI: createElement(DAIFromSepolia, size, customClass),
-        USDC: createElement(USDCFromSepolia, size, customClass),
-        WETH: createElement(WETHFromSepolia, size, customClass),
-      };
+      if (isNative) {
+        return {
+          DAI: createCustomFt(Sepolia, DAI, size),
+          USDC: createCustomFt(Sepolia, USDC, size),
+          WETH: createCustomFt(Sepolia, WETH, size),
+        };
+      } else {
+        return {
+          DAI: createCustomFt(SepoliaBridged, DAI, size),
+          USDC: createCustomFt(SepoliaBridged, USDC, size),
+          WETH: createCustomFt(SepoliaBridged, WETH, size),
+        };
+      }
     default:
       return {};
   }
