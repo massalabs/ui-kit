@@ -1,4 +1,4 @@
-import { Eth, Toast, WETH, createCustomFt, toast } from '..';
+import { Eth, Toast, WETH, createBridgedFt, toast } from '..';
 import { Mns } from './Mns';
 
 export default {
@@ -11,7 +11,7 @@ export const _Mns = {
       <Mns mns="massasockette" />
       <br />
 
-      <Mns mns="customicon" icon={createCustomFt(Eth, WETH, 24)} />
+      <Mns mns="customicon" icon={createBridgedFt(Eth, WETH, 24)} />
       <br />
 
       <Mns mns="customcss" className="p-4 bg-brand" />

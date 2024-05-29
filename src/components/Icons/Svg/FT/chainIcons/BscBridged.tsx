@@ -11,7 +11,7 @@ export function BscBridged(props: SVGProps) {
     <svg
       width={size || 22}
       height={size || 22}
-      viewBox="0 0 12 12"
+      viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...rest}

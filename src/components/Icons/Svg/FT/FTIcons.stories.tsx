@@ -11,7 +11,7 @@ import { EthBridged } from './chainIcons/EthBridged';
 
 import { BscBridged } from './chainIcons/BscBridged';
 import { Bsc } from './chainIcons/Bsc';
-import { createCustomFt, createNativeFt, getAssetIcons } from './tokenIcons';
+import { createBridgedFt, createNativeFt, getAssetIcons } from './tokenIcons';
 import { bsc, mainnet, sepolia } from 'viem/chains';
 export default { title: 'Icons/FT' };
 
@@ -58,8 +58,8 @@ export const _FT = {
         </h2>
         <div className="flex gap-2">
           <div className="flex flex-wrap gap-4">
-            {createCustomFt(Bsc, BNB)}
-            {createCustomFt(Eth, DAI)}
+            {createBridgedFt(Bsc, BNB)}
+            {createBridgedFt(Eth, DAI)}
           </div>
         </div>
 

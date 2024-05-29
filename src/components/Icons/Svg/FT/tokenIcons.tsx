@@ -22,7 +22,7 @@ interface FtIconProps {
   size?: number;
 }
 
-export function createCustomFt(
+export function createBridgedFt(
   ChainIcon: React.FC<ChainIconProps>,
   FtIcon: React.FC<FtIconProps>,
   size?: number,
@@ -120,7 +120,7 @@ function getTokenIcons(
     );
 
     return Object.keys(tokenIcons).reduce((icons, token) => {
-      icons[token] = createCustomFt(ChainIcon, tokenIcons[token], size);
+      icons[token] = createBridgedFt(ChainIcon, tokenIcons[token], size);
       return icons;
     }, {} as { [key: string]: React.ReactNode });
   }
