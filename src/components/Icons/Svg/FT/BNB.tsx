@@ -8,14 +8,14 @@ export function BNB(props: SVGProps) {
   let { size, ...rest } = props;
   return (
     <svg
-      width={size ?? 44}
-      height={size ?? 44}
+      width={size ?? 20}
+      height={size ?? 20}
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
-      <g clip-path="url(#clip0_6150_47790)">
+      <g clipPath="url(#clip0_6150_47790)">
         <path
           d="M10 0.00012207C15.5234 0.00012207 20 4.47767 20 10.0001C20 15.5235 15.5234 20.0001 10 20.0001C4.47754 20.0001 0 15.523 0 10.0001C0 4.47767 4.47754 0.00012207 10 0.00012207Z"
           fill="#F5AC37"
