@@ -5,7 +5,7 @@ import { SVGProps } from './svgInterface';
 
 /* eslint-disable max-len */
 export function BNB(props: SVGProps) {
-  let { size } = props;
+  let { size, ...rest } = props;
   return (
     <svg
       width={size ?? 44}
@@ -13,6 +13,7 @@ export function BNB(props: SVGProps) {
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...rest}
     >
       <g clip-path="url(#clip0_6150_47790)">
         <path

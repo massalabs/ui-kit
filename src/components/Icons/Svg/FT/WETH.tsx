@@ -5,7 +5,7 @@ import { SVGProps } from './svgInterface';
 
 /* eslint-disable max-len */
 export function WETH(props: SVGProps) {
-  const { size } = props;
+  const { size, ...rest } = props;
   return (
     <svg
       width={size ?? 44}
@@ -13,6 +13,7 @@ export function WETH(props: SVGProps) {
       viewBox="0 0 64 64"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
+      {...rest}
     >
       <g id="weth" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g>

@@ -44,7 +44,7 @@ export function Balance(props: BalanceProps) {
       data-testid="balance"
       className={`flex items-center w-fit ${customClass}`}
     >
-      {icon}
+      <div className="mr-4">{icon}</div>
       <label
         data-testid="balance-amount"
         className={`${sizeClass} text-f-primary`}

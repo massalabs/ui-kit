@@ -1,36 +1,39 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import { ReactNode } from 'react';
 import { bsc, bscTestnet, mainnet, sepolia } from 'viem/chains';
 import { MassaLogo } from '../Massa';
+import { BNB, DAI, USDC, FT1, WMAS, WETH, SVGProps } from '.';
 import {
-  BNB,
-  DAIFromBSC,
-  USDCFromBSC,
-  WETHFromBSC,
-  DAI,
-  USDC,
-  FT1,
-  DAIFromEthereum,
-  USDCFromEthereum,
-  WETHFromEthereum,
-  DAIFromSepolia,
-  USDCFromSepolia,
-  WETHFromSepolia,
-  WMAS,
-  WETH,
-} from '.';
+  Bsc,
+  BscBridged,
+  Eth,
+  EthBridged,
+  Sepolia,
+  SepoliaBridged,
+} from '../ChainIcons';
 
-const createElement = (
-  Component: React.FC<{ size?: number }>,
+export function createBridgedFt(
+  ChainIcon: React.FC<SVGProps>,
+  FtIcon: React.FC<SVGProps>,
   size?: number,
-  customClass = '',
-) => (
-  <div className={customClass}>
-    <Component size={size} />
-  </div>
-);
+) {
+  return (
+    <div className="flex flex-col-reverse relative h-fit">
+      <div
+        className={`flex flex-col-reverse items-end justify-end absolute w-[115%] h-[115%] `}
+      >
+        <ChainIcon size={size && size / 2} className="absolute" />
+      </div>
+      <FtIcon size={size} />
+    </div>
+  );
+}
+
+export function createNativeFt(FtIcon: React.FC<SVGProps>, size?: number) {
+  return <FtIcon size={size} />;
+}
 
 /**
  * Return the icon of the asset.
@@ -38,26 +41,26 @@ const createElement = (
  *
  * @param symbol of the token
  * @param originChainId chain id where the token comes from, undefined will return the native token with no badge
+ * @param isNative if the token is native or bridged
  * @param size size of the icon
- * @param customClass custom class to apply to the icon
  * @returns
  */
 export function getAssetIcons(
   symbol: string,
   originChainId?: number,
+  isNative = true,
   size?: number,
-  customClass = '',
 ): ReactNode {
   const icons = {
     // Native
-    BNB: createElement(BNB, size, customClass),
-    DAI: createElement(DAI, size, customClass),
-    USDC: createElement(USDC, size, customClass),
-    WETH: createElement(WETH, size, customClass),
-    WMAS: createElement(WMAS, size, customClass),
-    MAS: <MassaLogo size={size} className={customClass} />,
+    BNB: createNativeFt(BNB, size),
+    DAI: createNativeFt(DAI, size),
+    USDC: createNativeFt(USDC, size),
+    WETH: createNativeFt(WETH, size),
+    WMAS: createNativeFt(WMAS, size),
+    MAS: <MassaLogo size={size} />,
     // Overwrite
-    ...getTokenIcons(originChainId, size, customClass),
+    ...getTokenIcons(isNative, originChainId, size),
   };
 
   if (symbol in icons) {
@@ -67,32 +70,41 @@ export function getAssetIcons(
   }
 }
 
+type ChainConfig = {
+  native: React.FC<SVGProps>;
+  bridged: React.FC<SVGProps>;
+};
+
+const chainConfig: Record<number, ChainConfig> = {
+  [bsc.id]: { native: Bsc, bridged: BscBridged },
+  [bscTestnet.id]: { native: Bsc, bridged: BscBridged },
+  [mainnet.id]: { native: Eth, bridged: EthBridged },
+  [sepolia.id]: { native: Sepolia, bridged: SepoliaBridged },
+};
+
+const tokenIcons: { [key: string]: (props: SVGProps) => JSX.Element } = {
+  DAI: DAI,
+  USDC: USDC,
+  WETH: WETH,
+  BNB: BNB,
+};
+
 function getTokenIcons(
+  isNative: boolean,
   originChainId?: number,
   size?: number,
-  customClass = '',
 ) {
-  switch (originChainId) {
-    case bsc.id:
-    case bscTestnet.id:
-      return {
-        DAI: createElement(DAIFromBSC, size, customClass),
-        USDC: createElement(USDCFromBSC, size, customClass),
-        WETH: createElement(WETHFromBSC, size, customClass),
-      };
-    case mainnet.id:
-      return {
-        DAI: createElement(DAIFromEthereum, size, customClass),
-        USDC: createElement(USDCFromEthereum, size, customClass),
-        WETH: createElement(WETHFromEthereum, size, customClass),
-      };
-    case sepolia.id:
-      return {
-        DAI: createElement(DAIFromSepolia, size, customClass),
-        USDC: createElement(USDCFromSepolia, size, customClass),
-        WETH: createElement(WETHFromSepolia, size, customClass),
-      };
-    default:
-      return {};
+  if (originChainId && chainConfig[originChainId]) {
+    const ChainIcon = isNative
+      ? chainConfig[originChainId].native
+      : chainConfig[originChainId].bridged;
+
+    return Object.fromEntries(
+      Object.keys(tokenIcons).map((token) => [
+        token,
+        createBridgedFt(ChainIcon, tokenIcons[token], size),
+      ]),
+    );
   }
+  return {};
 }
