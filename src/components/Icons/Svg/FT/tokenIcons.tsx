@@ -4,7 +4,7 @@ import React, { ComponentPropsWithoutRef } from 'react';
 import { ReactNode } from 'react';
 import { bsc, bscTestnet, mainnet, sepolia } from 'viem/chains';
 import { MassaLogo } from '../Massa';
-import { BNB, DAI, USDC, FT1, WMAS, WETH } from '.';
+import { BNB, DAI, USDC, FT1, WMAS, WETH, SVGProps } from '.';
 import {
   Bsc,
   BscBridged,
@@ -82,58 +82,47 @@ export function getAssetIcons(
   }
 }
 
+type ChainConfig = {
+  native: React.FC<ChainIconProps>;
+  bridged: React.FC<ChainIconProps>;
+};
+
+const chainConfig: Record<number, ChainConfig> = {
+  [bsc.id]: { native: Bsc, bridged: BscBridged },
+  [bscTestnet.id]: { native: Bsc, bridged: BscBridged },
+  [mainnet.id]: { native: Eth, bridged: EthBridged },
+  [sepolia.id]: { native: Sepolia, bridged: SepoliaBridged },
+};
+
+const tokenIcons: { [key: string]: (props: SVGProps) => JSX.Element } = {
+  DAI: DAI,
+  USDC: USDC,
+  WETH: WETH,
+  BNB: BNB,
+};
+
 function getTokenIcons(
   isNative: boolean,
   originChainId?: number,
   size?: number,
 ) {
-  switch (originChainId) {
-    case bsc.id:
-    case bscTestnet.id:
-      if (isNative) {
-        return {
-          DAI: createCustomFt(Bsc, DAI, size),
-          USDC: createCustomFt(Bsc, USDC, size),
-          WETH: createCustomFt(Bsc, WETH, size),
-          BNB: createCustomFt(Bsc, BNB, size),
-        };
-      } else {
-        return {
-          DAI: createCustomFt(BscBridged, DAI, size),
-          USDC: createCustomFt(BscBridged, USDC, size),
-          WETH: createCustomFt(BscBridged, WETH, size),
-          BNB: createCustomFt(BscBridged, BNB, size),
-        };
-      }
-    case mainnet.id:
-      if (isNative) {
-        return {
-          DAI: createCustomFt(Eth, DAI, size),
-          USDC: createCustomFt(Eth, USDC, size),
-          WETH: createCustomFt(Eth, WETH, size),
-        };
-      } else {
-        return {
-          DAI: createCustomFt(EthBridged, DAI, size),
-          USDC: createCustomFt(EthBridged, USDC, size),
-          WETH: createCustomFt(EthBridged, WETH, size),
-        };
-      }
-    case sepolia.id:
-      if (isNative) {
-        return {
-          DAI: createCustomFt(Sepolia, DAI, size),
-          USDC: createCustomFt(Sepolia, USDC, size),
-          WETH: createCustomFt(Sepolia, WETH, size),
-        };
-      } else {
-        return {
-          DAI: createCustomFt(SepoliaBridged, DAI, size),
-          USDC: createCustomFt(SepoliaBridged, USDC, size),
-          WETH: createCustomFt(SepoliaBridged, WETH, size),
-        };
-      }
-    default:
-      return {};
+  const getChainIcon = (
+    nativeChain: React.FC<any>,
+    bridgedChain: React.FC<any>,
+  ) => {
+    return isNative ? nativeChain : bridgedChain;
+  };
+
+  if (originChainId && chainConfig[originChainId]) {
+    const ChainIcon = getChainIcon(
+      chainConfig[originChainId].native,
+      chainConfig[originChainId].bridged,
+    );
+
+    return Object.keys(tokenIcons).reduce((icons, token) => {
+      icons[token] = createCustomFt(ChainIcon, tokenIcons[token], size);
+      return icons;
+    }, {} as { [key: string]: React.ReactNode });
   }
+  return {};
 }
