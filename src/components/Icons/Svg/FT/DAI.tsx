@@ -5,7 +5,7 @@ import { SVGProps } from './svgInterface';
 
 /* eslint-disable max-len */
 export function DAI(props: SVGProps) {
-  const { size } = props;
+  const { size, ...rest } = props;
   return (
     <svg
       width={size ?? 44}
@@ -13,6 +13,7 @@ export function DAI(props: SVGProps) {
       viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"
       fill="#000000"
+      {...rest}
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0" />
       <g

@@ -5,7 +5,7 @@ import { SVGProps } from './svgInterface';
 
 /* eslint-disable max-len */
 export function USDC(props: SVGProps) {
-  const { size } = props;
+  const { size, ...rest } = props;
   return (
     <svg
       width={size ?? 44}
@@ -13,6 +13,7 @@ export function USDC(props: SVGProps) {
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...rest}
     >
       <g clipPath="url(#clip0_5187_4272)">
         <g clipPath="url(#clip1_5187_4272)">

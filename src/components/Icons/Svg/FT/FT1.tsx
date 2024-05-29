@@ -1,13 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React, { ComponentPropsWithoutRef } from 'react';
-
-interface SVGProps extends ComponentPropsWithoutRef<'div'> {
-  size?: number;
-}
+import { SVGProps } from './svgInterface';
 
 export function FT1(props: SVGProps) {
-  const { size } = props;
+  const { size, ...rest } = props;
   return (
     <svg
       width={size || 40}
@@ -15,6 +12,7 @@ export function FT1(props: SVGProps) {
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...rest}
     >
       <circle cx="20" cy="20" r="20" fill="#FF0000" />
       <path

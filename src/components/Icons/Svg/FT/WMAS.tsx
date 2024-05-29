@@ -4,7 +4,7 @@ import React from 'react';
 import { SVGProps } from './svgInterface';
 
 export function WMAS(props: SVGProps) {
-  const { size } = props;
+  const { size, ...rest } = props;
   return (
     <svg
       width={size ?? 44}
@@ -12,6 +12,7 @@ export function WMAS(props: SVGProps) {
       viewBox="0 0 42 42"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...rest}
     >
       <path
         d="M20.5333 41.265C31.4676 41.265 40.3316 32.401 40.3316 
