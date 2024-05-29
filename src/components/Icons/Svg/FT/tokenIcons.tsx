@@ -32,11 +32,7 @@ export function createBridgedFt(
 }
 
 export function createNativeFt(FtIcon: React.FC<SVGProps>, size?: number) {
-  return (
-    <>
-      <FtIcon size={size} />
-    </>
-  );
+  return <FtIcon size={size} />;
 }
 
 /**
@@ -45,8 +41,8 @@ export function createNativeFt(FtIcon: React.FC<SVGProps>, size?: number) {
  *
  * @param symbol of the token
  * @param originChainId chain id where the token comes from, undefined will return the native token with no badge
+ * @param isNative if the token is native or bridged
  * @param size size of the icon
- * @param customClass custom class to apply to the icon
  * @returns
  */
 export function getAssetIcons(
@@ -98,23 +94,17 @@ function getTokenIcons(
   originChainId?: number,
   size?: number,
 ) {
-  const getChainIcon = (
-    nativeChain: React.FC<SVGProps>,
-    bridgedChain: React.FC<SVGProps>,
-  ) => {
-    return isNative ? nativeChain : bridgedChain;
-  };
-
   if (originChainId && chainConfig[originChainId]) {
-    const ChainIcon = getChainIcon(
-      chainConfig[originChainId].native,
-      chainConfig[originChainId].bridged,
-    );
+    const ChainIcon = isNative
+      ? chainConfig[originChainId].native
+      : chainConfig[originChainId].bridged;
 
-    return Object.keys(tokenIcons).reduce((icons, token) => {
-      icons[token] = createBridgedFt(ChainIcon, tokenIcons[token], size);
-      return icons;
-    }, {} as { [key: string]: React.ReactNode });
+    return Object.fromEntries(
+      Object.keys(tokenIcons).map((token) => [
+        token,
+        createBridgedFt(ChainIcon, tokenIcons[token], size),
+      ]),
+    );
   }
   return {};
 }
