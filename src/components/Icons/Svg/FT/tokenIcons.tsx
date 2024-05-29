@@ -14,17 +14,9 @@ import {
   SepoliaBridged,
 } from './chainIcons';
 
-interface ChainIconProps extends ComponentPropsWithoutRef<'svg'> {
-  size?: number;
-}
-
-interface FtIconProps {
-  size?: number;
-}
-
 export function createBridgedFt(
-  ChainIcon: React.FC<ChainIconProps>,
-  FtIcon: React.FC<FtIconProps>,
+  ChainIcon: React.FC<SVGProps>,
+  FtIcon: React.FC<SVGProps>,
   size?: number,
 ) {
   return (
@@ -39,7 +31,7 @@ export function createBridgedFt(
   );
 }
 
-export function createNativeFt(FtIcon: React.FC<FtIconProps>, size?: number) {
+export function createNativeFt(FtIcon: React.FC<SVGProps>, size?: number) {
   return (
     <>
       <FtIcon size={size} />
@@ -83,8 +75,8 @@ export function getAssetIcons(
 }
 
 type ChainConfig = {
-  native: React.FC<ChainIconProps>;
-  bridged: React.FC<ChainIconProps>;
+  native: React.FC<SVGProps>;
+  bridged: React.FC<SVGProps>;
 };
 
 const chainConfig: Record<number, ChainConfig> = {
@@ -107,8 +99,8 @@ function getTokenIcons(
   size?: number,
 ) {
   const getChainIcon = (
-    nativeChain: React.FC<any>,
-    bridgedChain: React.FC<any>,
+    nativeChain: React.FC<SVGProps>,
+    bridgedChain: React.FC<SVGProps>,
   ) => {
     return isNative ? nativeChain : bridgedChain;
   };
