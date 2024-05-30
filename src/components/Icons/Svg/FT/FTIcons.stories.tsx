@@ -65,66 +65,65 @@ export const _FT = {
         </div>
 
         <h2 className="text-neutral">Mapping native token</h2>
-        <div className="flex gap-2">
-          <div className="flex flex-wrap gap-4">
-            {symbolList.map((symbol: string) => {
-              return getAssetIcons(symbol);
-            })}
-          </div>
+
+        <div className="flex flex-wrap gap-4">
+          {symbolList.map((symbol: string, index: number) => {
+            return <div key={index}>{getAssetIcons(symbol)}</div>;
+          })}
         </div>
 
         <h2 className="text-neutral">Mapping bsc token list</h2>
-        <div className="flex gap-2">
-          <div className="flex flex-wrap gap-4">
-            {bscSymbolList.map((symbol: string) => {
-              return getAssetIcons(symbol, bsc.id);
-            })}
-          </div>
-        </div>
 
-        <h2 className="text-neutral">Mapping eth token list</h2>
-        <div className="flex gap-2">
-          <div className="flex flex-wrap gap-4">
-            {ethSymbolList.map((symbol: string) => {
-              return getAssetIcons(symbol, mainnet.id);
-            })}
-          </div>
-        </div>
-
-        <h2 className="text-neutral">Mapping sepolia token list</h2>
-        <div className="flex gap-2">
-          <div className="flex flex-wrap gap-4">
-            {ethSymbolList.map((symbol: string) => {
-              return getAssetIcons(symbol, sepolia.id);
-            })}
-          </div>
+        <div className="flex flex-wrap gap-4">
+          {bscSymbolList.map((symbol: string, index: number) => {
+            return <div key={index}> {getAssetIcons(symbol, bsc.id)}</div>;
+          })}
         </div>
 
         <h2 className="text-neutral">Mapping bridged bsc token list</h2>
-        <div className="flex gap-2">
-          <div className="flex flex-wrap gap-4">
-            {bscSymbolList.map((symbol: string) => {
-              return getAssetIcons(symbol, bsc.id, false);
-            })}
-          </div>
+
+        <div className="flex flex-wrap gap-4">
+          {bscSymbolList.map((symbol: string, index: number) => {
+            return (
+              <div key={index}> {getAssetIcons(symbol, bsc.id, false)} </div>
+            );
+          })}
+        </div>
+
+        <h2 className="text-neutral">Mapping eth token list</h2>
+
+        <div className="flex flex-wrap gap-4">
+          {ethSymbolList.map((symbol: string, index) => {
+            return <div key={index}> {getAssetIcons(symbol, mainnet.id)} </div>;
+          })}
         </div>
 
         <h2 className="text-neutral">Mapping bridged eth token list</h2>
-        <div className="flex gap-2">
-          <div className="flex flex-wrap gap-4">
-            {ethSymbolList.map((symbol: string) => {
-              return getAssetIcons(symbol, mainnet.id, false);
-            })}
-          </div>
+
+        <div className="flex flex-wrap gap-4">
+          {ethSymbolList.map((symbol: string, index: number) => {
+            return (
+              <div key={index}>{getAssetIcons(symbol, mainnet.id, false)} </div>
+            );
+          })}
+        </div>
+
+        <h2 className="text-neutral">Mapping sepolia token list</h2>
+
+        <div className="flex flex-wrap gap-4">
+          {ethSymbolList.map((symbol: string, index: number) => {
+            return <div key={index}>{getAssetIcons(symbol, sepolia.id)}</div>;
+          })}
         </div>
 
         <h2 className="text-neutral">Mapping bridged sepolia token list</h2>
-        <div className="flex gap-2">
-          <div className="flex flex-wrap gap-4">
-            {ethSymbolList.map((symbol: string) => {
-              return getAssetIcons(symbol, sepolia.id, false);
-            })}
-          </div>
+
+        <div className="flex flex-wrap gap-4">
+          {ethSymbolList.map((symbol: string, index: number) => {
+            return (
+              <div key={index}>{getAssetIcons(symbol, sepolia.id, false)}</div>
+            );
+          })}
         </div>
       </div>
     </>
