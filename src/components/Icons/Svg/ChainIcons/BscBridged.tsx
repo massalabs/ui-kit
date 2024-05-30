@@ -9,9 +9,9 @@ export function BscBridged(props: SVGProps) {
   const { size, ...rest } = props;
   return (
     <svg
-      width={size || 22}
-      height={size || 22}
-      viewBox="0 0 14 14"
+      width={size || 12}
+      height={size || 12}
+      viewBox="0 0 12 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...rest}

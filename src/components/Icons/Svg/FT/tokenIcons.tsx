@@ -22,7 +22,7 @@ export function createBridgedFt(
   return (
     <div className="flex flex-col-reverse relative h-fit">
       <div
-        className={`flex flex-col-reverse items-end justify-end absolute w-[115%] h-[115%] `}
+        className={`flex flex-col-reverse items-end justify-end absolute w-[120%] h-[120%] `}
       >
         <ChainIcon size={size && size / 2} className="absolute" />
       </div>

@@ -9,14 +9,14 @@ export function EthBridged(props: SVGProps) {
   const { size, ...rest } = props;
   return (
     <svg
-      width={size || 22}
-      height={size || 22}
-      viewBox="0 0 14 14"
+      width={size || 12}
+      height={size || 12}
+      viewBox="0 0 12 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
-      <g clip-path="url(#clip0_6250_50977)">
+      <g clipPath="url(#clip0_6250_50977)">
         <path
           d="M5.6835 2.36841L5.63174 2.54832V7.76844L5.6835 7.82128L8.05117 6.38898L5.6835 2.36841Z"
           fill="white"
