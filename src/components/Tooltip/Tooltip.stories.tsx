@@ -14,7 +14,10 @@ export const _Tooltip = {
 export const _TooltipCustomIcon = {
   render: () => (
     <>
-      <Tooltip body={<p>Hello I am tooltip content</p>}>
+      <Tooltip
+        customIconColor="text-s-error"
+        body={<p>Hello I am tooltip content</p>}
+      >
         <FiAirplay size={48} className="text-s-warning" />
       </Tooltip>
     </>
