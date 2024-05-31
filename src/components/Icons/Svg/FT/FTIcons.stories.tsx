@@ -13,11 +13,12 @@ import { BscBridged } from '../ChainIcons/BscBridged';
 import { Bsc } from '../ChainIcons/Bsc';
 import { createBridgedFt, createNativeFt, getAssetIcons } from './tokenIcons';
 import { bsc, mainnet, sepolia } from 'viem/chains';
+import { USDT } from './USDT';
 export default { title: 'Icons/FT' };
 
 const symbolList = ['DAI', 'BNB', 'USDC', 'FT1', 'WMAS', 'WETH'];
 
-const bscSymbolList = ['DAI', 'BNB', 'USDC', 'WETH'];
+const bscSymbolList = ['DAI', 'BNB', 'USDC', 'WETH', 'USDT'];
 
 const ethSymbolList = ['DAI', 'USDC', 'WETH'];
 
@@ -33,6 +34,7 @@ export const _FT = {
           <FT1 />
           <WMAS />
           <WETH />
+          <USDT />
         </div>
 
         <h2 className="text-neutral">Base Chain Icons</h2>
