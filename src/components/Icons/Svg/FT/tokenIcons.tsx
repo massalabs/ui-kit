@@ -14,6 +14,27 @@ import {
   SepoliaBridged,
 } from '../ChainIcons';
 
+export const mapSymbolWithoutExtension = {
+  'WETH.e': 'WETH',
+  'WETH.s': 'WETH',
+  'WETH.b': 'WETH',
+  'WETH.bt': 'WETH',
+  'USDC.e': 'USDC',
+  'USDC.s': 'USDC',
+  'USDT.b': 'USDT',
+  'USDT.bt': 'USDT',
+  'DAI.e': 'DAI',
+  'tDAI.s': 'DAI',
+  tDAI: 'DAI',
+};
+
+export const tokenExtensionToChainId = {
+  e: mainnet.id,
+  s: sepolia.id,
+  b: bsc.id,
+  bt: bscTestnet.id,
+};
+
 export function createBridgedFt(
   ChainIcon: React.FC<SVGProps>,
   FtIcon: React.FC<SVGProps>,
@@ -51,6 +72,23 @@ export function getAssetIcons(
   isNative = true,
   size?: number,
 ): ReactNode {
+  // retrieve the icon of the token
+  const extension = getExtension(symbol);
+  if (!originChainId && extension && extension in tokenExtensionToChainId) {
+    originChainId =
+      tokenExtensionToChainId[
+        extension as keyof typeof tokenExtensionToChainId
+      ];
+  }
+
+  // remove the extension from the symbol or map to the correct symbol (eg. tDAI -> DAI)
+  if (symbol in mapSymbolWithoutExtension) {
+    symbol =
+      mapSymbolWithoutExtension[
+        symbol as keyof typeof mapSymbolWithoutExtension
+      ];
+  }
+
   const icons = {
     // Native
     BNB: createNativeFt(BNB, size),
@@ -64,6 +102,7 @@ export function getAssetIcons(
     ...getTokenIcons(isNative, originChainId, size),
   };
 
+  // return the icon
   if (symbol in icons) {
     return icons[symbol as keyof typeof icons];
   } else {
@@ -109,4 +148,8 @@ function getTokenIcons(
     );
   }
   return {};
+}
+
+function getExtension(symbol: string) {
+  return symbol.split('.').pop();
 }
