@@ -22,6 +22,20 @@ const bscSymbolList = ['DAI', 'BNB', 'USDC', 'WETH', 'USDT'];
 
 const ethSymbolList = ['DAI', 'USDC', 'WETH'];
 
+const allSymbols = [
+  'WETH.e',
+  'WETH.s',
+  'WETH.b',
+  'WETH.bt',
+  'USDC.e',
+  'USDC.s',
+  'USDT.b',
+  'USDT.bt',
+  'DAI.e',
+  'tDAI.s',
+  'tDAI',
+];
+
 export const _FT = {
   render: () => (
     <>
@@ -124,6 +138,34 @@ export const _FT = {
           {ethSymbolList.map((symbol: string, index: number) => {
             return (
               <div key={index}>{getAssetIcons(symbol, sepolia.id, false)}</div>
+            );
+          })}
+        </div>
+      </div>
+    </>
+  ),
+};
+
+export const _FT2 = {
+  render: () => (
+    <>
+      <div className="flex flex-col gap-6">
+        <h2 className="text-neutral">Guess the origin chain from the symbol</h2>
+
+        <div className="flex flex-wrap gap-4">
+          {allSymbols.map((symbol: string, index: number) => {
+            return <div key={index}>{getAssetIcons(symbol)}</div>;
+          })}
+        </div>
+
+        <h2 className="text-neutral">
+          Guess the origin chain from the symbol, bridged
+        </h2>
+
+        <div className="flex flex-wrap gap-4">
+          {allSymbols.map((symbol: string, index: number) => {
+            return (
+              <div key={index}>{getAssetIcons(symbol, undefined, false)}</div>
             );
           })}
         </div>

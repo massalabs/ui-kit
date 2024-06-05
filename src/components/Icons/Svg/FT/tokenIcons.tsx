@@ -72,19 +72,6 @@ export function getAssetIcons(
   isNative = true,
   size?: number,
 ): ReactNode {
-  const icons = {
-    // Native
-    BNB: createNativeFt(BNB, size),
-    DAI: createNativeFt(DAI, size),
-    USDC: createNativeFt(USDC, size),
-    WETH: createNativeFt(WETH, size),
-    WMAS: createNativeFt(WMAS, size),
-    USDT: createNativeFt(USDT, size),
-    MAS: <MassaLogo size={size} />,
-    // Overwrite
-    ...getTokenIcons(isNative, originChainId, size),
-  };
-
   // retrieve the icon of the token
   const extension = getExtension(symbol);
   if (!originChainId && extension && extension in tokenExtensionToChainId) {
@@ -101,6 +88,19 @@ export function getAssetIcons(
         symbol as keyof typeof mapSymbolWithoutExtension
       ];
   }
+
+  const icons = {
+    // Native
+    BNB: createNativeFt(BNB, size),
+    DAI: createNativeFt(DAI, size),
+    USDC: createNativeFt(USDC, size),
+    WETH: createNativeFt(WETH, size),
+    WMAS: createNativeFt(WMAS, size),
+    USDT: createNativeFt(USDT, size),
+    MAS: <MassaLogo size={size} />,
+    // Overwrite
+    ...getTokenIcons(isNative, originChainId, size),
+  };
 
   // return the icon
   if (symbol in icons) {
