@@ -7,7 +7,7 @@ export interface FormattedAmount {
   amountFormattedFull: string;
 }
 
-function removeTrailingZeros(numStr: string): string {
+export function removeTrailingZeros(numStr: string): string {
   return numStr.replace(/\.?0+$/, '');
 }
 
