@@ -1,19 +1,13 @@
-import { BNB } from './BNB';
-import { DAI } from './DAI';
-import { USDC } from './USDC';
-import { FT1 } from './FT1';
-import { WMAS } from './WMAS';
-import { WETH } from './WETH';
 import { Sepolia } from '../ChainIcons/Sepolia';
 import { SepoliaBridged } from '../ChainIcons/SepoliaBridged';
 import { Eth } from '../ChainIcons/Eth';
 import { EthBridged } from '../ChainIcons/EthBridged';
-
 import { BscBridged } from '../ChainIcons/BscBridged';
 import { Bsc } from '../ChainIcons/Bsc';
 import { createBridgedFt, createNativeFt, getAssetIcons } from './tokenIcons';
 import { bsc, mainnet, sepolia } from 'viem/chains';
-import { USDT } from './USDT';
+import { BNB, DAI, USDC, USDT, FT1, WMAS, WETH, PUR } from '.';
+
 export default { title: 'Icons/FT' };
 
 const symbolList = ['DAI', 'BNB', 'USDC', 'FT1', 'WMAS', 'WETH'];
@@ -21,6 +15,8 @@ const symbolList = ['DAI', 'BNB', 'USDC', 'FT1', 'WMAS', 'WETH'];
 const bscSymbolList = ['DAI', 'BNB', 'USDC', 'WETH', 'USDT'];
 
 const ethSymbolList = ['DAI', 'USDC', 'WETH'];
+
+const massaTokenList = ['PUR'];
 
 const allSymbols = [
   'WETH.e',
@@ -49,6 +45,7 @@ export const _FT = {
           <WMAS />
           <WETH />
           <USDT />
+          <PUR />
         </div>
 
         <h2 className="text-neutral">Base Chain Icons</h2>
@@ -139,6 +136,13 @@ export const _FT = {
             return (
               <div key={index}>{getAssetIcons(symbol, sepolia.id, false)}</div>
             );
+          })}
+        </div>
+
+        <h2 className="text-neutral">Massa tokens</h2>
+        <div className="flex flex-wrap gap-4">
+          {massaTokenList.map((symbol: string, index: number) => {
+            return <div key={index}>{getAssetIcons(symbol)}</div>;
           })}
         </div>
       </div>
