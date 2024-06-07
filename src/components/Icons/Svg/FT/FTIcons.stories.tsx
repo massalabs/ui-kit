@@ -16,7 +16,7 @@ const bscSymbolList = ['DAI', 'BNB', 'USDC', 'WETH', 'USDT'];
 
 const ethSymbolList = ['DAI', 'USDC', 'WETH'];
 
-const purrfectTokenList = ['PUR'];
+const massaTokenList = ['PUR'];
 
 const allSymbols = [
   'WETH.e',
@@ -139,9 +139,9 @@ export const _FT = {
           })}
         </div>
 
-        <h2 className="text-neutral">Purrfect token</h2>
+        <h2 className="text-neutral">Massa tokens</h2>
         <div className="flex flex-wrap gap-4">
-          {purrfectTokenList.map((symbol: string, index: number) => {
+          {massaTokenList.map((symbol: string, index: number) => {
             return <div key={index}>{getAssetIcons(symbol)}</div>;
           })}
         </div>
