@@ -136,8 +136,8 @@ export function roundDecimalPartToOneSignificantDigit(
 }
 
 export function formatAmountToDisplay(
-  amount: string,
-  tokenDecimal: number,
+  amount: string | undefined,
+  tokenDecimal: number | undefined,
 ): FormattedAmount {
   if (!tokenDecimal || !amount) {
     return {
