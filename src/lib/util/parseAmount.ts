@@ -1,22 +1,7 @@
 import currency from 'currency.js';
-import { formatValue } from 'react-currency-input-field';
-import { formatUnits, parseUnits } from 'viem';
+import { parseUnits } from 'viem';
 
-export interface FormattedAmount {
-  amountFormattedPreview: string;
-  amountFormattedFull: string;
-}
-
-export function removeTrailingZeros(numStr: string): string {
-  return numStr.replace(/\.?0+$/, '');
-}
-
-// Like format amount but remove the trailing zeros
-export function formatStandard(amount: string, decimals = 9): string {
-  return removeTrailingZeros(
-    formatAmount(amount, decimals).amountFormattedFull,
-  );
-}
+// Parse
 
 /**
  * reverse format FT amount
@@ -25,35 +10,23 @@ export function parseAmount(amount: string, tokenDecimal: number): bigint {
   return parseUnits(amount, tokenDecimal);
 }
 
-export function formatFTAmount(
-  bigintBalance: bigint,
-  decimals: number,
-): FormattedAmount {
-  const amountFormattedPreview = formatValue({
-    value: formatUnits(bigintBalance, decimals).toString(),
-    groupSeparator: ',',
-    decimalSeparator: '.',
-    decimalScale: 2,
-  });
-
-  const amountFormattedFull = formatValue({
-    value: formatUnits(bigintBalance, decimals).toString(),
-    groupSeparator: ',',
-    decimalSeparator: '.',
-    decimalScale: decimals,
-  });
-
-  return {
-    amountFormattedPreview,
-    amountFormattedFull,
-  };
+// Format
+export interface FormattedAmount {
+  preview: string;
+  full: string;
 }
 
+// Format the amount, parameter must be a string in the smallest unit or a bigint
 export function formatAmount(
-  amount: string,
+  amount: string | bigint,
   decimals = 9,
   separator = ',',
 ): FormattedAmount {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (typeof amount === 'bigint') {
+    amount = amount.toString();
+  }
+  amount = amount as string;
   const decimal = '.';
 
   if (amount.length < decimals) {
@@ -70,83 +43,82 @@ export function formatAmount(
     precision: 0,
   }).format();
 
-  let amountFormattedPreview: string;
+  let preview: string;
   if (formattedIntegerPart === '0' && decimalPart.startsWith('00')) {
-    amountFormattedPreview = `${formattedIntegerPart}${decimal}${roundDecimalPartToOneSignificantDigit(
+    preview = `${formattedIntegerPart}${decimal}${roundDecimalPartToTwoSignificantDigit(
       decimalPart,
     )}`;
   } else {
-    amountFormattedPreview = currency(
-      `${formattedIntegerPart}${decimal}${decimalPart}`,
-      {
-        separator: separator,
-        decimal: decimal,
-        symbol: '',
-      },
-    ).format();
+    preview = currency(`${formattedIntegerPart}${decimal}${decimalPart}`, {
+      separator,
+      decimal,
+      symbol: '',
+    }).format();
   }
 
   return {
-    amountFormattedPreview,
-    amountFormattedFull: `${formattedIntegerPart}${decimal}${decimalPart}`,
+    preview: removeTrailingZeros(preview),
+    full: removeTrailingZeros(
+      `${formattedIntegerPart}${decimal}${decimalPart}`,
+    ),
   };
 }
 
+// Internal functions
+
+// Internal function to pad a string with zeros
 function padWithZeros(input: string, length: number): string {
   return input.padStart(length, '0');
 }
 
-export function roundDecimalPartToOneSignificantDigit(
+// Internal function to remove trailing zeros
+function removeTrailingZeros(numStr: string): string {
+  return numStr.replace(/\.?0+$/, '');
+}
+
+const leadingZeroes = /^0+/;
+
+function removeLeadingZeros(numStr: string): string {
+  return numStr.replace(leadingZeroes, '');
+}
+
+// Internal function to round the decimal part to significant digit
+export function roundDecimalPartToTwoSignificantDigit(
   decimalPart: string,
 ): string {
   function countLeadingZeros(str: string) {
     // Match leading zeros using a regular expression
-    const result = str.match(/^0+/);
+    const result = str.match(leadingZeroes);
 
     // If the result isn't null (meaning there are leading zeros), return the length, otherwise return 0
     return result ? result[0].length : 0;
   }
 
   // Strip leading zeroes
-  const significantPart = decimalPart.replace(/^0+/, '');
+  const significantPart = removeLeadingZeros(decimalPart);
 
   if (significantPart === '') {
     // Input is all zeroes
     return '0';
   }
 
-  // The first digit of the significant part is our significant digit
-  const firstDigit = significantPart[0];
-
-  // Determine if we need to round up
-  const shouldRoundUp =
-    significantPart.length > 1 && parseInt(significantPart[1]) >= 5;
-
-  // Prepare the significant digit after rounding if necessary
-  const roundedDigit = shouldRoundUp
-    ? (parseInt(firstDigit) + 1).toString()
-    : firstDigit;
+  const formattedByCurrency = currency(`0.${significantPart}`, {
+    separator: '',
+    decimal: '.',
+    symbol: '',
+  }).format({
+    // precision option is not taken in account
+    // https://github.com/scurker/currency.js/issues/293
+    decimal: '',
+  });
+  const trimmedZero = removeLeadingZeros(
+    removeTrailingZeros(formattedByCurrency),
+  );
 
   // If rounding causes a carry-over (e.g. 0.009 -> 0.01), handle it
-  if (roundedDigit === '10') {
-    return '0'.repeat(countLeadingZeros(decimalPart) - 1) + roundedDigit[0];
+  if (formattedByCurrency.startsWith('1.')) {
+    return '0'.repeat(countLeadingZeros(decimalPart) - 1) + trimmedZero;
   }
 
-  return '0'.repeat(countLeadingZeros(decimalPart)) + roundedDigit;
-}
-
-export function formatAmountToDisplay(
-  amount: string | undefined,
-  tokenDecimal: number | undefined,
-): FormattedAmount {
-  if (!tokenDecimal || !amount) {
-    return {
-      amountFormattedFull: '0',
-      amountFormattedPreview: '0',
-    };
-  }
-  // parsing to Bigint to get correct amount
-  const amt = parseUnits(amount, tokenDecimal);
-  // formatting it to string for display
-  return formatAmount(amt.toString(), tokenDecimal);
+  return '0'.repeat(countLeadingZeros(decimalPart)) + trimmedZero;
 }

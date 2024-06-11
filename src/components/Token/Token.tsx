@@ -6,7 +6,7 @@ import { FiTrash2 } from 'react-icons/fi';
 import { Button } from '../Button';
 import { Tooltip } from '../Tooltip';
 import { DollarValue } from '../DollarValue';
-import { formatFTAmount } from '../../lib/util/parseAmount';
+import { formatAmount } from '../../lib/util/parseAmount';
 
 export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   logo?: React.ReactNode;
@@ -41,12 +41,9 @@ export function Token(props: TokenProps) {
   let bigintBalance = BigInt(0);
   if (balance !== '') {
     bigintBalance = BigInt(balance);
-    const { amountFormattedPreview, amountFormattedFull } = formatFTAmount(
-      bigintBalance,
-      decimals,
-    );
-    rawBalance = amountFormattedFull;
-    formattedBalance = amountFormattedPreview;
+    const { preview, full } = formatAmount(bigintBalance, decimals);
+    rawBalance = full;
+    formattedBalance = preview;
   } else {
     formattedBalance = undefined;
     rawBalance = undefined;

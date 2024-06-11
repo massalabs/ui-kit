@@ -29,7 +29,7 @@ export function MASBalance() {
   const formattedBalance = formatAmount(
     fromMAS(balance?.candidateBalance || '0').toString(),
     9,
-  ).amountFormattedFull;
+  ).full;
 
   return (
     <div className="flex gap-2 mas-body">

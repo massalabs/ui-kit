@@ -4,7 +4,7 @@ import React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { Tooltip } from '../Tooltip';
-import { formatFTAmount, parseAmount } from '../../lib/util/parseAmount';
+import { formatAmount, parseAmount } from '../../lib/util/parseAmount';
 
 export interface DollarValueProps extends ComponentPropsWithoutRef<'p'> {
   dollarValue?: string;
@@ -31,9 +31,7 @@ export function DollarValue(props: DollarValueProps) {
 
   let dollarValueFormatted = '';
   if (dollarValue !== undefined && dollarValue !== '') {
-    const dollarValueBigInt = parseAmount(dollarValue, 2);
-    const { amountFormattedPreview } = formatFTAmount(dollarValueBigInt, 2);
-    dollarValueFormatted = amountFormattedPreview;
+    dollarValueFormatted = formatAmount(parseAmount(dollarValue, 2), 2).preview;
   }
 
   if (dollarValue !== undefined && dollarValue !== '') {
