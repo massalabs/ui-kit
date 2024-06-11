@@ -12,7 +12,7 @@ describe('handlePercent', () => {
       18,
       'ETH',
     );
-    expect(result).toBe('0.250000000000000000');
+    expect(result).toBe('0.25');
   });
 
   it('should return correctly formatted amount when symbol is massaToken and newAmount is within balance', () => {
@@ -24,7 +24,7 @@ describe('handlePercent', () => {
       9,
       massaToken,
     );
-    expect(result).toBe('0.500000000');
+    expect(result).toBe('0.5');
   });
 
   it('should return 0 when balance minus fees is less than 0', () => {
@@ -36,7 +36,7 @@ describe('handlePercent', () => {
       9,
       massaToken,
     );
-    expect(result).toBe('0.000000000');
+    expect(result).toBe('0');
   });
 
   it('should return balance minus fees when newAmount exceeds balance', () => {
@@ -48,11 +48,11 @@ describe('handlePercent', () => {
       9,
       massaToken,
     );
-    expect(result).toBe('0.900000000');
+    expect(result).toBe('0.9');
   });
 
   it('should handle zero amount correctly', () => {
     const result = handlePercent(0n, 10n, 0n, 1000n, 9, massaToken);
-    expect(result).toBe('0.000000000');
+    expect(result).toBe('0');
   });
 });
