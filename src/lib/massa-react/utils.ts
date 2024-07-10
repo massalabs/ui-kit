@@ -1,4 +1,3 @@
-import { Client } from '@massalabs/massa-web3';
 import { IAccount, IAccountBalanceResponse } from '@massalabs/wallet-provider';
 
 import {
@@ -9,25 +8,18 @@ import {
 import Intl from './i18n';
 import { toast } from '../../components';
 
-export function logSmartContractEvents(
-  client: Client,
+import { Operation, PublicAPI } from '@massalabs/massa-web3';
+
+export async function logSmartContractEvents(
+  client: PublicAPI,
   operationId: string,
-): void {
-  client
-    .smartContracts()
-    .getFilteredScOutputEvents({
-      emitter_address: null,
-      start: null,
-      end: null,
-      original_caller_address: null,
-      original_operation_id: operationId,
-      is_final: null,
-    })
-    .then((events) => {
-      events.map((l) =>
-        console.error(`opId ${operationId}: execution error ${l.data}`),
-      );
-    });
+): Promise<void> {
+  const op = new Operation(client, operationId);
+  const event = await op.getFinalEvents();
+
+  for (const e of event) {
+    console.error(`opId ${operationId}: ${e}`);
+  }
 }
 
 export function generateExplorerLink(opId: string, isMainnet = true): string {

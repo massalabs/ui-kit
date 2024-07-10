@@ -1,6 +1,4 @@
-import { Client, ClientFactory } from '@massalabs/massa-web3';
 import { IAccount, IProvider } from '@massalabs/wallet-provider';
-
 import { SUPPORTED_MASSA_WALLETS } from '../../massa-react/const';
 
 async function handleBearbyAccountChange(
@@ -24,7 +22,6 @@ async function handleBearbyAccountChange(
 
 export interface AccountStoreState {
   connectedAccount?: IAccount;
-  massaClient?: Client;
   accounts?: IAccount[];
   currentProvider?: IProvider;
   providers: IProvider[];
@@ -41,7 +38,6 @@ export interface AccountStoreState {
   setProviders: (providers: IProvider[]) => void;
 
   setConnectedAccount: (account?: IAccount) => void;
-  refreshMassaClient: () => void;
 }
 
 const accountStore = (
@@ -52,7 +48,6 @@ const accountStore = (
   connectedAccount: undefined,
   accountObserver: undefined,
   networkObserver: undefined,
-  massaClient: undefined,
   currentProvider: undefined,
   providers: [],
   isFetching: false,
@@ -81,7 +76,6 @@ const accountStore = (
       if (!get().networkObserver) {
         const networkObserver = currentProvider.listenNetworkChanges(
           async () => {
-            get().refreshMassaClient();
             set({ chainId: await currentProvider.getChainId() });
           },
         );
@@ -151,7 +145,6 @@ const accountStore = (
     // if current provider is not in the new list of providers, unset it
     if (!providers.some((p) => p.name() === get().currentProvider?.name())) {
       set({
-        massaClient: undefined,
         currentProvider: undefined,
         connectedAccount: undefined,
         accounts: undefined,
@@ -165,29 +158,12 @@ const accountStore = (
     if (connectedAccount) {
       const currentProvider = get().currentProvider;
       if (!currentProvider) throw new Error('No provider found');
-      const provider = currentProvider;
-      // update the massa client with the new account
-      set({
-        massaClient: await ClientFactory.fromWalletProvider(
-          provider,
-          connectedAccount,
-        ),
-      });
     }
   },
 
   refreshMassaClient: async () => {
     const provider = get().currentProvider;
     if (!provider) return;
-
-    const connectedAccount = get().connectedAccount;
-    if (!connectedAccount) return;
-    set({
-      massaClient: await ClientFactory.fromWalletProvider(
-        provider,
-        connectedAccount,
-      ),
-    });
   },
 });
 

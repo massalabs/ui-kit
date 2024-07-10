@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
+    "@massalabs/massa-web3": "^5.0.0-next",
     "copy-to-clipboard": "^3.3.3",
     "currency.js": "^2.0.4",
     "minidenticons": "^4.2.1",
@@ -41,7 +42,6 @@
     "zustand": "^4.5.2"
   },
   "peerDependencies": {
-    "@massalabs/massa-web3": "^4.0.3-dev",
     "@massalabs/wallet-provider": "^2.0.1-dev",
     "@types/dot-object": "^2.1.6",
     "dot-object": "^2.1.5"
