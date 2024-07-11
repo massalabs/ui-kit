@@ -43,7 +43,6 @@
     "vite-plugin-svgr": "^3.2.0",
     "zustand": "^4.5.2"
   },
-  "peerDependencies": {},
   "devDependencies": {
     "@babel/preset-env": "^7.21.4",
     "@babel/preset-flow": "^7.21.4",
