@@ -50,6 +50,7 @@ export function useWriteSmartContract(
     targetFunction: string,
     targetAddress: string,
     parameter: Uint8Array,
+    messages: ToasterMessage,
     coins = BigInt(0),
   ): Promise<bigint> {
     try {
