@@ -122,7 +122,7 @@ export function useWriteSmartContract(
         );
       } catch (error) {
         console.error('Gas estimation failed:', error);
-        showToast('error', 'Gas estimation failed.');
+        showToast('error', messages.error);
         return;
       }
 
