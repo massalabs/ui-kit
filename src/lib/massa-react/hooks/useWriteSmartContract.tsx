@@ -38,7 +38,6 @@ export function useWriteSmartContract(
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   const [opId, setOpId] = useState<string | undefined>(undefined);
-  const success = OperationStatus.SpeculativeSuccess || OperationStatus.Success;
 
   function resetState() {
     setIsPending(false);
@@ -117,6 +116,7 @@ export function useWriteSmartContract(
     try {
       const publicClient = await clientFromNetwork();
 
+      // TODO - get minimal fee from the network used by the wallet. For now, we are using the massa default node.
       fee = await getMinimalFee(publicClient, fee);
 
       let maxGas = await gasEstimation(
@@ -148,7 +148,11 @@ export function useWriteSmartContract(
       const op = new Operation(publicClient, operationId);
       const finalStatus = await op.waitSpeculativeExecution();
 
-      if (!success) {
+      if (
+        ![OperationStatus.SpeculativeSuccess, OperationStatus.Success].includes(
+          finalStatus,
+        )
+      ) {
         const errorMessage = `Operation failed with status: ${finalStatus}`;
         logSmartContractEvents(publicClient, operationId);
         throw new Error(errorMessage);
@@ -161,7 +165,7 @@ export function useWriteSmartContract(
       setIsError(true);
       showToast(
         'error',
-        messages.timeout || Intl.t('steps.failed-timeout'),
+        messages.error || Intl.t('steps.failed-timeout'),
         opId,
       );
     } finally {
