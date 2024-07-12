@@ -78,13 +78,22 @@ export function useWriteSmartContract(
   ): Promise<bigint> {
     const minimalFee = await publicClient.getMinimalFee();
 
-    if (!fee) {
-      fee = minimalFee;
-    } else if (fee < minimalFee) {
-      throw new Error('Fee is too low');
-    }
-
+    if (!fee || fee < minimalFee) return minimalFee;
     return fee;
+  }
+
+  async function clientFromNetwork() {
+    const network = await provider.getNetwork();
+    switch (network) {
+      case 'buildnet':
+        return JsonRPCClient.buildnet();
+      case 'mainnet':
+        return JsonRPCClient.mainnet();
+      case 'testnet':
+        return JsonRPCClient.testnet();
+      default:
+        throw new Error('Unsupported network');
+    }
   }
 
   async function callSmartContract(
@@ -100,11 +109,13 @@ export function useWriteSmartContract(
     }
 
     resetState();
+    setIsOpPending(true);
 
     let loadingToastId: string | undefined;
 
     try {
-      const publicClient = new JsonRPCClient(await provider.getNetwork());
+      const publicClient = await clientFromNetwork();
+
       fee = await getMinimalFee(publicClient, fee);
 
       let maxGas = await gasEstimation(
@@ -125,7 +136,6 @@ export function useWriteSmartContract(
       )) as ITransactionDetails;
 
       setOpId(operationId);
-      setIsOpPending(true);
 
       loadingToastId = showToast(
         'loading',
