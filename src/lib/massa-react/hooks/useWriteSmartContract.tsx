@@ -109,7 +109,7 @@ export function useWriteSmartContract(
     }
 
     resetState();
-    setIsOpPending(true);
+    setIsPending(true);
 
     let loadingToastId: string | undefined;
 
@@ -137,7 +137,7 @@ export function useWriteSmartContract(
       )) as ITransactionDetails;
 
       setOpId(operationId);
-
+      setIsOpPending(true);
       loadingToastId = showToast(
         'loading',
         messages.pending,
@@ -148,7 +148,18 @@ export function useWriteSmartContract(
       const op = new Operation(publicClient, operationId);
       const finalStatus = await op.waitSpeculativeExecution();
 
-      if (
+      toast.dismiss(loadingToastId);
+      setIsPending(false);
+      setIsOpPending(false);
+
+      if (finalStatus === OperationStatus.NotFound) {
+        setIsError(true);
+        showToast(
+          'success',
+          messages.timeout || Intl.t('steps.failed-timeout'),
+          operationId,
+        );
+      } else if (
         ![OperationStatus.SpeculativeSuccess, OperationStatus.Success].includes(
           finalStatus,
         )
@@ -156,21 +167,14 @@ export function useWriteSmartContract(
         const errorMessage = `Operation failed with status: ${finalStatus}`;
         logSmartContractEvents(publicClient, operationId);
         throw new Error(errorMessage);
+      } else {
+        setIsSuccess(true);
+        showToast('success', messages.success, operationId);
       }
-
-      setIsSuccess(true);
-      showToast('success', messages.success, operationId);
     } catch (error) {
       console.error('Error during smart contract call:', error);
       setIsError(true);
-      showToast(
-        'error',
-        messages.error || Intl.t('steps.failed-timeout'),
-        opId,
-      );
-    } finally {
-      toast.dismiss(loadingToastId);
-      setIsPending(false);
+      showToast('error', messages.error, opId);
     }
     return opId;
   }
