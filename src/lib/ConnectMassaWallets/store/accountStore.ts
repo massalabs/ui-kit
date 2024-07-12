@@ -155,15 +155,6 @@ const accountStore = (
   // set the connected account, and update the massa client
   setConnectedAccount: async (connectedAccount?: IAccount) => {
     set({ connectedAccount });
-    if (connectedAccount) {
-      const currentProvider = get().currentProvider;
-      if (!currentProvider) throw new Error('No provider found');
-    }
-  },
-
-  refreshMassaClient: async () => {
-    const provider = get().currentProvider;
-    if (!provider) return;
   },
 });
 

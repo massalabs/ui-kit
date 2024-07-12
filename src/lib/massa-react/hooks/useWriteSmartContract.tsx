@@ -9,10 +9,12 @@ import {
 } from '@massalabs/wallet-provider';
 import {
   JsonRPCClient,
+  Mas,
   MAX_GAS_CALL,
   Operation,
   OperationStatus,
 } from '@massalabs/massa-web3';
+import { MINIMAL_FEE } from '../const';
 
 interface ToasterMessage {
   pending: string;
@@ -49,7 +51,8 @@ export function useWriteSmartContract(
     targetFunction: string,
     targetAddress: string,
     parameter: Uint8Array,
-    coins = BigInt(0),
+    coins = Mas.fromString('0'),
+    fee = MINIMAL_FEE,
   ): Promise<bigint> {
     try {
       const estimation = await account.readSc(
@@ -57,7 +60,7 @@ export function useWriteSmartContract(
         targetFunction,
         parameter,
         coins,
-        0n,
+        fee,
         MAX_GAS_CALL,
       );
 
@@ -69,27 +72,47 @@ export function useWriteSmartContract(
     }
   }
 
+  async function getMinimalFee(
+    publicClient: JsonRPCClient,
+    fee?: bigint,
+  ): Promise<bigint> {
+    const minimalFee = await publicClient.getMinimalFee();
+
+    if (!fee) {
+      fee = minimalFee;
+    } else if (fee < minimalFee) {
+      throw new Error('Fee is too low');
+    }
+
+    return fee;
+  }
+
   async function callSmartContract(
     targetFunction: string,
     targetAddress: string,
     parameter: Uint8Array,
     messages: ToasterMessage,
-    coins = BigInt(0),
+    coins = Mas.fromString('0'),
+    fee?: bigint,
   ) {
     if (isOpPending) {
       throw new Error('Operation is already pending');
     }
 
+    resetState();
+
     let loadingToastId: string | undefined;
 
     try {
       const publicClient = new JsonRPCClient(await provider.getNetwork());
+      fee = await getMinimalFee(publicClient, fee);
 
       let maxGas = await gasEstimation(
         targetFunction,
         targetAddress,
         parameter,
         coins,
+        fee,
       );
 
       const { operationId } = (await account.callSC(
@@ -97,7 +120,7 @@ export function useWriteSmartContract(
         targetFunction,
         new Uint8Array(parameter),
         coins,
-        0n,
+        fee,
         maxGas,
       )) as ITransactionDetails;
 
@@ -132,8 +155,9 @@ export function useWriteSmartContract(
       );
     } finally {
       toast.dismiss(loadingToastId);
-      resetState();
+      setIsPending(false);
     }
+    return opId;
   }
 
   return {
