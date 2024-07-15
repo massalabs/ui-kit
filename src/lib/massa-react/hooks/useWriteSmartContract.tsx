@@ -1,15 +1,21 @@
 import { useState } from 'react';
-
-import {
-  Client,
-  EOperationStatus,
-  ICallData,
-  MAX_GAS_CALL,
-} from '@massalabs/massa-web3';
-import { toast, ToastContent } from '../../../components';
-import { OperationToast } from '../../ConnectMassaWallets/components/OperationToast';
-import { logSmartContractEvents } from '../utils';
+import { toast } from '../../../components';
+import { logSmartContractEvents, showToast } from '../utils';
 import Intl from '../i18n';
+import {
+  IAccount,
+  IProvider,
+  ITransactionDetails,
+} from '@massalabs/wallet-provider';
+import {
+  JsonRPCClient,
+  Mas,
+  MAX_GAS_CALL,
+  NETWORKS,
+  Operation,
+  OperationStatus,
+} from '@massalabs/massa-web3';
+import { MINIMAL_FEE } from '../const';
 
 interface ToasterMessage {
   pending: string;
@@ -22,140 +28,155 @@ function minBigInt(a: bigint, b: bigint) {
   return a < b ? a : b;
 }
 
-export function useWriteSmartContract(client?: Client, isMainnet?: boolean) {
+export function useWriteSmartContract(
+  account: IAccount,
+  provider: IProvider,
+  isMainnet = false,
+) {
   const [isPending, setIsPending] = useState(false);
   const [isOpPending, setIsOpPending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   const [opId, setOpId] = useState<string | undefined>(undefined);
 
-  function callSmartContract(
+  function resetState() {
+    setIsPending(false);
+    setIsOpPending(false);
+    setIsSuccess(false);
+    setIsError(false);
+    setOpId(undefined);
+  }
+
+  async function gasEstimation(
     targetFunction: string,
     targetAddress: string,
-    parameter: number[],
-    messages: ToasterMessage,
-    coins = BigInt(0),
-  ) {
-    if (!client) {
-      throw new Error('Massa client not found');
+    parameter: Uint8Array,
+    coins = Mas.fromString('0'),
+    fee = MINIMAL_FEE,
+  ): Promise<bigint> {
+    try {
+      const estimation = await account.readSc(
+        targetAddress,
+        targetFunction,
+        parameter,
+        coins,
+        fee,
+        MAX_GAS_CALL,
+      );
+
+      const gasCost = BigInt(estimation.info.gas_cost);
+      return minBigInt(gasCost + (gasCost * 20n) / 100n, MAX_GAS_CALL);
+    } catch (error) {
+      console.error('Gas estimation failed:', error);
+      throw new Error('Failed to estimate gas.');
     }
+  }
+
+  async function getMinimalFee(
+    publicClient: JsonRPCClient,
+    fee?: bigint,
+  ): Promise<bigint> {
+    const minimalFee = await publicClient.getMinimalFee();
+
+    if (!fee || fee < minimalFee) return minimalFee;
+    return fee;
+  }
+
+  async function clientFromNetwork() {
+    const network = await provider.getNetwork();
+    switch (network) {
+      case NETWORKS.buildnet:
+        return JsonRPCClient.buildnet();
+      case NETWORKS.mainnet:
+        return JsonRPCClient.mainnet();
+      case NETWORKS.testnet:
+        return JsonRPCClient.testnet();
+      default:
+        throw new Error('Unsupported network');
+    }
+  }
+
+  async function callSmartContract(
+    targetFunction: string,
+    targetAddress: string,
+    parameter: Uint8Array,
+    messages: ToasterMessage,
+    coins = Mas.fromString('0'),
+    fee?: bigint,
+  ) {
     if (isOpPending) {
       throw new Error('Operation is already pending');
     }
-    setIsSuccess(false);
-    setIsError(false);
-    setIsOpPending(false);
+
+    resetState();
     setIsPending(true);
-    let operationId: string | undefined;
-    let toastId: string | undefined;
 
-    const callData = {
-      targetAddress,
-      targetFunction,
-      parameter,
-      coins,
-    } as ICallData;
+    let loadingToastId: string | undefined;
 
-    client
-      .smartContracts()
-      .readSmartContract(callData)
-      .then((response) => {
-        const gasCost = BigInt(response.info.gas_cost);
-        return minBigInt(gasCost + (gasCost * 20n) / 100n, MAX_GAS_CALL);
-      })
-      .then((maxGas: bigint) => {
-        callData.maxGas = maxGas;
-        return client.smartContracts().callSmartContract(callData);
-      })
-      .then((opId) => {
-        operationId = opId;
-        setOpId(operationId);
-        setIsOpPending(true);
-        toastId = toast.loading(
-          (t) => (
-            <ToastContent t={t}>
-              <OperationToast
-                isMainnet={isMainnet}
-                title={messages.pending}
-                operationId={operationId}
-              />
-            </ToastContent>
-          ),
-          {
-            duration: Infinity,
-          },
-        );
-        return client
-          .smartContracts()
-          .awaitMultipleRequiredOperationStatus(operationId, [
-            EOperationStatus.SPECULATIVE_ERROR,
-            EOperationStatus.FINAL_ERROR,
-            EOperationStatus.FINAL_SUCCESS,
-          ]);
-      })
-      .then((status: EOperationStatus) => {
-        if (status !== EOperationStatus.FINAL_SUCCESS) {
-          throw new Error('Operation failed', { cause: { status } });
-        }
-        setIsSuccess(true);
-        setIsOpPending(false);
-        setIsPending(false);
-        toast.dismiss(toastId);
-        toast.success((t) => (
-          <ToastContent t={t}>
-            <OperationToast
-              isMainnet={isMainnet}
-              title={messages.success}
-              operationId={operationId}
-            />
-          </ToastContent>
-        ));
-      })
-      .catch((error) => {
-        console.error(error);
-        toast.dismiss(toastId);
+    try {
+      const publicClient = await clientFromNetwork();
+
+      // TODO - get minimal fee from the network used by the wallet. For now, we are using the massa default node.
+      fee = await getMinimalFee(publicClient, fee);
+
+      let maxGas = await gasEstimation(
+        targetFunction,
+        targetAddress,
+        parameter,
+        coins,
+        fee,
+      );
+
+      const { operationId } = (await account.callSC(
+        targetAddress,
+        targetFunction,
+        new Uint8Array(parameter),
+        coins,
+        fee,
+        maxGas,
+      )) as ITransactionDetails;
+
+      setOpId(operationId);
+      setIsOpPending(true);
+      loadingToastId = showToast(
+        'loading',
+        messages.pending,
+        operationId,
+        isMainnet,
+      );
+
+      const op = new Operation(publicClient, operationId);
+      const finalStatus = await op.waitSpeculativeExecution();
+
+      toast.dismiss(loadingToastId);
+      setIsPending(false);
+      setIsOpPending(false);
+
+      if (finalStatus === OperationStatus.NotFound) {
         setIsError(true);
-        setIsOpPending(false);
-        setIsPending(false);
-
-        if (!operationId) {
-          console.error('Operation ID not found');
-          toast.error((t) => (
-            <ToastContent t={t}>
-              <OperationToast isMainnet={isMainnet} title={messages.error} />
-            </ToastContent>
-          ));
-          return;
-        }
-
-        if (
-          [
-            EOperationStatus.FINAL_ERROR,
-            EOperationStatus.SPECULATIVE_ERROR,
-          ].includes(error.cause?.status)
-        ) {
-          toast.error((t) => (
-            <ToastContent t={t}>
-              <OperationToast
-                isMainnet={isMainnet}
-                title={messages.error}
-                operationId={operationId}
-              />
-            </ToastContent>
-          ));
-          logSmartContractEvents(client, operationId);
-        } else {
-          toast.error((t) => (
-            <ToastContent t={t}>
-              <OperationToast
-                isMainnet={isMainnet}
-                title={messages.timeout || Intl.t('steps.failed-timeout')}
-                operationId={operationId}
-              />
-            </ToastContent>
-          ));
-        }
-      });
+        showToast(
+          'success',
+          messages.timeout || Intl.t('steps.failed-timeout'),
+          operationId,
+        );
+      } else if (
+        ![OperationStatus.SpeculativeSuccess, OperationStatus.Success].includes(
+          finalStatus,
+        )
+      ) {
+        const errorMessage = `Operation failed with status: ${finalStatus}`;
+        logSmartContractEvents(publicClient, operationId);
+        throw new Error(errorMessage);
+      } else {
+        setIsSuccess(true);
+        showToast('success', messages.success, operationId);
+      }
+    } catch (error) {
+      console.error('Error during smart contract call:', error);
+      setIsError(true);
+      showToast('error', messages.error, opId);
+    }
+    return opId;
   }
 
   return {

@@ -1,4 +1,3 @@
-import { Client } from '@massalabs/massa-web3';
 import { IAccount, IAccountBalanceResponse } from '@massalabs/wallet-provider';
 
 import {
@@ -7,27 +6,22 @@ import {
   MASSA_EXPLORER_URL,
 } from './const';
 import Intl from './i18n';
-import { toast } from '../../components';
+import { toast, ToastContent } from '../../components';
 
-export function logSmartContractEvents(
-  client: Client,
+import { Operation, PublicAPI } from '@massalabs/massa-web3';
+import { Toast } from 'react-hot-toast';
+import { OperationToast } from '../ConnectMassaWallets/components/OperationToast';
+
+export async function logSmartContractEvents(
+  client: PublicAPI,
   operationId: string,
-): void {
-  client
-    .smartContracts()
-    .getFilteredScOutputEvents({
-      emitter_address: null,
-      start: null,
-      end: null,
-      original_caller_address: null,
-      original_operation_id: operationId,
-      is_final: null,
-    })
-    .then((events) => {
-      events.map((l) =>
-        console.error(`opId ${operationId}: execution error ${l.data}`),
-      );
-    });
+): Promise<void> {
+  const op = new Operation(client, operationId);
+  const event = await op.getFinalEvents();
+
+  for (const e of event) {
+    console.error(`opId ${operationId}: ${e}`);
+  }
 }
 
 export function generateExplorerLink(opId: string, isMainnet = true): string {
@@ -68,5 +62,31 @@ export async function fetchMASBalance(
     console.error('Error while retrieving balance: ', error);
     toast.error(Intl.t('balance.error'));
     return { finalBalance: '0', candidateBalance: '0' };
+  }
+}
+
+export function showToast(
+  type: 'loading' | 'error' | 'success',
+  message: string,
+  operationId?: string,
+  isMainnet?: boolean,
+  duration = 5000,
+) {
+  const content = (t: Toast) => (
+    <ToastContent t={t}>
+      <OperationToast
+        isMainnet={isMainnet}
+        title={message}
+        operationId={operationId}
+      />
+    </ToastContent>
+  );
+
+  if (type === 'loading') {
+    return toast.loading(content, { duration: Infinity });
+  } else if (type === 'error') {
+    toast.error(content, { duration });
+  } else {
+    toast.success(content, { duration });
   }
 }
