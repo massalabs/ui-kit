@@ -101,6 +101,7 @@ export const _FT = {
               <div key={index}> {getAssetIcons(symbol, bsc.id, false)} </div>
             );
           })}
+          <div> {getAssetIcons('ETH', bsc.id, false)} </div>
         </div>
 
         <h2 className="text-neutral">Mapping eth token list</h2>

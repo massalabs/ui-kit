@@ -127,6 +127,7 @@ const tokenIcons: { [key: string]: (props: SVGProps) => JSX.Element } = {
   DAI: DAI,
   USDC: USDC,
   WETH: WETH,
+  ETH: WETH, // On BSC, ETH wrapped token is named ETH
   BNB: BNB,
   USDT: USDT,
 };
