@@ -8,15 +8,15 @@ import {
 import Intl from './i18n';
 import { toast, ToastContent } from '../../components';
 
-import { Operation, PublicAPI } from '@massalabs/massa-web3';
+import { Operation, Provider } from '@massalabs/massa-web3';
 import { Toast } from 'react-hot-toast';
 import { OperationToast } from '../ConnectMassaWallets/components/OperationToast';
 
 export async function logSmartContractEvents(
-  client: PublicAPI,
+  provider: Provider,
   operationId: string,
 ): Promise<void> {
-  const op = new Operation(client, operationId);
+  const op = new Operation(provider, operationId);
   const event = await op.getFinalEvents();
 
   for (const e of event) {

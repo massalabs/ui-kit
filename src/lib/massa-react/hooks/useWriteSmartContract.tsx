@@ -8,12 +8,13 @@ import {
   ITransactionDetails,
 } from '@massalabs/wallet-provider';
 import {
+  Account,
   JsonRPCClient,
   Mas,
   MAX_GAS_CALL,
-  NETWORKS,
   Operation,
   OperationStatus,
+  Web3Provider,
 } from '@massalabs/massa-web3';
 import { MINIMAL_FEE } from '../const';
 
@@ -86,15 +87,19 @@ export function useWriteSmartContract(
     return fee;
   }
 
-  async function clientFromNetwork() {
+  async function getClientAndProvider(account: Account) {
     const network = await provider.getNetwork();
     switch (network) {
-      case NETWORKS.buildnet:
-        return JsonRPCClient.buildnet();
-      case NETWORKS.mainnet:
-        return JsonRPCClient.mainnet();
-      case NETWORKS.testnet:
-        return JsonRPCClient.testnet();
+      case 'buildnet':
+        return {
+          publicClient: JsonRPCClient.buildnet(),
+          provider: Web3Provider.newPublicBuildnetProvider(account),
+        };
+      case 'mainnet':
+        return {
+          publicClient: JsonRPCClient.mainnet(),
+          provider: Web3Provider.newPublicMainnetProvider(account),
+        };
       default:
         throw new Error('Unsupported network');
     }
@@ -118,7 +123,7 @@ export function useWriteSmartContract(
     let loadingToastId: string | undefined;
 
     try {
-      const publicClient = await clientFromNetwork();
+      const { publicClient, provider } = await getClientAndProvider(account);
 
       // TODO - get minimal fee from the network used by the wallet. For now, we are using the massa default node.
       fee = await getMinimalFee(publicClient, fee);
@@ -149,7 +154,7 @@ export function useWriteSmartContract(
         isMainnet,
       );
 
-      const op = new Operation(publicClient, operationId);
+      const op = new Operation(provider, operationId);
       const finalStatus = await op.waitSpeculativeExecution();
 
       toast.dismiss(loadingToastId);
@@ -169,7 +174,7 @@ export function useWriteSmartContract(
         )
       ) {
         const errorMessage = `Operation failed with status: ${finalStatus}`;
-        logSmartContractEvents(publicClient, operationId);
+        logSmartContractEvents(provider, operationId);
         throw new Error(errorMessage);
       } else {
         setIsSuccess(true);
