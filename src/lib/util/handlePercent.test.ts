@@ -1,4 +1,4 @@
-import { fromMAS } from '@massalabs/web3-utils';
+import { Mas } from '@massalabs/massa-web3';
 import { massaToken } from '../massa-react/const';
 import { handlePercent } from './handlePercent';
 
@@ -19,7 +19,7 @@ describe('handlePercent', () => {
     const result = handlePercent(
       1000000000n,
       50n,
-      fromMAS(0.1),
+      Mas.fromString('0.1'),
       1000000000000n,
       9,
       massaToken,
@@ -31,7 +31,7 @@ describe('handlePercent', () => {
     const result = handlePercent(
       1000000000n,
       100n,
-      fromMAS(30000),
+      Mas.fromString('30000'),
       2000n,
       9,
       massaToken,
@@ -43,7 +43,7 @@ describe('handlePercent', () => {
     const result = handlePercent(
       1000000000n,
       100n,
-      fromMAS(0.1),
+      Mas.fromString('0.1'),
       1000000000n,
       9,
       massaToken,

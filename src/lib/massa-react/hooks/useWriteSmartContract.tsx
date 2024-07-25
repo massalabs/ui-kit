@@ -64,7 +64,11 @@ export function useWriteSmartContract(
         MAX_GAS_CALL,
       );
 
-      const gasCost = BigInt(estimation.info.gas_cost);
+      // Todo - Fix wallet provider to return right readSc interface
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const gasCost = BigInt(estimation.info.result[0].gas_cost);
+
       return minBigInt(gasCost + (gasCost * 20n) / 100n, MAX_GAS_CALL);
     } catch (error) {
       console.error('Gas estimation failed:', error);
