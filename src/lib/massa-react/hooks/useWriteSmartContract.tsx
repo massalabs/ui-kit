@@ -11,7 +11,6 @@ import {
   JsonRPCClient,
   Mas,
   MAX_GAS_CALL,
-  NETWORKS,
   Operation,
   OperationStatus,
 } from '@massalabs/massa-web3';
@@ -89,11 +88,11 @@ export function useWriteSmartContract(
   async function clientFromNetwork() {
     const network = await provider.getNetwork();
     switch (network) {
-      case NETWORKS.buildnet:
+      case 'buildnet':
         return JsonRPCClient.buildnet();
-      case NETWORKS.mainnet:
+      case 'mainnet':
         return JsonRPCClient.mainnet();
-      case NETWORKS.testnet:
+      case 'testnet':
         return JsonRPCClient.testnet();
       default:
         throw new Error('Unsupported network');
