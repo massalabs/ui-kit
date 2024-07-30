@@ -50,7 +50,7 @@ export const _ConnectMassaWallet = {
     <AssetSelector
       selectedAsset={selectedAsset}
       assets={assets}
-      setSelectedAsset={console.log}
+      onAssetChange={console.log}
       isAssetsLoading={false}
     />
   ),

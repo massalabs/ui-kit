@@ -1,39 +1,18 @@
-import { useEffect } from 'react';
-
 import { Dropdown, getAssetIcons, IOption } from '../../components';
-
 import Intl from './i18n';
 import { formatAmount } from '../util/parseAmount';
 import { Asset } from './models/AssetModel';
 
 interface AssetSelectorProps {
   selectedAsset: Asset | undefined;
-  setSelectedAsset: (asset: Asset) => void;
+  onAssetChange: (asset: Asset) => void;
   selectSymbol?: string;
   assets: Asset[] | undefined;
   isAssetsLoading: boolean;
 }
 
 export function AssetSelector(props: AssetSelectorProps) {
-  const {
-    selectedAsset,
-    setSelectedAsset,
-    selectSymbol,
-    assets,
-    isAssetsLoading,
-  } = props;
-
-  useEffect(() => {
-    if (selectSymbol) {
-      const selectedAsset = assets?.find(
-        (asset) => asset.symbol === selectSymbol,
-      );
-      if (selectedAsset) setSelectedAsset(selectedAsset);
-    }
-    if (!selectedAsset && assets && assets?.length > 0) {
-      setSelectedAsset(assets?.[0]);
-    }
-  }, [assets, setSelectedAsset, selectedAsset, selectSymbol]);
+  const { assets, selectedAsset, onAssetChange, isAssetsLoading } = props;
 
   let options: IOption[] = [];
 
@@ -56,7 +35,7 @@ export function AssetSelector(props: AssetSelectorProps) {
           </div>
         ),
         icon: getAssetIcons(asset.symbol, asset.originChainId, false, 28),
-        onClick: () => setSelectedAsset(asset),
+        onClick: () => onAssetChange(asset),
       };
     });
   }
