@@ -7,9 +7,9 @@ import { Disconnected } from './Disconnected';
 import { useAccountStore } from '../../store';
 
 export function ChainStatus() {
-  const { connectedAccount, currentProvider } = useAccountStore();
+  const { connectedAccount, currentWallet } = useAccountStore();
 
-  const connected = !!connectedAccount && !!currentProvider;
+  const connected = !!connectedAccount && !!currentWallet;
 
   return <>{connected ? <Connected /> : <Disconnected />}</>;
 }

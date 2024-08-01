@@ -18,9 +18,9 @@ export function ConnectedAccount(props: ConnectedAccountProps) {
     <div className="flex flex-col w-full">
       <Clipboard
         customClass="h-14 rounded-lg text-center !mas-body"
-        rawContent={connectedAccount?.address() ?? ''}
+        rawContent={connectedAccount?.address ?? ''}
         displayedContent={maskAddress(
-          connectedAccount?.address() ?? '',
+          connectedAccount?.address ?? '',
           maskLength ?? 15,
         )}
       />

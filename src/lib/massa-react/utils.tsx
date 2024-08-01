@@ -1,5 +1,3 @@
-import { IAccount, IAccountBalanceResponse } from '@massalabs/wallet-provider';
-
 import {
   MASSA_EXPLO_EXTENSION,
   MASSA_EXPLO_URL,
@@ -8,15 +6,15 @@ import {
 import Intl from './i18n';
 import { toast, ToastContent } from '../../components';
 
-import { Operation, PublicAPI } from '@massalabs/massa-web3';
+import { Operation, Provider } from '@massalabs/massa-web3';
 import { Toast } from 'react-hot-toast';
 import { OperationToast } from '../ConnectMassaWallets/components/OperationToast';
 
 export async function logSmartContractEvents(
-  client: PublicAPI,
+  provider: Provider,
   operationId: string,
 ): Promise<void> {
-  const op = new Operation(client, operationId);
+  const op = new Operation(provider, operationId);
   const event = await op.getFinalEvents();
 
   for (const e of event) {
@@ -53,15 +51,13 @@ export function maskNickname(str: string, length = 32): string {
   return str?.substring(0, length) + '...';
 }
 
-export async function fetchMASBalance(
-  account: IAccount,
-): Promise<IAccountBalanceResponse> {
+export async function fetchMASBalance(account: Provider): Promise<bigint> {
   try {
-    return account.balance();
+    return account.balance(true);
   } catch (error) {
     console.error('Error while retrieving balance: ', error);
     toast.error(Intl.t('balance.error'));
-    return { finalBalance: '0', candidateBalance: '0' };
+    return BigInt(0);
   }
 }
 

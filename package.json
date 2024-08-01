@@ -26,8 +26,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
-    "@massalabs/massa-web3": "5.0.0-next.20240715081546",
-    "@massalabs/wallet-provider": "^2.0.1-dev",
+    "@massalabs/massa-web3": "^5.0.0-next",
+    "@massalabs/wallet-provider": "^3.0.0-next",
     "copy-to-clipboard": "^3.3.3",
     "currency.js": "^2.0.4",
     "dot-object": "^2.1.5",

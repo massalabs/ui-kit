@@ -16,19 +16,19 @@ import { MassaWallet, Tooltip } from '../../../components';
 import { SUPPORTED_MASSA_WALLETS } from '../../massa-react/const';
 
 export const ConnectMassaWallet = () => {
-  const { currentProvider, providers, setCurrentProvider, isFetching } =
+  const { currentWallet, providers, setCurrentWallet, isFetching } =
     useAccountStore();
 
   const [selectedProvider, setSelectedProvider] = useState<
     SUPPORTED_MASSA_WALLETS | undefined
-  >(currentProvider?.name() as SUPPORTED_MASSA_WALLETS);
+  >(currentWallet?.name() as SUPPORTED_MASSA_WALLETS);
 
   useEffect(() => {
     const provider = providers.find((p) => p.name() === selectedProvider);
-    if (provider && !currentProvider) {
-      setCurrentProvider(provider);
+    if (provider && !currentWallet) {
+      setCurrentWallet(provider);
     }
-  }, [providers, selectedProvider, currentProvider, setCurrentProvider]);
+  }, [providers, selectedProvider, currentWallet, setCurrentWallet]);
 
   function renderWallet() {
     switch (selectedProvider) {
@@ -70,7 +70,7 @@ export const ConnectMassaWallet = () => {
           setSelectedProvider(providerName);
           const provider = providers.find((p) => p.name() === providerName);
           if (provider) {
-            setCurrentProvider(provider);
+            setCurrentWallet(provider);
           }
         }}
       />
@@ -102,7 +102,7 @@ export const ConnectMassaWallet = () => {
             <SwitchWalletButton
               onClick={() => {
                 setSelectedProvider(undefined);
-                setCurrentProvider();
+                setCurrentWallet();
               }}
             />
           </div>

@@ -4,8 +4,6 @@ import React from 'react';
 
 import { useEffect, useState } from 'react';
 
-import { IAccountBalanceResponse } from '@massalabs/wallet-provider';
-
 import Intl from '../i18n';
 import { useAccountStore } from '../store';
 import { FetchingLine } from '../../../components';
@@ -15,7 +13,7 @@ import { formatAmount } from '../../util/parseAmount';
 import { Mas } from '@massalabs/massa-web3';
 
 export function MASBalance() {
-  const [balance, setBalance] = useState<IAccountBalanceResponse>();
+  const [balance, setBalance] = useState<bigint>();
 
   const { connectedAccount } = useAccountStore();
 
@@ -27,7 +25,7 @@ export function MASBalance() {
   }, [connectedAccount, setBalance]);
 
   const formattedBalance = formatAmount(
-    Mas.fromString(balance?.candidateBalance || '0').toString(),
+    Mas.fromString(balance?.toString() || '0').toString(),
     9,
   ).full;
 
