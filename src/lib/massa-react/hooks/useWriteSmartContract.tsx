@@ -2,13 +2,7 @@ import { useState } from 'react';
 import { toast } from '../../../components';
 import { logSmartContractEvents, showToast } from '../utils';
 import Intl from '../i18n';
-import {
-  Mas,
-  Operation,
-  OperationStatus,
-  Provider,
-} from '@massalabs/massa-web3';
-import { MINIMAL_FEE } from '../const';
+import { Operation, OperationStatus, Provider } from '@massalabs/massa-web3';
 
 interface ToasterMessage {
   pending: string;
@@ -29,8 +23,8 @@ export function useWriteSmartContract(account: Provider, isMainnet = false) {
     targetAddress: string,
     parameter: Uint8Array,
     messages: ToasterMessage,
-    coins = Mas.fromString('0'),
-    fee = MINIMAL_FEE,
+    coins = 0n,
+    fee?: bigint,
   ) {
     if (isOpPending) {
       throw new Error('Operation is already pending');
