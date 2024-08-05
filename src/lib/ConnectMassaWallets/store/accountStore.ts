@@ -1,16 +1,17 @@
-import { IAccount, IProvider } from '@massalabs/wallet-provider';
+import { Provider } from '@massalabs/massa-web3';
 import { SUPPORTED_MASSA_WALLETS } from '../../massa-react/const';
+import { Wallet } from '@massalabs/wallet-provider';
 
 async function handleBearbyAccountChange(
   newAddress: string,
   store: AccountStoreState,
 ) {
-  const { connectedAccount, currentProvider, setConnectedAccount } = store;
+  const { connectedAccount, currentWallet, setConnectedAccount } = store;
 
-  const oldAddress = connectedAccount?.address();
+  const oldAddress = connectedAccount?.address;
 
   if (newAddress !== oldAddress) {
-    const newAccounts = await currentProvider?.accounts();
+    const newAccounts = await currentWallet?.accounts();
 
     if (newAccounts?.length) {
       // Bearby returns only one account
@@ -21,10 +22,10 @@ async function handleBearbyAccountChange(
 }
 
 export interface AccountStoreState {
-  connectedAccount?: IAccount;
-  accounts?: IAccount[];
-  currentProvider?: IProvider;
-  providers: IProvider[];
+  connectedAccount?: Provider;
+  accounts?: Provider[];
+  currentWallet?: Wallet;
+  wallets: Wallet[];
   isFetching: boolean;
   accountObserver?: {
     unsubscribe: () => void;
@@ -34,10 +35,10 @@ export interface AccountStoreState {
   };
   chainId?: bigint;
 
-  setCurrentProvider: (provider?: IProvider) => void;
-  setProviders: (providers: IProvider[]) => void;
+  setCurrentWallet: (wallet?: Wallet) => void;
+  setWallets: (wallets: Wallet[]) => void;
 
-  setConnectedAccount: (account?: IAccount) => void;
+  setConnectedAccount: (account?: Provider) => void;
 }
 
 const accountStore = (
@@ -48,25 +49,25 @@ const accountStore = (
   connectedAccount: undefined,
   accountObserver: undefined,
   networkObserver: undefined,
-  currentProvider: undefined,
-  providers: [],
+  currentWallet: undefined,
+  wallets: [],
   isFetching: false,
   chainId: undefined,
 
-  setCurrentProvider: (currentProvider?: IProvider) => {
+  setCurrentWallet: (currentWallet?: Wallet) => {
     try {
       set({ isFetching: true });
 
-      const previousProvider = get().currentProvider;
+      const previousWallet = get().currentWallet;
 
-      if (previousProvider?.name() !== currentProvider?.name()) {
+      if (previousWallet?.name() !== currentWallet?.name()) {
         get().accountObserver?.unsubscribe();
         get().networkObserver?.unsubscribe();
         set({ accountObserver: undefined, networkObserver: undefined });
       }
-      if (!currentProvider) {
+      if (!currentWallet) {
         set({
-          currentProvider: undefined,
+          currentWallet: undefined,
           connectedAccount: undefined,
           accounts: undefined,
         });
@@ -74,37 +75,37 @@ const accountStore = (
       }
 
       if (!get().networkObserver) {
-        const networkObserver = currentProvider.listenNetworkChanges(
-          async () => {
-            set({ chainId: await currentProvider.getChainId() });
-          },
-        );
+        const networkObserver = currentWallet.listenNetworkChanges(async () => {
+          set({
+            chainId: await currentWallet.networkInfos().then((n) => n.chainId),
+          });
+        });
         set({ networkObserver });
       }
 
-      if (currentProvider?.name() === SUPPORTED_MASSA_WALLETS.BEARBY) {
-        currentProvider
+      if (currentWallet?.name() === SUPPORTED_MASSA_WALLETS.BEARBY) {
+        currentWallet
           .connect()
           .then(() => {
             // get current network
-            currentProvider
-              .getChainId()
-              .then((chainId) => {
-                set({ chainId });
+            currentWallet
+              .networkInfos()
+              .then((infos) => {
+                set({ chainId: infos.chainId });
               })
               .catch((error) => {
                 console.warn('error getting network from bearby', error);
               });
             // subscribe to network events
-            const observer = currentProvider.listenAccountChanges(
+            const observer = currentWallet.listenAccountChanges(
               (newAddress: string) => {
                 handleBearbyAccountChange(newAddress, get());
               },
             );
-            set({ currentProvider, accountObserver: observer });
+            set({ currentWallet, accountObserver: observer });
 
             // get connected account
-            currentProvider
+            currentWallet
               .accounts()
               .then((accounts) => {
                 // bearby expose only 1 account
@@ -121,9 +122,9 @@ const accountStore = (
         return;
       }
 
-      set({ currentProvider });
+      set({ currentWallet });
 
-      currentProvider
+      currentWallet
         .accounts()
         .then((accounts) => {
           set({ accounts });
@@ -132,20 +133,20 @@ const accountStore = (
           get().setConnectedAccount(selectedAccount);
         })
         .catch((error) => {
-          console.warn('error getting accounts from provider', error);
+          console.warn('error getting accounts from wallet', error);
         });
     } finally {
       set({ isFetching: false });
     }
   },
 
-  setProviders: (providers: IProvider[]) => {
-    set({ providers });
+  setWallets: (wallets: Wallet[]) => {
+    set({ wallets });
 
-    // if current provider is not in the new list of providers, unset it
-    if (!providers.some((p) => p.name() === get().currentProvider?.name())) {
+    // if current wallet is not in the new list of wallets, unset it
+    if (!wallets.some((p) => p.name() === get().currentWallet?.name())) {
       set({
-        currentProvider: undefined,
+        currentWallet: undefined,
         connectedAccount: undefined,
         accounts: undefined,
       });
@@ -153,7 +154,7 @@ const accountStore = (
   },
 
   // set the connected account, and update the massa client
-  setConnectedAccount: async (connectedAccount?: IAccount) => {
+  setConnectedAccount: async (connectedAccount?: Provider) => {
     set({ connectedAccount });
   },
 });

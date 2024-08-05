@@ -2,10 +2,9 @@
 // @ts-ignore
 import React from 'react';
 
-import { IAccount } from '@massalabs/wallet-provider';
-
 import { useAccountStore } from '../store';
 import { Dropdown } from '../../../components';
+import { Provider } from '@massalabs/massa-web3';
 
 export function StationSelectAccount() {
   const [accounts, connectedAccount, setConnectedAccount] = useAccountStore(
@@ -17,19 +16,19 @@ export function StationSelectAccount() {
   );
 
   const selectedAccountKey: number = (accounts || []).findIndex(
-    (account) => account.name() === connectedAccount?.name(),
+    (account) => account.accountName === connectedAccount?.accountName,
   );
 
-  const onAccountChange = async (account: IAccount) => {
+  const onAccountChange = async (account: Provider) => {
     setConnectedAccount(account);
   };
 
   return (
     <Dropdown
       select={selectedAccountKey}
-      options={(accounts || []).map((account: IAccount) => {
+      options={(accounts || []).map((account: Provider) => {
         return {
-          item: account.name(),
+          item: account.accountName,
           onClick: () => onAccountChange(account),
         };
       })}

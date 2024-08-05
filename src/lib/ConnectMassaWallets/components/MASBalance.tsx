@@ -4,18 +4,15 @@ import React from 'react';
 
 import { useEffect, useState } from 'react';
 
-import { IAccountBalanceResponse } from '@massalabs/wallet-provider';
-
 import Intl from '../i18n';
 import { useAccountStore } from '../store';
 import { FetchingLine } from '../../../components';
 import { fetchMASBalance } from '../../massa-react/utils';
 import { massaToken } from '../../massa-react/const';
 import { formatAmount } from '../../util/parseAmount';
-import { Mas } from '@massalabs/massa-web3';
 
 export function MASBalance() {
-  const [balance, setBalance] = useState<IAccountBalanceResponse>();
+  const [balance, setBalance] = useState<bigint>();
 
   const { connectedAccount } = useAccountStore();
 
@@ -26,10 +23,7 @@ export function MASBalance() {
     });
   }, [connectedAccount, setBalance]);
 
-  const formattedBalance = formatAmount(
-    Mas.fromString(balance?.candidateBalance || '0').toString(),
-    9,
-  ).full;
+  const formattedBalance = formatAmount(balance?.toString() || '0', 9).full;
 
   return (
     <div className="flex gap-2 mas-body">

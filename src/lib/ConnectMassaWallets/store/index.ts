@@ -1,4 +1,4 @@
-import { ProvidersListener } from '@massalabs/wallet-provider';
+import { WalletsListener } from '@massalabs/wallet-provider';
 import { create } from 'zustand';
 
 import accountStore, { AccountStoreState } from './accountStore';
@@ -8,8 +8,8 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
 }));
 
 async function initAccountStore() {
-  new ProvidersListener(4_000).subscribe((providers) => {
-    useAccountStore.getState().setProviders(providers);
+  new WalletsListener(4_000).subscribe((wallets) => {
+    useAccountStore.getState().setWallets(wallets);
   });
 }
 
