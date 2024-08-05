@@ -25,7 +25,7 @@ export interface AccountStoreState {
   connectedAccount?: Provider;
   accounts?: Provider[];
   currentWallet?: Wallet;
-  providers: Wallet[];
+  wallets: Wallet[];
   isFetching: boolean;
   accountObserver?: {
     unsubscribe: () => void;
@@ -35,8 +35,8 @@ export interface AccountStoreState {
   };
   chainId?: bigint;
 
-  setCurrentWallet: (provider?: Wallet) => void;
-  setProviders: (providers: Wallet[]) => void;
+  setCurrentWallet: (wallet?: Wallet) => void;
+  setWallets: (wallets: Wallet[]) => void;
 
   setConnectedAccount: (account?: Provider) => void;
 }
@@ -50,7 +50,7 @@ const accountStore = (
   accountObserver: undefined,
   networkObserver: undefined,
   currentWallet: undefined,
-  providers: [],
+  wallets: [],
   isFetching: false,
   chainId: undefined,
 
@@ -58,9 +58,9 @@ const accountStore = (
     try {
       set({ isFetching: true });
 
-      const previousProvider = get().currentWallet;
+      const previousWallet = get().currentWallet;
 
-      if (previousProvider?.name() !== currentWallet?.name()) {
+      if (previousWallet?.name() !== currentWallet?.name()) {
         get().accountObserver?.unsubscribe();
         get().networkObserver?.unsubscribe();
         set({ accountObserver: undefined, networkObserver: undefined });
@@ -133,18 +133,18 @@ const accountStore = (
           get().setConnectedAccount(selectedAccount);
         })
         .catch((error) => {
-          console.warn('error getting accounts from provider', error);
+          console.warn('error getting accounts from wallet', error);
         });
     } finally {
       set({ isFetching: false });
     }
   },
 
-  setProviders: (providers: Wallet[]) => {
-    set({ providers });
+  setWallets: (wallets: Wallet[]) => {
+    set({ wallets });
 
-    // if current provider is not in the new list of providers, unset it
-    if (!providers.some((p) => p.name() === get().currentWallet?.name())) {
+    // if current wallet is not in the new list of wallets, unset it
+    if (!wallets.some((p) => p.name() === get().currentWallet?.name())) {
       set({
         currentWallet: undefined,
         connectedAccount: undefined,

@@ -8,8 +8,8 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
 }));
 
 async function initAccountStore() {
-  new WalletsListener(4_000).subscribe((providers) => {
-    useAccountStore.getState().setProviders(providers);
+  new WalletsListener(4_000).subscribe((wallets) => {
+    useAccountStore.getState().setWallets(wallets);
   });
 }
 

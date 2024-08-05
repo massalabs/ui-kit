@@ -25,7 +25,7 @@ export function useWriteSmartContract(account: Provider, isMainnet = false) {
     messages: ToasterMessage,
     coins = 0n,
     fee?: bigint,
-  ) {
+  ): Promise<Operation | undefined> {
     if (isOpPending) {
       throw new Error('Operation is already pending');
     }
@@ -83,12 +83,13 @@ export function useWriteSmartContract(account: Provider, isMainnet = false) {
         setIsSuccess(true);
         showToast('success', messages.success, operation.id);
       }
+
+      return operation;
     } catch (error) {
       console.error('Error during smart contract call:', error);
       setIsError(true);
       showToast('error', messages.error, opId);
     }
-    return opId;
   }
 
   return {
