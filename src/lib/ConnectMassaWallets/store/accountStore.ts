@@ -1,4 +1,6 @@
 import { Provider } from '@massalabs/massa-web3';
+import { create } from 'zustand';
+
 import { SUPPORTED_MASSA_WALLETS } from '../../massa-react/const';
 import { Wallet } from '@massalabs/wallet-provider';
 
@@ -41,10 +43,7 @@ export interface AccountStoreState {
   setConnectedAccount: (account?: Provider) => void;
 }
 
-const accountStore = (
-  set: (params: Partial<AccountStoreState>) => void,
-  get: () => AccountStoreState,
-) => ({
+export const useAccountStore = create<AccountStoreState>((set, get) => ({
   accounts: undefined,
   connectedAccount: undefined,
   accountObserver: undefined,
@@ -157,6 +156,4 @@ const accountStore = (
   setConnectedAccount: async (connectedAccount?: Provider) => {
     set({ connectedAccount });
   },
-});
-
-export default accountStore;
+}));
