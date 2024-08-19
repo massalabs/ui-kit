@@ -39,7 +39,7 @@
     "react-icons": "^4.8.0",
     "react-number-format": "^5.2.2",
     "tw-colors": "^1.2.5",
-    "viem": "^1.5.2",
+    "viem": "^2.19.4",
     "vite-plugin-svgr": "^3.2.0",
     "zustand": "^4.5.2"
   },
