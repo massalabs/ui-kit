@@ -7,4 +7,5 @@ export type Asset = {
   balance?: bigint;
   dollarValue?: string;
   chainId?: number;
+  isDefault?: boolean;
 };
