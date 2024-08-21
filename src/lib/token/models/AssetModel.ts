@@ -1,10 +1,10 @@
-export interface Asset {
+export type Asset = {
   name: string;
-  address?: string;
-  symbol: string;
   decimals: number;
-  balance?: string;
-  isDefault: boolean;
+  symbol: string;
+  address: string;
+  allowance?: bigint;
+  balance?: bigint;
   dollarValue?: string;
-  originChainId?: number;
-}
+  chainId?: number;
+};
