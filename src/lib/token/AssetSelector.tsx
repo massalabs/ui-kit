@@ -34,7 +34,7 @@ export function AssetSelector(props: AssetSelectorProps) {
             )}
           </div>
         ),
-        icon: getAssetIcons(asset.symbol, asset.originChainId, false, 28),
+        icon: getAssetIcons(asset.symbol, asset.chainId, false, 28),
         onClick: () => onAssetChange(asset),
       };
     });

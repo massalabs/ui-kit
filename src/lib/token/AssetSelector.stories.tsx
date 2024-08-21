@@ -10,37 +10,34 @@ export default {
   component: AssetSelector,
 };
 
-const assets = [
+const assets: Asset[] = [
   {
     name: 'Dummy asset',
     address: 'ASBLBLABLA...BLA',
     symbol: 'DAS',
     decimals: 18,
     balance: undefined,
-    isDefault: true,
     dollarValue: undefined,
-    originChainId: 0,
-  } as Asset,
+    chainId: 0,
+  },
   {
     name: 'PUR token',
     address: 'ASBLBLABLA...BLA',
     symbol: 'PUR',
     decimals: 18,
     balance: undefined,
-    isDefault: true,
     dollarValue: undefined,
-    originChainId: 0,
-  } as Asset,
+    chainId: 0,
+  },
   {
     name: 'PUR token',
     address: 'ASBLBLABLA...BLA',
     symbol: 'WETH',
     decimals: 18,
-    balance: '1001000000000000000000',
-    isDefault: true,
+    balance: 1001000000000000000000n,
     dollarValue: undefined,
-    originChainId: mainnet.id,
-  } as Asset,
+    chainId: mainnet.id,
+  },
 ];
 
 const selectedAsset = undefined;
