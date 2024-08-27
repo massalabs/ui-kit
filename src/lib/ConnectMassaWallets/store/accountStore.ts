@@ -1,8 +1,6 @@
 import { Provider } from '@massalabs/massa-web3';
 import { create } from 'zustand';
-
-import { SUPPORTED_MASSA_WALLETS } from '../../massa-react/const';
-import { Wallet } from '@massalabs/wallet-provider';
+import { Wallet, WalletName } from '@massalabs/wallet-provider';
 
 async function handleBearbyAccountChange(
   newAddress: string,
@@ -82,7 +80,7 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
         set({ networkObserver });
       }
 
-      if (currentWallet?.name() === SUPPORTED_MASSA_WALLETS.BEARBY) {
+      if (currentWallet?.name() === WalletName.Bearby) {
         currentWallet
           .connect()
           .then(() => {
