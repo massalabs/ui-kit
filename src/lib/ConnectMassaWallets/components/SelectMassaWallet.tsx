@@ -6,21 +6,21 @@ import { BearbySvg } from './BearbySvg';
 import { Disconnected } from './Status/Disconnected';
 import Intl from '../i18n';
 import { Dropdown, MassaWallet } from '../../../components';
-import { SUPPORTED_MASSA_WALLETS } from '../../massa-react/const';
+import { WalletName } from '@massalabs/wallet-provider';
 
 const walletList = [
   {
-    name: SUPPORTED_MASSA_WALLETS.MASSASTATION,
+    name: WalletName.MassaStation,
     icon: <MassaWallet size={32} />,
   },
   {
-    name: SUPPORTED_MASSA_WALLETS.BEARBY,
+    name: WalletName.Bearby,
     icon: <BearbySvg />,
   },
 ];
 
 interface SelectMassaWalletProps {
-  onClick: (providerName: SUPPORTED_MASSA_WALLETS) => void;
+  onClick: (providerName: WalletName) => void;
 }
 
 const SelectMassaWallet = ({ onClick }: SelectMassaWalletProps) => {
