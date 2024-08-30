@@ -40,9 +40,14 @@ export function AssetSelector(props: AssetSelectorProps) {
     });
   }
 
-  const selectedAssetKey = selectedAsset
+  let selectedAssetKey = selectedAsset
     ? assets?.findIndex((asset) => asset.address === selectedAsset.address) || 0
     : 0;
+
+  if (assets && selectedAssetKey === -1) {
+    selectedAssetKey = 0;
+    onAssetChange(assets[selectedAssetKey]);
+  }
 
   return (
     <Dropdown
