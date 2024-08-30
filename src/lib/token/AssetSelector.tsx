@@ -40,8 +40,8 @@ export function AssetSelector(props: AssetSelectorProps) {
     });
   }
 
-  const selectedAssetKey: number = selectedAsset
-    ? assets?.indexOf(selectedAsset) || 0
+  const selectedAssetKey = selectedAsset
+    ? assets?.findIndex((asset) => asset.address === selectedAsset.address) || 0
     : 0;
 
   return (
