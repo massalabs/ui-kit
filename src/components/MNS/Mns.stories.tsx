@@ -1,4 +1,5 @@
-import { Eth, Toast, WETH, createBridgedFt, toast } from '..';
+import { Toast, toast } from '..';
+import { createBridgedFt, Eth, WETH } from '../Icons';
 import { Mns } from './Mns';
 
 export default {

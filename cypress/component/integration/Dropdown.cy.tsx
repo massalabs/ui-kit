@@ -1,6 +1,7 @@
 import '../../../src/global.css';
-import { Dropdown, MassaLogo } from '../../../src/components';
+import { Dropdown } from '../../../src/components';
 import { compareSnapshot } from '../../compareSnapshot';
+import { MassaLogo } from '../../../src/components/Icons';
 
 describe('Component | Integration | Dropdown', function () {
   describe('Dropdown', () => {

@@ -12,8 +12,9 @@ import { ChainStatus } from './Status/ChainStatus';
 import SwitchWalletButton from './SwitchWalletButton';
 import Intl from '../i18n';
 import { useAccountStore } from '../store';
-import { MassaWallet, Tooltip } from '../../../components';
+import { Tooltip } from '../../../components';
 import { WalletName } from '@massalabs/wallet-provider';
+import { MassaWallet } from '../../../components/Icons';
 
 export const ConnectMassaWallet = () => {
   const { currentWallet, wallets, setCurrentWallet, isFetching } =

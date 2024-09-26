@@ -5,8 +5,9 @@ import React from 'react';
 import { BearbySvg } from './BearbySvg';
 import { Disconnected } from './Status/Disconnected';
 import Intl from '../i18n';
-import { Dropdown, MassaWallet } from '../../../components';
+import { Dropdown } from '../../../components';
 import { WalletName } from '@massalabs/wallet-provider';
+import { MassaWallet } from '../../../components/Icons';
 
 const walletList = [
   {

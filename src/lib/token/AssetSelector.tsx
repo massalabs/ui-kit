@@ -1,7 +1,8 @@
-import { Dropdown, getAssetIcons, IOption } from '../../components';
+import { Dropdown, IOption } from '../../components';
 import Intl from './i18n';
 import { formatAmount } from '../util/parseAmount';
 import { Asset } from './models/AssetModel';
+import { getAssetIcons } from '../../components/Icons';
 
 interface AssetSelectorProps {
   selectedAsset: Asset | undefined;

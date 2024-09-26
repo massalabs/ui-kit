@@ -2,7 +2,8 @@
 // @ts-ignore
 
 import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { MassaLogo, Tag } from '..';
+import { Tag } from '..';
+import { MassaLogo } from '../Icons';
 
 interface MnsProps extends ComponentPropsWithoutRef<'div'> {
   mns: string;
