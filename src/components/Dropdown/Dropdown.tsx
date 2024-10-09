@@ -120,6 +120,7 @@ export function Dropdown(props: DropdownProps) {
       {...rest}
     >
       <button
+        id="dropdownUiKitButton"
         data-testid="dropdown-button"
         onClick={toggleDropdown}
         type="button"
