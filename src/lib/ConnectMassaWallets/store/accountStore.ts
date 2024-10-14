@@ -34,11 +34,13 @@ export interface AccountStoreState {
     unsubscribe: () => void;
   };
   chainId?: bigint;
+  network?: string;
 
   setCurrentWallet: (wallet?: Wallet) => void;
   setWallets: (wallets: Wallet[]) => void;
 
   setConnectedAccount: (account?: Provider) => void;
+  setCurrentNetwork: () => void;
 }
 
 export const useAccountStore = create<AccountStoreState>((set, get) => ({
@@ -50,6 +52,7 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
   wallets: [],
   isFetching: false,
   chainId: undefined,
+  network: undefined,
 
   setCurrentWallet: (currentWallet?: Wallet) => {
     try {
@@ -73,9 +76,7 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
 
       if (!get().networkObserver) {
         const networkObserver = currentWallet.listenNetworkChanges(async () => {
-          set({
-            chainId: await currentWallet.networkInfos().then((n) => n.chainId),
-          });
+          get().setCurrentNetwork();
         });
         set({ networkObserver });
       }
@@ -84,21 +85,13 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
         currentWallet
           .connect()
           .then(() => {
-            // get current network
-            currentWallet
-              .networkInfos()
-              .then((infos) => {
-                set({ chainId: infos.chainId });
-              })
-              .catch((error) => {
-                console.warn('error getting network from bearby', error);
-              });
             // subscribe to network events
             const observer = currentWallet.listenAccountChanges(
               (newAddress: string) => {
                 handleBearbyAccountChange(newAddress, get());
               },
             );
+
             set({ currentWallet, accountObserver: observer });
 
             // get connected account
@@ -120,6 +113,8 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
       }
 
       set({ currentWallet });
+
+      get().setCurrentNetwork();
 
       currentWallet
         .accounts()
@@ -153,5 +148,13 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
   // set the connected account, and update the massa client
   setConnectedAccount: async (connectedAccount?: Provider) => {
     set({ connectedAccount });
+  },
+
+  setCurrentNetwork: () => {
+    get()
+      .currentWallet?.networkInfos()
+      .then((infos) => {
+        set({ chainId: infos.chainId, network: infos.name });
+      });
   },
 }));
