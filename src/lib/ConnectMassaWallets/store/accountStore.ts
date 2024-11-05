@@ -1,25 +1,6 @@
-import { Provider } from '@massalabs/massa-web3';
 import { create } from 'zustand';
+import { Network, Provider } from '@massalabs/massa-web3';
 import { Wallet, WalletName } from '@massalabs/wallet-provider';
-
-async function handleBearbyAccountChange(
-  newAddress: string,
-  store: AccountStoreState,
-) {
-  const { connectedAccount, currentWallet, setConnectedAccount } = store;
-
-  const oldAddress = connectedAccount?.address;
-
-  if (newAddress !== oldAddress) {
-    const newAccounts = await currentWallet?.accounts();
-
-    if (newAccounts?.length) {
-      // Bearby returns only one account
-      const newAccount = newAccounts[0];
-      setConnectedAccount(newAccount);
-    }
-  }
-}
 
 export interface AccountStoreState {
   connectedAccount?: Provider;
@@ -33,128 +14,120 @@ export interface AccountStoreState {
   networkObserver?: {
     unsubscribe: () => void;
   };
-  chainId?: bigint;
-  network?: string;
+  network?: Network;
 
-  setCurrentWallet: (wallet?: Wallet) => void;
+  setCurrentWallet: (wallet?: Wallet, account?: Provider) => Promise<void>;
   setWallets: (wallets: Wallet[]) => void;
-
   setConnectedAccount: (account?: Provider) => void;
-  setCurrentNetwork: () => void;
+  setCurrentNetwork: (network: Network) => void;
 }
 
 export const useAccountStore = create<AccountStoreState>((set, get) => ({
   accounts: undefined,
+  network: undefined,
   connectedAccount: undefined,
   accountObserver: undefined,
   networkObserver: undefined,
   currentWallet: undefined,
   wallets: [],
   isFetching: false,
-  chainId: undefined,
-  network: undefined,
 
-  setCurrentWallet: (currentWallet?: Wallet) => {
-    try {
-      set({ isFetching: true });
-
-      const previousWallet = get().currentWallet;
-
-      if (previousWallet?.name() !== currentWallet?.name()) {
-        get().accountObserver?.unsubscribe();
-        get().networkObserver?.unsubscribe();
-        set({ accountObserver: undefined, networkObserver: undefined });
-      }
-      if (!currentWallet) {
-        set({
-          currentWallet: undefined,
-          connectedAccount: undefined,
-          accounts: undefined,
-        });
-        return;
-      }
-
-      if (!get().networkObserver) {
-        const networkObserver = currentWallet.listenNetworkChanges(async () => {
-          get().setCurrentNetwork();
-        });
-        set({ networkObserver });
-      }
-
-      if (currentWallet?.name() === WalletName.Bearby) {
-        currentWallet
-          .connect()
-          .then(() => {
-            // subscribe to network events
-            const observer = currentWallet.listenAccountChanges(
-              (newAddress: string) => {
-                handleBearbyAccountChange(newAddress, get());
-              },
-            );
-
-            set({ currentWallet, accountObserver: observer });
-
-            // get connected account
-            currentWallet
-              .accounts()
-              .then((accounts) => {
-                // bearby expose only 1 account
-                get().setConnectedAccount(accounts[0]);
-                set({ accounts });
-              })
-              .catch((error) => {
-                console.warn('error getting accounts from bearby', error);
-              });
-          })
-          .catch((error) => {
-            console.warn('error connecting to bearby', error);
-          });
-        return;
-      }
-
-      set({ currentWallet });
-
-      get().setCurrentNetwork();
-
-      currentWallet
-        .accounts()
-        .then((accounts) => {
-          set({ accounts });
-
-          const selectedAccount = accounts[0];
-          get().setConnectedAccount(selectedAccount);
-        })
-        .catch((error) => {
-          console.warn('error getting accounts from wallet', error);
-        });
-    } finally {
-      set({ isFetching: false });
+  setCurrentWallet: async (wallet?: Wallet, account?: Provider) => {
+    set({ isFetching: true });
+    if (!wallet) {
+      resetAll(get, set);
+      return;
     }
+
+    if (get().currentWallet?.name() !== wallet.name()) resetObservers(get, set);
+
+    if (wallet.name() === WalletName.Bearby) {
+      try {
+        await setupBearbyWallet(wallet, set, get);
+      } catch (error) {
+        return;
+      }
+    }
+
+    if (!get().networkObserver) {
+      const networkObserver = wallet.listenNetworkChanges(async () => {
+        get().setCurrentNetwork(await wallet.networkInfos());
+      });
+      set({ networkObserver });
+    }
+
+    set({ currentWallet: wallet });
+    const network = await wallet.networkInfos();
+    get().setCurrentNetwork(network);
+    const accounts = await wallet.accounts();
+    set({ accounts });
+    get().setConnectedAccount(account || accounts[0]);
+
+    set({ isFetching: false });
   },
 
   setWallets: (wallets: Wallet[]) => {
     set({ wallets });
-
-    // if current wallet is not in the new list of wallets, unset it
     if (!wallets.some((p) => p.name() === get().currentWallet?.name())) {
-      set({
-        currentWallet: undefined,
-        connectedAccount: undefined,
-        accounts: undefined,
-      });
+      resetWallet(set);
     }
   },
 
-  // set the connected account, and update the massa client
-  setConnectedAccount: async (connectedAccount?: Provider) => {
+  setConnectedAccount: (connectedAccount?: Provider) => {
     set({ connectedAccount });
   },
 
-  setCurrentNetwork: () => {
-    get()
-      .currentWallet?.networkInfos()
-      .then((infos) => {
-        set({ chainId: infos.chainId, network: infos.name });
-      });
+  setCurrentNetwork: (network: Network) => {
+    if (network === get().network) return;
+    set({ network });
   },
 }));
+
+function resetObservers(
+  get: () => AccountStoreState,
+  set: (partial: Partial<AccountStoreState>) => void,
+) {
+  get().accountObserver?.unsubscribe();
+  get().networkObserver?.unsubscribe();
+  set({ accountObserver: undefined, networkObserver: undefined });
+}
+
+function resetWallet(set: (partial: Partial<AccountStoreState>) => void) {
+  set({
+    accounts: undefined,
+    connectedAccount: undefined,
+    currentWallet: undefined,
+    network: undefined,
+  });
+}
+
+function resetAll(
+  get: () => AccountStoreState,
+  set: (partial: Partial<AccountStoreState>) => void,
+) {
+  resetObservers(get, set);
+  resetWallet(set);
+  set({ isFetching: false });
+}
+
+async function setupBearbyWallet(
+  wallet: Wallet,
+  set: (partial: Partial<AccountStoreState>) => void,
+  get: () => AccountStoreState,
+) {
+  await wallet.connect();
+
+  const observer = wallet.listenAccountChanges(async (newAddress: string) => {
+    const { connectedAccount, currentWallet, setConnectedAccount } = get();
+
+    if (!currentWallet || !connectedAccount) return;
+
+    if (newAddress !== connectedAccount.address) {
+      const accounts = await currentWallet.accounts();
+      const newAccount = accounts.find((acc) => acc.address === newAddress);
+      setConnectedAccount(newAccount);
+    }
+  });
+
+  set({ accountObserver: observer });
+}
