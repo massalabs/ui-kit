@@ -1,9 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import React from 'react';
-
-import { useEffect, useState } from 'react';
-
 import { BearbySvg } from './BearbySvg';
 import BearbyWallet from './BearbyWallet';
 import SelectMassaWallet from './SelectMassaWallet';
@@ -19,19 +13,8 @@ export const ConnectMassaWallet = () => {
   const { currentWallet, wallets, setCurrentWallet, isFetching } =
     useAccountStore();
 
-  const [selectedWallet, setSelectedWallet] = useState<WalletName | undefined>(
-    currentWallet?.name(),
-  );
-
-  useEffect(() => {
-    const provider = wallets.find((p) => p.name() === selectedWallet);
-    if (provider && !currentWallet) {
-      setCurrentWallet(provider);
-    }
-  }, [wallets, selectedWallet, currentWallet, setCurrentWallet]);
-
   function renderWallet() {
-    switch (selectedWallet) {
+    switch (currentWallet?.name()) {
       case WalletName.MassaStation:
         return <StationWallet />;
       case WalletName.Bearby:
@@ -43,7 +26,7 @@ export const ConnectMassaWallet = () => {
   }
 
   function renderSelectedWallet() {
-    switch (selectedWallet) {
+    switch (currentWallet?.name()) {
       case WalletName.MassaStation:
         return (
           <>
@@ -61,54 +44,45 @@ export const ConnectMassaWallet = () => {
     }
   }
 
-  const noWalletSelected = !selectedWallet || isFetching;
-
-  function renderNoWalletSelected() {
+  if (!currentWallet) {
     return (
-      <SelectMassaWallet
-        onClick={(providerName) => {
-          setSelectedWallet(providerName);
-          const provider = wallets.find((p) => p.name() === providerName);
-          if (provider) {
-            setCurrentWallet(provider);
-          }
-        }}
-      />
+      <div className="text-f-primary">
+        <SelectMassaWallet
+          onClick={async (providerName) => {
+            const provider = wallets.find((p) => p.name() === providerName);
+            if (provider) {
+              await setCurrentWallet(provider);
+            }
+          }}
+        />
+      </div>
     );
   }
 
   return (
     <div className="text-f-primary">
-      {noWalletSelected ? (
-        renderNoWalletSelected()
-      ) : (
-        <>
-          <div
-            data-testid="connect-massa-wallet"
-            className="flex justify-between items-center mb-4"
-          >
-            <div className="flex gap-2 items-center">
-              {renderSelectedWallet()}
-              <ChainStatus />
-              {selectedWallet === WalletName.Bearby && (
-                <Tooltip
-                  customClass="mas-caption w-fit whitespace-nowrap"
-                  body={Intl.t(
-                    'connect-wallet.card-destination.non-massa-wallet',
-                  )}
-                />
-              )}
-            </div>
-            <SwitchWalletButton
-              onClick={() => {
-                setSelectedWallet(undefined);
-                setCurrentWallet();
-              }}
+      <div
+        data-testid="connect-massa-wallet"
+        className="flex justify-between items-center mb-4"
+      >
+        <div className="flex gap-2 items-center">
+          {renderSelectedWallet()}
+          <ChainStatus />
+          {currentWallet?.name() === WalletName.Bearby && (
+            <Tooltip
+              customClass="mas-caption w-fit whitespace-nowrap"
+              body={Intl.t('connect-wallet.card-destination.non-massa-wallet')}
             />
-          </div>
-          {renderWallet()}
-        </>
-      )}
+          )}
+        </div>
+        <SwitchWalletButton
+          onClick={() => {
+            setCurrentWallet();
+          }}
+        />
+      </div>
+
+      {!isFetching && renderWallet()}
     </div>
   );
 };
