@@ -42,7 +42,6 @@ export function useWriteSmartContract(account: Provider, isMainnet = false) {
       const operation = await account.callSC({
         func: targetFunction,
         target: targetAddress,
-        caller: account.address,
         parameter,
         coins,
         fee,
