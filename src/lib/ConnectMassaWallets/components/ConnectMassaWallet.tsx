@@ -1,3 +1,4 @@
+import { MetaMaskSvg } from './MetaMaskSvg';
 import { BearbySvg } from './BearbySvg';
 import BearbyWallet from './BearbyWallet';
 import SelectMassaWallet from './SelectMassaWallet';
@@ -8,17 +9,29 @@ import Intl from '../i18n';
 import { useAccountStore } from '../store';
 import { MassaWallet, Tooltip } from '../../../components';
 import { WalletName } from '@massalabs/wallet-provider';
+import MetamaskWallet from './MetamaskWallet';
+import { Network } from './Network';
+import { useEffect, useState } from 'react';
 
 export const ConnectMassaWallet = () => {
   const { currentWallet, wallets, setCurrentWallet, isFetching } =
     useAccountStore();
+  const [selectedWallet, setSelectedWallet] = useState<WalletName | null>(null);
+
+  useEffect(() => {
+    if (currentWallet) {
+      setSelectedWallet(currentWallet.name());
+    }
+  }, [currentWallet]);
 
   function renderWallet() {
-    switch (currentWallet?.name()) {
+    switch (selectedWallet) {
       case WalletName.MassaStation:
         return <StationWallet />;
       case WalletName.Bearby:
         return <BearbyWallet />;
+      case WalletName.Metamask:
+        return <MetamaskWallet />;
       default:
         // Should not happen
         return <>Error: no wallet selected</>;
@@ -26,7 +39,7 @@ export const ConnectMassaWallet = () => {
   }
 
   function renderSelectedWallet() {
-    switch (currentWallet?.name()) {
+    switch (selectedWallet) {
       case WalletName.MassaStation:
         return (
           <>
@@ -41,18 +54,26 @@ export const ConnectMassaWallet = () => {
             {Intl.t(`connect-wallet.${WalletName.Bearby}`)}
           </>
         );
+      case WalletName.Metamask:
+        return (
+          <>
+            <MetaMaskSvg />
+            {Intl.t(`connect-wallet.${WalletName.Metamask}`)}
+          </>
+        );
     }
   }
 
-  if (!currentWallet) {
+  if (!selectedWallet && !isFetching) {
     return (
       <div className="text-f-primary">
         <SelectMassaWallet
           onClick={async (providerName) => {
-            const provider = wallets.find((p) => p.name() === providerName);
-            if (provider) {
-              await setCurrentWallet(provider);
+            const wallet = wallets.find((p) => p.name() === providerName);
+            if (wallet) {
+              await setCurrentWallet(wallet);
             }
+            setSelectedWallet(providerName);
           }}
         />
       </div>
@@ -68,6 +89,7 @@ export const ConnectMassaWallet = () => {
         <div className="flex gap-2 items-center">
           {renderSelectedWallet()}
           <ChainStatus />
+          <Network />
           {currentWallet?.name() === WalletName.Bearby && (
             <Tooltip
               customClass="mas-caption w-fit whitespace-nowrap"
@@ -78,11 +100,12 @@ export const ConnectMassaWallet = () => {
         <SwitchWalletButton
           onClick={() => {
             setCurrentWallet();
+            setSelectedWallet(null);
           }}
         />
       </div>
 
-      {!isFetching && renderWallet()}
+      {renderWallet()}
     </div>
   );
 };
