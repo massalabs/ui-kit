@@ -4,7 +4,7 @@ import React, { ComponentPropsWithoutRef } from 'react';
 import { ReactNode } from 'react';
 import { bsc, bscTestnet, mainnet, sepolia } from 'viem/chains';
 import { MassaLogo } from '../Massa';
-import { BNB, DAI, USDC, USDT, FT1, WMAS, WETH, PUR, SVGProps } from '.';
+import { BNB, DAI, USDC, USDT, FT1, WMAS, WETH, PUR, SVGProps, POM } from '.';
 import {
   Bsc,
   BscBridged,
@@ -98,6 +98,7 @@ export function getAssetIcons(
     WMAS: createNativeFt(WMAS, size),
     USDT: createNativeFt(USDT, size),
     PUR: createNativeFt(PUR, size),
+    POM: createNativeFt(POM, size),
     MAS: <MassaLogo size={size} />,
     // Overwrite
     ...getTokenIcons(isNative, originChainId, size),
