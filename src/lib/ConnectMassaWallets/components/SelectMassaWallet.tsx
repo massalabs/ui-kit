@@ -7,6 +7,7 @@ import { Disconnected } from './Status/Disconnected';
 import Intl from '../i18n';
 import { Dropdown, MassaWallet } from '../../../components';
 import { WalletName } from '@massalabs/wallet-provider';
+import { MetaMaskSvg } from './MetaMaskSvg';
 
 const walletList = [
   {
@@ -16,6 +17,10 @@ const walletList = [
   {
     name: WalletName.Bearby,
     icon: <BearbySvg />,
+  },
+  {
+    name: WalletName.Metamask,
+    icon: <MetaMaskSvg />,
   },
 ];
 

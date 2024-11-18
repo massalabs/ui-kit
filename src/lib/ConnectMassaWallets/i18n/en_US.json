@@ -16,6 +16,8 @@
       "your-wallet": "Your wallet",
       "bearby-not-installed": "Bearby extension is either turned off or not installed. Make sure the extension is on and refresh the page.",
       "get-bearby": "Get Bearby here",
+      "meta-mask-not-connected": "Metamask is not connected. Make sure the extension is on and connected to the right network.",
+      "get-metamask": "Get Metamask here",
       "massa-station-not-detected": "Massa Station desktop app is not detected. Make sure the app is opened, or click below to install it.",
       "get-massa-station": "Get Massa Station",
       "massa-wallet-not-detected": "Massa Wallet is not detected. Make sure the plugin is installed, or click below to install it.",
@@ -26,6 +28,7 @@
     },
     "MASSASTATION": "MassaWallet",
     "BEARBY": "Bearby",
+    "METAMASK": "Metamask",
     "connected-cards": {
       "wallet-balance": "Balance: "
     },
