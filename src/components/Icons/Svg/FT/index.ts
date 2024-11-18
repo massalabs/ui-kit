@@ -6,5 +6,6 @@ export * from './FT1';
 export * from './WMAS';
 export * from './USDT';
 export * from './PUR';
+export * from './POM';
 export * from './tokenIcons';
 export * from './svgInterface';
