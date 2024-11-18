@@ -7,21 +7,22 @@ import { useEffect, useState } from 'react';
 import Intl from '../i18n';
 import { useAccountStore } from '../store';
 import { FetchingLine } from '../../../components';
-import { fetchMASBalance } from '../../massa-react/utils';
 import { massaToken } from '../../massa-react/const';
 import { formatAmount } from '../../util/parseAmount';
 
 export function MASBalance() {
   const [balance, setBalance] = useState<bigint>();
 
-  const { connectedAccount } = useAccountStore();
+  const { connectedAccount, currentWallet, network } = useAccountStore();
 
   useEffect(() => {
     if (!connectedAccount) return;
-    fetchMASBalance(connectedAccount).then((balance) => {
+    const fetchBalance = async () => {
+      const balance = await connectedAccount.balance(false);
       setBalance(balance);
-    });
-  }, [connectedAccount, setBalance]);
+    };
+    fetchBalance();
+  }, [connectedAccount, setBalance, currentWallet, network]);
 
   const formattedBalance = formatAmount(balance?.toString() || '0', 9).full;
 
