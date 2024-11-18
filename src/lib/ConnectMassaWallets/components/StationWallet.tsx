@@ -22,7 +22,7 @@ import Intl from '../i18n';
 import { useAccountStore } from '../store';
 
 export default function StationWallet() {
-  const { accounts } = useAccountStore();
+  const { accounts, isFetching } = useAccountStore();
 
   const [stationIsOn, setStationIsOn] = useState<boolean | undefined>(
     undefined,
@@ -40,7 +40,7 @@ export default function StationWallet() {
     });
   });
 
-  if (stationIsOn === false) {
+  if (stationIsOn === false && !isFetching) {
     return (
       <WalletError
         description={Intl.t(
@@ -52,7 +52,7 @@ export default function StationWallet() {
     );
   }
 
-  if (massaWalletIsOn === false) {
+  if (massaWalletIsOn === false && !isFetching) {
     return (
       <WalletError
         description={Intl.t(
@@ -64,7 +64,7 @@ export default function StationWallet() {
     );
   }
 
-  if (accounts !== undefined && !accounts.length) {
+  if (accounts !== undefined && !accounts.length && !isFetching) {
     return (
       <WalletError
         description={Intl.t(
@@ -78,7 +78,7 @@ export default function StationWallet() {
     );
   }
 
-  if (accounts === undefined) {
+  if (accounts === undefined && !isFetching) {
     return <div className="h-14 bg-secondary rounded-lg animate-pulse"></div>;
   }
 

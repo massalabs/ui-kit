@@ -34,34 +34,46 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
 
   setCurrentWallet: async (wallet?: Wallet, account?: Provider) => {
     set({ isFetching: true });
-    if (!wallet) {
-      resetAll(get, set);
-      return;
-    }
-
-    if (get().currentWallet?.name() !== wallet.name()) resetObservers(get, set);
-
-    if (wallet.name() === WalletName.Bearby) {
-      try {
-        await setupBearbyWallet(wallet, set, get);
-      } catch (error) {
+    try {
+      if (!wallet) {
+        resetAll(get, set);
         return;
       }
-    }
 
-    if (!get().networkObserver) {
-      const networkObserver = wallet.listenNetworkChanges(async () => {
-        get().setCurrentNetwork(await wallet.networkInfos());
-      });
-      set({ networkObserver });
-    }
+      if (get().currentWallet?.name() !== wallet.name())
+        resetObservers(get, set);
 
-    set({ currentWallet: wallet });
-    const network = await wallet.networkInfos();
-    get().setCurrentNetwork(network);
-    const accounts = await wallet.accounts();
-    set({ accounts });
-    get().setConnectedAccount(account || accounts[0]);
+      set({ currentWallet: wallet });
+
+      if (
+        wallet.name() === WalletName.Bearby ||
+        wallet.name() === WalletName.Metamask
+      ) {
+        try {
+          await wallet.connect();
+        } catch (error) {
+          return;
+        }
+      }
+
+      const accounts = await wallet.accounts();
+
+      if (!get().accountObserver) {
+        setupAccountObserver(wallet, set, get);
+      }
+
+      if (!get().networkObserver) {
+        setupNetworkObserver(wallet, set, get);
+      }
+
+      const network = await wallet.networkInfos();
+      get().setCurrentNetwork(network);
+
+      set({ accounts });
+      set({ connectedAccount: account || accounts[0] });
+    } catch (error) {
+      console.log('Failed to set current wallet', error);
+    }
 
     set({ isFetching: false });
   },
@@ -110,24 +122,43 @@ function resetAll(
   set({ isFetching: false });
 }
 
-async function setupBearbyWallet(
+function setupAccountObserver(
   wallet: Wallet,
   set: (partial: Partial<AccountStoreState>) => void,
   get: () => AccountStoreState,
 ) {
-  await wallet.connect();
+  try {
+    const observer = wallet.listenAccountChanges(async (newAddress: string) => {
+      const { connectedAccount, currentWallet, setConnectedAccount } = get();
 
-  const observer = wallet.listenAccountChanges(async (newAddress: string) => {
-    const { connectedAccount, currentWallet, setConnectedAccount } = get();
+      if (!currentWallet || !connectedAccount) return;
 
-    if (!currentWallet || !connectedAccount) return;
+      if (newAddress !== connectedAccount.address) {
+        const accounts = await currentWallet.accounts();
+        const newAccount = accounts.find((acc) => acc.address === newAddress);
+        setConnectedAccount(newAccount);
+      }
+    });
 
-    if (newAddress !== connectedAccount.address) {
-      const accounts = await currentWallet.accounts();
-      const newAccount = accounts.find((acc) => acc.address === newAddress);
-      setConnectedAccount(newAccount);
-    }
-  });
+    set({ accountObserver: observer });
+  } catch (error) {
+    // Wallet does not support account observer
+    // console.log('Failed to setup account observer', error);
+  }
+}
 
-  set({ accountObserver: observer });
+function setupNetworkObserver(
+  wallet: Wallet,
+  set: (partial: Partial<AccountStoreState>) => void,
+  get: () => AccountStoreState,
+) {
+  try {
+    const networkObserver = wallet.listenNetworkChanges(async () => {
+      get().setCurrentNetwork(await wallet.networkInfos());
+    });
+    set({ networkObserver });
+  } catch (error) {
+    // Wallet does not support network observer
+    // console.log('Failed to setup network observer', error);
+  }
 }
