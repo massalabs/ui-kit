@@ -26,7 +26,7 @@ export const ConnectMassaWallet = () => {
 
   function renderWallet() {
     switch (selectedWallet) {
-      case WalletName.MassaStation:
+      case WalletName.MassaWallet:
         return <StationWallet />;
       case WalletName.Bearby:
         return <BearbyWallet />;
@@ -40,11 +40,11 @@ export const ConnectMassaWallet = () => {
 
   function renderSelectedWallet() {
     switch (selectedWallet) {
-      case WalletName.MassaStation:
+      case WalletName.MassaWallet:
         return (
           <>
             <MassaWallet size={28} />
-            {Intl.t(`connect-wallet.${WalletName.MassaStation}`)}
+            {Intl.t(`connect-wallet.${WalletName.MassaWallet}`)}
           </>
         );
       case WalletName.Bearby:
