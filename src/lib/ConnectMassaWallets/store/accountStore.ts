@@ -15,7 +15,7 @@ export interface AccountStoreState {
     unsubscribe: () => void;
   };
   network?: Network;
-
+  setAccounts: (wallet: Wallet, account?: Provider) => Promise<void>;
   setCurrentWallet: (wallet?: Wallet, account?: Provider) => Promise<void>;
   setWallets: (wallets: Wallet[]) => void;
   setConnectedAccount: (account?: Provider) => void;
@@ -56,7 +56,7 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
         }
       }
 
-      const accounts = await wallet.accounts();
+      get().setAccounts(wallet, account);
 
       if (!get().accountObserver) {
         setupAccountObserver(wallet, set, get);
@@ -68,14 +68,17 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
 
       const network = await wallet.networkInfos();
       get().setCurrentNetwork(network);
-
-      set({ accounts });
-      set({ connectedAccount: account || accounts[0] });
     } catch (error) {
       console.log('Failed to set current wallet', error);
     }
 
     set({ isFetching: false });
+  },
+
+  setAccounts: async (wallet: Wallet, account?: Provider) => {
+    const accounts = await wallet.accounts();
+    set({ accounts });
+    set({ connectedAccount: account || accounts[0] });
   },
 
   setWallets: (wallets: Wallet[]) => {

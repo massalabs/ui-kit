@@ -1,12 +1,13 @@
 import { useState } from 'react';
+import { CHAIN_ID, Operation, OperationStatus } from '@massalabs/massa-web3';
+import Intl from '../i18n';
 import { toast } from '../../../components';
 import { logSmartContractEvents, showToast } from '../utils';
-import Intl from '../i18n';
-import { Operation, OperationStatus, Provider } from '@massalabs/massa-web3';
 import { ToasterMessage } from './types';
 import { ERROR_STATUSES } from './const';
 
-export function useWriteSmartContract(account: Provider, isMainnet = false) {
+// TODO: Need to be refactored with the useWriteSmartContract.tsx
+export function useHandleOperation() {
   const [state, setState] = useState({
     isOpPending: false,
     isPending: false,
@@ -15,15 +16,14 @@ export function useWriteSmartContract(account: Provider, isMainnet = false) {
     opId: undefined as string | undefined,
   });
 
-  async function callSmartContract(
-    targetFunction: string,
-    targetAddress: string,
-    parameter: Uint8Array,
+  async function handleOperation(
+    operation: Operation,
     messages: ToasterMessage,
-    coins = 0n,
-    fee?: bigint,
     final = false,
   ): Promise<Operation | undefined> {
+    const networkInfo = await operation.provider.networkInfos();
+    const isMainnet = networkInfo.chainId === CHAIN_ID.Mainnet;
+
     if (state.isOpPending) {
       throw new Error('Operation is already pending');
     }
@@ -38,14 +38,6 @@ export function useWriteSmartContract(account: Provider, isMainnet = false) {
     });
 
     try {
-      const operation = await account.callSC({
-        func: targetFunction,
-        target: targetAddress,
-        parameter,
-        coins,
-        fee,
-      });
-
       setState((prev) => ({ ...prev, opId: operation.id }));
 
       const loadingToastId = showToast(
@@ -115,6 +107,6 @@ export function useWriteSmartContract(account: Provider, isMainnet = false) {
     isPending: state.isPending,
     isSuccess: state.isSuccess,
     isError: state.isError,
-    callSmartContract,
+    handleOperation,
   };
 }
