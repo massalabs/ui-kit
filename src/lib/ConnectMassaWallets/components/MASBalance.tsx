@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import Intl from '../i18n';
 import { useAccountStore } from '../store';
 import { FetchingLine } from '../../../components';
-import { massaToken } from '../../massa-react/const';
+import { massaToken } from '../../massa-react/utils/const';
 import { formatAmount } from '../../util/parseAmount';
 
 export function MASBalance() {

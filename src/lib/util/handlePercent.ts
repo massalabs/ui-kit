@@ -1,4 +1,4 @@
-import { massaToken } from '../massa-react/const';
+import { massaToken } from '../massa-react/utils/const';
 import { formatAmount } from './parseAmount';
 
 export function handlePercent(

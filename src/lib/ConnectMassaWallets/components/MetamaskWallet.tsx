@@ -7,7 +7,7 @@ import { MASBalance } from './MASBalance';
 import { WalletError } from './WalletError';
 import Intl from '../i18n';
 import { useAccountStore } from '../store';
-import { METAMASK_INSTALL } from '../../massa-react/const';
+import { METAMASK_INSTALL } from '../../massa-react/utils/const';
 
 export default function MetamaskWallet() {
   const { connectedAccount, isFetching } = useAccountStore();

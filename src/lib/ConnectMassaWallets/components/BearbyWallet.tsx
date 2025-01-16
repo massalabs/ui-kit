@@ -7,7 +7,7 @@ import { MASBalance } from './MASBalance';
 import { WalletError } from './WalletError';
 import Intl from '../i18n';
 import { useAccountStore } from '../store';
-import { BEARBY_INSTALL } from '../../massa-react/const';
+import { BEARBY_INSTALL } from '../../massa-react/utils/const';
 
 export default function BearbyWallet() {
   const { connectedAccount, isFetching } = useAccountStore();

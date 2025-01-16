@@ -1,26 +1,25 @@
 import { useState } from 'react';
-import { CHAIN_ID, Operation, OperationStatus } from '@massalabs/massa-web3';
-import Intl from '../i18n';
-import { toast } from '../../../components';
-import { logSmartContractEvents, showToast } from '../utils';
+import { CHAIN_ID, Operation } from '@massalabs/massa-web3';
 import { ToasterMessage } from './types';
-import { ERROR_STATUSES } from './const';
+import {
+  executeOperation as executeOperationUtil,
+  OperationState,
+} from '../utils/operationHandler';
 
-// TODO: Need to be refactored with the useWriteSmartContract.tsx
 export function useHandleOperation() {
-  const [state, setState] = useState({
+  const [state, setState] = useState<OperationState>({
     isOpPending: false,
     isPending: false,
     isSuccess: false,
     isError: false,
-    opId: undefined as string | undefined,
+    opId: undefined,
   });
 
-  async function handleOperation(
+  async function executeOperation(
     operation: Operation,
     messages: ToasterMessage,
     final = false,
-  ): Promise<Operation | undefined> {
+  ): Promise<void> {
     const networkInfo = await operation.provider.networkInfos();
     const isMainnet = networkInfo.chainId === CHAIN_ID.Mainnet;
 
@@ -37,68 +36,7 @@ export function useHandleOperation() {
       opId: undefined,
     });
 
-    try {
-      setState((prev) => ({ ...prev, opId: operation.id }));
-
-      const loadingToastId = showToast(
-        'loading',
-        messages.pending,
-        operation.id,
-        isMainnet,
-      );
-
-      const finalStatus = final
-        ? await operation.waitFinalExecution()
-        : await operation.waitSpeculativeExecution();
-
-      dismissLoadingToast(loadingToastId);
-
-      if (finalStatus === OperationStatus.NotFound) {
-        handleOperationTimeout(messages.timeout, operation.id);
-        throw new Error('Operation not found');
-      } else if (ERROR_STATUSES.includes(finalStatus)) {
-        logSmartContractEvents(operation.provider, operation.id);
-        throw new Error(`Operation failed with status: ${finalStatus}`);
-      } else {
-        handleOperationSuccess(messages.success, operation.id);
-        return operation;
-      }
-    } catch (error) {
-      handleOperationError(error, messages.error, state.opId);
-    } finally {
-      setState((prev) => ({ ...prev, isOpPending: false, isPending: false }));
-    }
-  }
-
-  function dismissLoadingToast(toastId?: string): void {
-    if (toastId) {
-      toast.dismiss(toastId);
-    } else {
-      console.warn('Attempted to dismiss a toast with undefined ID.');
-    }
-  }
-
-  function handleOperationTimeout(
-    timeoutMessage?: string,
-    opId?: string,
-  ): void {
-    setState((prev) => ({ ...prev, isError: true }));
-    showToast('error', timeoutMessage || Intl.t('steps.failed-timeout'), opId);
-  }
-
-  function handleOperationSuccess(successMessage: string, opId?: string): void {
-    setState((prev) => ({ ...prev, isSuccess: true }));
-    showToast('success', successMessage, opId);
-  }
-
-  function handleOperationError(
-    error: unknown,
-    errorMessage: string,
-    opId?: string,
-  ): void {
-    console.error('Error during smart contract call:', error);
-    setState((prev) => ({ ...prev, isError: true }));
-    showToast('error', errorMessage, opId);
+    await executeOperationUtil(operation, messages, final, isMainnet, setState);
   }
 
   return {
@@ -107,6 +45,6 @@ export function useHandleOperation() {
     isPending: state.isPending,
     isSuccess: state.isSuccess,
     isError: state.isError,
-    handleOperation,
+    executeOperation,
   };
 }

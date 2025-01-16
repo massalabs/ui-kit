@@ -1,5 +1,5 @@
 import { Mas } from '@massalabs/massa-web3';
-import { massaToken } from '../massa-react/const';
+import { massaToken } from '../massa-react/utils/const';
 import { handlePercent } from './handlePercent';
 
 describe('handlePercent', () => {

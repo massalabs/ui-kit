@@ -3,12 +3,12 @@ import {
   MASSA_EXPLO_URL,
   MASSA_EXPLORER_URL,
 } from './const';
-import Intl from './i18n';
-import { toast, ToastContent } from '../../components';
+import Intl from '../i18n';
+import { toast, ToastContent } from '../../../components';
 
 import { Operation, Provider, PublicProvider } from '@massalabs/massa-web3';
 import { Toast } from 'react-hot-toast';
-import { OperationToast } from '../ConnectMassaWallets/components/OperationToast';
+import { OperationToast } from '../../ConnectMassaWallets/components/OperationToast';
 
 export async function logSmartContractEvents(
   provider: PublicProvider,
