@@ -17,7 +17,7 @@ import {
   MASSA_STATION_INSTALL,
   MASSA_STATION_STORE,
   MASSA_WALLET_CREATE_ACCOUNT,
-} from '../../massa-react/const';
+} from '../../massa-react/utils/const';
 import Intl from '../i18n';
 import { useAccountStore } from '../store';
 

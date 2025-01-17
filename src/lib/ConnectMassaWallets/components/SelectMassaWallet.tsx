@@ -11,7 +11,7 @@ import { MetaMaskSvg } from './MetaMaskSvg';
 
 const walletList = [
   {
-    name: WalletName.MassaStation,
+    name: WalletName.MassaWallet,
     icon: <MassaWallet size={32} />,
   },
   {
