@@ -67,7 +67,7 @@ function handleOperationTimeout(
   opId: string,
   setState: React.Dispatch<React.SetStateAction<OperationState>>,
 ): void {
-  setState((prev: OperationState) => ({ ...prev, isError: true }));
+  updateOpState(setState, { isError: true });
   showToast('error', message, opId);
 }
 
@@ -76,7 +76,7 @@ function handleOperationSuccess(
   opId: string,
   setState: React.Dispatch<React.SetStateAction<OperationState>>,
 ): void {
-  setState((prev) => ({ ...prev, isSuccess: true }));
+  updateOpState(setState, { isSuccess: true });
   showToast('success', message, opId);
 }
 
@@ -87,11 +87,11 @@ function handleOperationError(
   setState: React.Dispatch<React.SetStateAction<OperationState>>,
 ): void {
   console.error(error);
-  setState((prev) => ({ ...prev, isError: true }));
+  updateOpState(setState, { isError: true });
   showToast('error', message, opId);
 }
 
-function updateOpState<State>(
+export function updateOpState<State>(
   setState: React.Dispatch<React.SetStateAction<State>>,
   partialState: Partial<State>,
 ) {

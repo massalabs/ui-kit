@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { processOperation } from '../utils/operationHandler';
+import { processOperation, updateOpState } from '../utils/operationHandler';
 import { Provider } from '@massalabs/massa-web3';
 import { ToasterMessage } from './types';
 
@@ -33,8 +33,7 @@ export function useWriteSmartContract(account: Provider, isMainnet = false) {
       throw new Error('Operation is already pending');
     }
 
-    setState({
-      ...state,
+    updateOpState(setState, {
       isOpPending: true,
       isPending: true,
       isSuccess: false,
@@ -53,7 +52,7 @@ export function useWriteSmartContract(account: Provider, isMainnet = false) {
 
       await processOperation(operation, messages, final, isMainnet, setState);
     } catch (error) {
-      setState((prev) => ({ ...prev, isOpPending: false, isPending: false }));
+      updateOpState(setState, { isOpPending: false, isPending: false });
       throw error;
     }
   }

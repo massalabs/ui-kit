@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { CHAIN_ID, Operation } from '@massalabs/massa-web3';
 import { ToasterMessage } from './types';
-import { processOperation, OperationState } from '../utils/operationHandler';
+import {
+  processOperation,
+  OperationState,
+  updateOpState,
+} from '../utils/operationHandler';
 
 export function useHandleOperation() {
   const [state, setState] = useState<OperationState>({
@@ -24,8 +28,7 @@ export function useHandleOperation() {
       throw new Error('Operation is already pending');
     }
 
-    setState({
-      ...state,
+    updateOpState(setState, {
       isOpPending: true,
       isPending: true,
       isSuccess: false,
