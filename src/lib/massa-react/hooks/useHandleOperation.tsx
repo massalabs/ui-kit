@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { CHAIN_ID, Operation } from '@massalabs/massa-web3';
 import { ToasterMessage } from './types';
-import {
-  executeOperation as executeOperationUtil,
-  OperationState,
-} from '../utils/operationHandler';
+import { processOperation, OperationState } from '../utils/operationHandler';
 
 export function useHandleOperation() {
   const [state, setState] = useState<OperationState>({
@@ -15,13 +12,13 @@ export function useHandleOperation() {
     opId: undefined,
   });
 
-  async function executeOperation(
+  async function handleOperation(
     operation: Operation,
     messages: ToasterMessage,
     final = false,
   ): Promise<void> {
-    const networkInfo = await operation.provider.networkInfos();
-    const isMainnet = networkInfo.chainId === CHAIN_ID.Mainnet;
+    const { chainId } = await operation.provider.networkInfos();
+    const isMainnet = chainId === CHAIN_ID.Mainnet;
 
     if (state.isOpPending) {
       throw new Error('Operation is already pending');
@@ -36,7 +33,7 @@ export function useHandleOperation() {
       opId: undefined,
     });
 
-    await executeOperationUtil(operation, messages, final, isMainnet, setState);
+    await processOperation(operation, messages, final, isMainnet, setState);
   }
 
   return {
@@ -45,6 +42,6 @@ export function useHandleOperation() {
     isPending: state.isPending,
     isSuccess: state.isSuccess,
     isError: state.isError,
-    executeOperation,
+    handleOperation,
   };
 }

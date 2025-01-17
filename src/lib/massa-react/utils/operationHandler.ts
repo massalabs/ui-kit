@@ -12,7 +12,7 @@ export type OperationState = {
   opId?: string;
 };
 
-export async function executeOperation(
+export async function processOperation(
   operation: Operation,
   messages: ToasterMessage,
   final: boolean,
@@ -20,10 +20,7 @@ export async function executeOperation(
   setState: React.Dispatch<React.SetStateAction<OperationState>>,
 ): Promise<void> {
   try {
-    setState((prev) => ({
-      ...prev,
-      opId: operation.id,
-    }));
+    updateOpState(setState, { opId: operation.id });
 
     const loadingToastId = showToast(
       'loading',
@@ -53,11 +50,7 @@ export async function executeOperation(
     }
     throw error;
   } finally {
-    setState((prev) => ({
-      ...prev,
-      isOpPending: false,
-      isPending: false,
-    }));
+    updateOpState(setState, { isOpPending: false, isPending: false });
   }
 }
 
@@ -96,4 +89,14 @@ function handleOperationError(
   console.error(error);
   setState((prev) => ({ ...prev, isError: true }));
   showToast('error', message, opId);
+}
+
+function updateOpState<State>(
+  setState: React.Dispatch<React.SetStateAction<State>>,
+  partialState: Partial<State>,
+) {
+  setState((prevState) => ({
+    ...prevState,
+    ...partialState,
+  }));
 }

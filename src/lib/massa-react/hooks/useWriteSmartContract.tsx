@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { executeOperation } from '../utils/operationHandler';
+import { processOperation } from '../utils/operationHandler';
 import { Provider } from '@massalabs/massa-web3';
 import { ToasterMessage } from './types';
 
@@ -51,7 +51,7 @@ export function useWriteSmartContract(account: Provider, isMainnet = false) {
         fee,
       });
 
-      await executeOperation(operation, messages, final, isMainnet, setState);
+      await processOperation(operation, messages, final, isMainnet, setState);
     } catch (error) {
       setState((prev) => ({ ...prev, isOpPending: false, isPending: false }));
       throw error;
