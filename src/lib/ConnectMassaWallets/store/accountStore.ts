@@ -4,6 +4,7 @@ import { Wallet, WalletName } from '@massalabs/wallet-provider';
 
 export interface AccountStoreState {
   connectedAccount?: Provider;
+  balance?: bigint;
   accounts?: Provider[];
   currentWallet?: Wallet;
   wallets: Wallet[];
@@ -20,12 +21,14 @@ export interface AccountStoreState {
   setWallets: (wallets: Wallet[]) => void;
   setConnectedAccount: (account?: Provider) => void;
   setCurrentNetwork: (network: Network) => void;
+  refreshBalance: (final: boolean) => void;
 }
 
 export const useAccountStore = create<AccountStoreState>((set, get) => ({
   accounts: undefined,
   network: undefined,
   connectedAccount: undefined,
+  balance: undefined,
   accountObserver: undefined,
   networkObserver: undefined,
   currentWallet: undefined,
@@ -78,7 +81,7 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
   setAccounts: async (wallet: Wallet, account?: Provider) => {
     const accounts = await wallet.accounts();
     set({ accounts });
-    set({ connectedAccount: account || accounts[0] });
+    get().setConnectedAccount(account || accounts[0]);
   },
 
   setWallets: (wallets: Wallet[]) => {
@@ -88,15 +91,32 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
     }
   },
 
-  setConnectedAccount: (connectedAccount?: Provider) => {
+  setConnectedAccount: async (connectedAccount?: Provider) => {
     set({ connectedAccount });
+    if (!connectedAccount) return;
+    setBalance(connectedAccount, false, set);
   },
 
   setCurrentNetwork: (network: Network) => {
     if (network === get().network) return;
     set({ network });
   },
+
+  refreshBalance: async (final: boolean) => {
+    const { connectedAccount } = get();
+    if (!connectedAccount) return;
+    setBalance(connectedAccount, final, set);
+  },
 }));
+
+async function setBalance(
+  provider: Provider,
+  final: boolean,
+  set: (partial: Partial<AccountStoreState>) => void,
+) {
+  const balance = await provider.balance(final);
+  set({ balance });
+}
 
 function resetObservers(
   get: () => AccountStoreState,

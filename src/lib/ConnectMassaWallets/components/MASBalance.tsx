@@ -1,8 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
-
-import { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import Intl from '../i18n';
 import { useAccountStore } from '../store';
@@ -11,18 +9,7 @@ import { massaToken } from '../../massa-react/utils/const';
 import { formatAmount } from '../../util/parseAmount';
 
 export function MASBalance() {
-  const [balance, setBalance] = useState<bigint>();
-
-  const { connectedAccount, currentWallet, network } = useAccountStore();
-
-  useEffect(() => {
-    if (!connectedAccount) return;
-    const fetchBalance = async () => {
-      const balance = await connectedAccount.balance(false);
-      setBalance(balance);
-    };
-    fetchBalance();
-  }, [connectedAccount, setBalance, currentWallet, network]);
+  const { balance } = useAccountStore();
 
   const formattedBalance = formatAmount(balance?.toString() || '0', 9).full;
 
