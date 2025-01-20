@@ -94,8 +94,7 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
   setConnectedAccount: async (connectedAccount?: Provider) => {
     set({ connectedAccount });
     if (!connectedAccount) return;
-    const balance = await connectedAccount.balance(false);
-    set({ balance });
+    setBalance(connectedAccount, false, set);
   },
 
   setCurrentNetwork: (network: Network) => {
@@ -106,8 +105,7 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
   refreshBalance: async (final: boolean) => {
     const { connectedAccount } = get();
     if (!connectedAccount) return;
-    const balance = await connectedAccount.balance(final);
-    set({ balance });
+    setBalance(connectedAccount, final, set);
   },
 }));
 
