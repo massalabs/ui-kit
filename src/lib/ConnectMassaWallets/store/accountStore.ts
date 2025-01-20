@@ -21,6 +21,7 @@ export interface AccountStoreState {
   setWallets: (wallets: Wallet[]) => void;
   setConnectedAccount: (account?: Provider) => void;
   setCurrentNetwork: (network: Network) => void;
+  fetchBalance: (provider: Provider, final: boolean) => Promise<void>;
   refreshBalance: (final: boolean) => void;
 }
 
@@ -94,7 +95,7 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
   setConnectedAccount: async (connectedAccount?: Provider) => {
     set({ connectedAccount });
     if (!connectedAccount) return;
-    setBalance(connectedAccount, false, set);
+    get().fetchBalance(connectedAccount, false);
   },
 
   setCurrentNetwork: (network: Network) => {
@@ -102,10 +103,15 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
     set({ network });
   },
 
+  fetchBalance: async (provider: Provider) => {
+    const balance = await provider.balance(false);
+    set({ balance });
+  },
+
   refreshBalance: async (final: boolean) => {
     const { connectedAccount } = get();
     if (!connectedAccount) return;
-    setBalance(connectedAccount, final, set);
+    get().fetchBalance(connectedAccount, final);
   },
 }));
 
