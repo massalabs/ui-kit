@@ -1,6 +1,6 @@
 {
   "name": "@massalabs/react-ui-kit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "files": ["src", "presets"],
   "main": "src/index.ts",
