@@ -7,6 +7,8 @@ import { Button } from '../Button';
 import { Tooltip } from '../Tooltip';
 import { DollarValue } from '../DollarValue';
 import { formatAmount } from '../../lib/util/parseAmount';
+import { maskAddress } from '../../lib/massa-react/utils/index';
+import { Clipboard } from '../Clipboard';
 
 export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   logo?: React.ReactNode;
@@ -17,6 +19,7 @@ export interface TokenProps extends ComponentPropsWithoutRef<'div'> {
   dollarValue?: string;
   dollarValueError?: React.ReactNode;
   customClass?: string;
+  address?: string;
   disable?: boolean;
   onDelete?: () => void;
 }
@@ -31,6 +34,7 @@ export function Token(props: TokenProps) {
     dollarValue,
     dollarValueError,
     customClass = '',
+    address,
     disable,
     onDelete,
     ...rest
@@ -75,7 +79,13 @@ export function Token(props: TokenProps) {
           </div>
         </div>
       </div>
-      <div>
+      <div className="flex items-center gap-2">
+        {address && (
+          <Clipboard
+            rawContent={address}
+            displayedContent={maskAddress(address)}
+          />
+        )}
         {disable ? null : (
           <Button variant="icon" onClick={onDelete}>
             <FiTrash2 size={24} />
