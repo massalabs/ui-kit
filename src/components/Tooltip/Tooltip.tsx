@@ -1,10 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import React, {
-  useState,
-  useRef,
-  ReactNode,
   ComponentPropsWithoutRef,
+  ReactNode,
+  useRef,
+  useState,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { FiHelpCircle } from 'react-icons/fi';
@@ -160,11 +158,23 @@ function getTransform(placement: Placement): string {
   }
 }
 
+/**
+ * Utility function to merge default and additional classes.
+ */
+function mergeClasses(
+  defaultClasses: string,
+  additionalClasses?: string,
+): string {
+  return additionalClasses
+    ? `${defaultClasses} ${additionalClasses}`
+    : defaultClasses;
+}
+
 export const Tooltip: React.FC<TooltipProps> = ({
   body,
   children,
-  tooltipClassName = 'bg-gray-700 text-white text-xs px-2 py-1 rounded shadow-lg pointer-events-none',
-  triggerClassName = 'w-fit hover:cursor-pointer inline-block',
+  tooltipClassName,
+  triggerClassName,
   iconColor,
   offset = { top: 5, left: 0 },
   placement = 'bottom-start',
@@ -191,9 +201,13 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   return (
     <div
+      data-testid="Tooltip"
       ref={triggerRef}
       {...rest}
-      className={triggerClassName}
+      className={mergeClasses(
+        'w-fit hover:cursor-pointer inline-block',
+        triggerClassName,
+      )}
       onMouseEnter={showTooltip}
       onMouseLeave={hideTooltip}
     >
@@ -208,7 +222,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
               transform: getTransform(placement),
               zIndex: 1000,
             }}
-            className={tooltipClassName}
+            className={mergeClasses(
+              'bg-gray-700 text-white text-xs px-2 py-1 rounded shadow-lg pointer-events-none',
+              tooltipClassName,
+            )}
           >
             {body}
           </div>,
