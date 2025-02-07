@@ -92,7 +92,8 @@ export const ConnectMassaWallet = () => {
           <Network />
           {currentWallet?.name() === WalletName.Bearby && (
             <Tooltip
-              customClass="mas-caption w-fit whitespace-nowrap"
+              triggerClassName="whitespace-nowrap"
+              tooltipClassName="mas-caption"
               body={Intl.t('connect-wallet.card-destination.non-massa-wallet')}
             />
           )}
