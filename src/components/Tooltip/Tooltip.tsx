@@ -220,7 +220,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
               zIndex: 1000,
             }}
             className={mergeClasses(
-              'bg-gray-700 text-white text-xs px-2 py-1 rounded shadow-lg pointer-events-none',
+              'bg-gray-700 text-white text-xs px-2 py-1 rounded shadow-lg',
               tooltipClassName,
             )}
           >
