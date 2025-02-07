@@ -204,7 +204,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
       data-testid="Tooltip"
       ref={triggerRef}
       {...rest}
-      className={mergeClasses('hover:cursor-pointer', triggerClassName)}
+      className={mergeClasses('w-fit hover:cursor-pointer', triggerClassName)}
       onMouseEnter={showTooltip}
       onMouseLeave={hideTooltip}
     >
