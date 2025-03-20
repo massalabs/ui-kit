@@ -22,9 +22,22 @@ import { useAccountStore } from '../../../store';
 import { MASBalance } from '../../utils/MASBalance';
 import { StationSelectAccount } from './StationSelectAccount';
 
+const LoadingState = ({ message }: { message: string }) => (
+  <div className="flex items-center gap-3 p-4 bg-secondary/5 dark:bg-primary/5 rounded-lg">
+    <div className="flex space-x-1">
+      <div className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]" />
+      <div className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]" />
+      <div className="w-2 h-2 bg-primary rounded-full animate-bounce" />
+    </div>
+    <p className="text-sm font-medium text-f-primary dark:text-f-primary">
+      {message}
+    </p>
+  </div>
+);
+
 export default function StationWallet() {
   const { accounts, isFetching } = useAccountStore();
-
+  const [isLoading, setIsLoading] = useState(true);
   const [stationIsOn, setStationIsOn] = useState<boolean | undefined>(
     undefined,
   );
@@ -33,15 +46,44 @@ export default function StationWallet() {
   );
 
   useEffect(() => {
-    isMassaStationAvailable().then((result) => {
-      setStationIsOn(result);
-    });
-    isMassaWalletEnabled().then((result) => {
-      setMassaWalletIsOn(result);
-    });
-  });
+    const checkWallets = async () => {
+      try {
+        const [stationResult, walletResult] = await Promise.all([
+          isMassaStationAvailable(),
+          isMassaWalletEnabled(),
+        ]);
+        setStationIsOn(stationResult);
+        setMassaWalletIsOn(walletResult);
+      } catch (error) {
+        console.error('Error checking wallet availability:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  if (stationIsOn === false && !isFetching) {
+    checkWallets();
+  }, []); // Empty dependency array since we only want to run this once
+
+  // Show loading state while checking wallet availability
+  if (isLoading) {
+    return (
+      <LoadingState
+        message={Intl.t('connect-wallet.card-destination.checking-wallet')}
+      />
+    );
+  }
+
+  // Show loading state while fetching accounts
+  if (isFetching) {
+    return (
+      <LoadingState
+        message={Intl.t('connect-wallet.card-destination.fetching-accounts')}
+      />
+    );
+  }
+
+  // Show error if Massa Station is not available
+  if (stationIsOn === false) {
     return (
       <WalletError
         description={Intl.t(
@@ -53,7 +95,8 @@ export default function StationWallet() {
     );
   }
 
-  if (massaWalletIsOn === false && !isFetching) {
+  // Show error if Massa Wallet is not enabled
+  if (massaWalletIsOn === false) {
     return (
       <WalletError
         description={Intl.t(
@@ -65,7 +108,8 @@ export default function StationWallet() {
     );
   }
 
-  if (accounts !== undefined && !accounts.length && !isFetching) {
+  // Show error if no accounts are available
+  if (accounts !== undefined && !accounts.length) {
     return (
       <WalletError
         description={Intl.t(
@@ -79,9 +123,12 @@ export default function StationWallet() {
     );
   }
 
-  if (accounts === undefined && !isFetching) {
+  // Show loading state if accounts are undefined
+  if (accounts === undefined) {
     return (
-      <div className="h-14 bg-secondary dark:bg-primary rounded-lg animate-pulse"></div>
+      <LoadingState
+        message={Intl.t('connect-wallet.card-destination.loading-accounts')}
+      />
     );
   }
 

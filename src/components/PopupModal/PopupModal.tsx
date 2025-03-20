@@ -51,7 +51,7 @@ export function PopupModalHeader(props: IPopupModalNodeProps) {
         <button
           data-testid="popup-modal-header-close"
           className="text-neutral bg-primary rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
-                      hover:bg-tertiary hover:text-c-primary"
+                      hover:bg-primary/80 hover:text-neutral"
           type="button"
           onClick={handleClose}
         >
