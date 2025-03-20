@@ -12,13 +12,13 @@ export function WalletError(props: WalletErrorProps) {
   const { description, link, linkLabel } = props;
 
   return (
-    <div className="flex flex-col space-y-4 ">
+    <div className="flex flex-col space-y-4 text-f-primary dark:text-f-primary">
       {description}
       <a
         href={link}
         target="_blank"
         rel="noreferrer"
-        className="text-f-primary underline"
+        className="text-f-primary dark:text-f-primary underline hover:text-f-tertiary dark:hover:text-f-tertiary"
       >
         {linkLabel}
       </a>

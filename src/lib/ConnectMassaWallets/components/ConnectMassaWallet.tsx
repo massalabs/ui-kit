@@ -1,5 +1,5 @@
-import { MetaMaskSvg } from './MetaMaskSvg';
-import { BearbySvg } from './BearbySvg';
+import { MetaMaskSvg } from './logo/MetaMaskSvg';
+import { BearbySvg } from './logo/BearbySvg';
 import BearbyWallet from './BearbyWallet';
 import SelectMassaWallet from './SelectMassaWallet';
 import StationWallet from './StationWallet';
@@ -66,7 +66,7 @@ export const ConnectMassaWallet = () => {
 
   if (!selectedWallet && !isFetching) {
     return (
-      <div className="text-f-primary">
+      <div className="text-f-primary dark:text-f-primary">
         <SelectMassaWallet
           onClick={async (providerName) => {
             const wallet = wallets.find((p) => p.name() === providerName);
@@ -81,7 +81,7 @@ export const ConnectMassaWallet = () => {
   }
 
   return (
-    <div className="text-f-primary">
+    <div className="text-f-primary dark:text-f-primary">
       <div
         data-testid="connect-massa-wallet"
         className="flex justify-between items-center mb-4"

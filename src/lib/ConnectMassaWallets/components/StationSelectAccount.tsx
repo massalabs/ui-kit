@@ -7,12 +7,10 @@ import { Dropdown } from '../../../components';
 import { Provider } from '@massalabs/massa-web3';
 
 export function StationSelectAccount() {
-  const [accounts, connectedAccount, setConnectedAccount] = useAccountStore(
-    (state) => [
-      state.accounts,
-      state.connectedAccount,
-      state.setConnectedAccount,
-    ],
+  const accounts = useAccountStore((state) => state.accounts);
+  const connectedAccount = useAccountStore((state) => state.connectedAccount);
+  const setConnectedAccount = useAccountStore(
+    (state) => state.setConnectedAccount,
   );
 
   const selectedAccountKey: number = (accounts || []).findIndex(

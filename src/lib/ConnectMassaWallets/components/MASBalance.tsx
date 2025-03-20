@@ -14,7 +14,7 @@ export function MASBalance() {
   const formattedBalance = formatAmount(balance?.toString() || '0', 9).full;
 
   return (
-    <div className="flex gap-2 mas-body">
+    <div className="flex gap-2 mas-body text-f-primary dark:text-f-primary">
       {Intl.t('connect-wallet.connected-cards.wallet-balance')}
       {balance === undefined ? (
         <FetchingLine />

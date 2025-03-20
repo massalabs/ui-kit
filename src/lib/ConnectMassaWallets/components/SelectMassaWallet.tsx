@@ -2,12 +2,12 @@
 // @ts-ignore
 import React from 'react';
 
-import { BearbySvg } from './BearbySvg';
+import { BearbySvg } from './logo/BearbySvg';
 import { Disconnected } from './Status/Disconnected';
 import Intl from '../i18n';
 import { Dropdown, MassaWallet } from '../../../components';
 import { WalletName } from '@massalabs/wallet-provider';
-import { MetaMaskSvg } from './MetaMaskSvg';
+import { MetaMaskSvg } from './logo/MetaMaskSvg';
 
 const walletList = [
   {
@@ -40,7 +40,7 @@ const SelectMassaWallet = ({ onClick }: SelectMassaWalletProps) => {
   return (
     <>
       <div className="flex gap-2 items-center mb-4">
-        <p className="mas-body flex-col justify-center">
+        <p className="mas-body flex-col justify-center text-f-primary dark:text-f-primary">
           {Intl.t('connect-wallet.card-destination.to')}
         </p>
         <Disconnected />

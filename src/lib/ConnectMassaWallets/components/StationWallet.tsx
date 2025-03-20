@@ -79,11 +79,13 @@ export default function StationWallet() {
   }
 
   if (accounts === undefined && !isFetching) {
-    return <div className="h-14 bg-secondary rounded-lg animate-pulse"></div>;
+    return (
+      <div className="h-14 bg-secondary dark:bg-primary rounded-lg animate-pulse"></div>
+    );
   }
 
   return (
-    <div className="flex flex-col gap-4 mas-body">
+    <div className="flex flex-col gap-4 mas-body text-f-primary dark:text-f-primary">
       <div className="flex gap-4">
         <div className="w-1/2">
           <StationSelectAccount />
