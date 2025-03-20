@@ -1,9 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from 'react';
-
-import { Tag, tagTypes } from '../../../components';
-import { useAccountStore } from '../store';
+import { Tag, tagTypes } from '../../../../components';
+import { useAccountStore } from '../../store';
 
 export function Network() {
   const { network } = useAccountStore();

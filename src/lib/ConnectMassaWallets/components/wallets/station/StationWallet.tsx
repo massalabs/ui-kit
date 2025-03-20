@@ -9,17 +9,18 @@ import {
   isMassaWalletEnabled,
 } from '@massalabs/wallet-provider';
 
-import { ConnectedAccount } from './ConnectedAccount';
-import { MASBalance } from './MASBalance';
-import { StationSelectAccount } from './StationSelectAccount';
-import { WalletError } from './WalletError';
+import { ConnectedAccount } from '../../connection/ConnectedAccount';
+
+import { WalletError } from '../../utils/WalletError';
 import {
   MASSA_STATION_INSTALL,
   MASSA_STATION_STORE,
   MASSA_WALLET_CREATE_ACCOUNT,
-} from '../../massa-react/utils/const';
-import Intl from '../i18n';
-import { useAccountStore } from '../store';
+} from '../../../../massa-react/utils/const';
+import Intl from '../../../i18n';
+import { useAccountStore } from '../../../store';
+import { MASBalance } from '../../utils/MASBalance';
+import { StationSelectAccount } from './StationSelectAccount';
 
 export default function StationWallet() {
   const { accounts, isFetching } = useAccountStore();

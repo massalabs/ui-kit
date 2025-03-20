@@ -8,7 +8,7 @@ import { toast, ToastContent } from '../../../components';
 
 import { Operation, Provider, PublicProvider } from '@massalabs/massa-web3';
 import { Toast } from 'react-hot-toast';
-import { OperationToast } from '../../ConnectMassaWallets/components/OperationToast';
+import { OperationToast } from '../../ConnectMassaWallets/components/utils/OperationToast';
 
 export async function logSmartContractEvents(
   provider: PublicProvider,

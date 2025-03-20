@@ -2,12 +2,13 @@
 // @ts-ignore
 import React from 'react';
 
-import { BearbySvg } from './logo/BearbySvg';
-import { Disconnected } from './Status/Disconnected';
-import Intl from '../i18n';
-import { Dropdown, MassaWallet } from '../../../components';
+import { BearbySvg } from '../logo/BearbySvg';
+
+import Intl from '../../i18n';
+import { Dropdown, MassaWallet } from '../../../../components';
 import { WalletName } from '@massalabs/wallet-provider';
-import { MetaMaskSvg } from './logo/MetaMaskSvg';
+import { MetaMaskSvg } from '../logo/MetaMaskSvg';
+import { Disconnected } from '../status/Disconnected';
 
 const walletList = [
   {

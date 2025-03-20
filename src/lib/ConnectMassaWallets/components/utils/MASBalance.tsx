@@ -1,12 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React, { useEffect } from 'react';
-
-import Intl from '../i18n';
-import { useAccountStore } from '../store';
-import { FetchingLine } from '../../../components';
-import { massaToken } from '../../massa-react/utils/const';
-import { formatAmount } from '../../util/parseAmount';
+import { FetchingLine } from '../../../../components';
+import { massaToken } from '../../../massa-react';
+import { formatAmount } from '../../../util';
+import { useAccountStore } from '../../store';
+import Intl from '../../i18n';
 
 export function MASBalance() {
   const { balance } = useAccountStore();

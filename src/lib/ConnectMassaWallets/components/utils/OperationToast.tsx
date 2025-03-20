@@ -2,8 +2,8 @@
 // @ts-ignore
 import React from 'react';
 
-import Intl from '../i18n';
-import { generateExplorerLink } from '../../massa-react/utils';
+import Intl from '../../i18n';
+import { generateExplorerLink } from '../../..';
 
 type OperationToastProps = {
   title: string;

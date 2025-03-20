@@ -2,9 +2,9 @@
 // @ts-ignore
 import React from 'react';
 
-import { useAccountStore } from '../store';
-import { Dropdown } from '../../../components';
 import { Provider } from '@massalabs/massa-web3';
+import { Dropdown } from '../../../../../components';
+import { useAccountStore } from '../../../store';
 
 export function StationSelectAccount() {
   const accounts = useAccountStore((state) => state.accounts);

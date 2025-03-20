@@ -1,16 +1,16 @@
-import { MetaMaskSvg } from './logo/MetaMaskSvg';
-import { BearbySvg } from './logo/BearbySvg';
-import BearbyWallet from './BearbyWallet';
-import SelectMassaWallet from './SelectMassaWallet';
-import StationWallet from './StationWallet';
-import { ChainStatus } from './Status/ChainStatus';
-import SwitchWalletButton from './SwitchWalletButton';
-import Intl from '../i18n';
-import { useAccountStore } from '../store';
-import { MassaWallet, Tooltip } from '../../../components';
+import { MetaMaskSvg } from './components/logo/MetaMaskSvg';
+import { BearbySvg } from './components/logo/BearbySvg';
+import BearbyWallet from './components/wallets/bearby/BearbyWallet';
+import SelectMassaWallet from './components/connection/SelectMassaWallet';
+import StationWallet from './components/wallets/station/StationWallet';
+import { ChainStatus } from './components/status/ChainStatus';
+import SwitchWalletButton from './components/connection/SwitchWalletButton';
+import Intl from './i18n';
+import { useAccountStore } from './store';
+import { MassaWallet, Tooltip } from '../../components';
 import { WalletName } from '@massalabs/wallet-provider';
-import MetamaskWallet from './MetamaskWallet';
-import { Network } from './Network';
+import MetamaskWallet from './components/wallets/metamask/MetamaskWallet';
+import { Network } from './components/utils/Network';
 import { useEffect, useState } from 'react';
 
 export const ConnectMassaWallet = () => {

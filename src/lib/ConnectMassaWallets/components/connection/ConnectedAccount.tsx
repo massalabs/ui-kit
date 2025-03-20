@@ -2,9 +2,9 @@
 // @ts-ignore
 import React from 'react';
 
-import { Clipboard } from '../../../components';
-import { maskAddress } from '../../massa-react/utils';
-import { useAccountStore } from '../store';
+import { Clipboard } from '../../../../components';
+import { maskAddress } from '../../../massa-react/utils';
+import { useAccountStore } from '../../store';
 
 interface ConnectedAccountProps {
   maskLength?: number;

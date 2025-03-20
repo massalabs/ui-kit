@@ -2,7 +2,7 @@
 // @ts-ignore
 import React from 'react';
 
-import Intl from '../i18n';
+import Intl from '../../i18n';
 
 export default function SwitchWalletButton({
   onClick,
