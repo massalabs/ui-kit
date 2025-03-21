@@ -26,7 +26,7 @@ import { mount } from 'cypress/react18';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import compareSnapshotCommand from 'cypress-image-diff-js/dist/command';
+import compareSnapshotCommand from 'cypress-image-diff-js/command';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

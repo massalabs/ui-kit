@@ -24,7 +24,10 @@
       "get-massa-wallet": "Get Massa Wallet",
       "massa-wallet-no-account": "No wallet accounts found in Massa Wallet.",
       "massa-wallet-create-account": "Create an account",
-      "not-detected": "wallet is not detected."
+      "not-detected": "wallet is not detected.",
+      "checking-wallet": "Checking wallet availability...",
+      "fetching-accounts": "Fetching wallet accounts...",
+      "loading-accounts": "Loading wallet accounts..."
     },
     "MASSA WALLET": "MassaWallet",
     "BEARBY": "Bearby",

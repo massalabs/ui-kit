@@ -70,7 +70,7 @@ export function ToastContent(props: ToastContentProps) {
     >
       <div
         className={`flex items-center w-fit p-4 rounded-lg shadow-2xl
-          bg-secondary text-f-primary`}
+          bg-secondary dark:bg-darkCard text-f-primary dark:text-darkText`}
         {...rest}
       >
         <div
@@ -80,7 +80,11 @@ export function ToastContent(props: ToastContentProps) {
           {toastIcons[t.type]}
         </div>
         <div className="ml-3 text-sm font-normal pr-2">{content}</div>
-        <Button variant="icon" onClick={() => toast.dismiss(t.id)}>
+        <Button
+          variant="icon"
+          onClick={() => toast.dismiss(t.id)}
+          customClass="text-f-primary dark:text-black hover:bg-tertiary dark:hover:bg-darkTertiary"
+        >
           <FiX />
         </Button>
       </div>

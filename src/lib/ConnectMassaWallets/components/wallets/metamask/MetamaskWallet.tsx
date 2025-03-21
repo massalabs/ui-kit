@@ -2,12 +2,12 @@
 // @ts-ignore
 import React from 'react';
 
-import { ConnectedAccount } from './ConnectedAccount';
-import { MASBalance } from './MASBalance';
-import { WalletError } from './WalletError';
-import Intl from '../i18n';
-import { useAccountStore } from '../store';
-import { METAMASK_INSTALL } from '../../massa-react/utils/const';
+import { ConnectedAccount } from '../../connection/ConnectedAccount';
+import { MASBalance } from '../../utils/MASBalance';
+import { WalletError } from '../../utils/WalletError';
+import Intl from '../../../i18n';
+import { useAccountStore } from '../../../store';
+import { METAMASK_INSTALL } from '../../../../massa-react/utils/const';
 
 export default function MetamaskWallet() {
   const { connectedAccount, isFetching } = useAccountStore();

@@ -35,7 +35,7 @@ interface IPopupModalNodeProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export function PopupModalHeader(props: IPopupModalNodeProps) {
-  const { children, _onClose, customClassHeader = '' } = props;
+  const { children, _onClose, customClassHeader = '', ...rest } = props;
 
   function handleClose() {
     _onClose?.();
@@ -46,12 +46,13 @@ export function PopupModalHeader(props: IPopupModalNodeProps) {
       <div
         data-testid="popup-modal-header"
         className={`flex items-start justify-between px-10 pt-10 rounded-t ${customClassHeader}`}
+        {...rest}
       >
         {children}
         <button
           data-testid="popup-modal-header-close"
           className="text-neutral bg-primary rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
-                      hover:bg-tertiary hover:text-c-primary"
+                      hover:bg-primary/80 hover:text-neutral"
           type="button"
           onClick={handleClose}
         >

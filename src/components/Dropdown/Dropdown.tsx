@@ -81,8 +81,10 @@ export function Dropdown(props: DropdownProps) {
 
   // refresh the selected item when the select prop changes
   useEffect(() => {
-    setSelected(defaultItem ?? options[select]);
-  }, [select, options]);
+    if (select >= 0 && select < options.length) {
+      setSelected(defaultItem ?? options[select]);
+    }
+  }, [select, defaultItem]);
 
   const customButtonClass = classes[size].button;
   const customItemClass = classes[size].item;
@@ -128,6 +130,8 @@ export function Dropdown(props: DropdownProps) {
                     ${customButtonClass}
                     items-center text-f-primary bg-secondary
                     hover:bg-tertiary hover:border-tertiary
+                    dark:bg-darkCard dark:text-darkText dark:border-darkBorder/50
+                    dark:hover:bg-darkTertiary dark:hover:border-darkAccent/40
                     disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`}
       >
         <div data-testid="dropdown-selected-icon" className={customIconClass}>
@@ -143,7 +147,8 @@ export function Dropdown(props: DropdownProps) {
       </button>
       <div
         id="options"
-        className={`${hidden} mt-2 bg-secondary py-1.5 absolute z-10 ${customPanelClass}`}
+        className={`${hidden} mt-2 bg-secondary dark:bg-darkCard py-1.5 absolute z-10 border 
+        dark:border-darkBorder/50 ${customPanelClass}`}
       >
         <ul
           className="h-auto max-h-64 overflow-y-auto"
@@ -158,6 +163,7 @@ export function Dropdown(props: DropdownProps) {
                   className={`flex items-center cursor-pointer text-f-primary
                               ${customItemClass}
                               hover:bg-neutral/[.15] active:bg-neutral/[.3]
+                              dark:text-darkText dark:hover:bg-darkTertiary dark:active:bg-darkTertiary/70
                               disabled:text-f-disabled-1 disabled:bg-c-disabled-2 disabled:border-c-disabled-1`}
                 >
                   <div
