@@ -2,9 +2,9 @@
 // @ts-ignore
 import React from 'react';
 
-import { Connected } from './Connected';
-import { Disconnected } from './Disconnected';
+import { Disconnected } from '../Status/Disconnected';
 import { useAccountStore } from '../../store';
+import { Connected } from '../Status/Connected';
 
 export function ChainStatus() {
   const { connectedAccount, currentWallet } = useAccountStore();

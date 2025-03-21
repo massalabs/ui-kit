@@ -8,7 +8,7 @@ import Intl from '../../i18n';
 import { Dropdown, MassaWallet } from '../../../../components';
 import { WalletName } from '@massalabs/wallet-provider';
 import { MetaMaskSvg } from '../logo/MetaMaskSvg';
-import { Disconnected } from '../status/Disconnected';
+import { Disconnected } from '../Status/Disconnected';
 
 const walletList = [
   {

@@ -3,7 +3,7 @@ import { BearbySvg } from './components/logo/BearbySvg';
 import BearbyWallet from './components/wallets/bearby/BearbyWallet';
 import SelectMassaWallet from './components/connection/SelectMassaWallet';
 import StationWallet from './components/wallets/station/StationWallet';
-import { ChainStatus } from './components/status/ChainStatus';
+
 import SwitchWalletButton from './components/connection/SwitchWalletButton';
 import Intl from './i18n';
 import { useAccountStore } from './store';
@@ -12,6 +12,7 @@ import { WalletName } from '@massalabs/wallet-provider';
 import MetamaskWallet from './components/wallets/metamask/MetamaskWallet';
 import { Network } from './components/utils/Network';
 import { useEffect, useState, useCallback } from 'react';
+import { ChainStatus } from './components/Status/ChainStatus';
 
 interface WalletIconProps {
   walletName: WalletName;
