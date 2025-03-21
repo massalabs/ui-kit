@@ -1,6 +1,6 @@
 import { defineConfig } from 'cypress';
 
-import getCompareSnapshotsPlugin from 'cypress-image-diff-js/dist/plugin';
+import getCompareSnapshotsPlugin from 'cypress-image-diff-js/plugin';
 export default defineConfig({
   component: {
     // macbook-15 default
@@ -11,38 +11,8 @@ export default defineConfig({
       bundler: 'vite',
     },
     setupNodeEvents(on, config) {
-      const compareSnapshotsPlugin = getCompareSnapshotsPlugin(on, config);
-
-      // Add the imageSnapshot configuration options to the plugin
-      compareSnapshotsPlugin.options = {
-        threshold: 0.05,
-        thresholdType: 'pixel',
-        includeAA: true,
-        diffColor: [255, 0, 0],
-        diffColorAlt: [0, 255, 0],
-        capture: 'fullPage',
-        antialiasingTolerance: 0,
-        createDiffImage: true,
-        diffPath: 'cypress/diffs',
-        update: false,
-        debug: false,
-        errorColor: [255, 0, 0],
-        errorType: 'movement',
-        waitBeforeScreenshot: 0,
-        waitAfterScreenshot: 0,
-        tabbableOptions: {
-          include: ['button', 'input', 'select', 'textarea', 'a[href]'],
-        },
-      };
-
-      on('task', {
-        deleteScreenshot() {
-          // your task code here
-          return null;
-        },
-      });
-
-      return compareSnapshotsPlugin;
+      getCompareSnapshotsPlugin(on, config);
+      return config;
     },
   },
 
