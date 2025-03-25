@@ -9,7 +9,7 @@ export const MASSA_WALLET_CREATE_ACCOUNT =
 export const massaToken = 'MAS';
 export const BEARBY_INSTALL = 'https://bearby.io';
 export const METAMASK_INSTALL = 'https://metamask.io/';
-export const MASSA_EXPLO_URL = 'https://massexplo.io/tx/';
+export const MASSA_EXPLO_URL = 'https://massexplo.com/tx/';
 export const MASSA_EXPLO_EXTENSION = '?network=buildnet';
 export const MASSA_EXPLORER_URL =
   'https://explorer.massa.net/mainnet/operation/';
