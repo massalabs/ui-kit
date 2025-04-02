@@ -52,7 +52,6 @@ export const ConnectMassaWallet: React.FC = () => {
   const { currentWallet, wallets, setCurrentWallet, isFetching } =
     useAccountStore();
   const [selectedWallet, setSelectedWallet] = useState<WalletName | null>(null);
-  console.log(selectedWallet);
 
   useEffect(() => {
     if (currentWallet) {
