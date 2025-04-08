@@ -16,7 +16,7 @@ export async function processOperation(
   operation: Operation,
   messages: ToasterMessage,
   final: boolean,
-  isMainnet: boolean | undefined,
+  isMainnet: boolean,
   setState: React.Dispatch<React.SetStateAction<OperationState>>,
 ): Promise<void> {
   try {
@@ -42,7 +42,12 @@ export async function processOperation(
       logSmartContractEvents(operation.provider, operation.id);
       throw new Error(`Operation failed with status: ${finalStatus}`);
     } else {
-      handleOperationSuccess(messages.success, operation.id, setState);
+      handleOperationSuccess(
+        messages.success,
+        operation.id,
+        setState,
+        isMainnet,
+      );
     }
   } catch (error) {
     if (error instanceof Error) {
@@ -75,9 +80,10 @@ function handleOperationSuccess(
   message: string,
   opId: string,
   setState: React.Dispatch<React.SetStateAction<OperationState>>,
+  isMainnet = false,
 ): void {
   updateOpState(setState, { isSuccess: true });
-  showToast('success', message, opId);
+  showToast('success', message, opId, isMainnet);
 }
 
 function handleOperationError(
