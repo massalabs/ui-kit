@@ -7,7 +7,7 @@ Tech:
 
 ## How to use it?
 
-- `npm install @massalabs/react-ui-kit -D`
+- `npm install @massalabs/react-ui-kit`
 - update your tailwind configuration file `tailwind.config.js`:
 
 ```js
