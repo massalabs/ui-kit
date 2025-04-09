@@ -14,30 +14,30 @@ const LocalStorageDisclaimerPrefix = 'DEWEB_UPLOADER_DISCLAIMER_';
 /* Links passed to useDisclaimer should end with "_V{version number}.{extension}" */
 export function useDisclaimer({ docs }: DisclaimerProps) {
   const [isValid, setIsValid] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
   const [newOrUpdatedFiles, setNewOrUpdatedFile] = useState<docVersion[]>([]);
 
   /* For each doc, check whether it has been accepted or not by the user.
-        When a doc has been accepted, it's hash is stored in the localstorage (the key is it's link).
-        So if a doc is updated, it's hash would not match the one stored in the localstorage and the 
-        user would be invited again to accept (updated) docs.
-        If the hash of the doc match the one in the localstorage, it means that the user has already accepted them so
-        no need to display the disclaimer */
+    When a doc has been accepted, it's version is stored in the localstorage (the key is it's link).
+    So if a doc version has been updated, it would not match the one stored in the localstorage and the 
+    user would be invited again to accept (updated) docs.
+    If the version of the doc match the one in the localstorage, it means that the user has already accepted them so
+    no need to display the disclaimer */
   useEffect(() => {
     async function checkLegalDoc() {
       const newOrUpdated: docVersion[] = [];
       for (const doc of docs) {
         // extract version number from the link
         const versionMatch = doc.link.match(/_V(\d+)\.[a-zA-Z]{1,5}$/);
+        let version = '0';
+
         if (!versionMatch) {
-          setError(
-            new Error(
-              `Invalid document link format: ${doc.link}. Should have a version number`,
-            ),
+          console.warn(
+            `Invalid document link format: ${doc.link}. Should have a version number`,
           );
-          return;
+        } else {
+          // if the link is valid, extract the version number
+          version = versionMatch[1];
         }
-        const version = versionMatch[1];
 
         // check if the version is already stored in localstorage
         const storedVersion = localStorage.getItem(
@@ -45,11 +45,11 @@ export function useDisclaimer({ docs }: DisclaimerProps) {
         );
 
         /* if the version is not stored or it is different from the current version,
-                the user has to accept the doc again */
+          the user has to accept the doc again */
         if (!storedVersion || storedVersion !== version) {
           newOrUpdated.push({
             link: doc.link,
-            version: parseInt(version, 10), // convert version to number
+            version: parseInt(version), // convert version to number
           });
         }
       }
@@ -88,5 +88,5 @@ export function useDisclaimer({ docs }: DisclaimerProps) {
     setIsValid(true);
   }
 
-  return { isValid, accept, error };
+  return { isValid, accept };
 }
