@@ -40,7 +40,7 @@ const SelectMassaWallet = ({ onClick }: SelectMassaWalletProps) => {
 
   return (
     <>
-      <div className="flex gap-2 items-center mb-4">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-start sm:items-center mb-4">
         <p className="mas-body flex-col justify-center text-f-primary dark:text-f-primary">
           {Intl.t('connect-wallet.card-destination.to')}
         </p>
