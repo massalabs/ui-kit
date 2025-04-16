@@ -77,27 +77,31 @@ export const ConnectMassaWallet: React.FC = () => {
 
   if (!selectedWallet && !isFetching) {
     return (
-      <div className="text-f-primary dark:text-f-primary">
+      <div className="text-f-primary dark:text-f-primary w-full">
         <SelectMassaWallet onClick={handleWalletSelect} />
       </div>
     );
   }
 
   return (
-    <div className="text-f-primary dark:text-f-primary">
+    <div className="text-f-primary dark:text-f-primary w-full">
       <div
         data-testid="connect-massa-wallet"
-        className="flex justify-between items-center mb-4"
+        className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 mb-4"
       >
-        <div className="flex gap-2 items-center">
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 w-full sm:w-auto">
           {selectedWallet && (
-            <>
+            <div className="flex items-center gap-2">
               <WalletIcon walletName={selectedWallet} />
-              {Intl.t(`connect-wallet.${selectedWallet}`)}
-            </>
+              <span className="text-sm sm:text-base">
+                {Intl.t(`connect-wallet.${selectedWallet}`)}
+              </span>
+            </div>
           )}
-          <ChainStatus />
-          <Network />
+          <div className="flex items-center gap-2">
+            <ChainStatus />
+            <Network />
+          </div>
           {currentWallet?.name() === WalletName.Bearby && (
             <Tooltip
               triggerClassName="whitespace-nowrap"
@@ -106,7 +110,9 @@ export const ConnectMassaWallet: React.FC = () => {
             />
           )}
         </div>
-        <SwitchWalletButton onClick={handleWalletSwitch} />
+        <div className="w-full sm:w-auto flex justify-center">
+          <SwitchWalletButton onClick={handleWalletSwitch} />
+        </div>
       </div>
 
       {selectedWallet && <WalletContent walletName={selectedWallet} />}

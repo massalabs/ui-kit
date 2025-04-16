@@ -21,7 +21,8 @@ export function ConnectedAccount(props: ConnectedAccountProps) {
           text-f-primary dark:text-darkText 
           bg-secondary dark:bg-darkCard
           hover:bg-tertiary dark:hover:bg-darkCard/70
-          border-secondary dark:border-darkBorder/50"
+          border-secondary dark:border-darkBorder/50
+          text-sm sm:text-base"
         rawContent={connectedAccount?.address ?? ''}
         displayedContent={maskAddress(
           connectedAccount?.address ?? '',

@@ -134,11 +134,11 @@ export default function StationWallet() {
 
   return (
     <div className="flex flex-col gap-4 mas-body text-f-primary dark:text-f-primary">
-      <div className="flex gap-4">
-        <div className="w-1/2">
+      <div className="flex flex-col sm:flex-row gap-4">
+        <div className="w-full sm:w-1/2">
           <StationSelectAccount />
         </div>
-        <div className="w-1/2">
+        <div className="w-full sm:w-1/2">
           <ConnectedAccount maskLength={5} />
         </div>
       </div>
