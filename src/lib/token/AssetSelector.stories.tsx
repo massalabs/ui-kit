@@ -3,7 +3,7 @@
 import React from 'react';
 import { AssetSelector } from './AssetSelector';
 import { Asset } from './models/AssetModel';
-import { mainnet } from 'viem/chains';
+import { mainnet } from '..';
 
 export default {
   title: 'Lib/Token',

@@ -2,7 +2,7 @@
 // @ts-ignore
 import React, { ComponentPropsWithoutRef } from 'react';
 import { ReactNode } from 'react';
-import { bsc, bscTestnet, mainnet, sepolia } from 'viem/chains';
+import { bsc, bscTestnet, mainnet, sepolia } from '../../../../lib';
 import { MassaLogo } from '../Massa';
 import { BNB, DAI, USDC, USDT, FT1, WMAS, WETH, PUR, SVGProps, POM } from '.';
 import {

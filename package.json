@@ -41,7 +41,6 @@
     "react-icons": "^4.8.0",
     "react-number-format": "^5.2.2",
     "tw-colors": "^1.2.5",
-    "viem": "^2.19.4",
     "zustand": "^4.5.2"
   },
   "optionalDependencies": {

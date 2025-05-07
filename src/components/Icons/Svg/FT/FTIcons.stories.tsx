@@ -5,7 +5,7 @@ import { EthBridged } from '../ChainIcons/EthBridged';
 import { BscBridged } from '../ChainIcons/BscBridged';
 import { Bsc } from '../ChainIcons/Bsc';
 import { createBridgedFt, createNativeFt, getAssetIcons } from './tokenIcons';
-import { bsc, mainnet, sepolia } from 'viem/chains';
+import { bsc, mainnet, sepolia } from '../../../../lib';
 import { BNB, DAI, USDC, USDT, FT1, WMAS, WETH, PUR } from '.';
 
 export default { title: 'Icons/FT' };

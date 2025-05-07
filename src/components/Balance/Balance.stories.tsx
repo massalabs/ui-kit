@@ -1,6 +1,6 @@
+import { sepolia } from '../../lib';
 import { getAssetIcons } from '../Icons';
 import { Balance } from './Balance';
-import { sepolia } from 'viem/chains';
 
 export default { title: 'Components/Balance', component: Balance };
 
