@@ -1,5 +1,5 @@
+import { parseUnits } from '@massalabs/massa-web3';
 import currency from 'currency.js';
-import { parseUnits } from 'viem';
 
 // Parse
 
