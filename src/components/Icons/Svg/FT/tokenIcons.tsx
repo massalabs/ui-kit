@@ -13,6 +13,7 @@ import {
   Sepolia,
   SepoliaBridged,
 } from '../ChainIcons';
+import { WBTC } from './WBTC';
 
 export const mapSymbolWithoutExtension = {
   'WETH.e': 'WETH',
@@ -26,6 +27,8 @@ export const mapSymbolWithoutExtension = {
   'DAI.e': 'DAI',
   'tDAI.s': 'DAI',
   tDAI: 'DAI',
+  'WBTC.s': 'WBTC',
+  'WBTC.e': 'WBTC',
 };
 
 export const tokenExtensionToChainId = {
@@ -99,6 +102,7 @@ export function getAssetIcons(
     USDT: createNativeFt(USDT, size),
     PUR: createNativeFt(PUR, size),
     POM: createNativeFt(POM, size),
+    WBTC: createNativeFt(WBTC, size),
     MAS: <MassaLogo size={size} />,
     // Overwrite
     ...getTokenIcons(isNative, originChainId, size),
@@ -130,6 +134,7 @@ const tokenIcons: { [key: string]: (props: SVGProps) => JSX.Element } = {
   WETH: WETH,
   BNB: BNB,
   USDT: USDT,
+  WBTC: WBTC,
 };
 
 function getTokenIcons(
