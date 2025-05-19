@@ -5,14 +5,7 @@ import { ReactNode } from 'react';
 import { bsc, bscTestnet, mainnet, sepolia } from '../../../../lib';
 import { MassaLogo } from '../Massa';
 import { BNB, DAI, USDC, USDT, FT1, WMAS, WETH, PUR, SVGProps, POM } from '.';
-import {
-  Bsc,
-  BscBridged,
-  Eth,
-  EthBridged,
-  Sepolia,
-  SepoliaBridged,
-} from '../ChainIcons';
+import { Bsc, BscBridged, Eth, EthBridged } from '../ChainIcons';
 import { WBTC } from './WBTC';
 
 export const mapSymbolWithoutExtension = {
@@ -125,7 +118,7 @@ const chainConfig: Record<number, ChainConfig> = {
   [bsc.id]: { native: Bsc, bridged: BscBridged },
   [bscTestnet.id]: { native: Bsc, bridged: BscBridged },
   [mainnet.id]: { native: Eth, bridged: EthBridged },
-  [sepolia.id]: { native: Sepolia, bridged: SepoliaBridged },
+  [sepolia.id]: { native: Eth, bridged: EthBridged },
 };
 
 const tokenIcons: { [key: string]: (props: SVGProps) => JSX.Element } = {

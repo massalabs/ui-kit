@@ -1,22 +1,21 @@
-import { Sepolia } from '../ChainIcons/Sepolia';
-import { SepoliaBridged } from '../ChainIcons/SepoliaBridged';
 import { Eth } from '../ChainIcons/Eth';
 import { EthBridged } from '../ChainIcons/EthBridged';
 import { BscBridged } from '../ChainIcons/BscBridged';
 import { Bsc } from '../ChainIcons/Bsc';
 import { createBridgedFt, createNativeFt, getAssetIcons } from './tokenIcons';
 import { bsc, mainnet, sepolia } from '../../../../lib';
-import { BNB, DAI, USDC, USDT, FT1, WMAS, WETH, PUR } from '.';
+import { BNB, DAI, USDC, USDT, FT1, WMAS, WETH, PUR, POM } from '.';
+import { WBTC } from './WBTC';
 
 export default { title: 'Icons/FT' };
 
-const symbolList = ['DAI', 'BNB', 'USDC', 'FT1', 'WMAS', 'WETH'];
+const symbolList = ['DAI', 'BNB', 'USDC', 'FT1', 'WMAS', 'WETH', 'WBTC'];
 
 const bscSymbolList = ['DAI', 'BNB', 'USDC', 'WETH', 'USDT'];
 
-const ethSymbolList = ['DAI', 'USDC', 'WETH'];
+const ethSymbolList = ['DAI', 'USDC', 'WETH', 'WBTC'];
 
-const massaTokenList = ['PUR'];
+const massaTokenList = ['PUR', 'POM'];
 
 const allSymbols = [
   'WETH.e',
@@ -46,12 +45,12 @@ export const _FT = {
           <WETH />
           <USDT />
           <PUR />
+          <POM />
+          <WBTC />
         </div>
 
         <h2 className="text-neutral">Base Chain Icons</h2>
         <div className="flex flex-wrap gap-4">
-          <Sepolia />
-          <SepoliaBridged />
           <Bsc />
           <BscBridged />
           <Eth />
