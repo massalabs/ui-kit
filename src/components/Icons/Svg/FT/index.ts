@@ -7,5 +7,6 @@ export * from './WMAS';
 export * from './USDT';
 export * from './PUR';
 export * from './POM';
+export * from './WBTC';
 export * from './tokenIcons';
 export * from './svgInterface';
