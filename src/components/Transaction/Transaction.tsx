@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { ReactNode, ComponentPropsWithoutRef, cloneElement } from 'react';
+import type { JSX } from 'react';
 
 export interface TransactionProps extends ComponentPropsWithoutRef<'div'> {
   preIcon: JSX.Element;

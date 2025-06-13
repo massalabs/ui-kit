@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React, { useState } from 'react';
+import type { JSX } from 'react';
 
 import { ReactNode, cloneElement } from 'react';
 import { IconContext } from 'react-icons/lib';

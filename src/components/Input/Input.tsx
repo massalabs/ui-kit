@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React, { ReactNode } from 'react';
+import type { JSX } from 'react';
 
 import { ComponentPropsWithoutRef, ChangeEvent, cloneElement } from 'react';
 

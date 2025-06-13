@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from 'react';
+import type { JSX } from 'react';
 
 import { ReactNode, ComponentPropsWithoutRef, cloneElement } from 'react';
 import { TbTriangle, TbTriangleFilled } from 'react-icons/tb';
