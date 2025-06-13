@@ -11,14 +11,14 @@ import { MassaWallet, Tooltip } from '../../components';
 import { WalletName } from '@massalabs/wallet-provider';
 import MetamaskWallet from './components/wallets/metamask/MetamaskWallet';
 import { Network } from './components/utils/Network';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, ReactElement } from 'react';
 import { ChainStatus } from './components/Status/ChainStatus';
 
 interface WalletIconProps {
   walletName: WalletName;
 }
 
-const WalletIcon: React.FC<WalletIconProps> = ({ walletName }) => {
+const WalletIcon = ({ walletName }: WalletIconProps): ReactElement | null => {
   switch (walletName) {
     case WalletName.MassaWallet:
       return <MassaWallet size={28} />;
@@ -35,7 +35,7 @@ interface WalletContentProps {
   walletName: WalletName;
 }
 
-const WalletContent: React.FC<WalletContentProps> = ({ walletName }) => {
+const WalletContent = ({ walletName }: WalletContentProps): ReactElement => {
   switch (walletName) {
     case WalletName.MassaWallet:
       return <StationWallet />;
@@ -48,7 +48,7 @@ const WalletContent: React.FC<WalletContentProps> = ({ walletName }) => {
   }
 };
 
-export const ConnectMassaWallet: React.FC = () => {
+export const ConnectMassaWallet = (): ReactElement => {
   const { currentWallet, wallets, setCurrentWallet, isFetching } =
     useAccountStore();
   const [selectedWallet, setSelectedWallet] = useState<WalletName | null>(null);
