@@ -6,15 +6,16 @@ import { useState } from 'react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { useLocalStorage } from '../../lib/util/hooks/useLocalStorage';
 
-export type Theme = 'theme-light' | 'theme-dark';
+export type Theme = 'theme-light' | 'theme-dark' | 'theme-dark-v2';
 
 interface ThemeProps {
   onSetTheme?: (theme: Theme) => void;
   storageKey: string;
+  useV2Toggle?: boolean; // If true, uses handleClickV2 (light <-> dark-v2)
 }
 
 export function ThemeMode(props: ThemeProps) {
-  let { onSetTheme, storageKey } = props;
+  let { onSetTheme, storageKey, useV2Toggle = false } = props;
 
   const [storedTheme, setStoredTheme] = useLocalStorage<string>(
     storageKey,
@@ -31,8 +32,18 @@ export function ThemeMode(props: ThemeProps) {
     onSetTheme?.(newTheme);
   }
 
+  function handleClickV2() {
+    const newTheme = theme === 'theme-light' ? 'theme-dark-v2' : 'theme-light';
+
+    setTheme(newTheme);
+    setStoredTheme(newTheme);
+
+    onSetTheme?.(newTheme);
+  }
+
   const themeIcons = {
     'theme-dark': <FiSun className="h-8 w-8" />,
+    'theme-dark-v2': <FiSun className="h-8 w-8" />,
     'theme-light': <FiMoon className="h-8 w-8" />,
   };
 
@@ -44,7 +55,7 @@ export function ThemeMode(props: ThemeProps) {
                   hover:bg-tertiary
                   active:bg-secondary
                   h-12 w-12`}
-      onClick={handleClick}
+      onClick={useV2Toggle ? handleClickV2 : handleClick}
     >
       <div className="flex justify-center items-center">
         {themeIcons[theme as keyof typeof themeIcons]}
