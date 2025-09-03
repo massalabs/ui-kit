@@ -11,6 +11,7 @@ export interface IOption extends ComponentPropsWithoutRef<'div'> {
   item: ReactNode;
   itemPreview?: ReactNode;
   select?: number;
+  title?: string;
 }
 
 interface DropdownProps extends ComponentPropsWithoutRef<'div'> {
@@ -126,6 +127,7 @@ export function Dropdown(props: DropdownProps) {
         data-testid="dropdown-button"
         onClick={toggleDropdown}
         type="button"
+        title={selected?.title}
         className={`flex default-button border-secondary justify-between
                     ${customButtonClass}
                     items-center text-f-primary bg-secondary
@@ -160,6 +162,7 @@ export function Dropdown(props: DropdownProps) {
                 <div
                   data-testid="dropdown-label"
                   onClick={(e) => handleOnClick(e, idx)}
+                  title={option.title}
                   className={`flex items-center cursor-pointer text-f-primary
                               ${customItemClass}
                               hover:bg-neutral/[.15] active:bg-neutral/[.3]

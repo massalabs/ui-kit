@@ -243,6 +243,52 @@ export const _Dropdown = {
   ),
 };
 
+export const DropdownWithTooltips = {
+  render: () => (
+    <>
+      <div className="w-64">
+        <h3 className="text-lg font-semibold mb-4">Dropdown with Tooltips</h3>
+        <p className="text-sm text-gray-600 mb-4">
+          Hover over the dropdown button and items to see tooltips with full
+          names
+        </p>
+        <Dropdown
+          options={[
+            {
+              icon: (
+                <MassaLogo size={32} className="bg-c-default rounded-full" />
+              ),
+              item: 'Mainnet',
+              title: 'Massa Mainnet - Production Network',
+              onClick: () => console.log('Mainnet selected'),
+            },
+            {
+              icon: <MassaLogo size={32} />,
+              item: 'Testnet',
+              title: 'Massa Testnet - Development Network',
+              onClick: () => console.log('Testnet selected'),
+            },
+            {
+              icon: <MassaLogo size={32} />,
+              item: 'Custom Network with Very Long Name',
+              title:
+                'Custom Network with Very Long Name - This is a custom network endpoint for testing purposes',
+              onClick: () => console.log('Custom network selected'),
+            },
+            {
+              icon: <MassaLogo size={32} />,
+              item: 'Local Dev',
+              title: 'Local Development Network - http://localhost:33035',
+              onClick: () => console.log('Local dev selected'),
+            },
+          ]}
+          select={0}
+        />
+      </div>
+    </>
+  ),
+};
+
 function CustomItem(props: { title: string; subtitle: string }) {
   return (
     <>
