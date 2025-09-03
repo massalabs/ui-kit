@@ -93,6 +93,38 @@ module.exports = {
         'f-disabled-1': colorDarkGrey,
         'f-disabled-2': colorWhite,
       },
+      'dark-v2': {
+        // Figma-based dark theme with new color palette
+        primary: '#191829', // Main dark background (massa-blue-dark)
+        secondary: '#2e3743', // Elevated surfaces (massa-blue-light)
+        tertiary: '#1a2022', // Secondary backgrounds (massa-blue-primary)
+        brand: '#1ae19d', // Brand green (massa-green)
+        neutral: '#dadada', // Primary text (massa-grey-dark)
+        info: '#f1f1f1', // Secondary text (massa-grey-light)
+        // states:
+        's-success': '#1ae19d', // Success green
+        's-error': '#ff4e4e', // Error red (massa-accent-error)
+        's-warning': '#ffa51c', // Warning orange (massa-accent-warning)
+        's-info': '#dadada', // Info text
+        's-info-1': '#4AB2FF', // Info blue
+        // components:
+        'c-default': '#0043ff', // Primary blue for buttons
+        'c-hover': '#2e3743', // Hover state (elevated surface)
+        'c-pressed': '#1a2022', // Pressed state
+        'c-disabled-1': '#6b7280', // Disabled gray
+        'c-disabled-2': '#374151', // Disabled dark gray
+        'c-error': '#ff4e4e', // Error state
+        // icons:
+        'i-primary': '#dadada', // Primary icon color
+        'i-secondary': '#191829', // Secondary icon color
+        'i-tertiary': '#1ae19d', // Tertiary icon color (brand)
+        // fonts:
+        'f-primary': '#dadada', // Primary text color
+        'f-secondary': '#f1f1f1', // Secondary text color
+        'f-tertiary': '#1ae19d', // Tertiary text color (brand)
+        'f-disabled-1': '#6b7280', // Disabled text
+        'f-disabled-2': '#dadada', // Disabled text alternate
+      },
     }),
     plugin(function ({ addComponents, theme }) {
       addComponents({
