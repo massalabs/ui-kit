@@ -98,7 +98,7 @@ module.exports = {
         primary: '#191829', // Main dark background (massa-blue-dark)
         secondary: '#2e3743', // Elevated surfaces (massa-blue-light)
         tertiary: '#1a2022', // Secondary backgrounds (massa-blue-primary)
-        brand: '#1ae19d', // Brand green (massa-green)
+        brand: '#00FE6D', // Brand green (massa-green)
         neutral: '#dadada', // Primary text (massa-grey-dark)
         info: '#f1f1f1', // Secondary text (massa-grey-light)
         // states:
@@ -114,6 +114,7 @@ module.exports = {
         'c-disabled-1': '#6b7280', // Disabled gray
         'c-disabled-2': '#374151', // Disabled dark gray
         'c-error': '#ff4e4e', // Error state
+        'c-dark': '#0D172E', // Dark background color
         // icons:
         'i-primary': '#dadada', // Primary icon color
         'i-secondary': '#191829', // Secondary icon color
