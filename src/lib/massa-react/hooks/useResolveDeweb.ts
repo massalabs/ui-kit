@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CHAIN_ID, resolveDeweb } from '@massalabs/massa-web3';
+import { resolveDeweb } from '@massalabs/massa-web3';
 
 interface UseResolveDewebResult {
   resolvedUrl: string;
@@ -7,47 +7,28 @@ interface UseResolveDewebResult {
   error: string | null;
 }
 
-interface UseResolveDewebOptions {
-  fallbackUrl?: string;
-  shouldResolve?: boolean;
-  chainId?: bigint;
-}
-
 /**
  * Custom hook to resolve DeWeb URLs using the massa-web3 resolveDeweb function
- * @param originalUrl - The original URL to resolve (should contain massa.network domains)
- * @param options - Optional configuration
+ * @param Url - The original URL to resolve (should contain massa.network domains)
+ * @param chainId - The chain ID to resolve the URL on
  * @returns Object containing the resolved URL, loading state, and error state
  */
 export function useResolveDeweb(
-  originalUrl: string,
-  options: UseResolveDewebOptions = {},
+  Url: string,
+  chainId: bigint,
 ): UseResolveDewebResult {
-  const {
-    fallbackUrl = originalUrl,
-    shouldResolve = true,
-    chainId = CHAIN_ID.Mainnet,
-  } = options;
-
-  const [resolvedUrl, setResolvedUrl] = useState<string>(fallbackUrl);
-  const [isLoading, setIsLoading] = useState<boolean>(shouldResolve);
+  const [resolvedUrl, setResolvedUrl] = useState<string>(Url);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Only resolve if shouldResolve is true and URL contains massa.network
-    if (!shouldResolve) {
-      setResolvedUrl(originalUrl);
-      setIsLoading(false);
-      return;
-    }
-
     const resolveUrl = async () => {
       try {
         setIsLoading(true);
         setError(null);
 
         // Extract the path from the original URL to pass to resolveDeweb
-        const pathToResolve = extractMNSUrl(originalUrl);
+        const pathToResolve = extractMNSUrl(Url);
 
         const resolved = await resolveDeweb(pathToResolve, chainId);
         setResolvedUrl(resolved);
@@ -55,14 +36,13 @@ export function useResolveDeweb(
         const errorMessage =
           err instanceof Error ? err.message : 'Failed to resolve DeWeb URL';
         setError(errorMessage);
-        setResolvedUrl(fallbackUrl);
       } finally {
         setIsLoading(false);
       }
     };
 
     resolveUrl();
-  }, [originalUrl, fallbackUrl, shouldResolve, chainId]);
+  }, [Url, chainId]);
 
   return {
     resolvedUrl,
