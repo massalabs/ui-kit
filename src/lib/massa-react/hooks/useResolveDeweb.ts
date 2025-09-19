@@ -35,7 +35,7 @@ export function useResolveDeweb(
 
   useEffect(() => {
     // Only resolve if shouldResolve is true and URL contains massa.network
-    if (!shouldResolve || !originalUrl.includes('massa.network')) {
+    if (!shouldResolve) {
       setResolvedUrl(originalUrl);
       setIsLoading(false);
       return;
@@ -49,7 +49,7 @@ export function useResolveDeweb(
         // Extract the path from the original URL to pass to resolveDeweb
         const pathToResolve = extractMNSUrl(originalUrl);
 
-        const resolved = await resolveDeweb(pathToResolve);
+        const resolved = await resolveDeweb(pathToResolve, chainId);
         setResolvedUrl(resolved);
       } catch (err) {
         const errorMessage =
@@ -71,8 +71,21 @@ export function useResolveDeweb(
   };
 }
 
+/**
+ * Extracts the mns from a deweb url (expl: mns.massa.network to mns.massa)
+ * @param url - the url to extract the mns from
+ * @returns the mns url
+ */
 export function extractMNSUrl(url: string): string {
   const urlObj = new URL(url);
-  const mns = urlObj.hostname.split('.')[0] + '.massa';
-  return mns + urlObj.pathname + urlObj.search + urlObj.hash;
+  let mns: string;
+  if (urlObj.hostname.includes('.')) {
+    mns = urlObj.hostname.split('.')[0] + '.massa';
+  } else {
+    // no subdomain, use the whole hostname an mns
+    mns = urlObj.hostname + '.massa';
+  }
+  return (
+    urlObj.protocol + '//' + mns + urlObj.pathname + urlObj.search + urlObj.hash
+  );
 }
