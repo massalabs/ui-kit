@@ -23,27 +23,36 @@ export function useResolveDeweb(
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let isCanceled = false;
+
     const resolveUrl = async () => {
       try {
+        setIsLoading(true);
         setError(null);
 
         // Extract the path from the original URL to pass to resolveDeweb
         const pathToResolve = extractMNSUrl(Url);
 
         const resolved = await resolveDeweb(pathToResolve, chainId);
+        if (isCanceled) return;
         setResolvedUrl(resolved);
       } catch (err) {
+        if (isCanceled) return;
         const errorMessage =
           err instanceof Error ? err.message : 'Failed to resolve DeWeb URL';
         setError(errorMessage);
       } finally {
-        setIsLoading(false);
+        if (!isCanceled) {
+          setIsLoading(false);
+        }
       }
     };
 
-    if (isLoading) return;
-    setIsLoading(true);
     resolveUrl();
+    // Cleanup cancels in-flight request
+    return () => {
+      isCanceled = true;
+    };
   }, [Url, chainId]);
 
   return {
@@ -54,9 +63,9 @@ export function useResolveDeweb(
 }
 
 /**
- * Extracts the mns from a deweb url (expl: mns.massa.network to mns.massa)
- * @param url - the url to extract the mns from
- * @returns the mns url
+ * Extracts the MNS from a DeWeb URL (expl: mns.massa.network to mns.massa)
+ * @param url - the URL to extract the MNS from
+ * @returns the MNS URL
  */
 export function extractMNSUrl(url: string): string {
   const urlObj = new URL(url);
