@@ -9,7 +9,8 @@ interface UseResolveDewebResult {
 
 /**
  * Custom hook to resolve DeWeb URLs using the massa-web3 resolveDeweb function
- * @param Url - The original URL to resolve (should contain massa.network domains)
+ * @param Url - The original URL to resolve (expl: https://mns.massa.network,
+ * https://mns, https://mns.deweb.half-red.net/path ...)
  * @param chainId - The chain ID to resolve the URL on
  * @returns Object containing the resolved URL, loading state, and error state
  */
@@ -24,7 +25,6 @@ export function useResolveDeweb(
   useEffect(() => {
     const resolveUrl = async () => {
       try {
-        setIsLoading(true);
         setError(null);
 
         // Extract the path from the original URL to pass to resolveDeweb
@@ -41,6 +41,8 @@ export function useResolveDeweb(
       }
     };
 
+    if (isLoading) return;
+    setIsLoading(true);
     resolveUrl();
   }, [Url, chainId]);
 
@@ -62,10 +64,9 @@ export function extractMNSUrl(url: string): string {
   if (urlObj.hostname.includes('.')) {
     mns = urlObj.hostname.split('.')[0] + '.massa';
   } else {
-    // no subdomain, use the whole hostname an mns
+    // no subdomain, use the whole hostname as mns
     mns = urlObj.hostname + '.massa';
   }
-  return (
-    urlObj.protocol + '//' + mns + urlObj.pathname + urlObj.search + urlObj.hash
-  );
+  urlObj.hostname = mns;
+  return urlObj.toString();
 }
