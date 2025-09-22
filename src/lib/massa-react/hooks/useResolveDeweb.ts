@@ -16,7 +16,7 @@ interface UseResolveDewebResult {
  */
 export function useResolveDeweb(
   Url: string,
-  chainId: bigint,
+  chainId: bigint | undefined,
 ): UseResolveDewebResult {
   const [resolvedUrl, setResolvedUrl] = useState<string>(Url);
   const [isLoading, setIsLoading] = useState<boolean>(false);
