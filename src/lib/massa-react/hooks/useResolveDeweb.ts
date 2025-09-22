@@ -9,7 +9,7 @@ interface UseResolveDewebResult {
 
 /**
  * Custom hook to resolve DeWeb URLs using the massa-web3 resolveDeweb function
- * @param Url - The original URL to resolve (expl: https://mns.massa.network,
+ * @param Url - The original URL to resolve (e.g. https://mns.massa.network,
  * https://mns, https://mns.deweb.half-red.net/path ...)
  * @param chainId - The chain ID to resolve the URL on
  * @returns Object containing the resolved URL, loading state, and error state
@@ -63,7 +63,7 @@ export function useResolveDeweb(
 }
 
 /**
- * Extracts the MNS from a DeWeb URL (expl: mns.massa.network to mns.massa)
+ * Extracts the MNS from a DeWeb URL (e.g. mns.massa.network to mns.massa)
  * @param url - the URL to extract the MNS from
  * @returns the MNS URL
  */
