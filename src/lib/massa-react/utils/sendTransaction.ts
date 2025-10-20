@@ -18,13 +18,8 @@ export function validateAmount(
   decimals: number,
   minAmount = 0n,
 ): AmountValidationResult {
-  console.log('validateAmount', amount, availableBalance, decimals, minAmount);
-  if (!amount || amount === 0n) {
+  if (!amount) {
     return { valid: false, error: 'Amount is required' };
-  }
-
-  if (amount <= 0) {
-    return { valid: false, error: 'Amount must be greater than 0' };
   }
 
   if (amount < minAmount) {

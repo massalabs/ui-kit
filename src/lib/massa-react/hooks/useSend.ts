@@ -10,7 +10,6 @@ export interface Asset {
   symbol: string;
   address?: string;
   isNative?: boolean;
-  allowance?: bigint;
 }
 
 export interface SendParams {
@@ -35,21 +34,16 @@ export function useSend(options: UseSendOptions) {
       amount: bigint,
       recipient: string,
     ): Promise<void> => {
-      console.log('execute', sendFn, asset, amount, recipient);
-      console.log('provider', provider);
       if (!provider) throw new Error('No provider');
-      console.log('provider', provider);
       setIsProcessing(true);
 
       const validation = validateAmount(amount, asset.balance, asset.decimals);
-      console.log('validation', validation);
+
       if (!validation.valid) {
         toast.error(validation.error ?? 'Invalid amount');
         setIsProcessing(false);
         return;
       }
-
-      console.log('validation passed');
 
       try {
         Address.fromString(recipient);
@@ -59,10 +53,8 @@ export function useSend(options: UseSendOptions) {
         return;
       }
 
-      console.log('recipient', recipient);
       try {
         const op = await sendFn();
-        console.log('op', op);
         await handleOperation(op, {
           pending: `Sending ${amount} ${asset.symbol}`,
           success: `Sent ${amount} ${asset.symbol}`,
@@ -95,12 +87,6 @@ export function useSend(options: UseSendOptions) {
       if (!asset.address) throw new Error('Token address required');
       const mrc20 = new MRC20(provider, asset.address);
 
-      const allowance = await mrc20.allowance(provider.address, recipient);
-      if (allowance < amount) {
-        toast.error('Insufficient allowance');
-        return;
-      }
-
       await execute(
         () => mrc20.transfer(recipient, amount),
         asset,
@@ -114,7 +100,6 @@ export function useSend(options: UseSendOptions) {
   const sendAsset = useCallback(
     async ({ recipient, amount, asset }: SendParams): Promise<void> => {
       if (asset.isNative) {
-        console.log('sendMassa', recipient, amount, asset);
         return sendMassa({ recipient, amount, asset });
       }
 

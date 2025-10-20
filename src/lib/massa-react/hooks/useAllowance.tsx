@@ -55,7 +55,7 @@ export function useAllowance(options: UseAllowanceOptions) {
       try {
         const current = await mrc20.allowance(provider.address, spender);
         if (current < amount) {
-          toast.error('Cannot decrease below current allowance');
+          toast.error('Insufficient allowance to decrease by requested amount');
           setIsProcessing(false);
           return;
         }

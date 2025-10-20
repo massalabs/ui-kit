@@ -20,7 +20,6 @@ export async function processOperation(
   setState: React.Dispatch<React.SetStateAction<OperationState>>,
 ): Promise<void> {
   try {
-    console.log('processOperation', operation.id);
     updateOpState(setState, { opId: operation.id });
 
     const loadingToastId = showToast(
