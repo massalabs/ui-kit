@@ -3,6 +3,7 @@ import { MRC20, Provider } from '@massalabs/massa-web3';
 import { useHandleOperation } from './useHandleOperation';
 import toast from 'react-hot-toast';
 import { Asset } from './useSend';
+import { formatAmount } from '../../util';
 
 export interface AllowanceParams {
   spender: string;
@@ -34,8 +35,14 @@ export function useAllowance(options: UseAllowanceOptions) {
         }
         const op = await mrc20.increaseAllowance(spender, amount - current);
         await handleOperation(op, {
-          pending: `Increasing allowance ${amount} ${token.symbol}`,
-          success: `Increased allowance ${amount} ${token.symbol}`,
+          pending: `Increasing allowance ${formatAmount(
+            amount.toString(),
+            token.decimals,
+          )} ${token.symbol}`,
+          success: `Increased allowance ${formatAmount(
+            amount.toString(),
+            token.decimals,
+          )} ${token.symbol}`,
           error: `Error increasing allowance`,
           timeout: `Timeout increasing allowance`,
         });
@@ -61,8 +68,14 @@ export function useAllowance(options: UseAllowanceOptions) {
         }
         const op = await mrc20.decreaseAllowance(spender, amount);
         await handleOperation(op, {
-          pending: `Decreasing allowance ${amount} ${token.symbol}`,
-          success: `Decreased allowance ${amount} ${token.symbol}`,
+          pending: `Decreasing allowance ${formatAmount(
+            amount.toString(),
+            token.decimals,
+          )} ${token.symbol}`,
+          success: `Decreased allowance ${formatAmount(
+            amount.toString(),
+            token.decimals,
+          )} ${token.symbol}`,
           error: `Error decreasing allowance`,
           timeout: `Timeout decreasing allowance`,
         });

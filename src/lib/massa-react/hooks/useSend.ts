@@ -3,6 +3,7 @@ import { Address, MRC20, Operation, Provider } from '@massalabs/massa-web3';
 import { validateAmount } from '../utils/sendTransaction';
 import { useHandleOperation } from './useHandleOperation';
 import toast from 'react-hot-toast';
+import { formatAmount } from '../../util';
 
 export interface Asset {
   decimals: number;
@@ -56,8 +57,12 @@ export function useSend(options: UseSendOptions) {
       try {
         const op = await sendFn();
         await handleOperation(op, {
-          pending: `Sending ${amount} ${asset.symbol}`,
-          success: `Sent ${amount} ${asset.symbol}`,
+          pending: `Sending ${
+            formatAmount(amount.toString(), asset.decimals).preview
+          } ${asset.symbol}`,
+          success: `Sent ${
+            formatAmount(amount.toString(), asset.decimals).preview
+          } ${asset.symbol}`,
           error: `Error sending`,
           timeout: `Timeout sending`,
         });
