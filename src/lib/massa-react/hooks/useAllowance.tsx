@@ -35,14 +35,12 @@ export function useAllowance(options: UseAllowanceOptions) {
         }
         const op = await mrc20.increaseAllowance(spender, amount - current);
         await handleOperation(op, {
-          pending: `Increasing allowance ${formatAmount(
-            amount.toString(),
-            token.decimals,
-          )} ${token.symbol}`,
-          success: `Increased allowance ${formatAmount(
-            amount.toString(),
-            token.decimals,
-          )} ${token.symbol}`,
+          pending: `Increasing allowance ${
+            formatAmount(amount.toString(), token.decimals).preview
+          } ${token.symbol}`,
+          success: `Increased allowance ${
+            formatAmount(amount.toString(), token.decimals).preview
+          } ${token.symbol}`,
           error: `Error increasing allowance`,
           timeout: `Timeout increasing allowance`,
         });
@@ -68,14 +66,12 @@ export function useAllowance(options: UseAllowanceOptions) {
         }
         const op = await mrc20.decreaseAllowance(spender, amount);
         await handleOperation(op, {
-          pending: `Decreasing allowance ${formatAmount(
-            amount.toString(),
-            token.decimals,
-          )} ${token.symbol}`,
-          success: `Decreased allowance ${formatAmount(
-            amount.toString(),
-            token.decimals,
-          )} ${token.symbol}`,
+          pending: `Decreasing allowance ${
+            formatAmount(amount.toString(), token.decimals).preview
+          } ${token.symbol}`,
+          success: `Decreased allowance ${
+            formatAmount(amount.toString(), token.decimals).preview
+          } ${token.symbol}`,
           error: `Error decreasing allowance`,
           timeout: `Timeout decreasing allowance`,
         });
