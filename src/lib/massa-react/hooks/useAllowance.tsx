@@ -1,9 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { MRC20, Provider } from '@massalabs/massa-web3';
 import { useHandleOperation } from './useHandleOperation';
-import toast from 'react-hot-toast';
-import { Asset } from './useSend';
-import { formatAmount } from '../../util';
+import { Asset } from './types';
 
 export interface AllowanceParams {
   spender: string;
@@ -24,23 +22,15 @@ export function useAllowance(options: UseAllowanceOptions) {
     async ({ spender, amount, token }: AllowanceParams): Promise<void> => {
       if (!provider) throw new Error('No provider');
       setIsProcessing(true);
+
       if (!token.address) throw new Error('Token address required');
       const mrc20 = new MRC20(provider, token.address);
       try {
-        const current = await mrc20.allowance(provider.address, spender);
-        if (current >= amount) {
-          toast('Already sufficient allowance');
-          setIsProcessing(false);
-          return;
-        }
-        const op = await mrc20.increaseAllowance(spender, amount - current);
+        const op = await mrc20.increaseAllowance(spender, amount);
+
         await handleOperation(op, {
-          pending: `Increasing allowance ${
-            formatAmount(amount.toString(), token.decimals).preview
-          } ${token.symbol}`,
-          success: `Increased allowance ${
-            formatAmount(amount.toString(), token.decimals).preview
-          } ${token.symbol}`,
+          pending: `Increasing allowance ${amount} ${token.symbol}`,
+          success: `Increased allowance ${amount} ${token.symbol}`,
           error: `Error increasing allowance`,
           timeout: `Timeout increasing allowance`,
         });
@@ -58,20 +48,10 @@ export function useAllowance(options: UseAllowanceOptions) {
       if (!token.address) throw new Error('Token address required');
       const mrc20 = new MRC20(provider, token.address);
       try {
-        const current = await mrc20.allowance(provider.address, spender);
-        if (current < amount) {
-          toast.error('Decrease amount is greater than current allowance');
-          setIsProcessing(false);
-          return;
-        }
         const op = await mrc20.decreaseAllowance(spender, amount);
         await handleOperation(op, {
-          pending: `Decreasing allowance ${
-            formatAmount(amount.toString(), token.decimals).preview
-          } ${token.symbol}`,
-          success: `Decreased allowance ${
-            formatAmount(amount.toString(), token.decimals).preview
-          } ${token.symbol}`,
+          pending: `Decreasing allowance ${amount} ${token.symbol}`,
+          success: `Decreased allowance ${amount} ${token.symbol}`,
           error: `Error decreasing allowance`,
           timeout: `Timeout decreasing allowance`,
         });

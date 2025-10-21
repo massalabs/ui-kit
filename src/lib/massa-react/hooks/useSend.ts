@@ -1,17 +1,9 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Address, MRC20, Operation, Provider } from '@massalabs/massa-web3';
-import { validateAmount } from '../utils/sendTransaction';
 import { useHandleOperation } from './useHandleOperation';
 import toast from 'react-hot-toast';
 import { formatAmount } from '../../util';
-
-export interface Asset {
-  decimals: number;
-  balance: bigint;
-  symbol: string;
-  address?: string;
-  isNative?: boolean;
-}
+import { Asset } from './types';
 
 export interface SendParams {
   recipient: string;
@@ -28,6 +20,14 @@ export function useSend(options: UseSendOptions) {
   const [isProcessing, setIsProcessing] = useState(false);
   const { handleOperation } = useHandleOperation();
 
+  /**
+   * Executes a send operation
+   * @param sendFn - The function to send the asset
+   * @param asset - The asset to send
+   * @param amount - The amount to send
+   * @param recipient - The recipient address
+   * @returns void
+   */
   const execute = useCallback(
     async (
       sendFn: () => Promise<Operation>,
@@ -35,27 +35,25 @@ export function useSend(options: UseSendOptions) {
       amount: bigint,
       recipient: string,
     ): Promise<void> => {
-      if (!provider) throw new Error('No provider');
       setIsProcessing(true);
 
-      const validation = validateAmount(amount, asset.balance, asset.decimals);
-
-      if (!validation.valid) {
-        toast.error(validation.error ?? 'Invalid amount');
-        setIsProcessing(false);
-        return;
-      }
+      if (!provider) throw new Error('No provider');
 
       try {
         Address.fromString(recipient);
       } catch {
         toast.error('Invalid address');
-        setIsProcessing(false);
+        return;
+      }
+
+      if (amount > asset.balance) {
+        toast.error('Insufficient balance');
         return;
       }
 
       try {
         const op = await sendFn();
+
         await handleOperation(op, {
           pending: `Sending ${
             formatAmount(amount.toString(), asset.decimals).preview
@@ -73,6 +71,13 @@ export function useSend(options: UseSendOptions) {
     [provider, handleOperation],
   );
 
+  /**
+   * Sends a native Massa coin to a recipient
+   * @param recipient - The recipient address
+   * @param amount - The amount to send
+   * @param asset - The asset to send
+   * @returns void
+   */
   const sendMassa = useCallback(
     async ({ recipient, amount, asset }: SendParams): Promise<void> => {
       if (!provider) throw new Error('No provider');
@@ -86,6 +91,13 @@ export function useSend(options: UseSendOptions) {
     [provider, execute],
   );
 
+  /**
+   * Sends a mrc20 token to a recipient
+   * @param recipient - The recipient address
+   * @param amount - The amount to send
+   * @param asset - The token to send
+   * @returns void
+   */
   const sendToken = useCallback(
     async ({ recipient, amount, asset }: SendParams): Promise<void> => {
       if (!provider) throw new Error('No provider');
@@ -102,6 +114,14 @@ export function useSend(options: UseSendOptions) {
     [provider, execute],
   );
 
+  /**
+   * Sends an asset to a recipient
+   * The Asset can be a native Massa coin or a mrc20 token
+   * @param recipient - The recipient address
+   * @param amount - The amount to send
+   * @param asset - The asset to send
+   * @returns void
+   */
   const sendAsset = useCallback(
     async ({ recipient, amount, asset }: SendParams): Promise<void> => {
       if (asset.isNative) {
@@ -117,7 +137,9 @@ export function useSend(options: UseSendOptions) {
     () => ({
       isProcessing,
       sendAsset,
+      sendMassa,
+      sendToken,
     }),
-    [isProcessing, sendAsset],
+    [isProcessing, sendAsset, sendMassa, sendToken],
   );
 }
