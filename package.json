@@ -46,7 +46,7 @@
   "optionalDependencies": {
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.1"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.21.4",
