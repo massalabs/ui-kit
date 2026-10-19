@@ -52,7 +52,7 @@
     "@babel/preset-env": "^7.21.4",
     "@babel/preset-flow": "^7.21.4",
     "@babel/preset-react": "^7.18.6",
-    "@inrupt/jest-jsdom-polyfills": "^2.4.1",
+    "@inrupt/jest-jsdom-polyfills": "^4.1.5",
     "@massalabs/eslint-config": "^0.0.9",
     "@massalabs/prettier-config-as": "^0.0.2",
     "@storybook/addon-essentials": "^7.4.5",
